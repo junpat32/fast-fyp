@@ -377,3 +377,10 @@ def test_expert_review_form_is_up_to_date_and_covers_every_advice_text():
     assert ef.DOC.read_text(encoding="utf-8") == text
     assert len(re.findall(r"^\| C\d+ \|", text, re.M)) == len(ef.advice_rows()) and "Y / N" in text
     assert all(f"**A{i}." in text for i in range(1, len(personas) + 1))
+
+
+def test_b12_answer_key_is_one_of_the_questionnaire_options():
+    """B12 (D-135) is scored against a fixed key: it must be printed, word for word, as an option."""
+    from tools.personas import answer_key as k
+    questionnaire = (b.ROOT / "docs" / "ethics" / "04_questionnaire.md").read_text(encoding="utf-8")
+    assert f"☐ {k.B12}" in questionnaire

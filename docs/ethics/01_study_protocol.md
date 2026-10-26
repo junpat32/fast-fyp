@@ -1,4 +1,4 @@
-# Study protocol (DRAFT v0.3, 2026-10-16: sign-up task and per-participant study accounts added, D-94; AI-assisted, for Patrick to review)
+# Study protocol (DRAFT v0.4, 2026-10-16: sign-up task and per-participant study accounts added, D-94; 2026-10-26: forecast-vs-guarantee question, usefulness items, a fuller analysis plan and what the study can't show, D-135; AI-assisted, for Patrick to review)
 
 ## 1. Study details
 
@@ -8,7 +8,7 @@
 | Researcher | Patrick Wong Jun Wen, BSc Computer Science (Hons) Artificial Intelligence, [faculty], Multimedia University. [student ID], [MMU email] |
 | Supervisor | [supervisor's name, title], [faculty], [email] |
 | Type of study | Undergraduate Final Year Project (FYP2), usability and comprehension evaluation |
-| Planned dates | Pilot (3 participants): about 30 Dec 2026. Main study (15–20 participants): 30 Dec 2026 to 10 Jan 2027. Only after ethics approval |
+| Planned dates | Pilot (3 participants): about 30 Dec 2026. Main study (15–20 participants, up to 30 if recruitment allows): 30 Dec 2026 to 10 Jan 2027. Only after ethics approval |
 | Funding | None |
 
 ## 2. Background and aim
@@ -28,8 +28,9 @@ asked for or used.
 **Objectives (as pre-set in the FYP's objectives, O4):**
 1. Usability: mean System Usability Scale (SUS) score of at least 68.
 2. Comprehension: at least 70% of risk-comprehension questions answered correctly.
-3. Secondary: participants' trust in the explanations, and whether the "Future Self" screen causes
-   stress (the design aims for it not to).
+3. Secondary: participants' trust in the explanations, and whether that trust matches what a
+   forecast can do (an estimate, not a promise); whether the "Future Self" screen causes stress (the
+   design aims for it not to); and whether participants would find an app like FAST useful and use it.
 
 ## 3. Design
 
@@ -51,7 +52,7 @@ person's data is used, and the participant never types anything about themselves
 
 | Item | Details |
 |---|---|
-| Number | 3 (pilot) + 15–20 (main) |
+| Number | 3 (pilot) + 15–20 (main), up to 30 if recruitment allows. More participants only narrow the confidence intervals; the targets do not change |
 | Inclusion | Aged 18–35; living in Malaysia; able to read English; able to use a smartphone |
 | Exclusion | Under 18; anyone who took part in the pilot (for the main study); anyone who designed or tested FAST |
 | Recruitment | Convenience and snowball sampling: a short message (in `02_participant_information_sheet.md`) shared online (MMU student groups, the researcher's networks) and on campus (the same message on a notice or handed out). People reply to the researcher if interested; nobody is asked twice after saying no |
@@ -66,8 +67,8 @@ person's data is used, and the participant never types anything about themselves
 | 2 | Short demographic questions (age group, study or work status, experience with money apps) | 3 min |
 | 3 | Short introduction to the app (its four parts and the time-travel bar; it does not explain the rules the questions test), read from the session script (`06_session_script.md`) so everyone hears the same | 3 min |
 | 4 | **Sign-up task:** sign in to the empty study account and set up the app with the made-up details on the card (`docs/study/onboarding_card.md`), then one question on how easy it was (Part S) | 5–7 min |
-| 5 | **For each persona** (three; a fourth if time allows), in the order on the session card: six short tasks (the same for every persona, e.g. "Find out how this persona is doing with their debts right now"), then that persona's comprehension questions (Part B), then time travel a month or two forward. Part B comes before time travel, so every participant answers about the same screens. For the first persona only, after Part B: record one made-up expense ("RM12 on lunch today") and find it in the list | 24–30 min |
-| 6 | SUS, trust items and Future Self items | 5 min |
+| 5 | **For each persona** (three; a fourth if time allows), in the order on the session card: six short tasks (the same for every persona, e.g. "Find out how this persona is doing with their debts right now"), then that persona's comprehension questions (Part B), then time travel a month or two forward. Part B comes before time travel, so every participant answers about the same screens. For the first persona only, after Part B: record one made-up expense ("RM12 on lunch today") and find it in the list. After the last persona's Part B, one question on what the Future Self range means (B12) | 24–30 min |
+| 6 | SUS, trust items, Future Self items and usefulness items | 5–6 min |
 | 7 | Open feedback; debrief sheet given | 3 min |
 
 **Study accounts (D-94):** before each session the researcher makes accounts for that participant
@@ -129,10 +130,23 @@ deleted at the end of the project, when the final FYP result is released (E7).
 
 ## 9. Analysis
 
-- SUS: scored in the standard way (0–100); mean with a 95% confidence interval; compared with
-  the benchmark of 68.
-- Comprehension: percentage correct overall and per question; compared with the 70% target.
-- Trust and Future Self items: medians and distributions (5-point scales).
+Fixed before any data is collected (D-135); anything else is reported as exploratory. With 15–30
+people the study describes and estimates; it does not run significance tests between groups.
+
+- SUS: scored in the standard way (0–100); mean with a 95% confidence interval (t-based); compared with
+  the benchmark of 68; also the share of participants at or above 68.
+- Comprehension: each participant's percentage correct over the scored items (B1–B9 for each
+  persona, and B12 once); the mean of those percentages with a 95% bootstrap confidence interval
+  (participants resampled, 2,000 times), compared with the 70% target. Per question: percentage
+  correct with a Wilson 95% interval. Answers flagged ⚠ in the answer keys (a value close to a
+  bucket edge) are scored strictly and, as a check, again with the neighbouring answer accepted;
+  both are reported. A skipped question is left out of that participant's percentage (counts reported).
+- Trust (D1–D8), Future Self (E1–E4) and usefulness and intention to use (F1–F5): medians, interquartile
+  ranges and the share agreeing (4 or 5), with reverse-scored items reversed.
+- Trust calibration: D8 (a forecast can turn out wrong) and B12 (a range is not a guarantee) show whether
+  participants read forecasts as estimates; D3 (trust in warnings) is shown against each participant's
+  comprehension score (descriptive; a Spearman correlation only as exploratory, given the small sample).
+- Groups (age group, study or work): described only where a group has at least 5 people.
 - The advice's usefulness (B10 realistic, B11 actionable, per persona) and the personas' realism (D7):
   medians and distributions; secondary, not O4 targets (D-101).
 - Sign-up task (secondary, not an O4 target): share of participants who finished without help, the
@@ -148,3 +162,17 @@ deleted at the end of the project, when the final FYP result is released (E7).
 
 The results go into the FYP report (and possibly a poster or presentation at MMU). No individual
 can be identified in any of them.
+
+## 11. What this study cannot show
+
+- **Behaviour or outcomes:** it measures understanding and ease of use with fictional personas, not
+  whether using FAST changes anyone's money habits.
+- **Personal relevance:** a persona is not the participant's own money, so interest and trust may differ
+  from real use.
+- **Predictive accuracy:** FAST's forecasts were developed and tested on synthetic data only; this study
+  does not test them against real people's outcomes. A separate, future study design for that is in
+  `docs/study/future_validation_protocol.md` (not part of this application).
+- **Comparison:** there is no "numbers only" version to compare against, so the study cannot say how much
+  the explanations themselves add (future work).
+- **Sample:** a small convenience sample, so the results describe these participants and give a first
+  estimate, not a population figure.

@@ -1,4 +1,4 @@
-# Data management plan (DRAFT v0.3, 2026-10-16: sign-up task and per-participant study accounts, D-94; AI-assisted, for Patrick to review)
+# Data management plan (DRAFT v0.4, 2026-10-16: sign-up task and per-participant study accounts, D-94; 2026-10-26: usefulness answers listed, D-135; AI-assisted, for Patrick to review)
 
 Follows Malaysia's **Personal Data Protection Act 2010 (PDPA)** principles: collect only what is
 needed, tell people what happens to it, keep it secure, keep it no longer than needed, and let
@@ -11,7 +11,7 @@ people withdraw.
 | Consent (name, signature or typed name, date): paper in person, a separate online consent form online | Proof of consent | **Yes**: kept separately, never linked to answers except through the code list |
 | Participant code list (code ↔ name) | Lets a participant withdraw before the cut-off date | **Yes**: kept with the consent forms; destroyed at the withdrawal cut-off [date] |
 | Demographics in broad groups (age group, study/work status, app experience) | Describing the sample | No (broad groups only) |
-| Questionnaire answers (comprehension, SUS, trust, Future Self, comments) | The study's measures (O4) | No (code only); comments are checked and anything identifying is removed |
+| Questionnaire answers (comprehension, SUS, trust, Future Self, usefulness, comments) | The study's measures (O4) | No (code only); comments are checked and anything identifying is removed |
 | Researcher's task notes (where people got stuck) | Finding usability problems | No (code only) |
 | Sign-up task results (finished with or without help, minutes, share of the card's made-up details saved correctly) | Testing the app's onboarding | No (code only); read from the study account before it is deleted |
 

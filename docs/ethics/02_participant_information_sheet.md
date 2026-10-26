@@ -1,4 +1,4 @@
-# Participant information sheet (DRAFT v0.3, 2026-10-16: sign-up task added, D-94; AI-assisted, for Patrick to review)
+# Participant information sheet (DRAFT v0.4, 2026-10-16: sign-up task added, D-94; 2026-10-26: questions on usefulness, D-135; AI-assisted, for Patrick to review)
 
 ## Testing FAST: can young adults understand a money-risk app?
 
@@ -27,8 +27,8 @@ or **online** by video call, whichever you prefer. You will:
    use a phone I provide. Online you use your own phone: you install the free **Expo Go** app, open
    FAST from a link I send, and sign in with made-up accounts I make for you (I delete them after
    the session);
-4. answer some questions about what the app showed, and some questions about how easy it was to use,
-   on an online form.
+4. answer some questions about what the app showed, how easy it was to use, and whether an app like
+   it would be useful to you, on an online form.
 
 **Will you ask about my own money?** **No.** You will never be asked about your own income,
 savings, debts or bank details, and you should not enter any. Everything in the app is invented,

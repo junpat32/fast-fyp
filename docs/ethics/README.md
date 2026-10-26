@@ -1,11 +1,14 @@
 # T-21 Research ethics application: drafts
 
-**Status:** DRAFT v0.3 (2026-10-15: Patrick's E1–E7 decisions written in; 2026-10-16: the
+**Status:** DRAFT v0.4 (2026-10-15: Patrick's E1–E7 decisions written in; 2026-10-16: the
 sign-up task with a made-up card, and study accounts made for each participant and deleted after
-the session, D-94), AI-assisted (Claude Code), for Patrick to review, edit and submit. Logged in `docs/ai_use_log.md`. Patrick submits and deals with MMU; Claude drafts.
+the session, D-94; 2026-10-26: a scored forecast-vs-guarantee question B12, a trust-calibration item
+D8, usefulness and intention-to-use items (Part F), up to 30 participants, a fuller analysis plan and
+"what this study cannot show", D-135), AI-assisted (Claude Code), for Patrick to review, edit and submit. Logged in `docs/ai_use_log.md`. Patrick submits and deals with MMU; Claude drafts.
 
-**Target:** submitted by **31 Oct 2026**. No recruitment or data collection before approval (the
-30 Dec pilot depends on it). If MMU says an anonymous usability study needs no formal approval,
+**Target:** the submission is **paused** (Patrick, 2026-10-26; look again on 15 Nov). No recruitment or
+data collection before approval, and the 30 Dec pilot needs approval first, so a hold past mid-November
+probably moves the study. If MMU says an anonymous usability study needs no formal approval,
 get that **in writing** and record it in `docs/DECISIONS.md`.
 
 ## The documents
@@ -15,7 +18,7 @@ get that **in writing** and record it in `docs/DECISIONS.md`.
 | `01_study_protocol.md` | Aims, design, participants, procedure, risks, data, analysis | The application form's main sections / "research proposal" |
 | `02_participant_information_sheet.md` | Plain-language sheet participants keep, plus a debrief and the recruitment message | "Participant Information Sheet" (PIS) |
 | `03_consent_form.md` | What participants sign | "Informed Consent Form" |
-| `04_questionnaire.md` | Demographics, comprehension questions, SUS, trust and Future Self items, open questions | "Instruments" / "Questionnaire" |
+| `04_questionnaire.md` | Demographics, comprehension questions, SUS, trust and Future Self items, usefulness and intention to use, open questions | "Instruments" / "Questionnaire" |
 | `05_data_management_plan.md` | What is collected, where it is kept, for how long, PDPA 2010 | "Data management" section |
 | `06_session_script.md` | What the researcher says and does in every session: the introduction, the sign-up task, the six persona tasks, hints, the debrief, what to do if something goes wrong (D-95) | "Study procedure" / "Interview or session script" (often requested with the instruments) |
 

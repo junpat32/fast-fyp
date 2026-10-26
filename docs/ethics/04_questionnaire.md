@@ -1,4 +1,4 @@
-# Study questionnaire (DRAFT v0.3, 2026-10-16: Part S for the sign-up task, D-94; 2026-10-17: B10–B11 and D7, D-101; AI-assisted, for Patrick to review)
+# Study questionnaire (DRAFT v0.4, 2026-10-16: Part S for the sign-up task, D-94; 2026-10-17: B10–B11 and D7, D-101; 2026-10-26: B12 forecast vs guarantee, D8 trust calibration, Part F usefulness and intention to use, D-135; AI-assisted, for Patrick to review)
 
 Participant code: **P__**   Persona order: [from the participant's session card, e.g. C-D-B-A: a
 balanced order (Williams design) so each persona comes before and after each other equally often]
@@ -46,7 +46,15 @@ app, but don't use time travel until you've answered.
 | B10 | The step the app suggests is realistic for this persona. ☐ 1 strongly disagree ☐ 2 ☐ 3 ☐ 4 ☐ 5 strongly agree | Usefulness of the advice: realistic (an opinion, **not scored** for comprehension) |
 | B11 | If I were this persona, I would know how to do the suggested step. ☐ 1 strongly disagree ☐ 2 ☐ 3 ☐ 4 ☐ 5 strongly agree | Usefulness of the advice: actionable (an opinion, **not scored**) |
 
-Comprehension (O4's 70% target) is scored on **B1–B9** only. B10–B11 are opinions about the advice (D-101).
+**Asked once, after the last persona's Part B:**
+
+| # | Question | Measures |
+|---|---|---|
+| B12 | The Future Self screen said, for example, *"In 6 months you could have between 1 and 3 months of costs saved, if recent habits continue."* Which of these is true? ☐ The persona is sure to have at least 1 month saved ☐ It shows what could happen if habits stay the same; the real result could be lower or higher ☐ It is the persona's savings goal | Telling a forecast from a guarantee (scored) |
+
+Comprehension (O4's 70% target) is scored on **B1–B9** for each persona and **B12** once (D-135). B10–B11
+are opinions about the advice (D-101). *Researcher only:* the answer to B12 is the second option, the
+same for everyone (`docs/study/answer_keys.md`).
 
 ## Part C: ease of use (System Usability Scale)
 
@@ -81,6 +89,7 @@ Written for this study. 1 = strongly disagree, 5 = strongly agree. (R) = reverse
 | D5 | I would still check important money decisions myself rather than rely only on the app. |
 | D6 | The app's advice felt realistic for young Malaysians. |
 | D7 | The personas seemed like real young Malaysians. |
+| D8 | A forecast like "12 in 100" is an estimate: for one person it can turn out wrong either way. (trust calibration: agreeing means trust matched to what a forecast can do) |
 
 ## Part E: the Future Self screen
 
@@ -94,7 +103,20 @@ stress. 1 = strongly disagree, 5 = strongly agree.
 | E3 | The Future Self screen felt encouraging rather than judging. |
 | E4 | I would like to see my own Future Self in an app like this. |
 
-## Part F: your comments (optional)
+## Part F: would an app like this be useful to you?
+
+Perceived usefulness and intention to use, adapted from the Technology Acceptance Model (Davis, 1989);
+ease of use is already measured by the SUS (Part C). 1 = strongly disagree, 5 = strongly agree.
+
+| # | Statement |
+|---|---|
+| F1 | An app like FAST would help me understand my own financial risk. |
+| F2 | An app like FAST would help me decide what to do next with my money. |
+| F3 | An app like FAST would help me prepare for unexpected expenses. |
+| F4 | If FAST were available, I would use it to keep track of my own money. |
+| F5 | I would recommend an app like FAST to friends my age. |
+
+## Part G: your comments (optional)
 
 1. What was the most confusing part of the app?
 2. What was the most useful part?

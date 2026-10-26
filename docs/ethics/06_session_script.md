@@ -1,4 +1,4 @@
-# Session script and task list (DRAFT v0.3, 2026-10-16, D-95; AI-assisted, for Patrick to review)
+# Session script and task list (DRAFT v0.4, 2026-10-16, D-95; 2026-10-26: B12 after the last persona, Parts C to G, D-135; AI-assisted, for Patrick to review)
 
 The researcher follows this for **every** session (pilot and main study, in person and online), so
 every participant hears the same words and does the same tasks. Words in boxes are **read as
@@ -122,9 +122,13 @@ Note what they notice. Don't reset anything: the next persona is a different acc
 
 Note the question's topic (not word for word) and whether the answer helped.
 
-## 5. Ease of use, trust and the Future Self (5 min)
+**After the last persona's time travel** (the third, or the fourth if there was time):
 
-> Thank you, that's the app part done. Please answer the last parts of the form, **C to F**, about the
+> One more question about the app, on the form: **B12**, about what the Future Self range means.
+
+## 5. Ease of use, trust, the Future Self and usefulness (5–6 min)
+
+> Thank you, that's the app part done. Please answer the last parts of the form, **C to G**, about the
 > app as a whole.
 
 ## 6. Debrief (3 min)
@@ -167,11 +171,12 @@ Give the debrief (in `02_participant_information_sheet.md`), and read:
 | The API is slow to answer | Wait 30 seconds and retry; note it |
 | The money helper says it can't answer | Fine: note it and carry on (it falls back to the app's own advice) |
 | The participant seems upset by a persona's situation | Pause; remind them it's made up and they can stop; offer the debrief and AKPK |
-| Running out of time | Skip the fourth persona, then the money helper; never skip Parts C–F |
+| Running out of time | Skip the fourth persona, then the money helper; never skip B12 or Parts C–G |
 
 ## 9. Results spreadsheet columns
 
 `code, mode, date, persona_order, personas_done, S1, signup_result, signup_minutes, signup_accuracy,
 p1_tasks…p4_tasks, record_expense (task 7), helper_topic, time_travel_notes, problems, then the form's
-Part B–F answers`.
-Comprehension is scored against `docs/study/answer_keys.md`; SUS as in Part C.
+Part B–G answers (B12 once)`.
+Comprehension is scored against `docs/study/answer_keys.md` (B1–B9 per persona, B12 once); SUS as in
+Part C; the analysis follows `01_study_protocol.md` §9.

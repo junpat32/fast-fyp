@@ -20,6 +20,7 @@ from .build import OUT, ROOT, STUDY_FIRST
 
 DOC = ROOT / "docs" / "study" / "answer_keys.md"
 BAND_WORDS = {"GREEN": "Green", "YELLOW": "Yellow", "RED": "Red", "INSUFFICIENT_INCOME": '"Not enough income data"'}
+B12 = "It shows what could happen if habits stay the same; the real result could be lower or higher"   # D-135, fixed
 
 
 def dsr_bucket(dsr: float) -> tuple[str, bool]:
@@ -101,7 +102,8 @@ def render(personas: list[dict]) -> str:
                                               for k in keys])
     row("**B8** the garden grows by", [k["B8"] for k in keys])
     row("**B9** suggested step (free text)", [k["B9"][0][0] if k["B9"] else "-" for k in keys])
-    lines += ["", "## Accepting free-text answers (B5, B9)", ""]
+    lines += ["", f"**B12** (asked once, after the last persona; the same answer for everyone, D-135): *{B12}*.", "",
+              "## Accepting free-text answers (B5, B9)", ""]
     for p, k in zip(personas, keys):
         lines.append(f"**{p['meta']['name']}.** B5 correct if it names the first reason (the second is accepted too): "
                      + "; ".join(f"*{x}*" for x in k["B5"][:2]) + ". B9 correct if it describes the first step, "

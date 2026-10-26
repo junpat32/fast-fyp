@@ -1,4 +1,4 @@
-# Informed consent form (DRAFT v0.3, 2026-10-16: sign-up task, D-94; AI-assisted, for Patrick to review)
+# Informed consent form (DRAFT v0.4, 2026-10-16: sign-up task, D-94; 2026-10-26: refers to the v0.4 information sheet, D-135; AI-assisted, for Patrick to review)
 
 **Study:** Testing FAST: can young adults understand a money-risk app?
 **Researcher:** Patrick Wong Jun Wen, Multimedia University, [email]
@@ -8,7 +8,7 @@ Please tick each box if you agree.
 
 | | Statement |
 |---|---|
-| ☐ | I have read the participant information sheet (version [0.3], dated [date]) and had the chance to ask questions. |
+| ☐ | I have read the participant information sheet (version [0.4], dated [date]) and had the chance to ask questions. |
 | ☐ | I am aged between 18 and 35. |
 | ☐ | I understand that taking part is voluntary, that I can skip any question, and that I can stop at any time without giving a reason and without any effect on my studies or grades. |
 | ☐ | I understand that I can ask for my answers to be removed until [date], by quoting my participant code. |
