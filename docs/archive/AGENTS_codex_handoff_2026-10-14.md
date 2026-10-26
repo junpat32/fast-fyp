@@ -1,3 +1,7 @@
+> **Archived 2026-10-26 (D-136).** Patrick no longer uses Codex. This was the handoff file Codex read
+> from the project root; it is kept only as a record of how an AI tool was instructed (for the AI-use
+> declaration). It is **not** live instructions and is out of date (e.g. it calls the app "not started").
+
 # AGENTS.md: handoff for Codex (FAST, FYP2)
 
 Updated 2026-10-14 by Claude Code for Codex (machine and backup details: 2026-10-26). Read this file, then **`CLAUDE.md`** (the project's

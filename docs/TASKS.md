@@ -77,13 +77,11 @@ Claude raises an item again only when its date comes near, not before.
 | WP-16 | Reviews: generator (T-05), O2 (T-06), flags (T-14a), game (T-14b), API (T-13) | 12–14 Oct | report time | the T- rows above |
 | WP-17 | How Claude may help with `FYP2.docx`: (a) structure, comments and tables; (b) notes only; (c) prose (against CLAUDE.md §6) | 18 Oct | report time | `docs/reports/` |
 | WP-18 | R14 "cash going down" (Q2b): build it, with your wording | 26 Oct | optional, after the core flow | — |
-| WP-19 | Is Codex still used? If yes, `AGENTS.md` §3–4 must stop calling T-16 "not started: your task" | 26 Oct | before any Codex session | `AGENTS.md` |
-| WP-20 | Delete `app58_old/` and `.test_tmp/` (yours to delete) | — | any time | — |
 
 **To watch (no answer needed now):** the Play Store's Expo Go moving to SDK 58 (the app is on 57 and would stop
-opening; upgrade then, D-105); whether Android Expo Go starts requiring a login (online study sessions, D-105, step 9);
-before the first push, drop `app/public/canvaskit.wasm` (8 MB, copied by `npm run sync-art`, web preview only) from
-git and ignore it.
+opening; upgrade then, D-105); whether Android Expo Go starts requiring a login (online study sessions, D-105, step 9).
+Closed 2026-10-26 (D-136): Codex retired (WP-19, `AGENTS.md` archived), `app58_old/` and `.test_tmp/` removed (WP-20),
+`canvaskit.wasm` no longer tracked.
 
 ## LATER (planned order; start only when Patrick moves a task to NEXT)
 

@@ -11,18 +11,15 @@ about 1.5x real size (this one ~27 px; Patrick, D-66) so they read on a phone, i
 exaggerated spirit as the chibi character. Bigger sizes are redrawn, never stretched: stretching
 pixel art by 1.5 makes uneven pixels.
 
-    .venv\\Scripts\\python -m tools.asset_generation.creatures   # writes the test GIFs to previews/
+The chickens are kit pieces (`ANIMAL_PIECES`, built by `tools.asset_generation.build`); the one-off
+test GIFs that showed the first chicken (D-66) were retired on 2026-10-26 (D-136).
 """
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
 import numpy as np
-from PIL import Image
 
 from .geometry import outline
-from .palette import IDX, TRANSPARENT, to_rgba
+from .palette import IDX, TRANSPARENT
 
 C = IDX
 # beak and near leg in the coin gold (D-86): same colour as brass by day, but brass glints at night
@@ -153,78 +150,3 @@ def _kit_pieces():
 
 
 ANIMAL_PIECES = _kit_pieces()
-
-
-# ---------------------------------------------------------------- test previews
-def _rgba(frame, time, flip):
-    img = to_rgba(frame[:, ::-1] if flip else frame, time)
-    return img
-
-
-def _blit(dst, src, x, y):
-    h, w = src.shape[:2]
-    x0, y0, x1, y1 = max(x, 0), max(y, 0), min(x + w, dst.shape[1]), min(y + h, dst.shape[0])
-    if x0 < x1 and y0 < y1:
-        s = src[y0 - y:y1 - y, x0 - x:x1 - x]
-        m = s[..., 3] == 255
-        dst[y0:y1, x0:x1][m] = s[m]
-
-
-def _route():
-    """A loop on the lawn: (dx, dy) per ground unit and whether the sprite is mirrored (facing right).
-    One cell = 16 units; walking along +gy moves (-2, +1) px per unit on screen."""
-    legs = [((-2, 1), False), ((2, 1), True), ((2, -1), True), ((-2, -1), False)]
-    seq = []
-    for (dx, dy), flip in legs:
-        seq += [("walk", i, (dx, dy), flip) for i in range(16)]
-        seq += [("peck", i, (0, 0), flip) for i in range(4)] * 2
-        seq += [("idle", i % 2 if i in (2, 3) else 0, (0, 0), flip) for i in range(4)]
-    return seq
-
-
-def test_gifs(out_dir: Path):
-    from .preview import KIT, phone_scene
-    frames = chicken_frames()
-    # 1) close-up, 6x, on plain lawn colour: judge the drawing
-    seq = [("walk", i // 2 % 4, False) for i in range(16)] + [("peck", i, False) for i in range(4)] * 2 \
-        + [("idle", 0, False)] * 3 + [("idle", 1, False)] + [("idle", 0, False)] * 2 \
-        + [("sleep", i // 2 % 8, False) for i in range(32)]
-    lawn = np.array([143, 170, 96, 255], np.uint8)
-    imgs = []
-    for kind, i, flip in seq:
-        bg = np.tile(lawn, (H + 6, W + 6, 1))
-        _blit(bg, _rgba(frames[kind][i], "afternoon", flip), 3, 3)
-        imgs.append(Image.fromarray(bg, "RGBA").resize(((W + 6) * 6, (H + 6) * 6), Image.NEAREST))
-    imgs[0].save(out_dir / "test_chicken_closeup.gif", save_all=True, append_images=imgs[1:], duration=110,
-                 loop=0, disposal=2)
-    # 2) in the G3 garden at true phone size (2x): walking a loop in front of the coop by day,
-    #    asleep at the coop's sleep cell at night (D-67)
-    from .preview import ROOM_TOP
-    from .scenes import ANIMAL_HOMES
-    manifest = json.loads((KIT / "manifest.json").read_text(encoding="utf-8"))
-    sx, sy = ANIMAL_HOMES["chickens"]["sleep"]
-    home = (ROOM_TOP[0] + (sx - sy) * 32, ROOM_TOP[1] + (sx + sy) * 16 + 16)    # sleep cell centre, 1x
-    for time in ("afternoon", "night"):
-        scene = np.asarray(phone_scene(manifest, 3, time)).copy()
-        crop = (home[0] - 140, home[1] - 150, home[0] + 130, home[1] + 50)      # coop and lawn, 1x
-        x, y = home
-        imgs = []
-        route = _route() if time != "night" else [("sleep", i % 8, (0, 0), False) for i in range(32)]
-        for kind, i, (dx, dy), flip in route:
-            if kind == "walk":
-                x, y = x + dx, y + dy
-                f = frames["walk"][i // 2 % 4]
-            else:
-                f = frames[kind][i]
-            frame = scene.copy()
-            _blit(frame, _rgba(f, time, flip), x - (W - 1 - FOOT[0] if flip else FOOT[0]), y - FOOT[1])
-            c = frame[crop[1]:crop[3], crop[0]:crop[2]]
-            imgs.append(Image.fromarray(c, "RGBA").resize((c.shape[1] * 2, c.shape[0] * 2), Image.NEAREST))
-        imgs[0].save(out_dir / f"test_chicken_garden_{time}.gif", save_all=True, append_images=imgs[1:],
-                     duration=90 if time != "night" else 220, loop=0, disposal=2)
-
-
-if __name__ == "__main__":
-    from .preview import PREVIEWS
-    test_gifs(PREVIEWS)
-    print(f"test GIFs -> {PREVIEWS}")

@@ -1,4 +1,4 @@
-﻿"""The money helper (T-17, D-92): redaction, the product and crisis checks, the number check, the FACTS
+"""The money helper (T-17, D-92): redaction, the product and crisis checks, the number check, the FACTS
 sent to Groq, the Groq client, the flow around the model and POST /v1/assistant. Nothing contacts
 Groq or Supabase: the model is faked and the client runs on a mock transport."""
 import json
