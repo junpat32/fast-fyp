@@ -77,7 +77,8 @@ decisions and docs; its Windows user folder was `C:\Users\User`, so old logs sho
    months) are allowed; future outcomes are not.
 2. **Split by user**, never by row (`GroupKFold` on `user_id`).
 3. **Hidden traits** (`latent.parquet`) are never model inputs, except in the
-   clearly labelled "oracle ceiling" model.
+   clearly labelled oracle model (a latent-trait-informed benchmark, not a
+   theoretical ceiling; D-133).
 4. **Pre-registration.** The O2 evaluation plan and success criteria in
    `docs/generator_spec.md` are frozen (read-only copy in `docs/frozen/` + SHA-256
    recorded in DECISIONS.md, which stay the record; git, adopted later by D-97, adds history

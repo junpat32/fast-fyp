@@ -177,5 +177,6 @@ def write_report(results, rob, cfg, out, dev, elapsed):
     L += ["\n## Notes\n",
           "- Comparator (Should): the app's Monte Carlo P(shortfall in 3 months) is scored separately by "
           "`python -m ml.mc_comparator` (reported, not part of the criterion; see `O2_ADDENDUM.md`).",
-          "- The oracle uses hidden traits and is a reference ceiling only (CLAUDE.md rule 3)."]
+          "- The oracle uses hidden traits; it is a latent-trait-informed reference benchmark, not a theoretical "
+          "ceiling (CLAUDE.md rule 3, D-133)."]
     (out / "O2_REPORT.md").write_text("\n".join(L), encoding="utf-8")

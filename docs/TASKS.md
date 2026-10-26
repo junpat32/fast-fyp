@@ -1,6 +1,6 @@
 # TASKS: current work for FAST (FYP2)
 
-Last updated: 2026-10-16
+Last updated: 2026-10-26
 
 **How to use this file (for Claude Code):** at the start of a session, find the first
 task in **NOW**, then **NEXT**, whose dependencies are done and whose owner includes
@@ -24,6 +24,7 @@ Status: `todo` · `doing` · `review` (waiting for Patrick) · `done`
 | T-03 | **Finalise and commit the generator spec** `docs/generator_spec.md` (v0.1 draft exists) | Both | `done` (frozen 2026-10-12; SHA-256 in DECISIONS.md) | T-01, T-02 | Patrick approves; frozen as a read-only copy in `docs/frozen/` **before** any T-06 run; SHA-256 recorded in DECISIONS.md. (Emailing the supervisor was dropped by Patrick, D-46.) |
 
 | T-26 | **Setup for the app and deploy** (D-97): Git for Windows, Node LTS, a private GitHub repo `fast-fyp`, the Supabase project (migration, Auth settings, 2 test users, `.env`), Render from `render.yaml`. Step-by-step: `docs/setup_guide.md` (about 75 min) | **Patrick** (Claude commits and pushes, runs the live tests, then starts T-16) | `doing` (guide written 2026-10-17. 2026-10-26, new laptop (D-128): Git 2.54 and Node v24 installed; local repo on `main` with its first commits, made with the Gmail identity; before the first push, rewrite the author to the GitHub no-reply address (D-97); the GitHub repo, Supabase and Render are still to do) | — | `git --version`, `node -v` work; repo created; `pytest tests/test_rls.py` 4 passed; `/health` answers on Render |
+| T-27 | **Research strengthening (26 Oct brief, D-132):** claims register and wording (I); secondary comparison of ML, Monte Carlo, health score and a cash-runway baseline, and what the outcome measures (A, C); study materials (G); assumption audit and alternative-mechanism worlds (B); Monte Carlo coverage (D); explanations and fairness (E); assistant safety offline (H); optional true-ceiling estimate; What-If simulator (F, after login). Brief: `docs/26Oct New improvements.md` | Claude (Patrick reviews each phase) | `doing` (2026-10-26: phase 0 done, phase 1 done: `docs/claims_register.md`, D-133 wording) | — | Every phase reported (files, tests, findings, limits); every new result in the claims register with its status |
 
 ## NEXT
 
@@ -32,7 +33,7 @@ Status: `todo` · `doing` · `review` (waiting for Patrick) · `done`
 | T-15 | **Monte Carlo engine:** six-month ranges, shortfall probability, CFaR, Expected Shortfall, median-path room; synthetic calibration; debt avalanche/snowball comparison | Codex (Patrick decides model changes) | `done` (2026-10-14: Patrick approved N1/D-81 as illustrative scenario; D-80 revision corrects semester education and BNPL instalments, adds estimated-surplus uncertainty and modest employee pay noise. Fresh predeclared audit: terminal P10–P90 covered 293/400 = 73.25%; employees 69.6%. Approximate 80% aim still missed, so do not claim 80% coverage. app must say "if recent habits continue"; never claim validated 80% coverage.) | T-05, T-07, T-11 | Must outputs and documented algorithm built; tests pass; actual coverage reported without tuning to audit; Patrick reviews |
 | T-04 | **Life-event deck** `docs/life_events.md`: about 20 Malaysian shocks (motorbike/car repair, phone screen, clinic visit, laptop failure before exams, festive costs, family emergency…) with cost range (RM), monthly probability, who it affects (all / gig / students), and source or "assumption" | Both | `review` (v0.1 draft 2026-10-09) | — | Table complete; every probability labelled as source or assumption; Patrick has edited it with real experience |
 | T-05 | **Generator v0** in `generator/`, following the frozen spec v1.0; includes `generator/checks.py` (sanity checks S1–S14 in spec §14) and `generator/TUNING_LOG.md` (fix rule D-45) | Claude (**local**, light Python; no git so no Cloud session, D-36) | `review` (built 2026-10-12: S1–S13 pass at medium noise with no tuning; 30 tests pass; Patrick to review) | T-03 frozen ✓ | `python -m generator.run` creates all outputs; every §14 check passes or the failure is explained; pytest passes; `metadata.json` records the frozen spec's SHA-256 |
-| T-06 | **O2 experiment** in `ml/`: baselines B0–B2 (incl. Markov chain), LR/RF/XGB, SHAP, ceiling model, leakage checks, bootstrap CIs, all 3 noise levels, 20-seed robustness run (reusing main-run hyperparameters, D-44) | Claude (**local**; robustness run overnight, est. 1–2 h with D-44) | `review` (completed 2026-10-12: **criterion PASS**, ΔPR-AUC +0.156 [+0.096, +0.212]; robustness Δ > 0 in 60/60 runs; no leakage alarm; see `ml/results/O2_REPORT.md`. 2026-10-17 completeness audit (D-98): `ml/results/O2_ADDENDUM.md` adds the pre-registered items shown only for medium or missing (all noise levels, excluded rows 5.1%); the Monte Carlo comparator was run 2026-10-17 (D-99: tied with the model). **2026-10-26: hybrid check (D-130, Q1-B)**: the forecast with the Monte Carlo as a 33rd input, `ml/check_hybrid.py` + 12 tests, debugged on the development data first; real run: **keep forecast_v1** (no clear gain, one age group's calibration worse), `ml/results/HYBRID_CHECK.md`) | T-05 | Results table + reliability plot + SHAP summary saved in `ml/results/`; success criterion evaluated **exactly as pre-registered** (no supervisor step, D-46) |
+| T-06 | **O2 experiment** in `ml/`: baselines B0–B2 (incl. Markov chain), LR/RF/XGB, SHAP, oracle benchmark (hidden traits; D-133), leakage checks, bootstrap CIs, all 3 noise levels, 20-seed robustness run (reusing main-run hyperparameters, D-44) | Claude (**local**; robustness run overnight, est. 1–2 h with D-44) | `review` (completed 2026-10-12: **criterion PASS**, ΔPR-AUC +0.156 [+0.096, +0.212]; robustness Δ > 0 in 60/60 runs; no leakage alarm; see `ml/results/O2_REPORT.md`. 2026-10-17 completeness audit (D-98): `ml/results/O2_ADDENDUM.md` adds the pre-registered items shown only for medium or missing (all noise levels, excluded rows 5.1%); the Monte Carlo comparator was run 2026-10-17 (D-99: tied with the model). **2026-10-26: hybrid check (D-130, Q1-B)**: the forecast with the Monte Carlo as a 33rd input, `ml/check_hybrid.py` + 12 tests, debugged on the development data first; real run: **keep forecast_v1** (no clear gain, one age group's calibration worse), `ml/results/HYBRID_CHECK.md`) | T-05 | Results table + reliability plot + SHAP summary saved in `ml/results/`; success criterion evaluated **exactly as pre-registered** (no supervisor step, D-46) |
 | T-07 | **Game design sheet** `docs/game_design.md`: point rules (daily cap on logging points, honest overspend entries still count), separate logging and budget streaks, 3 badges, Future Self states, cushion-based rewards, life-event card flow, room-upgrade levels, **garden progression levels (bare → healthier → lush, path upgrades; D-53)**, **morning/afternoon/night look (D-52)** | Both | `done` (2026-10-13: `docs/game_design.md` v1.0 approved, D-56) | T-04 | Patrick approves; contains a points table that the points simulation (T-14) can test |
 | T-08 | **Wireframes**: home scene, dashboard, Future Self comparison, life-event card, add transaction | Patrick only (Claude may describe layouts in text) | `done` (2026-10-15: Patrick accepted the text screen plan in `docs/app_plan.md` §3 in place of drawn wireframes; A1–A6 decided, D-88) | T-07 | 5 rough screens photographed or exported into `docs/wireframes/` |
 | T-09 | **Art review:** Patrick reviews and approves the generated art (T-22) on the contact sheet and alignment previews; optional hand touch-up of the character (D-55) | **Patrick only** | `paused` (Patrick stopped art work 2026-10-14, D-83; prior review history: 2026-10-13: review 1: bigger room, garden fills the screen, divider removed, rest approved (D-58); review 2: neighbours behind and to both sides, fixed touches, one big bed (D-59); revised previews to confirm) | T-22 | Patrick has approved the previews |
@@ -50,6 +51,39 @@ Status: `todo` · `doing` · `review` (waiting for Patrick) · `done`
 | ID | Task | Owner | Rule |
 |---|---|---|---|
 | T-10 | Collect **100+ real notification messages** (5+ providers: e.g. Maybank, CIMB, TNG eWallet, GrabPay, ShopeePay) and **20–30 thermal-receipt photos** | **Patrick only** | Mask account numbers before saving; never keep TAC/OTP messages; get consent before using friends' messages; store outside the public repo |
+
+## WAITING FOR PATRICK (open questions and reviews; recorded 2026-10-26)
+
+Kept so nothing is lost; many are for much later. **Needed by** says when each starts to block something.
+Claude raises an item again only when its date comes near, not before.
+
+| ID | Item | Since | Needed by | Where |
+|---|---|---|---|---|
+| WP-01 | **O1 sign-off:** review the seven differences from FYP1 | 18 Oct | **15 Nov (O1)** | `docs/fyp1_corrections.md` |
+| WP-02 | **Setup (T-26):** Supabase project + `.env`; GitHub repo + your no-reply email (both commits get it before the first push); Render | 17 Oct | Supabase: as soon as possible (login blocks the 13 Dec check); Render: before the pilot | `docs/setup_guide.md` |
+| WP-03 | **Ethics (T-21):** paused; look again on 15 Nov | 26 Oct | approval before the **30 Dec pilot** | `docs/ethics/` |
+| WP-04 | **W2:** all advice and reason wording, the short lines, verdict words, card texts | 16–20 Oct | before the pilot | `docs/advice_wording_review.md` |
+| WP-05 | **W4:** the money helper's crisis reply | 16 Oct | before the pilot | `docs/advice_wording_review.md` §4 |
+| WP-06 | Badge lines and the About line ("not a licensed financial adviser") | 24 Oct | before the pilot | D-127 |
+| WP-07 | **Art review:** batch 2 (D-86, D-87), tab icons (D-122), glasses on the darkest skin tones (D-125), **S1: keep or drop the shrubs** (spec batch 2 lists them; never built; Claude's verdict was drop) | 15 Oct on | feature freeze, 27 Dec (the study shows this art) | `tools/asset_generation/previews/` |
+| WP-08 | Personas PS1–PS3 and the 4 borderline answer keys | 15 Oct | before the pilot | `docs/personas.md`, `docs/study/answer_keys.md` |
+| WP-09 | Privacy texts PV1–PV5 | 15 Oct | before the pilot | `docs/privacy_texts.md` |
+| WP-10 | Find one expert reviewer (the form says "via the supervisor", who is parked) | 17 Oct | before the pilot | `docs/study/expert_review_form.md` |
+| WP-11 | Groq API key, then the red-team run (O5) | 16 Oct | before the freeze, 27 Dec | `tools/assistant_eval/` |
+| WP-12 | Phone checks: quick add (D-126), the More screen and badges (D-127) | 22–24 Oct | next time Expo Go runs | — |
+| WP-13 | **"Provisional" decisions** D-01, D-02, D-03, D-05, D-09, D-10, D-13 (and D-04, D-06 "pending supervisor"): what they become now that the supervisor step is dropped (D-46) | 26 Oct | report time | `docs/DECISIONS.md` |
+| WP-14 | **Objectives vs what exists:** (a) O2 says "every prediction has top-3 SHAP reasons", the app shows up to 3 after filtering; (b) Markov chain "expected months to recover" (Must) is not built; (c) the avalanche/snowball debt comparison needs interest rates the database doesn't hold. Build, drop or reword each | 26 Oct | (b), (c) before the freeze; (a) report time | `docs/OBJECTIVES.md` |
+| WP-15 | Calibration rows still marked VERIFY (T-01); life-event deck from your experience (T-04) | 9 Oct | report time | `docs/calibration_table.md`, `docs/life_events.md` |
+| WP-16 | Reviews: generator (T-05), O2 (T-06), flags (T-14a), game (T-14b), API (T-13) | 12–14 Oct | report time | the T- rows above |
+| WP-17 | How Claude may help with `FYP2.docx`: (a) structure, comments and tables; (b) notes only; (c) prose (against CLAUDE.md §6) | 18 Oct | report time | `docs/reports/` |
+| WP-18 | R14 "cash going down" (Q2b): build it, with your wording | 26 Oct | optional, after the core flow | — |
+| WP-19 | Is Codex still used? If yes, `AGENTS.md` §3–4 must stop calling T-16 "not started: your task" | 26 Oct | before any Codex session | `AGENTS.md` |
+| WP-20 | Delete `app58_old/` and `.test_tmp/` (yours to delete) | — | any time | — |
+
+**To watch (no answer needed now):** the Play Store's Expo Go moving to SDK 58 (the app is on 57 and would stop
+opening; upgrade then, D-105); whether Android Expo Go starts requiring a login (online study sessions, D-105, step 9);
+before the first push, drop `app/public/canvaskit.wasm` (8 MB, copied by `npm run sync-art`, web preview only) from
+git and ignore it.
 
 ## LATER (planned order; start only when Patrick moves a task to NEXT)
 
