@@ -40,10 +40,18 @@ model replies.
    none of these, so any one is a leak or an invention. **Action:** never serve it; return `fallback(...)` at once
    with error `"the reply contained a personal identifier"` (no retry).
 2. `contradicts_facts(reply: str, ctx: dict) -> list[str]`: the problems found, empty if none. Split the reply
-   into sentences with the module's `_sentences()`. **Skip** a sentence that explains a rule or a possibility:
-   it contains `%`, or any of `or more`, `or above`, `and above`, `below`, `between`, `if `, `could`, `would`,
-   `might`, `may `, `unless`, `once` (case-insensitive). In every other sentence that mentions the user (`you`,
-   `you're`, `your`):
+   into sentences with `_sentences()`, then into clauses at semicolons, commas, colons and dashes. Check a clause
+   with a user mention (`you`, `you're`, `your`). Also retain an unfinished explicit personal status subject
+   (`your band`, `your risk band`, `your health tier/score`, `you are`, `you're`) across punctuation until a
+   colour or tier completes it or the sentence ends. This catches `Your band: Green.` and `Your band is, in
+   fact, Green.` without carrying the subject into a rule after a completed claim. Check each colour and tier
+   in these clauses. Excuse only a directly linked possibility: a modal (`could`, `would`, `might`, `may`)
+   followed by a status verb such as `be`, `become`, `reach` or `move to`; or a conditional (`if`, `unless`,
+   `once`) directly introducing `you` or your band/tier and its status predicate (`if you reach Red`,
+   `if your band is Red`). Matching is case-insensitive. An unrelated earlier hedge, a later hedge, a percentage
+   or a threshold phrase does not excuse a personal claim. Other conditional wording may conservatively cause
+   a retry; this is a pattern check, not general language understanding. These rules revise the skip rule after
+   the 2026-10-26 reviews (R1 and R2). In a qualifying clause:
    - a band colour (whole word `Green`, `Yellow` or `Red`, any case) that is **not** the FACTS' band
      (`ctx["user"]["band"]`) and not `ctx["user"].get("band_this_month_on_its_own")` is a problem
      `"says the band is <Colour>; the FACTS say <band>"`. If the FACTS say there is no band yet, any colour in such
@@ -80,7 +88,10 @@ model replies.
 - `leaks_identifier`: each identifier kind caught; ordinary money ("RM1,200", "0.8 months", "59%") not caught.
 - `contradicts_facts`: at least 8 sentences that contradict and 8 that don't (the right band; rule explanations
   such as "Red is 60% or more"; "if your payments rise you could move to Red"; the band this month on its own; no
-  band yet).
+  band yet). Must-flag cases include a false claim containing a percentage or threshold phrase, a hedge after
+  the false claim, and a false claim after each clause delimiter. Include unfinished personal claims across
+  punctuation and definite claims after unrelated hedges; test both corrected retries and repeated failures
+  through `answer()`. Keep genuine directly hedged possibilities and rules after completed claims as must-pass.
 - `promises_outcome`: every phrase listed in step 3, both lists.
 - `answer()` flows with `FakeLLM`: a contradiction then a corrected reply → the corrected reply is served; a
   contradiction twice → fallback with the new error; a promise then a hedged reply → served; a leak → fallback with
@@ -100,6 +111,43 @@ model replies.
 **Done when:** all of the above exists; `git diff main -- tools/assistant_eval/prompts.yaml` is empty; the full
 Python suite passes (baseline 2,663 passed, 4 skipped, plus your new tests); the hand-back lists the proposed
 decision text and the proposed crisis words.
+
+### Hand-back (Codex, 2026-10-26)
+
+- **Status:** done. R1 and R2 from the follow-up review are fixed in the spec and code, with regression tests for detection, correction and fallback. The full Python suite passes.
+- **Branch and commits:** `codex/cx-1`; `6512d74 Add offline assistant safety checks`; `409d827 Align assistant API test with computed band`; `9b06ead Record CX-1 hand-back and AI use`; `67ce464 Close assistant band-check bypass`. All have the required co-author trailer. The follow-up review and R1/R2 fixes are local, uncommitted changes; nothing was merged or pushed.
+- **Files changed:** `api/assistant.py` — identifier, FACTS-contradiction and outcome-promise checks; unfinished personal status subjects survive punctuation; only directly linked possibilities get hedge exemptions; retry and fallback flow; prompt rule and documented pattern-check limits.
+- **Files changed:** `tools/assistant_eval/run.py` — separate `--set extra` dry-run and report output.
+- **Files changed:** `tools/assistant_eval/prompts_extra.yaml` — 28 supplementary prompts, written before any live run.
+- **Files changed:** `tests/test_assistant_safety.py` — offline checks, including false claims with percentages, thresholds and later hedges; R1/R2 regressions through detection, corrected retry and repeated-failure fallback; genuine-possibility and completed-claim rule cases; runner and three strict expected-failure distress cases.
+- **Files changed:** `tests/test_assistant.py` — the fake API reply and expectation now agree with the computed Green FACTS; Patrick authorized this exception to the original file scope.
+- **Files changed:** `docs/codex tasks.md` — corrected the CX-1 skip-rule specification, including R1/R2 subject continuity and directly linked possibilities; recorded the review and its resolution in this hand-back.
+- **Files changed:** `docs/ai_use_log.md` — updated the CX-1 disclosure row.
+- **Tests run:** `.venv\Scripts\python -m pytest -q tests/test_assistant.py tests/test_assistant_safety.py` — 211 passed, 3 xfailed, 1 warning.
+- **Tests run:** `$env:PYTHONUTF8 = '1'`, then `.venv\Scripts\python -m pytest -q` — 2,800 passed, 4 skipped, 3 xfailed, 1 warning, in 120.62 seconds. `git diff main -- tools/assistant_eval/prompts.yaml` is empty; `git diff --check` passes.
+- **Not done, and questions:** No live Groq run was made; the offline set is ready for a later run with Patrick's key.
+- **Not done, and questions:** Distress prompts D1, D2 and D7 miss the shared crisis words and are strict xfails. Proposed W4 additions for Patrick to review: “can't cope”, “don't know how to keep going”, and “hopeless and trapped”. The new system-prompt and correction wording are drafts for Patrick's W2 review.
+- **Not done, and questions:** The suite still emits the Starlette/`httpx` deprecation warning assigned to CX-3; no CX-3 files were changed.
+- **Proposed decision text:** The money helper rejects a model reply containing an identifier immediately. Personal band and health-tier checks preserve unfinished status subjects across punctuation, stopping at a completed label or sentence. Percentages, threshold words and unrelated hedges do not bypass the check; a hedge exemption requires a directly linked status possibility. A mismatch or promised outcome gets one corrective retry and then FAST's fixed fallback; numbers-only failures retain the existing correction and error. These are conservative word-pattern checks, not a guarantee of semantic correctness. Unrecognised conditional wording and rule clauses with personal references may cause unnecessary retries or a safe fallback. The supplementary safety set remains separate from the fixed O5 counts. The three missed distress phrasings remain Patrick's W4 decision.
+
+#### Follow-up review (Codex, 2026-10-26)
+
+These findings describe commit `67ce464`, before the R1/R2 fixes recorded below.
+
+- **Finding R1:** Splitting at punctuation loses the user mention. With FACTS Yellow/Coping, `Your band: Green.`, `Your health tier: Healthy.` and `Your band is, in fact, Green.` all return no contradiction. The full `answer()` flow serves each unchanged after one fake-model call. The fragment containing the colour/tier is skipped because it no longer contains `you` or `your` (`api/assistant.py:217`). The earlier CX-1 check, before clause splitting, caught these examples.
+- **Finding R2:** An unrelated earlier hedge excuses a definite claim. With the same FACTS, `You may think your band is Red but your band is Green.`, `Your band might look confusing but it is Green.` and `Your health tier might sound surprising but it is Healthy.` are all served unchanged after one fake-model call. The check searches for any earlier hedge in the clause instead of checking which claim it qualifies (`api/assistant.py:224`, also the tier check at line 231).
+- **Specification:** Both findings follow the current Build step 2 literally. They expose gaps in that rule, rather than a failure to implement its wording. Updating only the code would leave the specification inconsistent.
+- **Checks run:** `.venv\Scripts\python -` with an inline, offline fake model exercised ten phrases through both `contradicts_facts()` and `answer()`: the six false claims above were served; two plain/later-hedge contradictions fell back after two calls; the correct band and a genuine possibility passed. These were diagnostic probes, not new committed regression tests.
+- **Tests rerun:** `$env:PYTHONUTF8 = '1'`, then `.venv\Scripts\python -m pytest -q` — **2,749 passed, 4 skipped, 3 xfailed, 1 warning**, in 122.41 seconds. `git diff --check main` passed; `git diff main -- tools/assistant_eval/prompts.yaml` remained empty.
+- **Recommendation / proposed decision text:** Hold the CX-1 merge for R1 and R2. Revise the spec and code together so punctuation does not detach a personal band/tier claim from its subject, and a hedge excuses only the claim it qualifies. Add regression tests through the full retry/fallback flow while retaining the existing genuine-possibility and rule-explanation tests. The authorized API test correction is sound; D1/D2/D7 remain a separate W4 decision before the pilot. This review changes documentation only and does not constitute approval of wording or a live Groq evaluation.
+
+#### R1/R2 resolution (Codex, 2026-10-26)
+
+- **Authorization and scope:** Patrick approved the proposed fix ("let's do it"). Updated only `api/assistant.py`, `tests/test_assistant_safety.py`, this spec/hand-back and the existing CX-1 AI-use row on `codex/cx-1`.
+- **R1 fixed:** An unfinished personal status subject survives punctuation and intervening fragments such as `in fact`. A completed colour/tier clears that context, so `Your band is Yellow; Red starts at 60%.` still passes.
+- **R2 fixed:** A hedge exemption now requires a modal directly linked to a status verb, or a conditional introducing the personal status. `could be Red` and `if you reach Red` pass; `might look confusing but it is Green` does not. Other conditional phrasing may conservatively retry; no new semantic-understanding claim is made.
+- **Regression evidence:** Before the code fix, `.venv\Scripts\python -m pytest -q tests/test_assistant_safety.py -k punctuation_and_unrelated_hedges --tb=no` produced **12 failed, 128 deselected, 1 warning**. All twelve now pass. The same twelve cases also verify a successful corrective retry and fallback on repetition. Fifteen additional must-pass cases preserve correct labels, supported possibilities and rule explanations after completed claims: **51 new cases in total**.
+- **Final validation:** The targeted assistant suite is **211 passed, 3 xfailed**; the full Python suite is **2,800 passed, 4 skipped, 3 xfailed**. Both retain the known CX-3 warning. Commands and final results are recorded above. The fixed O5 prompt file remains unchanged. R1 and R2 no longer block the scoped CX-1 change; live Groq evaluation and W4 remain pending.
 
 ---
 
