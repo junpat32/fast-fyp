@@ -1,0 +1,332 @@
+{
+  "dev": false,
+  "users": 1000,
+  "part_a": {
+    "user_months": {
+      "Green, cushion under 1 month": 1756,
+      "Green, cushion 1-3 months": 2932,
+      "Green, cushion 3+ months": 4133,
+      "Yellow, cushion under 1 month": 758,
+      "Yellow, cushion 1-3 months": 900,
+      "Yellow, cushion 3+ months": 576,
+      "Red, cushion under 1 month": 233,
+      "Red, cushion 1-3 months": 235,
+      "Red, cushion 3+ months": 151
+    },
+    "insufficient_income_months": 326,
+    "targets": {
+      "recovered": {
+        "Green, cushion under 1 month": {
+          "mean": 6.624179396701082,
+          "median": 3,
+          "within_3": 0.5001139857240933,
+          "within_6": 0.7233765952061465,
+          "within_12": 0.8830020653650467
+        },
+        "Yellow, cushion under 1 month": {
+          "mean": 19.48359408253912,
+          "median": 13,
+          "within_3": 0.09408954175494547,
+          "within_6": 0.23707352239124466,
+          "within_12": 0.47678439506791265
+        },
+        "Yellow, cushion 1-3 months": {
+          "mean": 19.5191620919238,
+          "median": 13,
+          "within_3": 0.15336923043870465,
+          "within_6": 0.2768786429715665,
+          "within_12": 0.47772220853931513
+        },
+        "Yellow, cushion 3+ months": {
+          "mean": 15.897456370462807,
+          "median": 9,
+          "within_3": 0.2424377400439518,
+          "within_6": 0.40351017093335423,
+          "within_12": 0.5989486695760154
+        },
+        "Red, cushion under 1 month": {
+          "mean": 27.892324162340625,
+          "median": 22,
+          "within_3": 0.03557077651064465,
+          "within_6": 0.09463264204901338,
+          "within_12": 0.2524781788993668
+        },
+        "Red, cushion 1-3 months": {
+          "mean": 28.275573066014136,
+          "median": 23,
+          "within_3": 0.03921090467869462,
+          "within_6": 0.10154437921177464,
+          "within_12": 0.2522456966779447
+        },
+        "Red, cushion 3+ months": {
+          "mean": 27.933808993404206,
+          "median": 22,
+          "within_3": 0.06286909415959574,
+          "within_6": 0.1336626572095191,
+          "within_12": 0.28005005736736266
+        }
+      },
+      "out_of_red": {
+        "Red, cushion under 1 month": {
+          "mean": 11.606934039831907,
+          "median": 8,
+          "within_3": 0.2438775202900768,
+          "within_6": 0.4251902881112785,
+          "within_12": 0.6642553229438398
+        },
+        "Red, cushion 1-3 months": {
+          "mean": 12.373241366709307,
+          "median": 9,
+          "within_3": 0.21649773830044255,
+          "within_6": 0.3899039402066145,
+          "within_12": 0.6335781848854866
+        },
+        "Red, cushion 3+ months": {
+          "mean": 14.008222181618862,
+          "median": 11,
+          "within_3": 0.17179506787864748,
+          "within_6": 0.3257465175444106,
+          "within_12": 0.5688842233207771
+        }
+      }
+    }
+  },
+  "part_b": {
+    "cells": {
+      "out_of_red": {
+        "k3": {
+          "Red, cushion under 1 month": {
+            "starts": 164,
+            "users": 39,
+            "predicted": 0.264,
+            "observed": 0.1341,
+            "observed_ci": [
+              0.0615,
+              0.2353
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 1-3 months": {
+            "starts": 168,
+            "users": 44,
+            "predicted": 0.2332,
+            "observed": 0.1429,
+            "observed_ci": [
+              0.0706,
+              0.2338
+            ],
+            "verdict": "consistent"
+          },
+          "Red, cushion 3+ months": {
+            "starts": 128,
+            "users": 23,
+            "predicted": 0.1966,
+            "observed": 0.0469,
+            "observed_ci": [
+              0.0,
+              0.1146
+            ],
+            "verdict": "too fast"
+          }
+        },
+        "k6": {
+          "Red, cushion under 1 month": {
+            "starts": 102,
+            "users": 33,
+            "predicted": 0.4528,
+            "observed": 0.2059,
+            "observed_ci": [
+              0.0734,
+              0.3685
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 1-3 months": {
+            "starts": 102,
+            "users": 31,
+            "predicted": 0.4155,
+            "observed": 0.2451,
+            "observed_ci": [
+              0.1149,
+              0.411
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 3+ months": {
+            "starts": 98,
+            "users": 21,
+            "predicted": 0.3644,
+            "observed": 0.0612,
+            "observed_ci": [
+              0.0,
+              0.1667
+            ],
+            "verdict": "too fast"
+          }
+        }
+      },
+      "recovered": {
+        "k3": {
+          "Green, cushion under 1 month": {
+            "starts": 1390,
+            "users": 348,
+            "predicted": 0.4997,
+            "observed": 0.4626,
+            "observed_ci": [
+              0.4195,
+              0.509
+            ],
+            "verdict": "consistent"
+          },
+          "Yellow, cushion under 1 month": {
+            "starts": 552,
+            "users": 140,
+            "predicted": 0.0964,
+            "observed": 0.0562,
+            "observed_ci": [
+              0.0316,
+              0.0854
+            ],
+            "verdict": "too fast"
+          },
+          "Yellow, cushion 1-3 months": {
+            "starts": 695,
+            "users": 160,
+            "predicted": 0.1564,
+            "observed": 0.1022,
+            "observed_ci": [
+              0.0677,
+              0.1429
+            ],
+            "verdict": "too fast"
+          },
+          "Yellow, cushion 3+ months": {
+            "starts": 431,
+            "users": 98,
+            "predicted": 0.2426,
+            "observed": 0.1717,
+            "observed_ci": [
+              0.1175,
+              0.2371
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion under 1 month": {
+            "starts": 164,
+            "users": 39,
+            "predicted": 0.0434,
+            "observed": 0.0,
+            "observed_ci": [
+              0.0,
+              0.0
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 1-3 months": {
+            "starts": 168,
+            "users": 44,
+            "predicted": 0.0469,
+            "observed": 0.0,
+            "observed_ci": [
+              0.0,
+              0.0
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 3+ months": {
+            "starts": 128,
+            "users": 23,
+            "predicted": 0.0725,
+            "observed": 0.0078,
+            "observed_ci": [
+              0.0,
+              0.0289
+            ],
+            "verdict": "too fast"
+          }
+        },
+        "k6": {
+          "Green, cushion under 1 month": {
+            "starts": 1000,
+            "users": 314,
+            "predicted": 0.7221,
+            "observed": 0.661,
+            "observed_ci": [
+              0.6069,
+              0.717
+            ],
+            "verdict": "too fast"
+          },
+          "Yellow, cushion under 1 month": {
+            "starts": 370,
+            "users": 115,
+            "predicted": 0.2408,
+            "observed": 0.1081,
+            "observed_ci": [
+              0.062,
+              0.163
+            ],
+            "verdict": "too fast"
+          },
+          "Yellow, cushion 1-3 months": {
+            "starts": 468,
+            "users": 134,
+            "predicted": 0.282,
+            "observed": 0.1325,
+            "observed_ci": [
+              0.0826,
+              0.191
+            ],
+            "verdict": "too fast"
+          },
+          "Yellow, cushion 3+ months": {
+            "starts": 278,
+            "users": 79,
+            "predicted": 0.403,
+            "observed": 0.2086,
+            "observed_ci": [
+              0.1301,
+              0.2958
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion under 1 month": {
+            "starts": 102,
+            "users": 33,
+            "predicted": 0.1101,
+            "observed": 0.0,
+            "observed_ci": [
+              0.0,
+              0.0
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 1-3 months": {
+            "starts": 102,
+            "users": 31,
+            "predicted": 0.1167,
+            "observed": 0.0,
+            "observed_ci": [
+              0.0,
+              0.0
+            ],
+            "verdict": "too fast"
+          },
+          "Red, cushion 3+ months": {
+            "starts": 98,
+            "users": 21,
+            "predicted": 0.1532,
+            "observed": 0.0,
+            "observed_ci": [
+              0.0,
+              0.0
+            ],
+            "verdict": "too fast"
+          }
+        }
+      }
+    },
+    "overall": "not consistent",
+    "eligible_cells": 20
+  }
+}
