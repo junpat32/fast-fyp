@@ -1,6 +1,6 @@
 # AGENTS.md: handoff for Codex (FAST, FYP2)
 
-Updated 2026-10-14 by Claude Code for Codex. Read this file, then **`CLAUDE.md`** (the project's
+Updated 2026-10-14 by Claude Code for Codex (machine and backup details: 2026-10-26). Read this file, then **`CLAUDE.md`** (the project's
 binding rules: they apply to you exactly as to Claude; wherever it says "Claude", read "the AI
 agent"), then `docs/TASKS.md` and `docs/app_plan.md`.
 
@@ -22,15 +22,17 @@ made in code (D-55, D-84 to D-86); image generation is banned (D-83).
 
 ## 1. Non-negotiables (summary; CLAUDE.md is the full text)
 
-- **Machine:** Windows 10, 4 GB RAM (often < 1 GB free), PowerShell 5.1, Python 3.14.8 in `.venv`.
-  **Never** run Docker, local Supabase, Android Studio or emulators, PyTorch, EasyOCR, JupyterLab.
-  Node/Metro is allowed **on its own** (close other heavy tools). The phone runs the app in
-  **Expo Go** on the same Wi-Fi. Check `node -v` first; if Node is missing, ask Patrick to install
-  the LTS version (don't install system software yourself).
+- **Machine (new laptop from 2026-10-26, D-128):** Windows 11, Intel i5-9300H, 12 GB RAM,
+  PowerShell 5.1, Python 3.14.8 in `.venv`, Node v24 LTS. Local runs (pytest, the generator, the
+  O2 experiment, Metro) are fine. **Never** run Docker, local Supabase, Android Studio or
+  emulators, PyTorch or EasyOCR (design choices, CLAUDE.md §4). The phone runs the app in
+  **Expo Go** on the same Wi-Fi. If `node -v` fails, ask Patrick to install the LTS version
+  (don't install system software yourself).
 - **Git from D-97** (D-36 lifted 2026-10-17): once Patrick has installed Git and created the private
   GitHub repo (`docs/setup_guide.md`), make small commits with clear messages; never commit `.env`
-  or `data/`. Until the first push, and afterwards for `data/`, back up to a new dated folder:
-  `robocopy "C:\Users\User\Desktop\FYP 2" "D:\FYP2_backup\<date>_<time>-<what>" /E /XD .venv __pycache__ .pytest_cache .test_tmp node_modules`
+  or `data/`. Until the first push, and afterwards for `data/`, back up to a new dated folder
+  (`D:` is Patrick's external drive; if it isn't plugged in, ask him):
+  `robocopy "C:\Users\Patrick Wong\Desktop\FYP 2" "D:\FYP2_backup\<date>_<time>-<what>" /E /XD .venv __pycache__ .pytest_cache .test_tmp node_modules`
   (exit codes 0–7 mean success).
 - **Tests:** `.venv\Scripts\python -m pytest -q`: currently **2,591 passed, 4 skipped** (the skipped
   ones are live Supabase tests). Never leave it red. The app (`app/`, D-104): `npm test` (Node's own
@@ -42,7 +44,7 @@ made in code (D-55, D-84 to D-86); image generation is banned (D-83).
 - **Human-only (CLAUDE.md §6):** art approval, `[DECISION]` items, real messages/receipts, the FYP
   report text, submitting the ethics application. Propose; Patrick decides.
 - **Bookkeeping after significant work:** update `docs/TASKS.md`; append to `docs/ai_use_log.md`
-  (Tool column: **Codex**); record design changes in `docs/DECISIONS.md` (next ID: **D-128**).
+  (Tool column: **Codex**); record design changes in `docs/DECISIONS.md` (next ID: **D-129**).
 
 ## 2. How Patrick works
 

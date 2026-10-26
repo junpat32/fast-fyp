@@ -54,16 +54,20 @@ tests/       pytest suites
 | Data / ML | Python 3.14 (D-70; pin the same version on Render), NumPy, pandas, scikit-learn, XGBoost, SHAP, SciPy |
 | Tests | pytest |
 
-## 4. Development machine limits (important)
+## 4. Development machine (important)
 
-Patrick's working laptop: **AMD Ryzen 3 2200U (2 cores / 4 threads), 4 GB RAM
-(often under 1 GB free), 119 GB SSD + 932 GB HDD, Windows.** He will not upgrade it.
+Patrick's working laptop since 26 Oct 2026 (D-128): **Intel Core i5-9300H (4 cores /
+8 threads), 12 GB RAM (about 2 GB free while the Claude app, a browser and an install run),
+477 GB SSD, Windows 11 Home**, plus an external 932 GB Seagate One Touch drive (`D:`) for
+backups. The old laptop (Ryzen 3 2200U, 4 GB RAM) set the stricter limits found in older
+decisions and docs; its Windows user folder was `C:\Users\User`, so old logs show that path.
 
-- Prefer **Cloud sessions** for anything that runs code (installs, tests, training).
-- Locally, only light Python scripts are OK (the generator and the simulations are small).
-- **Never** suggest or run locally: Docker, local Supabase, Android Studio or emulators,
-  PyTorch or EasyOCR, Node/Metro alongside other heavy tools, or JupyterLab.
-- Keep project files on the SSD; the HDD is for backups only.
+- Running code locally is fine: installs, the generator, pytest, the O2 experiment and
+  Metro. Cloud sessions are optional. Watch free RAM when Metro and a long Python run overlap.
+- Still not used locally, by design rather than for lack of RAM: Docker, local Supabase
+  (§3: hosted only), Android Studio or emulators (the app is tested in Expo Go on the
+  phone), PyTorch or EasyOCR (OCR is evaluated offline on Colab/Kaggle, D-17).
+- Keep project files on the SSD; `D:` is for backups only.
 - Logic lives in `.py` modules. Notebooks are only for exploration and presenting results.
 
 ## 5. Rules that must never be broken
