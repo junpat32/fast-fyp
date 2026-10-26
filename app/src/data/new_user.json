@@ -1,0 +1,205 @@
+{
+ "card": {
+  "week": "2026-06-29",
+  "event_id": "L10",
+  "title": "A toothache won't go away",
+  "text": "The dentist says it needs a filling or an extraction.",
+  "cost_low": 100,
+  "cost_high": 600,
+  "coverage": "covered",
+  "coverage_text": "Your money now would pay for all of it.",
+  "responses": [
+   {
+    "id": "use_savings",
+    "label": "I'd use my savings",
+    "after": "That's exactly what a cushion is for. Keeping one ready makes a week like this easier."
+   },
+   {
+    "id": "cut_spending",
+    "label": "I'd cut back next month",
+    "after": "Cutting back for a month works for smaller costs. A cushion means you wouldn't have to."
+   },
+   {
+    "id": "set_goal",
+    "label": "I'd set a small savings goal for it",
+    "after": "A small goal adds up. You can set one at your next check-in."
+   },
+   {
+    "id": "not_this_week",
+    "label": "Not this week",
+    "after": "No problem. A new card comes next week."
+   }
+  ],
+  "points": 5,
+  "answer": null
+ },
+ "checkins": [],
+ "assess": {
+  "month": 7,
+  "band": "GREEN",
+  "raw_band_this_month": "GREEN",
+  "insufficient_income": false,
+  "dsr": 0.0964,
+  "dti": 0.4423,
+  "cushion_months": 0.66,
+  "health": {
+   "score": 74.0,
+   "tier": "Coping",
+   "indicators": {
+    "savings": 21.9,
+    "debt": 100.0,
+    "bills": 100
+   }
+  },
+  "forecast": null,
+  "forecast_note": null,
+  "flags": {},
+  "advice": [
+   {
+    "rule": "R05_build_first_cushion",
+    "priority": 2,
+    "title": "First goal: 1 month saved",
+    "short": "Save about RM650 more to reach 1 month of costs.",
+    "text": "Your cash covers about 0.7 months of essentials and debt payments. Getting to 1 month means saving about RM650 more. Small, regular amounts count."
+   }
+  ],
+  "as_of": "2026-07-01",
+  "assessed_month": "2026-07-01",
+  "months": [
+   {
+    "month": "2026-07-01",
+    "source": "this month so far"
+   }
+  ]
+ },
+ "game": {
+  "as_of": "2026-07-01",
+  "points": 20,
+  "points_pending": 0,
+  "points_by_tier": {
+   "checkin": 20,
+   "learning": 0,
+   "logging": 0,
+   "health": 0
+  },
+  "choices": {
+   "earned": 1,
+   "used": 0,
+   "available": 1
+  },
+  "streak": {
+   "current": 0,
+   "best": 0
+  },
+  "badges": [],
+  "milestones": [],
+  "room_level": 1,
+  "garden": {
+   "open": false,
+   "level": 0,
+   "qualifying_months": 0,
+   "bed_step": 0,
+   "bed": [],
+   "plant_tier": 0,
+   "animal_slots": 0,
+   "animal_slots_used": 0
+  },
+  "plants": [],
+  "seed_box": [],
+  "tree": null,
+  "decorations": {},
+  "animals": {},
+  "look": {
+   "mood": "calm",
+   "plants": "normal",
+   "suggest_akpk": false,
+   "coin_jar": 1,
+   "savings_plant": 0
+  },
+  "game_cushion": 0.66,
+  "months": [],
+  "ledger": [
+   {
+    "day": "2026-07-01",
+    "kind": "welcome",
+    "points": 20,
+    "ref": "sign-up",
+    "pending": false
+   }
+  ],
+  "skipped": []
+ },
+ "future": {
+  "available": false,
+  "reason": "the Future Self needs 3 complete months",
+  "label": "if recent habits continue",
+  "as_of": "2026-07-01"
+ },
+ "helper_facts": {
+  "user": {
+   "month_assessed": "July 2026",
+   "work": "employee",
+   "band": "Green",
+   "debt_payments_share_of_income_DSR": "10%",
+   "total_debt_vs_yearly_income_DTI": "44%",
+   "months_of_costs_covered_by_cash": "0.7",
+   "health_score": "74 out of 100 (Coping)",
+   "health_parts_out_of_100": {
+    "savings cushion": 22,
+    "manageable debt": 100,
+    "paying bills on time": 100
+   },
+   "forecast": "not available yet: it needs 3 months of records",
+   "advice": [
+    "First goal: 1 month saved: Your cash covers about 0.7 months of essentials and debt payments. Getting to 1 month means saving about RM650 more. Small, regular amounts count."
+   ]
+  },
+  "about_fast": {
+   "bands": "The band comes from debt payments as a share of net monthly income (DSR). Green is below 30%, Yellow is 30% to below 60%, Red is 60% or more. Once Red, FAST keeps showing Red until DSR drops below 55%. A worse band shows at once; a better band shows only after it has held for 2 months in a row.",
+   "no_band": "No band is shown while typical monthly income over the last 3 months is below RM300.",
+   "total_debt": "Total debt compared with yearly income (DTI) is shown for information; it does not set the band.",
+   "cushion": "The cushion is how many months of essential costs and debt payments your cash would cover. The first goal is 1 month, the next is 3 months.",
+   "health_score": "The health score, out of 100, averages up to 4 parts. 80 or more is Healthy, 40 to below 80 is Coping, below 40 is Vulnerable.",
+   "forecast": "The forecast is the chance that, in the next 3 months, the band gets worse or money runs short. It comes from a model trained on made-up (synthetic) data, so it is an estimate, not a certainty.",
+   "help": "AKPK (Agensi Kaunseling dan Pengurusan Kredit, set up by Bank Negara Malaysia) gives free debt counselling. For scams, call the National Scam Response Centre at 997.",
+   "points": "FAST's points and garden reward honest records and a growing cushion, never spending. Hiding income or skipping records does not help."
+  }
+ },
+ "profile": {
+  "created_at": "2026-06-30T16:30:00+00:00",
+  "declared_income": 2800.0,
+  "avatar": 1,
+  "skin_tone": 3,
+  "glasses": false
+ },
+ "debts": [
+  {
+   "kind": "ptptn",
+   "label": null,
+   "monthly_payment": 150.0,
+   "outstanding": 14500.0,
+   "deducted_from_salary": false,
+   "starts_on": null,
+   "ends_on": null,
+   "created_at": "2026-06-30T16:30:00+00:00"
+  },
+  {
+   "kind": "bnpl",
+   "label": null,
+   "monthly_payment": 120.0,
+   "outstanding": 360.0,
+   "deducted_from_salary": false,
+   "starts_on": null,
+   "ends_on": null,
+   "created_at": "2026-06-30T16:30:00+00:00"
+  }
+ ],
+ "persona": {
+  "key": "new_user",
+  "name": "New user",
+  "story": "The sign-up card's made-up person on day one: what anyone sees right after signing up."
+ },
+ "study": {
+  "persona": false
+ }
+}

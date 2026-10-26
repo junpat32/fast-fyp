@@ -19,6 +19,14 @@ Invariants
   P8  each reason has plain words for the user's side of the training average (reasons.yaml,
       D-92); with "explanations.drop_counterintuitive" on, a reason whose coefficient points against
       common sense (related features overlapping, e.g. savings rate) is left out (decision W1)
+  P9  honesty for P8: if a reason left out that way is among the top factors in the shown direction,
+      the note says other patterns also affect the estimate, so the reasons never claim to be the
+      whole story (D-137)
+
+Units (D-133): a contribution is coefficient x standardised value, in log-odds of the model's raw
+(class-weighted) score, relative to the training average; contributions plus the intercept give that
+raw logit exactly. The probability shown is calibrated afterwards, so a contribution is never "N% of
+the risk", and it describes the model's arithmetic, not a cause.
 """
 from __future__ import annotations
 
@@ -39,6 +47,11 @@ REASON_WORDS = yaml.safe_load(Path(__file__).with_name("reasons.yaml").read_text
 FLAG_FEATURES = {"flag_impulsivity": "impulsivity", "flag_overconfidence": "overconfidence",
                  "flag_delayed_correction": "delayed_correction"}
 PROB_FLOOR = 0.02                                                       # P7
+# P6 and P9: what a note discloses when top factors can't be shown as reasons. DRAFT wording (W2)
+NOTES = {(False, False): None,
+         (True, False): "Your type of work and age group also affect this estimate.",
+         (False, True): "Some other patterns in the data also affect this estimate.",
+         (True, True): "Your type of work and age group, and some other patterns in the data, also affect this estimate."}
 BINARY = {f for f in FEATURES if f.startswith(("type_", "age_", "band_", "flag_"))} | {
     "has_personal_loan", "lives_with_parents", "family_support", "shortfall_last3", "festive_next3", "semester_next3"}
 
@@ -113,7 +126,9 @@ def forecast(features: dict, top: int = 3) -> Forecast:
                                   REASON_WORDS[f]["high" if z[j] > 0 else "low"]))      # P8
     same_way = [j for j in order[:top] if (contrib[j] > 0 if raises else contrib[j] < 0)]
     hidden_demo = any(FEATURES[j].startswith(("type_", "age_")) and x[0, j] == 1 for j in same_way)
-    note = "Your type of work and age group also affect this estimate." if hidden_demo else None   # P6
+    hidden_other = drop and any(_eligible(FEATURES[j], x[0, j], shown) and against_common_sense(FEATURES[j], lr.coef_[0][j])
+                                for j in same_way)                                       # P9
+    note = NOTES[(hidden_demo, hidden_other)]                                          # P6, P9
     shown_prob = min(max(prob, PROB_FLOOR), 1 - PROB_FLOOR)            # P7
     return Forecast(probability=round(shown_prob, 4), base_rate=round(art["base_rate"], 4), reasons=reasons,
                     version=art["version"], note=note)

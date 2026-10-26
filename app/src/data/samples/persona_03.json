@@ -1,0 +1,999 @@
+{
+ "card": {
+  "week": "2026-06-29",
+  "event_id": "L12",
+  "title": "Your family needs help",
+  "text": "A parent is in hospital, or the house back home needs an urgent repair.",
+  "cost_low": 300,
+  "cost_high": 1500,
+  "coverage": "covered",
+  "coverage_text": "Your money now would pay for all of it.",
+  "responses": [
+   {
+    "id": "use_savings",
+    "label": "I'd use my savings",
+    "after": "That's exactly what a cushion is for. Keeping one ready makes a week like this easier."
+   },
+   {
+    "id": "cut_spending",
+    "label": "I'd cut back next month",
+    "after": "Cutting back for a month works for smaller costs. A cushion means you wouldn't have to."
+   },
+   {
+    "id": "set_goal",
+    "label": "I'd set a small savings goal for it",
+    "after": "A small goal adds up. You can set one at your next check-in."
+   },
+   {
+    "id": "not_this_week",
+    "label": "Not this week",
+    "after": "No problem. A new card comes next week."
+   }
+  ],
+  "points": 5,
+  "answer": "set_goal"
+ },
+ "checkins": [
+  {
+   "month": "2026-01-01",
+   "created_at": "2026-01-31T15:00:00+00:00",
+   "cash_bank_ewallet": 2048.95,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 53842.13,
+   "net_income": 1959.57,
+   "bills_paid_on_time": true,
+   "ran_short": false,
+   "logged_in": 1959.57,
+   "logged_out": 2150.07,
+   "logged_costs": 2040.72,
+   "logged_debt_paid": 1076.91,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-02-01",
+   "created_at": "2026-02-28T15:00:00+00:00",
+   "cash_bank_ewallet": 2422.97,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 52870.69,
+   "net_income": 1896.05,
+   "bills_paid_on_time": true,
+   "ran_short": false,
+   "logged_in": 1896.05,
+   "logged_out": 1466.05,
+   "logged_costs": 1440.1,
+   "logged_debt_paid": 1129.65,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-03-01",
+   "created_at": "2026-03-31T15:00:00+00:00",
+   "cash_bank_ewallet": 2500.95,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 51875.83,
+   "net_income": 1893.94,
+   "bills_paid_on_time": true,
+   "ran_short": false,
+   "logged_in": 1893.94,
+   "logged_out": 1760.19,
+   "logged_costs": 1532.34,
+   "logged_debt_paid": 1197.04,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-04-01",
+   "created_at": "2026-04-30T15:00:00+00:00",
+   "cash_bank_ewallet": 1773.13,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 50771.39,
+   "net_income": 2193.5,
+   "bills_paid_on_time": true,
+   "ran_short": false,
+   "logged_in": 2193.5,
+   "logged_out": 2799.24,
+   "logged_costs": 2615.45,
+   "logged_debt_paid": 1126.95,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-05-01",
+   "created_at": "2026-05-31T15:00:00+00:00",
+   "cash_bank_ewallet": 1713.57,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 49859.95,
+   "net_income": 1862.21,
+   "bills_paid_on_time": true,
+   "ran_short": false,
+   "logged_in": 1862.21,
+   "logged_out": 1887.21,
+   "logged_costs": 1887.21,
+   "logged_debt_paid": 1155.6,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-06-01",
+   "created_at": "2026-06-30T15:00:00+00:00",
+   "cash_bank_ewallet": 2071.03,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 48852.8,
+   "net_income": 1908.21,
+   "bills_paid_on_time": true,
+   "ran_short": false,
+   "logged_in": 1908.21,
+   "logged_out": 1523.58,
+   "logged_costs": 1474.91,
+   "logged_debt_paid": 1128.73,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  }
+ ],
+ "assess": {
+  "month": 6,
+  "band": "RED",
+  "raw_band_this_month": "RED",
+  "insufficient_income": false,
+  "dsr": 0.5915,
+  "dti": 2.1334,
+  "cushion_months": 1.04,
+  "health": {
+   "score": 44.1,
+   "tier": "Coping",
+   "indicators": {
+    "spend": 0,
+    "savings": 34.6,
+    "debt": 41.7,
+    "bills": 100
+   }
+  },
+  "forecast": {
+   "probability": 0.0845,
+   "base_rate": 0.1198,
+   "version": "forecast_v1",
+   "reasons": [
+    {
+     "feature": "disc_cv3",
+     "label": "how much non-essential spending jumped around",
+     "value": 0.17857623444824353,
+     "contribution": -0.025824061605541758,
+     "direction": "lowers",
+     "text": "Your non-essential spending is steady"
+    },
+    {
+     "feature": "cash_slope3",
+     "label": "cash trend (last 3 months)",
+     "value": 148.95000000000005,
+     "contribution": -0.008733164378009745,
+     "direction": "lowers",
+     "text": "Your cash has been growing faster than average"
+    },
+    {
+     "feature": "inc_cv3",
+     "label": "how much income varied",
+     "value": 0.09027846952074242,
+     "contribution": -0.005201284002631398,
+     "direction": "lowers",
+     "text": "Your income is steady from month to month"
+    }
+   ],
+   "note": "Your type of work and age group also affect this estimate.",
+   "red_note": "You're already in Red, so this is the chance of running short of money."
+  },
+  "forecast_note": null,
+  "flags": {
+   "impulsivity": false
+  },
+  "advice": [
+   {
+    "rule": "R03_red_band",
+    "priority": 2,
+    "title": "Debt payments are taking a large share",
+    "short": "Talk to AKPK (free debt counselling) about your repayments.",
+    "text": "Your debt payments take 59% of your income. That's under the Red line of 60%, but once Red, FAST keeps showing Red until it drops below 55%, so the band doesn't flip back and forth. Talking to AKPK (free debt counselling by Bank Negara's agency) can help you plan repayments."
+   },
+   {
+    "rule": "R11_spending_more_than_income",
+    "priority": 2,
+    "title": "Spending more than you earn",
+    "short": "Pause one regular expense: you spent more than you earned.",
+    "text": "Over the last 3 months you spent about 30% more than you earned. Look for one regular expense you can pause."
+   },
+   {
+    "rule": "R07_bnpl_load",
+    "priority": 3,
+    "title": "Several BNPL plans running",
+    "short": "Finish your BNPL plans before starting new ones.",
+    "text": "You have 4 BNPL plans running, about RM129 a month. Finishing these before starting new ones keeps your monthly payments predictable."
+   },
+   {
+    "rule": "R06_next_cushion_goal",
+    "priority": 4,
+    "title": "Next goal: 3 months saved",
+    "short": "Save about RM3,907 more to reach 3 months of costs.",
+    "text": "Your cash covers about 1.0 months of essentials and debt payments. That's a good start; the next goal is 3 months (RM3,907 more)."
+   }
+  ],
+  "as_of": "2026-07-01",
+  "assessed_month": "2026-06-01",
+  "months": [
+   {
+    "month": "2026-01-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-02-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-03-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-04-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-05-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-06-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-07-01",
+    "source": "this month so far"
+   }
+  ]
+ },
+ "game": {
+  "as_of": "2026-07-01",
+  "points": 2210,
+  "points_pending": 0,
+  "points_by_tier": {
+   "checkin": 140,
+   "learning": 120,
+   "logging": 300,
+   "health": 1650
+  },
+  "choices": {
+   "earned": 12,
+   "used": 4,
+   "available": 8
+  },
+  "streak": {
+   "current": 1,
+   "best": 33
+  },
+  "badges": [
+   "cushion_builder",
+   "honest_tracker"
+  ],
+  "milestones": [
+   "0.5",
+   "1"
+  ],
+  "room_level": 3,
+  "garden": {
+   "open": true,
+   "level": 2,
+   "qualifying_months": 3,
+   "bed_step": 0,
+   "bed": [
+    [
+     6,
+     8
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     7,
+     10
+    ]
+   ],
+   "plant_tier": 1,
+   "animal_slots": 1,
+   "animal_slots_used": 0
+  },
+  "plants": [
+   {
+    "cell": [
+     6,
+     8
+    ],
+    "plant": "serai",
+    "stage": "full",
+    "growing_days": 91
+   },
+   {
+    "cell": [
+     6,
+     9
+    ],
+    "plant": "pandan",
+    "stage": "full",
+    "growing_days": 61
+   },
+   {
+    "cell": [
+     6,
+     10
+    ],
+    "plant": "chilli",
+    "stage": "full",
+    "growing_days": 30
+   },
+   {
+    "cell": [
+     7,
+     8
+    ],
+    "plant": "serai",
+    "stage": "seedling",
+    "growing_days": 0
+   }
+  ],
+  "seed_box": [],
+  "tree": null,
+  "decorations": {},
+  "animals": {},
+  "look": {
+   "mood": "calm",
+   "plants": "normal",
+   "suggest_akpk": false,
+   "coin_jar": 2,
+   "savings_plant": 2
+  },
+  "game_cushion": 1.04,
+  "months": [
+   {
+    "month": "2026-01-01",
+    "verified": true,
+    "saving": -266.74,
+    "progress": 810.17,
+    "goal": 190.0,
+    "goal_met": true,
+    "cushion": 0.92,
+    "qualifying": false
+   },
+   {
+    "month": "2026-02-01",
+    "verified": true,
+    "saving": 374.02,
+    "progress": 1345.46,
+    "goal": 190.0,
+    "goal_met": true,
+    "cushion": 1.39,
+    "qualifying": false
+   },
+   {
+    "month": "2026-03-01",
+    "verified": true,
+    "saving": 77.98,
+    "progress": 1072.84,
+    "goal": 190.0,
+    "goal_met": true,
+    "cushion": 1.5,
+    "qualifying": false
+   },
+   {
+    "month": "2026-04-01",
+    "verified": true,
+    "saving": -727.82,
+    "progress": 376.62,
+    "goal": 190.0,
+    "goal_met": true,
+    "cushion": 0.95,
+    "qualifying": true
+   },
+   {
+    "month": "2026-05-01",
+    "verified": true,
+    "saving": -59.56,
+    "progress": 851.88,
+    "goal": 190.0,
+    "goal_met": true,
+    "cushion": 0.85,
+    "qualifying": true
+   },
+   {
+    "month": "2026-06-01",
+    "verified": true,
+    "saving": 357.46,
+    "progress": 1364.61,
+    "goal": 190.0,
+    "goal_met": true,
+    "cushion": 1.04,
+    "qualifying": true
+   }
+  ],
+  "ledger": [
+   {
+    "day": "2026-01-01",
+    "kind": "welcome",
+    "points": 20,
+    "ref": "sign-up",
+    "pending": false
+   },
+   {
+    "day": "2026-01-05",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-05",
+    "pending": false
+   },
+   {
+    "day": "2026-01-08",
+    "kind": "streak",
+    "points": 20,
+    "ref": "7",
+    "pending": false
+   },
+   {
+    "day": "2026-01-12",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-12",
+    "pending": false
+   },
+   {
+    "day": "2026-01-19",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-19",
+    "pending": false
+   },
+   {
+    "day": "2026-01-26",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-26",
+    "pending": false
+   },
+   {
+    "day": "2026-01-31",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-01-01",
+    "pending": false
+   },
+   {
+    "day": "2026-01-31",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-01-01",
+    "pending": false
+   },
+   {
+    "day": "2026-01-31",
+    "kind": "debt_10",
+    "points": 160,
+    "ref": "2026-01-01",
+    "pending": false
+   },
+   {
+    "day": "2026-01-31",
+    "kind": "bills",
+    "points": 30,
+    "ref": "2026-01-01",
+    "pending": false
+   },
+   {
+    "day": "2026-01-31",
+    "kind": "milestone",
+    "points": 50,
+    "ref": "0.5",
+    "pending": false
+   },
+   {
+    "day": "2026-02-02",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-02",
+    "pending": false
+   },
+   {
+    "day": "2026-02-09",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-09",
+    "pending": false
+   },
+   {
+    "day": "2026-02-16",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-16",
+    "pending": false
+   },
+   {
+    "day": "2026-02-23",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-23",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "saved_10",
+    "points": 120,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "debt_10",
+    "points": 160,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "bills",
+    "points": 30,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "cushion_1",
+    "points": 40,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "milestone",
+    "points": 100,
+    "ref": "1",
+    "pending": false
+   },
+   {
+    "day": "2026-03-02",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-02",
+    "pending": false
+   },
+   {
+    "day": "2026-03-09",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-09",
+    "pending": false
+   },
+   {
+    "day": "2026-03-16",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-16",
+    "pending": false
+   },
+   {
+    "day": "2026-03-23",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-23",
+    "pending": false
+   },
+   {
+    "day": "2026-03-25",
+    "kind": "streak",
+    "points": 40,
+    "ref": "30",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "debt_10",
+    "points": 160,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "bills",
+    "points": 30,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "cushion_1",
+    "points": 40,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-06",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-04-06",
+    "pending": false
+   },
+   {
+    "day": "2026-04-13",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-04-13",
+    "pending": false
+   },
+   {
+    "day": "2026-04-20",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-04-20",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-04-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-04-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "debt_10",
+    "points": 160,
+    "ref": "2026-04-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "bills",
+    "points": 30,
+    "ref": "2026-04-01",
+    "pending": false
+   },
+   {
+    "day": "2026-05-04",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-04",
+    "pending": false
+   },
+   {
+    "day": "2026-05-11",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-11",
+    "pending": false
+   },
+   {
+    "day": "2026-05-18",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-18",
+    "pending": false
+   },
+   {
+    "day": "2026-05-25",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-25",
+    "pending": false
+   },
+   {
+    "day": "2026-05-31",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-05-01",
+    "pending": false
+   },
+   {
+    "day": "2026-05-31",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-05-01",
+    "pending": false
+   },
+   {
+    "day": "2026-05-31",
+    "kind": "debt_10",
+    "points": 160,
+    "ref": "2026-05-01",
+    "pending": false
+   },
+   {
+    "day": "2026-05-31",
+    "kind": "bills",
+    "points": 30,
+    "ref": "2026-05-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-01",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-08",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-08",
+    "pending": false
+   },
+   {
+    "day": "2026-06-15",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-15",
+    "pending": false
+   },
+   {
+    "day": "2026-06-22",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-22",
+    "pending": false
+   },
+   {
+    "day": "2026-06-29",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-29",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "saved_10",
+    "points": 120,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "debt_10",
+    "points": 160,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "bills",
+    "points": 30,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "cushion_1",
+    "points": 40,
+    "ref": "2026-06-01",
+    "pending": false
+   }
+  ],
+  "skipped": []
+ },
+ "future": {
+  "available": true,
+  "label": "if recent habits continue",
+  "based_on_months": 6,
+  "months": [
+   {
+    "month": 7,
+    "p10": 0.51,
+    "p50": 1.17,
+    "p90": 1.56
+   },
+   {
+    "month": 8,
+    "p10": 0.24,
+    "p50": 1.03,
+    "p90": 1.85
+   },
+   {
+    "month": 9,
+    "p10": 0.0,
+    "p50": 0.84,
+    "p90": 1.85
+   },
+   {
+    "month": 10,
+    "p10": 0.0,
+    "p50": 0.73,
+    "p90": 1.85
+   },
+   {
+    "month": 11,
+    "p10": 0.0,
+    "p50": 0.6,
+    "p90": 1.87
+   },
+   {
+    "month": 12,
+    "p10": 0.0,
+    "p50": 0.49,
+    "p90": 1.87
+   }
+  ],
+  "shortfall_probability": 0.349,
+  "cash_flow_at_risk": -4495.69,
+  "expected_shortfall": -5608.66,
+  "median_path_room_level": 3,
+  "median_path_final_cushion": 0.49,
+  "as_of": "2026-07-01"
+ },
+ "helper_facts": {
+  "user": {
+   "month_assessed": "June 2026",
+   "work": "employee",
+   "band": "Red",
+   "debt_payments_share_of_income_DSR": "59%",
+   "total_debt_vs_yearly_income_DTI": "213%",
+   "months_of_costs_covered_by_cash": "1.0",
+   "health_score": "44 out of 100 (Coping)",
+   "health_parts_out_of_100": {
+    "spending less than income": 0,
+    "savings cushion": 35,
+    "manageable debt": 42,
+    "paying bills on time": 100
+   },
+   "forecast": {
+    "chance_band_worse_or_money_short": "8%",
+    "average_chance_in_training_data": "12%",
+    "what_keeps_it_low": [
+     "Your non-essential spending is steady",
+     "Your cash has been growing faster than average",
+     "Your income is steady from month to month"
+    ],
+    "what_it_measures": "You're already in Red, so this is the chance of running short of money.",
+    "note": "Your type of work and age group also affect this estimate."
+   },
+   "advice": [
+    "Debt payments are taking a large share: Your debt payments take 59% of your income. That's under the Red line of 60%, but once Red, FAST keeps showing Red until it drops below 55%, so the band doesn't flip back and forth. Talking to AKPK (free debt counselling by Bank Negara's agency) can help you plan repayments.",
+    "Spending more than you earn: Over the last 3 months you spent about 30% more than you earned. Look for one regular expense you can pause.",
+    "Several BNPL plans running: You have 4 BNPL plans running, about RM129 a month. Finishing these before starting new ones keeps your monthly payments predictable."
+   ]
+  },
+  "about_fast": {
+   "bands": "The band comes from debt payments as a share of net monthly income (DSR). Green is below 30%, Yellow is 30% to below 60%, Red is 60% or more. Once Red, FAST keeps showing Red until DSR drops below 55%. A worse band shows at once; a better band shows only after it has held for 2 months in a row.",
+   "no_band": "No band is shown while typical monthly income over the last 3 months is below RM300.",
+   "total_debt": "Total debt compared with yearly income (DTI) is shown for information; it does not set the band.",
+   "cushion": "The cushion is how many months of essential costs and debt payments your cash would cover. The first goal is 1 month, the next is 3 months.",
+   "health_score": "The health score, out of 100, averages up to 4 parts. 80 or more is Healthy, 40 to below 80 is Coping, below 40 is Vulnerable.",
+   "forecast": "The forecast is the chance that, in the next 3 months, the band gets worse or money runs short. It comes from a model trained on made-up (synthetic) data, so it is an estimate, not a certainty.",
+   "help": "AKPK (Agensi Kaunseling dan Pengurusan Kredit, set up by Bank Negara Malaysia) gives free debt counselling. For scams, call the National Scam Response Centre at 997.",
+   "points": "FAST's points and garden reward honest records and a growing cushion, never spending. Hiding income or skipping records does not help."
+  }
+ },
+ "profile": {
+  "created_at": "2025-12-31T16:30:00+00:00",
+  "declared_income": 1900.0,
+  "avatar": 4,
+  "skin_tone": 1,
+  "glasses": false
+ },
+ "debts": [
+  {
+   "kind": "car",
+   "label": "Car loan",
+   "monthly_payment": 723.25,
+   "outstanding": 39778.81,
+   "deducted_from_salary": false,
+   "starts_on": null,
+   "ends_on": null,
+   "created_at": "2025-12-31T16:30:00+00:00"
+  },
+  {
+   "kind": "other",
+   "label": "Motorbike loan",
+   "monthly_payment": 276.06,
+   "outstanding": 14907.43,
+   "deducted_from_salary": false,
+   "starts_on": null,
+   "ends_on": null,
+   "created_at": "2025-12-31T16:30:00+00:00"
+  }
+ ],
+ "persona": {
+  "key": "persona_03",
+  "name": "Priya",
+  "story": "A 25-year-old office worker with a car loan and a motorbike loan. Her debt payments take more than half of her pay."
+ },
+ "study": {
+  "persona": true,
+  "study_date": "2026-07-01",
+  "first": "2026-07-01",
+  "last": "2027-01-01"
+ }
+}

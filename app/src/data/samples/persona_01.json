@@ -1,0 +1,822 @@
+{
+ "card": {
+  "week": "2026-06-29",
+  "event_id": "L04",
+  "title": "Your car needs a big repair",
+  "text": "The aircon compressor gives out, or an accident leaves you paying the excess.",
+  "cost_low": 800,
+  "cost_high": 2500,
+  "coverage": "not_yet",
+  "coverage_text": "A cushion is what helps here, a little at a time.",
+  "responses": [
+   {
+    "id": "use_savings",
+    "label": "I'd use my savings",
+    "after": "That's exactly what a cushion is for. Keeping one ready makes a week like this easier."
+   },
+   {
+    "id": "cut_spending",
+    "label": "I'd cut back next month",
+    "after": "Cutting back for a month works for smaller costs. A cushion means you wouldn't have to."
+   },
+   {
+    "id": "set_goal",
+    "label": "I'd set a small savings goal for it",
+    "after": "A small goal adds up. You can set one at your next check-in."
+   },
+   {
+    "id": "not_this_week",
+    "label": "Not this week",
+    "after": "No problem. A new card comes next week."
+   }
+  ],
+  "points": 5,
+  "answer": "set_goal"
+ },
+ "checkins": [
+  {
+   "month": "2026-01-01",
+   "created_at": "2026-01-31T15:00:00+00:00",
+   "cash_bank_ewallet": 0.0,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 235.52,
+   "net_income": 595.32,
+   "bills_paid_on_time": false,
+   "ran_short": true,
+   "logged_in": 595.32,
+   "logged_out": 1894.49,
+   "logged_costs": 1760.46,
+   "logged_debt_paid": 78.51,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-02-01",
+   "created_at": "2026-02-28T15:00:00+00:00",
+   "cash_bank_ewallet": 0.0,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 508.53,
+   "net_income": 859.35,
+   "bills_paid_on_time": false,
+   "ran_short": true,
+   "logged_in": 859.35,
+   "logged_out": 1594.57,
+   "logged_costs": 1581.63,
+   "logged_debt_paid": 169.51,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-03-01",
+   "created_at": "2026-03-31T15:00:00+00:00",
+   "cash_bank_ewallet": 268.11,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 410.39,
+   "net_income": 1021.5,
+   "bills_paid_on_time": false,
+   "ran_short": false,
+   "logged_in": 1021.5,
+   "logged_out": 735.1,
+   "logged_costs": 542.66,
+   "logged_debt_paid": 205.19,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-04-01",
+   "created_at": "2026-04-30T15:00:00+00:00",
+   "cash_bank_ewallet": 287.84,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 407.7,
+   "net_income": 551.82,
+   "bills_paid_on_time": false,
+   "ran_short": false,
+   "logged_in": 551.82,
+   "logged_out": 513.73,
+   "logged_costs": 513.73,
+   "logged_debt_paid": 188.68,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-05-01",
+   "created_at": "2026-05-31T15:00:00+00:00",
+   "cash_bank_ewallet": 252.41,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 366.25,
+   "net_income": 901.47,
+   "bills_paid_on_time": false,
+   "ran_short": false,
+   "logged_in": 901.47,
+   "logged_out": 902.22,
+   "logged_costs": 786.19,
+   "logged_debt_paid": 125.8,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  },
+  {
+   "month": "2026-06-01",
+   "created_at": "2026-06-30T15:00:00+00:00",
+   "cash_bank_ewallet": 0.0,
+   "epf_fleksibel": 0.0,
+   "others_emergency": 0.0,
+   "others": 0.0,
+   "epf_retirement": null,
+   "epf_voluntary": 0.0,
+   "epf_compulsory_to_fleksibel": 0.0,
+   "debt_total": 594.48,
+   "net_income": 536.67,
+   "bills_paid_on_time": false,
+   "ran_short": true,
+   "logged_in": 536.67,
+   "logged_out": 1056.32,
+   "logged_costs": 1056.32,
+   "logged_debt_paid": 166.19,
+   "after_month_net": 0.0,
+   "after_month_debt": 0.0
+  }
+ ],
+ "assess": {
+  "month": 6,
+  "band": "YELLOW",
+  "raw_band_this_month": "YELLOW",
+  "insufficient_income": false,
+  "dsr": 0.3012,
+  "dti": 0.0898,
+  "cushion_months": 0.0,
+  "health": {
+   "score": 37.4,
+   "tier": "Vulnerable",
+   "indicators": {
+    "spend": 0,
+    "savings": 0.0,
+    "debt": 99.8,
+    "bills": 50
+   }
+  },
+  "forecast": {
+   "probability": 0.6753,
+   "base_rate": 0.1198,
+   "version": "forecast_v1",
+   "reasons": [
+    {
+     "feature": "shortfall_last3",
+     "label": "ran out of cash recently",
+     "value": 1.0,
+     "contribution": 1.1644287692362771,
+     "direction": "raises",
+     "text": "You ran short of money recently"
+    },
+    {
+     "feature": "cushion_t",
+     "label": "months of expenses saved (cushion)",
+     "value": 0.0,
+     "contribution": 1.011206843970068,
+     "direction": "raises",
+     "text": "Your cash cushion is smaller than average"
+    },
+    {
+     "feature": "inc_median3",
+     "label": "typical monthly income (last 3 months)",
+     "value": 551.82,
+     "contribution": 0.6771650061762896,
+     "direction": "raises",
+     "text": "Your typical monthly income is lower than average"
+    }
+   ],
+   "note": null,
+   "red_note": null
+  },
+  "forecast_note": null,
+  "flags": {
+   "impulsivity": false
+  },
+  "advice": [
+   {
+    "rule": "R02_recent_shortfall",
+    "priority": 1,
+    "title": "Money ran short recently",
+    "short": "Before payday, list what's due and cover essentials first.",
+    "text": "You ran short of cash in 1 of the last 3 months. Before next payday, list what is due (RM166 in debt payments) and set aside the essentials first."
+   },
+   {
+    "rule": "R05_build_first_cushion",
+    "priority": 2,
+    "title": "First goal: 1 month saved",
+    "short": "Save about RM785 more to reach 1 month of costs.",
+    "text": "Your cash covers about 0.0 months of essentials and debt payments. Getting to 1 month means saving about RM785 more. Small, regular amounts count."
+   },
+   {
+    "rule": "R11_spending_more_than_income",
+    "priority": 2,
+    "title": "Spending more than you earn",
+    "short": "Pause one regular expense: you spent more than you earned.",
+    "text": "Over the last 3 months you spent about 69% more than you earned. Look for one regular expense you can pause."
+   },
+   {
+    "rule": "R07_bnpl_load",
+    "priority": 3,
+    "title": "Several BNPL plans running",
+    "short": "Finish your BNPL plans before starting new ones.",
+    "text": "You have 3 BNPL plans running, about RM166 a month. Finishing these before starting new ones keeps your monthly payments predictable."
+   },
+   {
+    "rule": "R10_forecast_elevated",
+    "priority": 3,
+    "title": "A tight month may be ahead",
+    "short": "Build your cushion now: a tight month may be ahead.",
+    "text": "Based on patterns like yours, there is about a 68% chance that your band gets worse or money runs short in the next 3 months. Building your cushion now helps most."
+   }
+  ],
+  "as_of": "2026-07-01",
+  "assessed_month": "2026-06-01",
+  "months": [
+   {
+    "month": "2026-01-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-02-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-03-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-04-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-05-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-06-01",
+    "source": "check-in"
+   },
+   {
+    "month": "2026-07-01",
+    "source": "this month so far"
+   }
+  ]
+ },
+ "game": {
+  "as_of": "2026-07-01",
+  "points": 575,
+  "points_pending": 0,
+  "points_by_tier": {
+   "checkin": 140,
+   "learning": 125,
+   "logging": 140,
+   "health": 170
+  },
+  "choices": {
+   "earned": 3,
+   "used": 3,
+   "available": 0
+  },
+  "streak": {
+   "current": 1,
+   "best": 20
+  },
+  "badges": [],
+  "milestones": [
+   "0.5"
+  ],
+  "room_level": 2,
+  "garden": {
+   "open": true,
+   "level": 1,
+   "qualifying_months": 0,
+   "bed_step": 0,
+   "bed": [
+    [
+     6,
+     8
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     9
+    ]
+   ],
+   "plant_tier": 1,
+   "animal_slots": 0,
+   "animal_slots_used": 0
+  },
+  "plants": [
+   {
+    "cell": [
+     6,
+     8
+    ],
+    "plant": "serai",
+    "stage": "full",
+    "growing_days": 91
+   },
+   {
+    "cell": [
+     6,
+     9
+    ],
+    "plant": "pandan",
+    "stage": "full",
+    "growing_days": 61
+   },
+   {
+    "cell": [
+     7,
+     8
+    ],
+    "plant": "chilli",
+    "stage": "full",
+    "growing_days": 30
+   }
+  ],
+  "seed_box": [],
+  "tree": null,
+  "decorations": {},
+  "animals": {},
+  "look": {
+   "mood": "focused",
+   "plants": "normal",
+   "suggest_akpk": false,
+   "coin_jar": 0,
+   "savings_plant": 1
+  },
+  "game_cushion": 0.0,
+  "months": [
+   {
+    "month": "2026-01-01",
+    "verified": false,
+    "saving": -1175.04,
+    "progress": -1096.53,
+    "goal": 30.0,
+    "goal_met": false,
+    "cushion": 0.0,
+    "qualifying": false
+   },
+   {
+    "month": "2026-02-01",
+    "verified": false,
+    "saving": -442.52,
+    "progress": -273.01,
+    "goal": 30.0,
+    "goal_met": false,
+    "cushion": 0.0,
+    "qualifying": false
+   },
+   {
+    "month": "2026-03-01",
+    "verified": true,
+    "saving": 268.11,
+    "progress": 366.25,
+    "goal": 30.0,
+    "goal_met": true,
+    "cushion": 0.2,
+    "qualifying": false
+   },
+   {
+    "month": "2026-04-01",
+    "verified": true,
+    "saving": 19.73,
+    "progress": 22.42,
+    "goal": 30.0,
+    "goal_met": false,
+    "cushion": 0.54,
+    "qualifying": false
+   },
+   {
+    "month": "2026-05-01",
+    "verified": true,
+    "saving": -35.43,
+    "progress": 6.02,
+    "goal": 30.0,
+    "goal_met": false,
+    "cushion": 0.41,
+    "qualifying": false
+   },
+   {
+    "month": "2026-06-01",
+    "verified": false,
+    "saving": -646.83,
+    "progress": -480.64,
+    "goal": 30.0,
+    "goal_met": false,
+    "cushion": 0.0,
+    "qualifying": false
+   }
+  ],
+  "ledger": [
+   {
+    "day": "2026-01-01",
+    "kind": "welcome",
+    "points": 20,
+    "ref": "sign-up",
+    "pending": false
+   },
+   {
+    "day": "2026-01-05",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-05",
+    "pending": false
+   },
+   {
+    "day": "2026-01-12",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-12",
+    "pending": false
+   },
+   {
+    "day": "2026-01-16",
+    "kind": "streak",
+    "points": 20,
+    "ref": "7",
+    "pending": false
+   },
+   {
+    "day": "2026-01-19",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-19",
+    "pending": false
+   },
+   {
+    "day": "2026-01-26",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-01-26",
+    "pending": false
+   },
+   {
+    "day": "2026-01-31",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-01-01",
+    "pending": false
+   },
+   {
+    "day": "2026-02-02",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-02",
+    "pending": false
+   },
+   {
+    "day": "2026-02-09",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-09",
+    "pending": false
+   },
+   {
+    "day": "2026-02-16",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-16",
+    "pending": false
+   },
+   {
+    "day": "2026-02-23",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-02-23",
+    "pending": false
+   },
+   {
+    "day": "2026-02-28",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-02-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-02",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-02",
+    "pending": false
+   },
+   {
+    "day": "2026-03-09",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-09",
+    "pending": false
+   },
+   {
+    "day": "2026-03-16",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-16",
+    "pending": false
+   },
+   {
+    "day": "2026-03-23",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-23",
+    "pending": false
+   },
+   {
+    "day": "2026-03-30",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-03-30",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-03-31",
+    "kind": "saved_10",
+    "points": 120,
+    "ref": "2026-03-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-13",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-04-13",
+    "pending": false
+   },
+   {
+    "day": "2026-04-20",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-04-20",
+    "pending": false
+   },
+   {
+    "day": "2026-04-27",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-04-27",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-04-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-04-01",
+    "pending": false
+   },
+   {
+    "day": "2026-04-30",
+    "kind": "milestone",
+    "points": 50,
+    "ref": "0.5",
+    "pending": false
+   },
+   {
+    "day": "2026-05-04",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-04",
+    "pending": false
+   },
+   {
+    "day": "2026-05-11",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-11",
+    "pending": false
+   },
+   {
+    "day": "2026-05-18",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-18",
+    "pending": false
+   },
+   {
+    "day": "2026-05-25",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-05-25",
+    "pending": false
+   },
+   {
+    "day": "2026-05-31",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-05-01",
+    "pending": false
+   },
+   {
+    "day": "2026-05-31",
+    "kind": "verified",
+    "points": 40,
+    "ref": "2026-05-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-01",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-01",
+    "pending": false
+   },
+   {
+    "day": "2026-06-08",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-08",
+    "pending": false
+   },
+   {
+    "day": "2026-06-15",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-15",
+    "pending": false
+   },
+   {
+    "day": "2026-06-22",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-22",
+    "pending": false
+   },
+   {
+    "day": "2026-06-29",
+    "kind": "card",
+    "points": 5,
+    "ref": "2026-06-29",
+    "pending": false
+   },
+   {
+    "day": "2026-06-30",
+    "kind": "checkin",
+    "points": 20,
+    "ref": "2026-06-01",
+    "pending": false
+   }
+  ],
+  "skipped": []
+ },
+ "future": {
+  "available": true,
+  "label": "if recent habits continue",
+  "based_on_months": 6,
+  "months": [
+   {
+    "month": 7,
+    "p10": 0.0,
+    "p50": 0.0,
+    "p90": 0.5
+   },
+   {
+    "month": 8,
+    "p10": 0.0,
+    "p50": 0.0,
+    "p90": 0.55
+   },
+   {
+    "month": 9,
+    "p10": 0.0,
+    "p50": 0.0,
+    "p90": 0.71
+   },
+   {
+    "month": 10,
+    "p10": 0.0,
+    "p50": 0.0,
+    "p90": 0.79
+   },
+   {
+    "month": 11,
+    "p10": 0.0,
+    "p50": 0.0,
+    "p90": 0.81
+   },
+   {
+    "month": 12,
+    "p10": 0.0,
+    "p50": 0.0,
+    "p90": 1.02
+   }
+  ],
+  "shortfall_probability": 0.959,
+  "cash_flow_at_risk": -7448.27,
+  "expected_shortfall": -8648.03,
+  "median_path_room_level": 2,
+  "median_path_final_cushion": 0.0,
+  "as_of": "2026-07-01"
+ },
+ "helper_facts": {
+  "user": {
+   "month_assessed": "June 2026",
+   "work": "student",
+   "band": "Yellow",
+   "debt_payments_share_of_income_DSR": "30%",
+   "total_debt_vs_yearly_income_DTI": "9%",
+   "months_of_costs_covered_by_cash": "0.0",
+   "health_score": "37 out of 100 (Vulnerable)",
+   "health_parts_out_of_100": {
+    "spending less than income": 0,
+    "savings cushion": 0,
+    "manageable debt": 100,
+    "paying bills on time": 50
+   },
+   "forecast": {
+    "chance_band_worse_or_money_short": "68%",
+    "average_chance_in_training_data": "12%",
+    "what_raises_it": [
+     "You ran short of money recently",
+     "Your cash cushion is smaller than average",
+     "Your typical monthly income is lower than average"
+    ]
+   },
+   "advice": [
+    "Money ran short recently: You ran short of cash in 1 of the last 3 months. Before next payday, list what is due (RM166 in debt payments) and set aside the essentials first.",
+    "First goal: 1 month saved: Your cash covers about 0.0 months of essentials and debt payments. Getting to 1 month means saving about RM785 more. Small, regular amounts count.",
+    "Spending more than you earn: Over the last 3 months you spent about 69% more than you earned. Look for one regular expense you can pause."
+   ]
+  },
+  "about_fast": {
+   "bands": "The band comes from debt payments as a share of net monthly income (DSR). Green is below 30%, Yellow is 30% to below 60%, Red is 60% or more. Once Red, FAST keeps showing Red until DSR drops below 55%. A worse band shows at once; a better band shows only after it has held for 2 months in a row.",
+   "no_band": "No band is shown while typical monthly income over the last 3 months is below RM300.",
+   "total_debt": "Total debt compared with yearly income (DTI) is shown for information; it does not set the band.",
+   "cushion": "The cushion is how many months of essential costs and debt payments your cash would cover. The first goal is 1 month, the next is 3 months.",
+   "health_score": "The health score, out of 100, averages up to 4 parts. 80 or more is Healthy, 40 to below 80 is Coping, below 40 is Vulnerable.",
+   "forecast": "The forecast is the chance that, in the next 3 months, the band gets worse or money runs short. It comes from a model trained on made-up (synthetic) data, so it is an estimate, not a certainty.",
+   "help": "AKPK (Agensi Kaunseling dan Pengurusan Kredit, set up by Bank Negara Malaysia) gives free debt counselling. For scams, call the National Scam Response Centre at 997.",
+   "points": "FAST's points and garden reward honest records and a growing cushion, never spending. Hiding income or skipping records does not help."
+  }
+ },
+ "profile": {
+  "created_at": "2025-12-31T16:30:00+00:00",
+  "declared_income": 860.0,
+  "avatar": 5,
+  "skin_tone": 5,
+  "glasses": false
+ },
+ "debts": [],
+ "persona": {
+  "key": "persona_01",
+  "name": "Aina",
+  "story": "A 21-year-old student living with her parents. Little debt, a few Buy Now Pay Later plans, and money that often runs out before the allowance comes."
+ },
+ "study": {
+  "persona": true,
+  "study_date": "2026-07-01",
+  "first": "2026-07-01",
+  "last": "2027-01-01"
+ }
+}

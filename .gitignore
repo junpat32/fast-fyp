@@ -12,7 +12,7 @@ __pycache__/
 
 # Regenerable synthetic data (python -m generator.run), persona builds and the study's session
 # cards with passwords (data/sessions/, D-94): never committed
-data/
+/data/
 
 # Patrick's FYP reports (his own text, with his name and student details): stay on the laptop only
 docs/reports/
