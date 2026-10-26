@@ -58,6 +58,30 @@ def test_a_personal_band_or_health_claim_must_match_facts(ctx, reply, band, own_
     assert a.contradicts_facts(reply, facts) == expected
 
 
+@pytest.mark.parametrize("reply, expected", [
+    ("Your band is Green at 60%.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band is Green or more.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band is Green or above.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band is Green and above.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band is Green below 30%.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band is Green between 30% and 60%.", "says the band is Green; the FACTS say Yellow"),
+    ("You're Green, so you may relax.", "says the band is Green; the FACTS say Yellow"),
+    ("You could move to Red; your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("You could move to Red: your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("You could move to Red — your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("You could move to Red - your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("Your health tier is Healthy, but you may improve.", "says the health tier is Healthy; the FACTS say Coping"),
+])
+def test_a_false_personal_claim_is_flagged_despite_thresholds_or_a_later_hedge(ctx, reply, expected):
+    assert a.contradicts_facts(reply, ctx) == [expected]
+
+
+def test_a_rule_clause_with_a_user_mention_can_cause_a_safe_retry(ctx):
+    assert a.contradicts_facts("Red starts at 60% and your share is 45%.", ctx) == [
+        "says the band is Red; the FACTS say Yellow"
+    ]
+
+
 @pytest.mark.parametrize("reply, band, own_band", [
     ("Your band is Yellow.", "Yellow", None),
     ("Your health tier is Coping.", "Yellow", None),
@@ -105,6 +129,13 @@ def test_a_promise_after_a_hedge_is_still_caught():
 def test_a_contradiction_is_retried_with_the_facts_and_the_correction_is_served(ctx):
     llm = FakeLLM("You're in Green.", "Your band is Yellow.")
     reply = a.answer("Why this band?", ctx, llm)
+    assert reply.kind == "answer" and reply.answer == "Your band is Yellow."
+    assert len(llm.seen) == 2 and "the FACTS say Yellow" in llm.seen[1][-1]["content"]
+
+
+def test_a_false_band_claim_with_a_percentage_is_retried(ctx):
+    llm = FakeLLM("Your band is Green at 60%.", "Your band is Yellow.")
+    reply = a.answer("What is my band?", ctx, llm)
     assert reply.kind == "answer" and reply.answer == "Your band is Yellow."
     assert len(llm.seen) == 2 and "the FACTS say Yellow" in llm.seen[1][-1]["content"]
 

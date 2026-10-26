@@ -40,10 +40,12 @@ model replies.
    none of these, so any one is a leak or an invention. **Action:** never serve it; return `fallback(...)` at once
    with error `"the reply contained a personal identifier"` (no retry).
 2. `contradicts_facts(reply: str, ctx: dict) -> list[str]`: the problems found, empty if none. Split the reply
-   into sentences with the module's `_sentences()`. **Skip** a sentence that explains a rule or a possibility:
-   it contains `%`, or any of `or more`, `or above`, `and above`, `below`, `between`, `if `, `could`, `would`,
-   `might`, `may `, `unless`, `once` (case-insensitive). In every other sentence that mentions the user (`you`,
-   `you're`, `your`):
+   into sentences with `_sentences()`, then into clauses at semicolons, commas, colons and dashes. Ignore a clause
+   with no user mention (`you`, `you're`, `your`). Check each colour and tier in every other clause. A hedge
+   (`if`, `could`, `would`, `might`, `may`, `unless`, `once`; case-insensitive) excuses only a colour or tier
+   that appears **after** it in that clause. A percentage or threshold phrase does not excuse a personal claim;
+   a hedge after a claim does not excuse that claim. This revises the original skip rule after review on
+   2026-10-26. In a qualifying clause:
    - a band colour (whole word `Green`, `Yellow` or `Red`, any case) that is **not** the FACTS' band
      (`ctx["user"]["band"]`) and not `ctx["user"].get("band_this_month_on_its_own")` is a problem
      `"says the band is <Colour>; the FACTS say <band>"`. If the FACTS say there is no band yet, any colour in such
@@ -80,7 +82,8 @@ model replies.
 - `leaks_identifier`: each identifier kind caught; ordinary money ("RM1,200", "0.8 months", "59%") not caught.
 - `contradicts_facts`: at least 8 sentences that contradict and 8 that don't (the right band; rule explanations
   such as "Red is 60% or more"; "if your payments rise you could move to Red"; the band this month on its own; no
-  band yet).
+  band yet). Must-flag cases include a false claim containing a percentage or threshold phrase, a hedge after
+  the false claim, and a false claim after each clause delimiter.
 - `promises_outcome`: every phrase listed in step 3, both lists.
 - `answer()` flows with `FakeLLM`: a contradiction then a corrected reply → the corrected reply is served; a
   contradiction twice → fallback with the new error; a promise then a hedged reply → served; a leak → fallback with
@@ -104,20 +107,20 @@ decision text and the proposed crisis words.
 ### Hand-back (Codex, 2026-10-26)
 
 - **Status:** done. The safety checks, supplementary offline set and tests are built; the full Python suite passes.
-- **Branch and commits:** `codex/cx-1`; `6512d74 Add offline assistant safety checks`; `409d827 Align assistant API test with computed band`; this hand-back and AI-use row are committed as `Record CX-1 hand-back and AI use` (its hash is `git log -1 --format=%h`, since a commit cannot contain its own hash). All have the required co-author trailer.
-- **Files changed:** `api/assistant.py` — identifier, FACTS-contradiction and outcome-promise checks; retry and fallback flow; prompt rule.
+- **Branch and commits:** `codex/cx-1`; `6512d74 Add offline assistant safety checks`; `409d827 Align assistant API test with computed band`; `9b06ead Record CX-1 hand-back and AI use`; `Close assistant band-check bypass` (this commit; its hash is `git log -1 --format=%h` because a commit cannot contain its own hash). All have the required co-author trailer.
+- **Files changed:** `api/assistant.py` — identifier, clause-level FACTS-contradiction and outcome-promise checks; retry and fallback flow; prompt rule.
 - **Files changed:** `tools/assistant_eval/run.py` — separate `--set extra` dry-run and report output.
 - **Files changed:** `tools/assistant_eval/prompts_extra.yaml` — 28 supplementary prompts, written before any live run.
-- **Files changed:** `tests/test_assistant_safety.py` — offline checks, flows, runner and three strict expected-failure distress cases.
+- **Files changed:** `tests/test_assistant_safety.py` — offline checks, including false claims with percentages, thresholds and later hedges; runner and three strict expected-failure distress cases.
 - **Files changed:** `tests/test_assistant.py` — the fake API reply and expectation now agree with the computed Green FACTS; Patrick authorized this exception to the original file scope.
-- **Files changed:** `docs/codex tasks.md` — this hand-back.
-- **Files changed:** `docs/ai_use_log.md` — one CX-1 disclosure row.
-- **Tests run:** `.venv\Scripts\python -m pytest -q tests/test_assistant.py tests/test_assistant_safety.py` — 146 passed, 3 xfailed, 1 warning.
-- **Tests run:** `.venv\Scripts\python -m pytest -q` — 2,735 passed, 4 skipped, 3 xfailed, 1 warning. `git diff main -- tools/assistant_eval/prompts.yaml` is empty.
+- **Files changed:** `docs/codex tasks.md` — corrected the CX-1 skip-rule specification and updated this hand-back.
+- **Files changed:** `docs/ai_use_log.md` — updated the CX-1 disclosure row.
+- **Tests run:** `.venv\Scripts\python -m pytest -q tests/test_assistant.py tests/test_assistant_safety.py` — 160 passed, 3 xfailed, 1 warning.
+- **Tests run:** `.venv\Scripts\python -m pytest -q` — 2,749 passed, 4 skipped, 3 xfailed, 1 warning. `git diff main -- tools/assistant_eval/prompts.yaml` is empty.
 - **Not done, and questions:** No live Groq run was made; the offline set is ready for a later run with Patrick's key.
 - **Not done, and questions:** Distress prompts D1, D2 and D7 miss the shared crisis words and are strict xfails. Proposed W4 additions for Patrick to review: “can't cope”, “don't know how to keep going”, and “hopeless and trapped”. The new system-prompt and correction wording are drafts for Patrick's W2 review.
 - **Not done, and questions:** The suite still emits the Starlette/`httpx` deprecation warning assigned to CX-3; no CX-3 files were changed.
-- **Proposed decision text:** The money helper rejects a model reply containing an identifier immediately. A band or health-tier claim that disagrees with the FACTS, or a promised outcome, gets one corrective retry and then FAST's fixed fallback; numbers-only failures retain the existing correction and error. The supplementary safety set remains separate from the fixed O5 counts. The three missed distress phrasings are recorded for Patrick's W4 decision.
+- **Proposed decision text:** The money helper rejects a model reply containing an identifier immediately. Personal band and health-tier claims are checked clause by clause; percentages and threshold words do not bypass the check, and a hedge excuses only a later claim in its clause. A mismatch or promised outcome gets one corrective retry and then FAST's fixed fallback; numbers-only failures retain the existing correction and error. A rule clause that mentions the user can still cause an unnecessary retry or safe fallback; this is accepted over serving a wrong band. The supplementary safety set remains separate from the fixed O5 counts. The three missed distress phrasings are recorded for Patrick's W4 decision.
 
 ---
 

@@ -198,9 +198,8 @@ def leaks_identifier(reply: str) -> bool:
     return any(pattern.search(reply) for pattern in (_EMAIL, _IC, _CARD, _PHONE, _ACCOUNT, _UUID))
 
 
-_RULE_OR_POSSIBILITY = re.compile(
-    r"%|\b(?:or more|or above|and above|below|between|if\s|could|would|might|may\s|unless|once)\b", re.I
-)
+_CLAUSE_BREAK = re.compile(r"[;,:]|[—–]|\s+-\s+")
+_HEDGE = re.compile(r"\b(?:if|could|would|might|may|unless|once)\b", re.I)
 _USER_MENTION = re.compile(r"\b(?:you(?:'re)?|your)\b", re.I)
 _BAND = re.compile(r"\b(?:green|yellow|red)\b", re.I)
 _HEALTH_TIER = re.compile(r"\b(?:healthy|coping|vulnerable)\b", re.I)
@@ -215,14 +214,23 @@ def contradicts_facts(reply: str, ctx: dict) -> list[str]:
     tier = tier_match.group().title() if tier_match else "no health tier"
     problems = []
     for sentence in _sentences(reply):
-        if _RULE_OR_POSSIBILITY.search(sentence) or not _USER_MENTION.search(sentence):
-            continue
-        for colour in dict.fromkeys(match.group().title() for match in _BAND.finditer(sentence)):
-            if colour not in allowed_bands:
-                problems.append(f"says the band is {colour}; the FACTS say {band}")
-        for named_tier in dict.fromkeys(match.group().title() for match in _HEALTH_TIER.finditer(sentence)):
-            if named_tier != tier:
-                problems.append(f"says the health tier is {named_tier}; the FACTS say {tier}")
+        for clause in _CLAUSE_BREAK.split(sentence):
+            if not _USER_MENTION.search(clause):
+                continue
+            reported_bands = set()
+            for match in _BAND.finditer(clause):
+                colour = match.group().title()
+                if colour not in allowed_bands and colour not in reported_bands \
+                        and not _HEDGE.search(clause[:match.start()]):
+                    problems.append(f"says the band is {colour}; the FACTS say {band}")
+                    reported_bands.add(colour)
+            reported_tiers = set()
+            for match in _HEALTH_TIER.finditer(clause):
+                named_tier = match.group().title()
+                if named_tier != tier and named_tier not in reported_tiers \
+                        and not _HEDGE.search(clause[:match.start()]):
+                    problems.append(f"says the health tier is {named_tier}; the FACTS say {tier}")
+                    reported_tiers.add(named_tier)
     return problems
 
 
