@@ -82,6 +82,47 @@ def test_a_rule_clause_with_a_user_mention_can_cause_a_safe_retry(ctx):
     ]
 
 
+_FALSE_STATUS_CLAIMS = [
+    ("Your band: Green.", "says the band is Green; the FACTS say Yellow"),
+    ("Your health tier: Healthy.", "says the health tier is Healthy; the FACTS say Coping"),
+    ("Your band is, in fact, Green.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band is — in fact — Green.", "says the band is Green; the FACTS say Yellow"),
+    ("You are: Green.", "says the band is Green; the FACTS say Yellow"),
+    ("Your health tier is, in fact, Healthy.", "says the health tier is Healthy; the FACTS say Coping"),
+    ("You may think your band is Red but your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("Your band might look confusing but it is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("Your health tier might sound surprising but it is Healthy.",
+     "says the health tier is Healthy; the FACTS say Coping"),
+    ("You could ask why your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("If you ask me your band is Green.", "says the band is Green; the FACTS say Yellow"),
+    ("You may think your health tier is Vulnerable but your health tier is Healthy.",
+     "says the health tier is Healthy; the FACTS say Coping"),
+]
+
+
+@pytest.mark.parametrize("reply, expected", _FALSE_STATUS_CLAIMS)
+def test_punctuation_and_unrelated_hedges_do_not_hide_false_status_claims(ctx, reply, expected):
+    assert expected in a.contradicts_facts(reply, ctx)
+
+
+@pytest.mark.parametrize("reply, expected", _FALSE_STATUS_CLAIMS)
+def test_a_false_status_claim_gets_a_corrective_retry_before_an_answer_is_served(ctx, reply, expected):
+    corrected = "Your band is Yellow. Your health tier is Coping."
+    llm = FakeLLM(reply, corrected)
+    response = a.answer("Explain my band and health tier.", ctx, llm)
+    assert response.kind == "answer" and response.answer == corrected
+    assert len(llm.seen) == 2 and expected in llm.seen[1][-1]["content"]
+
+
+@pytest.mark.parametrize("reply, expected", _FALSE_STATUS_CLAIMS)
+def test_a_repeated_false_status_claim_uses_the_safe_fallback(ctx, reply, expected):
+    llm = FakeLLM(reply)
+    response = a.answer("Explain my band and health tier.", ctx, llm)
+    assert response.kind == "fallback" and response.answer != reply
+    assert response.error == "the reply contradicted the FACTS twice"
+    assert len(llm.seen) == 2 and expected in llm.seen[1][-1]["content"]
+
+
 @pytest.mark.parametrize("reply, band, own_band", [
     ("Your band is Yellow.", "Yellow", None),
     ("Your health tier is Coping.", "Yellow", None),
@@ -94,6 +135,21 @@ def test_a_rule_clause_with_a_user_mention_can_cause_a_safe_retry(ctx):
     ("Your band is no band yet.", "no band yet (not enough income data)", None),
     ("The Green line is below 30%.", "Yellow", None),
     ("Your health tier might be Healthy later.", "Yellow", None),
+    ("Your band: Yellow.", "Yellow", None),
+    ("Your health tier: Coping.", "Yellow", None),
+    ("Your band is, in fact, Yellow.", "Yellow", None),
+    ("You're, in fact, Yellow.", "Yellow", None),
+    ("Your band is Yellow; Red starts at 60%.", "Yellow", None),
+    ("Your health tier is Coping; Healthy starts at 80%.", "Yellow", None),
+    ("If you reach Red, FAST can explain the change.", "Yellow", None),
+    ("If your band is Red, FAST keeps showing it.", "Yellow", None),
+    ("Unless you are in Red, this rule does not apply.", "Yellow", None),
+    ("Once your band is Green, FAST can explain the change.", "Yellow", None),
+    ("You could be Red.", "Yellow", None),
+    ("You could be in the Red band.", "Yellow", None),
+    ("Your band might still be Red.", "Yellow", None),
+    ("Your health tier may become Healthy.", "Yellow", None),
+    ("Your band could be: Red.", "Yellow", None),
 ])
 def test_correct_facts_rules_and_possibilities_are_not_contradictions(ctx, reply, band, own_band):
     facts = deepcopy(ctx)

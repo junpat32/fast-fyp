@@ -28,7 +28,8 @@ Invariants
 
 Limits (said in the report): numbers written as words are not checked (the prompt asks for digits);
 the product checks are word patterns, so the red-team set (tools/assistant_eval) measures what gets
-through; the crisis check only knows a few phrases.
+through; the crisis check only knows a few phrases. Status and promise checks also use word patterns,
+not general language understanding; unrecognised conditional wording can cause a retry or fallback.
 """
 from __future__ import annotations
 
@@ -199,10 +200,21 @@ def leaks_identifier(reply: str) -> bool:
 
 
 _CLAUSE_BREAK = re.compile(r"[;,:]|[—–]|\s+-\s+")
-_HEDGE = re.compile(r"\b(?:if|could|would|might|may|unless|once)\b", re.I)
 _USER_MENTION = re.compile(r"\b(?:you(?:'re)?|your)\b", re.I)
 _BAND = re.compile(r"\b(?:green|yellow|red)\b", re.I)
 _HEALTH_TIER = re.compile(r"\b(?:healthy|coping|vulnerable)\b", re.I)
+_PERSONAL_STATUS = re.compile(
+    r"\b(?:your\s+(?:(?:risk\s+)?band|health\s+(?:tier|score))|you(?:['’]re|\s+are))\b", re.I
+)
+_POSSIBLE_STATUS = re.compile(
+    r"\b(?:(?:could|would|might|may)\s+(?:(?:still|eventually)\s+)?"
+    r"(?:be|become|reach|enter|stay|remain|turn|(?:move|fall|drop|rise|return|improve|worsen)\s+(?:to|into))|"
+    r"(?:if|unless|once)\s+(?:you(?:['’]re|\s+are)|"
+    r"you\s+(?:reach|enter|become|stay|remain|turn|(?:move|fall|drop|rise|return)\s+(?:to|into))|"
+    r"your\s+(?:(?:risk\s+)?band|health\s+(?:tier|score))\s+"
+    r"(?:is|becomes|reaches|turns|(?:moves|falls|drops|rises|returns)\s+(?:to|into))))"
+    r"\s+(?:(?:in|the|a|an)\s+)*$", re.I
+)
 
 
 def contradicts_facts(reply: str, ctx: dict) -> list[str]:
@@ -214,21 +226,24 @@ def contradicts_facts(reply: str, ctx: dict) -> list[str]:
     tier = tier_match.group().title() if tier_match else "no health tier"
     problems = []
     for sentence in _sentences(reply):
+        pending = ""
         for clause in _CLAUSE_BREAK.split(sentence):
-            if not _USER_MENTION.search(clause):
+            prefix = pending
+            pending = "" if _BAND.search(clause) or _HEALTH_TIER.search(clause) else pending + clause + " "
+            if not (_USER_MENTION.search(clause) or _PERSONAL_STATUS.search(prefix)):
                 continue
             reported_bands = set()
             for match in _BAND.finditer(clause):
                 colour = match.group().title()
                 if colour not in allowed_bands and colour not in reported_bands \
-                        and not _HEDGE.search(clause[:match.start()]):
+                        and not _POSSIBLE_STATUS.search(prefix + clause[:match.start()]):
                     problems.append(f"says the band is {colour}; the FACTS say {band}")
                     reported_bands.add(colour)
             reported_tiers = set()
             for match in _HEALTH_TIER.finditer(clause):
                 named_tier = match.group().title()
                 if named_tier != tier and named_tier not in reported_tiers \
-                        and not _HEDGE.search(clause[:match.start()]):
+                        and not _POSSIBLE_STATUS.search(prefix + clause[:match.start()]):
                     problems.append(f"says the health tier is {named_tier}; the FACTS say {tier}")
                     reported_tiers.add(named_tier)
     return problems
