@@ -44,7 +44,7 @@ made in code (D-55, D-84 to D-86); image generation is banned (D-83).
 - **Human-only (CLAUDE.md §6):** art approval, `[DECISION]` items, real messages/receipts, the FYP
   report text, submitting the ethics application. Propose; Patrick decides.
 - **Bookkeeping after significant work:** update `docs/TASKS.md`; append to `docs/ai_use_log.md`
-  (Tool column: **Codex**); record design changes in `docs/DECISIONS.md` (next ID: **D-129**).
+  (Tool column: **Codex**); record design changes in `docs/DECISIONS.md` (next ID: **D-131**).
 
 ## 2. How Patrick works
 

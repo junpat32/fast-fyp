@@ -1,5 +1,10 @@
 # Line endings: text files are stored with LF (Render runs Linux); Windows checkouts get CRLF.
 * text=auto
+# Files whose SHA-256 is recorded: stored and checked out byte for byte, never converted, so the
+# hash stays the recorded one on any checkout (ml/run_o2.py and ml/package.py refuse to run on a
+# mismatch; the generator's metadata.json records the config's hash; D-129)
+docs/frozen/** -text
+generator/config.yaml -text
 # Binary files: never touched
 *.png binary
 *.gif binary
