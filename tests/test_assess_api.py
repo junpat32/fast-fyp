@@ -176,6 +176,21 @@ def test_future_self_from_complete_months(client):
     assert client.get("/v1/future", headers=bearer(token())).json() == body                # steady all month
 
 
+def test_future_self_shows_the_conformal_range_for_the_users_cell(client, monkeypatch):
+    seen = {}
+    real = m.calibrated_months
+
+    def spy(months, employment_type, n_history, table=None):
+        seen.update(raw=months, cell=(employment_type, n_history))
+        return real(months, employment_type, n_history, table)
+    monkeypatch.setattr(m, "calibrated_months", spy)
+    body = client.get("/v1/future", headers=bearer(token())).json()
+    assert seen["cell"][1] == body["based_on_months"] == 5                       # D-142: the user's own cell
+    adjusted = real(seen["raw"], *seen["cell"])
+    assert [(x["p10"], x["p50"], x["p90"]) for x in body["months"]] == [
+        (round(a.p10, 2), round(r.p50, 2), round(a.p90, 2)) for a, r in zip(adjusted, seen["raw"])]
+
+
 def test_future_self_needs_three_complete_months(client, store):
     store.money = money_facts(months=2, profile=money_profile(created_at="2026-04-01T02:00:00+00:00"),
                               checkins=[checkin_row(k) for k in (4, 5)],

@@ -35,6 +35,7 @@ from engine.assess import assess
 from engine.features import UserProfile
 from engine.game import GameState, protected_monthly_costs
 from engine.state import MonthRecord
+from sim.conformal import calibrated_months
 from sim.monte_carlo import FutureProfile, GameSnapshot, simulate_future
 
 from .game import my_day
@@ -195,7 +196,8 @@ def missing_assessments(f: MoneyFacts, today: date) -> list[dict]:
 
 def future_view(profile: dict, records: list[MonthRecord], months: list[dict], st: GameState,
                 game_profile, user_id: str, today: date) -> dict:
-    """The Future Self: six months of possible cushions from the user's complete months (D-79, D-81)."""
+    """The Future Self: six months of possible cushions from the user's complete months (D-79, D-81),
+    each month's P10-P90 adjusted by the conformal offsets for the user's cell (D-142); P50 unchanged."""
     done = [r for r, m in zip(records, months) if m["source"] != "this month so far"][-6:]
     if len(done) < 3:
         return {"available": False, "reason": "the Future Self needs 3 complete months", "label": FUTURE_LABEL}
@@ -207,9 +209,10 @@ def future_view(profile: dict, records: list[MonthRecord], months: list[dict], s
                         current_room_level=st.room_level)
     seed = int.from_bytes(hashlib.sha256(f"{user_id}:{today:%Y-%m}".encode()).digest()[:4], "big")   # steady all month
     r = simulate_future(done, fp, snap, seed=seed)
+    months = calibrated_months(r.cushion, fp.employment_type, len(done))
     return {"available": True, "label": FUTURE_LABEL, "based_on_months": len(done),
             "months": [{"month": x.month, "p10": round(x.p10, 2), "p50": round(x.p50, 2), "p90": round(x.p90, 2)}
-                       for x in r.cushion],
+                       for x in months],
             "shortfall_probability": round(r.shortfall_probability, 3),
             "cash_flow_at_risk": round(r.cash_flow_at_risk, 2), "expected_shortfall": round(r.expected_shortfall, 2),
             "median_path_room_level": r.median_path_room_level,

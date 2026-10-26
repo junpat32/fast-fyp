@@ -32,7 +32,7 @@ against.
 | CR-08 | The generator matched 13 selected real-world anchors (S1–S13: wages by age, spending shares, Red share, cushion buckets, DSR ≠ DTI, flag rates, edge cases, hygiene, positive rate, BNPL overdue and share, spending ÷ income, share saving) at medium noise without tuning | Checked against real aggregates (13 criteria only) | `generator/TUNING_LOG.md` | "the synthetic data is realistic" or "representative of young Malaysians"; anything about relationships between quantities (not yet checked) |
 | CR-09 | Of three behaviour flags, only impulsivity tracked its hidden trait strongly enough (×16.5 lift) to be shown to users; overconfidence (×1.97) and delayed correction (×1.71) stay model inputs only, as pre-registered | Confirmatory decision rule (S14); synthetic-only | `generator/TUNING_LOG.md` | "FAST detects impulsive people" (it tracks the generator's trait) |
 | CR-10 | Forecast reasons are the model's exact contributions (coefficient × standardised value, in log-odds, relative to the training average, before calibration): they show how the model reached its estimate | Verified (software) | `engine/forecast.py`, tests | "X causes your risk"; "this adds N% to your risk" |
-| CR-11 | The Future Self's 10th–90th percentile range covered 73.25% of fresh synthetic outcomes (employees 69.6%); misses fall mostly below the range | Exploratory audit (protocol fixed before results); synthetic-only | `sim/results/monte_carlo_v2_report.md`, D-81 | "80% prediction interval"; "validated range" |
+| CR-11 | The Future Self's 10th–90th percentile range covered 73.25% of fresh synthetic outcomes (employees 69.6%); misses fall mostly below the range | Exploratory audit (protocol fixed before results); synthetic-only | `sim/results/monte_carlo_v2_report.md`, D-81; the app now shows the adjusted range (CR-27) | "80% prediction interval"; "validated range" |
 | CR-12 | FAST shows Red at a DSR of 60% or more, following PIDM's guidance that banks generally accept DSR below 60%; lenders set their own limits | Design convention (D-04) | `docs/calibration_table.md` C-06 | "banks reject above 60%"; "all banks use 60%" |
 | CR-13 | The risk engine passes its O1 suite (30 scenario tests incl. the five FYP1 scenarios) and 10 property-based tests on generated cases; the property tests found and led to a fix of a health-tier display bug | Verified (software) | `tests/test_scenarios.py`, `tests/test_properties.py`, D-131 | "the engine is correct" in general |
 | CR-14 | Under the game rules, none of 17 simulated reporting strategies earned more than honest reporting in any month or unlocked anything earlier; two known limits remain (a small lie inside the tolerance every month; a constant balance lie) | Simulation; synthetic-only | `sim/results/points_sim.md`, D-75–D-78, D-89 | "FAST cannot be cheated" |
@@ -48,6 +48,7 @@ against.
 | CR-24 | At the app's 30% warning line, recall differs by type of work (employees 0.27, gig 0.50, students 0.58) because base rates differ; equalising recall would double employees' false alarms and make the line mean different things per group | Exploratory; synthetic-only | `EXPLANATIONS_FAIRNESS.md` §3 | "the warnings are equally sensitive for everyone" |
 | CR-25 | The synthetic world reproduces three published relationships it was not tuned to (bigger cushions and fewer shortfalls at higher incomes; more shortfalls with unsteady income) but not Engel's law (its spending mix doesn't change with income) or a BNPL–strain link | Exploratory; checked against published directions (sources to verify) | `ml/results/STRUCTURAL.md` Part A, `docs/assumption_audit.md` | "the synthetic data behaves like real Malaysians" |
 | CR-26 | When behaviour assumptions change (stress spending, persistent income shocks, correlated expenses), the frozen model still beats the rule baseline and ranks as well, but its percentages run 4–8 points too low where trouble becomes commoner | Exploratory; synthetic-to-synthetic stress test | `STRUCTURAL.md` Part B | "robust to real-world behaviour"; "externally validated" |
+| CR-27 | With a conformal adjustment, the Future Self's range covered 79.2% (77.7–80.7%) of fresh synthetic outcomes six months ahead, up from 72.2% (employees 69.3% → 79.1%; gig 76.6%; students 82.4%), with a better interval score (6.12 → 5.79); in three alternative worlds it covered 75–81% (correlated expenses: 75.4%, employees 73.5%) | Exploratory (plan and offsets committed before the one evaluation run); synthetic-only | `sim/results/MONTE_CARLO_CONFORMAL.md`, D-142 | "80% prediction interval"; "validated range"; any real-world coverage |
 
 ## Known caveats to state with the results
 
@@ -70,6 +71,9 @@ Population seeds already used (never reuse for a fresh evaluation):
 | 999 | Development dataset (debugging only) |
 | 20261015, 31001, 31002 | Monte Carlo v1 audit and investigation |
 | 49001, 49002 | Monte Carlo v2 fresh audit (D-80) |
+| 61001, 61002 | Alternative-mechanism worlds (D-139) |
+| 62001–62009 | Monte Carlo conformal offsets, fitted once (D-142) |
+| 63001–63006 | Monte Carlo conformal evaluation, run once (D-142); 63007–63009 stay unused |
 | 1, 2, 7, 123, 4242 | Unit tests |
 
 Reserved for the 26 Oct round (D-132); each block is used only for the purpose named:
