@@ -129,7 +129,7 @@ show the forecast's `red_note` under the forecast when present (W3).
 
 | # | Step | Target |
 |---|---|---|
-| 1 | Expo project in `app/`, routes and tabs, Supabase login | early Nov |
+| 1 | Expo project in `app/`, routes and tabs, Supabase login. **Login built (D-145)**: live mode from `app/.env`, tested with fakes; first real sign-in once the project exists (setup guide step 6) | early Nov |
 | 2 | Onboarding (minimal fields first). **Built (D-124)** in sample mode; saving to Supabase joins with login | mid Nov |
 | 3 | Add transaction + this month's list | mid Nov |
 | 4 | Money screen from `/v1/assess`: band, score, explanation | late Nov |

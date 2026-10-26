@@ -13,12 +13,13 @@ import { canGoBack, canGoOn, type TravelStep } from '@/lib/study';
  * The study bar (docs/app_plan.md step 9; D-95, D-119): the top row of every tab for a study persona,
  * the same on each, so the session script can name it once ("a bar at the top with the persona's date
  * and time-travel buttons"). Left: who this is ("Sample: Aina ▾" in sample data mode), which opens the
- * persona's story and the switch to another persona (with Supabase: "Switch account", D-94). Right:
+ * persona's story and the switch to another persona; live, a study account's "Switch account" signs out
+ * to the sign-in screen, for the next account on the participant's card (D-94, D-145). Right:
  * the persona's date, with ‹ a month back and › a month on (1 Jul 2026 to 1 Jan 2027); every screen
  * reloads for the new date. `floating`: see-through pills over the Home scene.
  */
 export function StudyBar({ floating = false }: { floating?: boolean }) {
-  const { sample, study, travel } = useApi();
+  const { sample, study, travel, account } = useApi();
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,6 +41,12 @@ export function StudyBar({ floating = false }: { floating?: boolean }) {
                      accessibilityRole="button" accessibilityState={{ expanded: open }}
                      accessibilityLabel={`Sample data: ${sample.name}, a made-up person. Tap to change.`}>
             <ThemedText type="small">Sample: {sample.name} {open ? '▴' : '▾'}</ThemedText>
+          </Pressable>
+        )}
+        {account && study && (
+          <Pressable onPress={() => { account.signOut(); }} style={[styles.pill, styles.who, { backgroundColor: bg }]} hitSlop={6}
+                     accessibilityRole="button" accessibilityLabel="Switch account: sign out and sign in to the next one">
+            <ThemedText type="small">Switch account</ThemedText>
           </Pressable>
         )}
         {study && (

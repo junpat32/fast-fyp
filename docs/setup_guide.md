@@ -118,6 +118,29 @@ there (Claude never sees it).
 
 **Tell Claude:** "render done" and the service's address (`https://fast-api-….onrender.com`; not secret).
 
+## 6. The app in live mode (10 min; can come before Render)
+
+The app runs on sample data until it has three public settings (D-145). They are bundled into the app,
+so **only public values**: never the service_role key, never the Groq key (the app refuses an admin key).
+
+1. In PowerShell in the `app` folder: `Copy-Item .env.example .env`, then fill in `app\.env` in Notepad:
+   `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` (the same values as `SUPABASE_URL` and
+   `SUPABASE_ANON_KEY` in the main `.env`), and `EXPO_PUBLIC_API_URL`:
+   - after step 5: the Render address;
+   - before it: this laptop. Connect the laptop to the **phone's hotspot** (café Wi-Fi blocks the phone
+     from reaching the laptop), find its IPv4 address with `ipconfig`, and in another PowerShell in the
+     project folder run `.venv\Scripts\python -m uvicorn api.main:app --host 0.0.0.0 --port 8000`;
+     the setting is then `http://<that address>:8000`. Windows may ask whether Python may use the
+     network; that is your call (private networks are enough for the hotspot).
+2. Restart Metro with the cache cleared: `npx expo start -c`, and open the app in Expo Go.
+3. Sign in as `rls-a@fast.test` (step 4.4). The app shows the sign-up steps; finish them, then add an
+   entry and open Money: that is the core flow (13 Dec check).
+4. Back to sample data: rename `app\.env` (e.g. to `app\.env.off`) and restart with `npx expo start -c`.
+
+If the app shows "FAST isn't set up yet", one setting is missing or wrong; it names which.
+
+**Tell Claude:** "app live" and what you saw (no keys).
+
 ## Optional: the Groq key (5 min, for the assistant's red team)
 
 **console.groq.com** → *API Keys* → *Create API key* → paste it into `.env` as `GROQ_API_KEY` (and into

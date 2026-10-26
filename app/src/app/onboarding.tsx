@@ -63,9 +63,11 @@ export default function OnboardingScreen() {
     setFailed(null);
     try {
       await signUp.create(buildProfile(form, FESTIVALS, myDate(now().toISOString())), form.debts);
-      if (signUp.local) chooseSample('new_user');          // sample data: the card's new person on day one
       changed();
-      router.replace('/');
+      if (signUp.local) {
+        chooseSample('new_user');                          // sample data: the card's new person on day one
+        router.replace('/');
+      }                                                    // live: the root layout opens the tabs (D-145)
     } catch (e) {
       setFailed(e instanceof Error ? e.message : String(e));
     }

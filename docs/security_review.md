@@ -49,8 +49,8 @@ Severity is for this project: synthetic data only, one small server, a study wit
 
 ## 4. Notes for the app build (T-16)
 
-- Only `EXPO_PUBLIC_SUPABASE_URL`, the anon key and the API URL go in the app (rule 7); never the Groq key or the admin key.
+- Only `EXPO_PUBLIC_SUPABASE_URL`, the anon key and the API URL go in the app (rule 7); never the Groq key or the admin key. **Built (D-145):** `api/config.ts` refuses an admin key (legacy `service_role` JWT or `sb_secret_…`) and plain http except to the API on a local network.
 - Redact on the phone before anything is uploaded (rule 11), and use the same rules as `api/assistant.py` `redact()`.
-- More → Delete account calls `supabase.rpc("delete_my_account")`, then signs out.
-- For persona accounts (`GET /v1/study` → `persona: true`), hide "change password", "change email" and "delete account".
-- The Supabase session is kept in AsyncStorage (Supabase's documented Expo setup). That's acceptable with synthetic personas. *Production vs coursework:* encrypt it (Expo SecureStore holds the key).
+- More → Delete account calls `supabase.rpc("delete_my_account")`, then signs out. **Built (D-145)**, after a second tap.
+- For persona accounts (`GET /v1/study` → `persona: true`), hide "change password", "change email" and "delete account". **Built (D-145)** for delete; the app has no change-password or change-email screen.
+- The Supabase session is kept in AsyncStorage (Supabase's documented Expo setup). That's acceptable with synthetic personas. *Production vs coursework:* encrypt it (Expo SecureStore holds the key). **Built (D-145)** as described; sign-out clears it on this phone only.

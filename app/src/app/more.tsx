@@ -28,16 +28,26 @@ import { moodNow } from '@/lib/future';
  * More (D-127): everything that isn't one of the four tabs (A5). The character, changed with the
  * sign-up's own picker (the database lets it change at any time); the badges; the debts, budgets and
  * money helper; how the band and points work (every number from the shared files, rule 5); the privacy
- * notice the user agreed to at sign-up (D-91); and the account: signing out and deleting the account
- * (delete_my_account(), D-93 S-2; study personas can't) arrive with Supabase. Opened from "More" on
- * Home and beside each tab's title.
+ * notice the user agreed to at sign-up (D-91); and the account (D-145): signing out, and deleting the
+ * account with everything in it after a second tap (delete_my_account(), D-93 S-2; hidden for study
+ * personas, which the researcher deletes). Opened from "More" on Home and beside each tab's title.
  */
 export default function MoreScreen() {
-  const { api, look, setLook, sample, study, version } = useApi();
+  const { api, look, setLook, sample, study, version, account } = useApi();
   const t = useTheme();
   const { data: game } = useRequest(() => api.game(), [api, version]);
   const [choice, setChoice] = useState<CharacterChoice | null>(null);   // null: not changing it
   const [failed, setFailed] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState<'ask' | 'busy' | null>(null);
+  const [accountError, setAccountError] = useState<string | null>(null);
+  const deleteAccount = async () => {
+    if (!account) return;
+    if (deleting !== 'ask') { setDeleting('ask'); return; }
+    setDeleting('busy');
+    const err = await account.deleteAccount();                // success signs out: this screen goes away
+    setAccountError(err);
+    setDeleting(null);
+  };
   const describe = AVATARS.find((a) => a.avatar === look.avatar)?.look ?? '';
 
   const save = async () => {
@@ -116,14 +126,24 @@ export default function MoreScreen() {
                 come with FAST&apos;s server.
               </ThemedText>
             ) : null}
+            {account?.email && <ThemedText type="small">Signed in as {account.email}</ThemedText>}
             {study && (
               <ThemedText type="small" themeColor="textSecondary">
                 This is a study account: the researcher deletes it, and everything in it, after the study.
               </ThemedText>
             )}
+            {deleting === 'ask' && (
+              <ThemedText type="small" style={{ color: t.bad }}>
+                This deletes your account and everything in it: entries, check-ins, debts and your garden. It can&apos;t be undone.
+              </ThemedText>
+            )}
+            {accountError && <ThemedText type="small" style={{ color: t.bad }}>{accountError}</ThemedText>}
             <View style={styles.buttons}>
-              <Button label="Sign out" quiet fill disabled={!!sample} onPress={() => {}} />
-              {!study && <Button label="Delete my account" quiet danger fill disabled={!!sample} onPress={() => {}} />}
+              <Button label="Sign out" quiet fill disabled={!account} onPress={() => { account?.signOut(); }} />
+              {!study && (
+                <Button label={deleting === 'ask' ? 'Tap again to delete' : deleting === 'busy' ? 'Deleting…' : 'Delete my account'}
+                        quiet danger fill disabled={!account || deleting === 'busy'} onPress={deleteAccount} />
+              )}
             </View>
           </Card>
 
