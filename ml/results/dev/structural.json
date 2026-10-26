@@ -1,0 +1,227 @@
+{
+ "dev": true,
+ "patterns": {
+  "patterns": {
+   "P1": {
+    "claim": "Essentials' share of spending falls as income rises",
+    "source": "DOSM HES 2024 Table 3.15 (Engel's law; D-28)",
+    "difference": -0.015060907435150428,
+    "ci": [
+     -0.03015561661072784,
+     0.002907809517481887
+    ],
+    "reading": "unclear"
+   },
+   "P2": {
+    "claim": "The cushion at month 12 rises with income",
+    "source": "Findex 2025, resilience by income group (verify)",
+    "difference": 1.2175233333333337,
+    "ci": [
+     -0.18471037499999954,
+     2.3623949166666662
+    ],
+    "reading": "unclear"
+   },
+   "P3": {
+    "claim": "Running short at least once falls with income",
+    "source": "Lusardi, Schneider & Tufano (2011)",
+    "difference": 0.43333333333333335,
+    "ci": [
+     0.2658333333333334,
+     0.5587499999999999
+    ],
+    "reading": "reproduced"
+   },
+   "P4": {
+    "claim": "Running short rises with income volatility",
+    "source": "Farrell & Greig (2016), JPMorgan Chase Institute (US)",
+    "difference": 0.4,
+    "ci": [
+     0.29,
+     0.5
+    ],
+    "reading": "reproduced"
+   },
+   "P5": {
+    "claim": "BNPL users run short more often than non-users",
+    "source": "BNM Financial Stability Review on BNPL (low confidence; verify)",
+    "difference": -0.016265912305516272,
+    "ci": [
+     -0.13640429834141013,
+     0.11781886024423326
+    ],
+    "reading": "unclear"
+   }
+  },
+  "groups": {
+   "by_income_quintile": [
+    {
+     "inc_q": 1,
+     "income": 918.529263888889,
+     "ess_share": 0.5540269953462669,
+     "cushion12": 3.1605933333333334,
+     "any_short": 0.5833333333333334
+    },
+    {
+     "inc_q": 2,
+     "income": 1507.9518472222223,
+     "ess_share": 0.5669972759347518,
+     "cushion12": 3.767575,
+     "any_short": 0.36666666666666664
+    },
+    {
+     "inc_q": 3,
+     "income": 1897.3273194444444,
+     "ess_share": 0.5717000727717984,
+     "cushion12": 2.8936766666666665,
+     "any_short": 0.26666666666666666
+    },
+    {
+     "inc_q": 4,
+     "income": 2470.0751805555556,
+     "ess_share": 0.5824944383074667,
+     "cushion12": 2.5523716666666667,
+     "any_short": 0.11666666666666667
+    },
+    {
+     "inc_q": 5,
+     "income": 4158.047388888889,
+     "ess_share": 0.5690879027814173,
+     "cushion12": 4.378116666666667,
+     "any_short": 0.15
+    }
+   ],
+   "by_volatility_tercile": [
+    {
+     "vol_t": 1,
+     "inc_cv": 0.045473978887020004,
+     "any_short": 0.12
+    },
+    {
+     "vol_t": 2,
+     "inc_cv": 0.1217086025018091,
+     "any_short": 0.25
+    },
+    {
+     "vol_t": 3,
+     "inc_cv": 0.44661909009811424,
+     "any_short": 0.52
+    }
+   ],
+   "by_bnpl": [
+    {
+     "bnpl_user": false,
+     "any_short": 0.30198019801980197,
+     "cushion12": 3.4843148514851485
+    },
+    {
+     "bnpl_user": true,
+     "any_short": 0.2857142857142857,
+     "cushion12": 3.0745755102040815
+    }
+   ]
+  }
+ },
+ "worlds": {
+  "default (seed 999)": {
+   "rows": 1985,
+   "users": 300,
+   "label_rate": 0.1340050377833753,
+   "shortfall_share_of_positives": 0.8045112781954887,
+   "model": {
+    "pr_auc": 0.47059163229575396,
+    "roc_auc": 0.8610280063159644,
+    "brier": 0.08839174018371408,
+    "citl": 0.0007279640677331778,
+    "slope": 0.9715345319243409,
+    "pr_auc_ci": [
+     0.40810126997429763,
+     0.5427621349871716
+    ]
+   },
+   "b0_pr_auc": 0.2907107823136308,
+   "cushion_pr_auc": 0.4211204624594535,
+   "model_minus_b0": [
+    0.17988084998212317,
+    0.12745834627958155,
+    0.23102251908285162
+   ],
+   "reading": "reference"
+  },
+  "W1 stress spending (seed 999)": {
+   "rows": 1985,
+   "users": 300,
+   "label_rate": 0.20151133501259447,
+   "shortfall_share_of_positives": 0.88,
+   "model": {
+    "pr_auc": 0.600045630730424,
+    "roc_auc": 0.8656735015772872,
+    "brier": 0.11726244608968094,
+    "citl": -0.056360759581211894,
+    "slope": 1.0177403508633018,
+    "pr_auc_ci": [
+     0.5465701721445001,
+     0.6792080276736029
+    ]
+   },
+   "b0_pr_auc": 0.447525182348294,
+   "cushion_pr_auc": 0.5777139123960587,
+   "model_minus_b0": [
+    0.15252044838213002,
+    0.09737671421166526,
+    0.21892350065668525
+   ],
+   "reading": "holds, but degrades"
+  },
+  "W2 persistent income shocks (seed 999)": {
+   "rows": 1927,
+   "users": 293,
+   "label_rate": 0.14737934613388687,
+   "shortfall_share_of_positives": 0.8133802816901409,
+   "model": {
+    "pr_auc": 0.5070564533286315,
+    "roc_auc": 0.8618959649558948,
+    "brier": 0.09336183437312007,
+    "citl": -0.009717153939776985,
+    "slope": 0.9411421725746187,
+    "pr_auc_ci": [
+     0.4432576037314091,
+     0.5895147450637583
+    ]
+   },
+   "b0_pr_auc": 0.3305278143999425,
+   "cushion_pr_auc": 0.4651543645665843,
+   "model_minus_b0": [
+    0.17652863892868897,
+    0.1280804067611467,
+    0.24370444011226897
+   ],
+   "reading": "holds"
+  },
+  "W3 correlated expenses (seed 999)": {
+   "rows": 1985,
+   "users": 300,
+   "label_rate": 0.2685138539042821,
+   "shortfall_share_of_positives": 0.9380863039399625,
+   "model": {
+    "pr_auc": 0.6834981412296077,
+    "roc_auc": 0.8743991595987162,
+    "brier": 0.13955219152254242,
+    "citl": -0.08817996261494712,
+    "slope": 1.0338341436184029,
+    "pr_auc_ci": [
+     0.6276037269646437,
+     0.7362101857020599
+    ]
+   },
+   "b0_pr_auc": 0.5506120568165909,
+   "cushion_pr_auc": 0.6495062915043516,
+   "model_minus_b0": [
+    0.13288608441301686,
+    0.07909398079083042,
+    0.1880409673112011
+   ],
+   "reading": "holds, but degrades"
+  }
+ }
+}

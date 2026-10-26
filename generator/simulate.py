@@ -11,6 +11,9 @@ Invariants
   E2  balances never go below 0; loan payments are min(instalment, balance)
   E3  anything computed for month m uses only months <= m (behaviour updates act on m+1)
   E4  "saved" is observable: it excludes the hidden cost (§9, D-41)
+  E5  cfg["alternative"] switches on a structural-robustness world (D-139); absent or empty, the
+      code takes exactly the frozen v1 path and draws exactly the same random numbers (verified
+      against the master dataset), so O2's data never changes
 Cost: O(months × (users + users × events)); about 1,000 × 12 × 21 cheap operations.
 """
 from __future__ import annotations
@@ -43,6 +46,7 @@ def simulate(p: dict, cfg: dict, noise: str, rngs: dict) -> dict:
     scale, hshare = nl["scale"], nl["hidden_cost_share"]
     ic, sp, cc, bc = cfg["income"], cfg["spending"], cfg["debt"]["credit_card"], cfg["debt"]["bnpl"]
     beh, sh = cfg["behaviour"], cfg["shocks"]
+    alt = cfg.get("alternative") or {}                     # E5: empty = the frozen v1 world
     ri, rs, rb, rk, rh, rv = (rngs[k] for k in ("income", "spending", "bnpl", "shocks", "hidden", "behaviour"))
 
     is_emp, is_gig, is_stu = p["etype"] == EMP, p["etype"] == GIG, p["etype"] == STU
@@ -68,6 +72,7 @@ def simulate(p: dict, cfg: dict, noise: str, rngs: dict) -> dict:
     inst = np.zeros((n, M + bc["instalments"]))
     corr_left, kappa = np.zeros(n, dtype=int), np.zeros(n)
     prev_band, prev_shock = None, np.zeros(n, dtype=bool)
+    prev_shock2, prev_slow = np.zeros(n, dtype=bool), np.zeros(n, dtype=bool)      # used only by E5 worlds
     late_fee = np.zeros(n)
     ach_prev, target_prev = np.full(n, np.nan), np.full(n, np.nan)
     deck = sh["deck"]
@@ -90,9 +95,17 @@ def simulate(p: dict, cfg: dict, noise: str, rngs: dict) -> dict:
         jobless_left = np.where(new, duration - 1, jobless_left)
         jobless = is_emp & (was | new)
         inc = np.where(jobless, 0.0, inc)
+        if alt.get("scar") and m > 0:      # W2: back at work after a spell, on lower pay for the rest of the year
+            back = is_emp & ~jobless & (rec["jobless"][:, m - 1] > 0)
+            base_inc = np.where(back, base_inc * (1 - alt["scar"]), base_inc)
+            inc = np.where(back, inc * (1 - alt["scar"]), inc)
         rise = is_emp & ~jobless & (ri.random(n) < ic["pay_rise"]["p"])
         base_inc = np.where(rise, base_inc * (1 + ri.uniform(*ic["pay_rise"]["pct"], n)), base_inc)
-        slow = is_gig & (ri.random(n) < ic["gig_slow"]["p"])
+        p_slow = ic["gig_slow"]["p"]
+        if alt.get("slow_persist"):        # W2: a slow gig month makes the next one likelier to be slow
+            p_slow = np.where(prev_slow, alt["slow_persist"], p_slow)
+        slow = is_gig & (ri.random(n) < p_slow)
+        prev_slow = slow
         inc = np.where(slow, inc * ri.uniform(*ic["gig_slow"]["factor"], n), inc)
 
         # ---- spending (§5) ----
@@ -129,6 +142,9 @@ def simulate(p: dict, cfg: dict, noise: str, rngs: dict) -> dict:
         shock_cost, minor_cost = np.zeros(n), np.zeros(n)
         shock_count, any_shock = np.zeros(n), np.zeros(n, dtype=bool)
         cluster = np.where(prev_shock, sh["clustering"], 1.0)
+        if alt.get("cluster"):             # W3: stronger, longer clustering; more events for unsteady incomes
+            cluster = np.where(prev_shock | prev_shock2, alt["cluster"], 1.0) * np.where(
+                p["sigma_inc"] > np.median(p["sigma_inc"]), alt.get("volatile_events", 1.0), 1.0)
         for eid, who, lo, hi, freq, is_shock, cat in deck:
             mult = np.where(is_gig & (eid in sh["gig_events"]), sh["gig_multiplier"], 1.0)
             if eid == "L08":
@@ -209,10 +225,14 @@ def simulate(p: dict, cfg: dict, noise: str, rngs: dict) -> dict:
         # ---- behaviour update for the NEXT months (§9; E3) ----
         valid = (band != INSUFFICIENT) if prev_band is None else (band != INSUFFICIENT) & (prev_band != INSUFFICIENT)
         worsened = valid & (band > prev_band) if prev_band is not None else np.zeros(n, dtype=bool)
-        trigger = (worsened | (cushion < 1)) & (rv.random(n) < p["dis"])
-        kappa = np.where(trigger, rv.uniform(*beh["correction_kappa"], n), kappa)
+        if alt.get("stress_spending"):     # W1: under pressure, impulsive users spend MORE instead of cutting back
+            trigger = (worsened | (cushion < 1)) & (rv.random(n) < p["imp"])
+            kappa = np.where(trigger, -rv.uniform(*beh["correction_kappa"], n), kappa)
+        else:
+            trigger = (worsened | (cushion < 1)) & (rv.random(n) < p["dis"])
+            kappa = np.where(trigger, rv.uniform(*beh["correction_kappa"], n), kappa)
         corr_left = np.where(trigger, beh["correction_months"], corr_left)
-        prev_band, prev_shock = band, any_shock
+        prev_band, prev_shock2, prev_shock = band, prev_shock, any_shock
 
         # ---- record ----
         with np.errstate(divide="ignore", invalid="ignore"):

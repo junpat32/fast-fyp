@@ -56,6 +56,7 @@ against.
 | CV-03 | 72% of positives are cash shortfalls only, so O2 mainly measures foreseeing shortfalls (stated before the run, spec §11) | CR-01 |
 | CV-04 | The 21 life-event frequencies are unsourced relative to each other; only their overall scale `k` was varied | CR-02, CR-11 |
 | CV-05 | The Monte Carlo draws events from the same deck the generator uses, an advantage it will not have with real users | CR-04, CR-07, CR-11 |
+| CV-06 | Reproducibility across machines: the generator reproduces every observable table byte for byte on another computer, but the hidden-trait file can differ in the last digit (≤ 1.1e-16 in 2 of 1,000 users); nothing a model or check uses changes (D-139) | CR-01–CR-09 |
 
 ## Seed register
 
