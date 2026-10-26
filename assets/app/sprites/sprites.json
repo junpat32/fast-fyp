@@ -1,0 +1,886 @@
+{
+ "made_by": "tools/asset_generation/app_sprites.py (D-111)",
+ "plant_scale": 3,
+ "sprites": {
+  "plant_0": {
+   "files": {
+    "afternoon": "afternoon/plant_0.png",
+    "morning": "morning/plant_0.png",
+    "night": "night/plant_0.png"
+   },
+   "size": [
+    72,
+    60
+   ]
+  },
+  "plant_1": {
+   "files": {
+    "afternoon": "afternoon/plant_1.png",
+    "morning": "morning/plant_1.png",
+    "night": "night/plant_1.png"
+   },
+   "size": [
+    72,
+    66
+   ]
+  },
+  "plant_2": {
+   "files": {
+    "afternoon": "afternoon/plant_2.png",
+    "morning": "morning/plant_2.png",
+    "night": "night/plant_2.png"
+   },
+   "size": [
+    72,
+    78
+   ]
+  },
+  "plant_3": {
+   "files": {
+    "afternoon": "afternoon/plant_3.png",
+    "morning": "morning/plant_3.png",
+    "night": "night/plant_3.png"
+   },
+   "size": [
+    72,
+    93
+   ]
+  },
+  "plant_4": {
+   "files": {
+    "afternoon": "afternoon/plant_4.png",
+    "morning": "morning/plant_4.png",
+    "night": "night/plant_4.png"
+   },
+   "size": [
+    72,
+    114
+   ]
+  },
+  "crop_serai_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_serai_seedling.png",
+    "morning": "morning/crop_serai_seedling.png",
+    "night": "night/crop_serai_seedling.png"
+   },
+   "size": [
+    27,
+    21
+   ]
+  },
+  "crop_serai_young": {
+   "files": {
+    "afternoon": "afternoon/crop_serai_young.png",
+    "morning": "morning/crop_serai_young.png",
+    "night": "night/crop_serai_young.png"
+   },
+   "size": [
+    51,
+    42
+   ]
+  },
+  "crop_serai_full": {
+   "files": {
+    "afternoon": "afternoon/crop_serai_full.png",
+    "morning": "morning/crop_serai_full.png",
+    "night": "night/crop_serai_full.png"
+   },
+   "size": [
+    99,
+    63
+   ]
+  },
+  "crop_pandan_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_pandan_seedling.png",
+    "morning": "morning/crop_pandan_seedling.png",
+    "night": "night/crop_pandan_seedling.png"
+   },
+   "size": [
+    30,
+    21
+   ]
+  },
+  "crop_pandan_young": {
+   "files": {
+    "afternoon": "afternoon/crop_pandan_young.png",
+    "morning": "morning/crop_pandan_young.png",
+    "night": "night/crop_pandan_young.png"
+   },
+   "size": [
+    48,
+    36
+   ]
+  },
+  "crop_pandan_full": {
+   "files": {
+    "afternoon": "afternoon/crop_pandan_full.png",
+    "morning": "morning/crop_pandan_full.png",
+    "night": "night/crop_pandan_full.png"
+   },
+   "size": [
+    78,
+    57
+   ]
+  },
+  "crop_chilli_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_chilli_seedling.png",
+    "morning": "morning/crop_chilli_seedling.png",
+    "night": "night/crop_chilli_seedling.png"
+   },
+   "size": [
+    24,
+    15
+   ]
+  },
+  "crop_chilli_young": {
+   "files": {
+    "afternoon": "afternoon/crop_chilli_young.png",
+    "morning": "morning/crop_chilli_young.png",
+    "night": "night/crop_chilli_young.png"
+   },
+   "size": [
+    42,
+    39
+   ]
+  },
+  "crop_chilli_full": {
+   "files": {
+    "afternoon": "afternoon/crop_chilli_full.png",
+    "morning": "morning/crop_chilli_full.png",
+    "night": "night/crop_chilli_full.png"
+   },
+   "size": [
+    57,
+    48
+   ]
+  },
+  "crop_bunga_raya_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_bunga_raya_seedling.png",
+    "morning": "morning/crop_bunga_raya_seedling.png",
+    "night": "night/crop_bunga_raya_seedling.png"
+   },
+   "size": [
+    24,
+    15
+   ]
+  },
+  "crop_bunga_raya_young": {
+   "files": {
+    "afternoon": "afternoon/crop_bunga_raya_young.png",
+    "morning": "morning/crop_bunga_raya_young.png",
+    "night": "night/crop_bunga_raya_young.png"
+   },
+   "size": [
+    42,
+    45
+   ]
+  },
+  "crop_bunga_raya_full": {
+   "files": {
+    "afternoon": "afternoon/crop_bunga_raya_full.png",
+    "morning": "morning/crop_bunga_raya_full.png",
+    "night": "night/crop_bunga_raya_full.png"
+   },
+   "size": [
+    60,
+    72
+   ]
+  },
+  "crop_bougainvillea_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_bougainvillea_seedling.png",
+    "morning": "morning/crop_bougainvillea_seedling.png",
+    "night": "night/crop_bougainvillea_seedling.png"
+   },
+   "size": [
+    24,
+    15
+   ]
+  },
+  "crop_bougainvillea_young": {
+   "files": {
+    "afternoon": "afternoon/crop_bougainvillea_young.png",
+    "morning": "morning/crop_bougainvillea_young.png",
+    "night": "night/crop_bougainvillea_young.png"
+   },
+   "size": [
+    42,
+    42
+   ]
+  },
+  "crop_bougainvillea_full": {
+   "files": {
+    "afternoon": "afternoon/crop_bougainvillea_full.png",
+    "morning": "morning/crop_bougainvillea_full.png",
+    "night": "night/crop_bougainvillea_full.png"
+   },
+   "size": [
+    75,
+    78
+   ]
+  },
+  "crop_ixora_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_ixora_seedling.png",
+    "morning": "morning/crop_ixora_seedling.png",
+    "night": "night/crop_ixora_seedling.png"
+   },
+   "size": [
+    24,
+    15
+   ]
+  },
+  "crop_ixora_young": {
+   "files": {
+    "afternoon": "afternoon/crop_ixora_young.png",
+    "morning": "morning/crop_ixora_young.png",
+    "night": "night/crop_ixora_young.png"
+   },
+   "size": [
+    42,
+    39
+   ]
+  },
+  "crop_ixora_full": {
+   "files": {
+    "afternoon": "afternoon/crop_ixora_full.png",
+    "morning": "morning/crop_ixora_full.png",
+    "night": "night/crop_ixora_full.png"
+   },
+   "size": [
+    63,
+    57
+   ]
+  },
+  "crop_orchid_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_orchid_seedling.png",
+    "morning": "morning/crop_orchid_seedling.png",
+    "night": "night/crop_orchid_seedling.png"
+   },
+   "size": [
+    24,
+    12
+   ]
+  },
+  "crop_orchid_young": {
+   "files": {
+    "afternoon": "afternoon/crop_orchid_young.png",
+    "morning": "morning/crop_orchid_young.png",
+    "night": "night/crop_orchid_young.png"
+   },
+   "size": [
+    39,
+    51
+   ]
+  },
+  "crop_orchid_full": {
+   "files": {
+    "afternoon": "afternoon/crop_orchid_full.png",
+    "morning": "morning/crop_orchid_full.png",
+    "night": "night/crop_orchid_full.png"
+   },
+   "size": [
+    69,
+    75
+   ]
+  },
+  "crop_frangipani_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_frangipani_seedling.png",
+    "morning": "morning/crop_frangipani_seedling.png",
+    "night": "night/crop_frangipani_seedling.png"
+   },
+   "size": [
+    33,
+    33
+   ]
+  },
+  "crop_frangipani_young": {
+   "files": {
+    "afternoon": "afternoon/crop_frangipani_young.png",
+    "morning": "morning/crop_frangipani_young.png",
+    "night": "night/crop_frangipani_young.png"
+   },
+   "size": [
+    84,
+    93
+   ]
+  },
+  "crop_frangipani_full": {
+   "files": {
+    "afternoon": "afternoon/crop_frangipani_full.png",
+    "morning": "morning/crop_frangipani_full.png",
+    "night": "night/crop_frangipani_full.png"
+   },
+   "size": [
+    135,
+    159
+   ]
+  },
+  "crop_torch_ginger_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_torch_ginger_seedling.png",
+    "morning": "morning/crop_torch_ginger_seedling.png",
+    "night": "night/crop_torch_ginger_seedling.png"
+   },
+   "size": [
+    21,
+    36
+   ]
+  },
+  "crop_torch_ginger_young": {
+   "files": {
+    "afternoon": "afternoon/crop_torch_ginger_young.png",
+    "morning": "morning/crop_torch_ginger_young.png",
+    "night": "night/crop_torch_ginger_young.png"
+   },
+   "size": [
+    66,
+    90
+   ]
+  },
+  "crop_torch_ginger_full": {
+   "files": {
+    "afternoon": "afternoon/crop_torch_ginger_full.png",
+    "morning": "morning/crop_torch_ginger_full.png",
+    "night": "night/crop_torch_ginger_full.png"
+   },
+   "size": [
+    102,
+    171
+   ]
+  },
+  "crop_jade_vine_seedling": {
+   "files": {
+    "afternoon": "afternoon/crop_jade_vine_seedling.png",
+    "morning": "morning/crop_jade_vine_seedling.png",
+    "night": "night/crop_jade_vine_seedling.png"
+   },
+   "size": [
+    27,
+    36
+   ]
+  },
+  "crop_jade_vine_young": {
+   "files": {
+    "afternoon": "afternoon/crop_jade_vine_young.png",
+    "morning": "morning/crop_jade_vine_young.png",
+    "night": "night/crop_jade_vine_young.png"
+   },
+   "size": [
+    72,
+    111
+   ]
+  },
+  "crop_jade_vine_full": {
+   "files": {
+    "afternoon": "afternoon/crop_jade_vine_full.png",
+    "morning": "morning/crop_jade_vine_full.png",
+    "night": "night/crop_jade_vine_full.png"
+   },
+   "size": [
+    78,
+    114
+   ]
+  },
+  "jar_0": {
+   "files": {
+    "afternoon": "afternoon/jar_0.png",
+    "morning": "morning/jar_0.png",
+    "night": "night/jar_0.png"
+   },
+   "size": [
+    54,
+    63
+   ]
+  },
+  "jar_1": {
+   "files": {
+    "afternoon": "afternoon/jar_1.png",
+    "morning": "morning/jar_1.png",
+    "night": "night/jar_1.png"
+   },
+   "size": [
+    54,
+    63
+   ]
+  },
+  "jar_2": {
+   "files": {
+    "afternoon": "afternoon/jar_2.png",
+    "morning": "morning/jar_2.png",
+    "night": "night/jar_2.png"
+   },
+   "size": [
+    54,
+    63
+   ]
+  },
+  "jar_3": {
+   "files": {
+    "afternoon": "afternoon/jar_3.png",
+    "morning": "morning/jar_3.png",
+    "night": "night/jar_3.png"
+   },
+   "size": [
+    54,
+    63
+   ]
+  },
+  "jar_4": {
+   "files": {
+    "afternoon": "afternoon/jar_4.png",
+    "morning": "morning/jar_4.png",
+    "night": "night/jar_4.png"
+   },
+   "size": [
+    54,
+    63
+   ]
+  },
+  "decor_dining_set": {
+   "files": {
+    "afternoon": "afternoon/decor_dining_set.png",
+    "morning": "morning/decor_dining_set.png",
+    "night": "night/decor_dining_set.png"
+   },
+   "size": [
+    88,
+    100
+   ]
+  },
+  "decor_storage_cabinet": {
+   "files": {
+    "afternoon": "afternoon/decor_storage_cabinet.png",
+    "morning": "morning/decor_storage_cabinet.png",
+    "night": "night/decor_storage_cabinet.png"
+   },
+   "size": [
+    94,
+    118
+   ]
+  },
+  "decor_curtains_sage": {
+   "files": {
+    "afternoon": "afternoon/decor_curtains_sage.png",
+    "morning": "morning/decor_curtains_sage.png",
+    "night": "night/decor_curtains_sage.png"
+   },
+   "size": [
+    66,
+    114
+   ]
+  },
+  "decor_curtains_peach": {
+   "files": {
+    "afternoon": "afternoon/decor_curtains_peach.png",
+    "morning": "morning/decor_curtains_peach.png",
+    "night": "night/decor_curtains_peach.png"
+   },
+   "size": [
+    66,
+    114
+   ]
+  },
+  "decor_curtains_blue": {
+   "files": {
+    "afternoon": "afternoon/decor_curtains_blue.png",
+    "morning": "morning/decor_curtains_blue.png",
+    "night": "night/decor_curtains_blue.png"
+   },
+   "size": [
+    66,
+    114
+   ]
+  },
+  "decor_rug_green": {
+   "files": {
+    "afternoon": "afternoon/decor_rug_green.png",
+    "morning": "morning/decor_rug_green.png",
+    "night": "night/decor_rug_green.png"
+   },
+   "size": [
+    240,
+    122
+   ]
+  },
+  "decor_rug_terracotta": {
+   "files": {
+    "afternoon": "afternoon/decor_rug_terracotta.png",
+    "morning": "morning/decor_rug_terracotta.png",
+    "night": "night/decor_rug_terracotta.png"
+   },
+   "size": [
+    240,
+    122
+   ]
+  },
+  "decor_rug_blue": {
+   "files": {
+    "afternoon": "afternoon/decor_rug_blue.png",
+    "morning": "morning/decor_rug_blue.png",
+    "night": "night/decor_rug_blue.png"
+   },
+   "size": [
+    240,
+    122
+   ]
+  },
+  "decor_wall_art_kampung": {
+   "files": {
+    "afternoon": "afternoon/decor_wall_art_kampung.png",
+    "morning": "morning/decor_wall_art_kampung.png",
+    "night": "night/decor_wall_art_kampung.png"
+   },
+   "size": [
+    68,
+    120
+   ]
+  },
+  "decor_wall_art_flowers": {
+   "files": {
+    "afternoon": "afternoon/decor_wall_art_flowers.png",
+    "morning": "morning/decor_wall_art_flowers.png",
+    "night": "night/decor_wall_art_flowers.png"
+   },
+   "size": [
+    68,
+    120
+   ]
+  },
+  "decor_desk_plant": {
+   "files": {
+    "afternoon": "afternoon/decor_desk_plant.png",
+    "morning": "morning/decor_desk_plant.png",
+    "night": "night/decor_desk_plant.png"
+   },
+   "size": [
+    78,
+    108
+   ]
+  },
+  "decor_bench": {
+   "files": {
+    "afternoon": "afternoon/decor_bench.png",
+    "morning": "morning/decor_bench.png",
+    "night": "night/decor_bench.png"
+   },
+   "size": [
+    152,
+    136
+   ]
+  },
+  "decor_bench_improved": {
+   "files": {
+    "afternoon": "afternoon/decor_bench_improved.png",
+    "morning": "morning/decor_bench_improved.png",
+    "night": "night/decor_bench_improved.png"
+   },
+   "size": [
+    154,
+    142
+   ]
+  },
+  "decor_garden_lamp": {
+   "files": {
+    "afternoon": "afternoon/decor_garden_lamp.png",
+    "morning": "morning/decor_garden_lamp.png",
+    "night": "night/decor_garden_lamp.png"
+   },
+   "size": [
+    48,
+    112
+   ]
+  },
+  "decor_lantern": {
+   "files": {
+    "afternoon": "afternoon/decor_lantern.png",
+    "morning": "morning/decor_lantern.png",
+    "night": "night/decor_lantern.png"
+   },
+   "size": [
+    112,
+    116
+   ]
+  },
+  "decor_bird_bath": {
+   "files": {
+    "afternoon": "afternoon/decor_bird_bath.png",
+    "morning": "morning/decor_bird_bath.png",
+    "night": "night/decor_bird_bath.png"
+   },
+   "size": [
+    108,
+    132
+   ]
+  },
+  "decor_decorative_stones": {
+   "files": {
+    "afternoon": "afternoon/decor_decorative_stones.png",
+    "morning": "morning/decor_decorative_stones.png",
+    "night": "night/decor_decorative_stones.png"
+   },
+   "size": [
+    180,
+    114
+   ]
+  },
+  "decor_garden_arch": {
+   "files": {
+    "afternoon": "afternoon/decor_garden_arch.png",
+    "morning": "morning/decor_garden_arch.png",
+    "night": "night/decor_garden_arch.png"
+   },
+   "size": [
+    76,
+    114
+   ]
+  },
+  "decor_outdoor_table": {
+   "files": {
+    "afternoon": "afternoon/decor_outdoor_table.png",
+    "morning": "morning/decor_outdoor_table.png",
+    "night": "night/decor_outdoor_table.png"
+   },
+   "size": [
+    108,
+    129
+   ]
+  },
+  "decor_outdoor_chair": {
+   "files": {
+    "afternoon": "afternoon/decor_outdoor_chair.png",
+    "morning": "morning/decor_outdoor_chair.png",
+    "night": "night/decor_outdoor_chair.png"
+   },
+   "size": [
+    74,
+    106
+   ]
+  },
+  "decor_mailbox": {
+   "files": {
+    "afternoon": "afternoon/decor_mailbox.png",
+    "morning": "morning/decor_mailbox.png",
+    "night": "night/decor_mailbox.png"
+   },
+   "size": [
+    64,
+    114
+   ]
+  },
+  "decor_bicycle_rack": {
+   "files": {
+    "afternoon": "afternoon/decor_bicycle_rack.png",
+    "morning": "morning/decor_bicycle_rack.png",
+    "night": "night/decor_bicycle_rack.png"
+   },
+   "size": [
+    156,
+    112
+   ]
+  },
+  "decor_fountain": {
+   "files": {
+    "afternoon": "afternoon/decor_fountain.png",
+    "morning": "morning/decor_fountain.png",
+    "night": "night/decor_fountain.png"
+   },
+   "size": [
+    144,
+    112
+   ]
+  },
+  "tree_0": {
+   "files": {
+    "afternoon": "afternoon/tree_0.png",
+    "morning": "morning/tree_0.png",
+    "night": "night/tree_0.png"
+   },
+   "size": [
+    96,
+    42
+   ]
+  },
+  "tree_1": {
+   "files": {
+    "afternoon": "afternoon/tree_1.png",
+    "morning": "morning/tree_1.png",
+    "night": "night/tree_1.png"
+   },
+   "size": [
+    96,
+    54
+   ]
+  },
+  "tree_2": {
+   "files": {
+    "afternoon": "afternoon/tree_2.png",
+    "morning": "morning/tree_2.png",
+    "night": "night/tree_2.png"
+   },
+   "size": [
+    80,
+    115
+   ]
+  },
+  "tree_3": {
+   "files": {
+    "afternoon": "afternoon/tree_3.png",
+    "morning": "morning/tree_3.png",
+    "night": "night/tree_3.png"
+   },
+   "size": [
+    120,
+    123
+   ]
+  },
+  "tree_4": {
+   "files": {
+    "afternoon": "afternoon/tree_4.png",
+    "morning": "morning/tree_4.png",
+    "night": "night/tree_4.png"
+   },
+   "size": [
+    136,
+    116
+   ]
+  },
+  "tree_5": {
+   "files": {
+    "afternoon": "afternoon/tree_5.png",
+    "morning": "morning/tree_5.png",
+    "night": "night/tree_5.png"
+   },
+   "size": [
+    120,
+    95
+   ]
+  },
+  "tree_6": {
+   "files": {
+    "afternoon": "afternoon/tree_6.png",
+    "morning": "morning/tree_6.png",
+    "night": "night/tree_6.png"
+   },
+   "size": [
+    121,
+    98
+   ]
+  },
+  "chicken": {
+   "files": {
+    "afternoon": "afternoon/chicken.png",
+    "morning": "morning/chicken.png",
+    "night": "night/chicken.png"
+   },
+   "size": [
+    92,
+    100
+   ]
+  },
+  "badge_cushion_builder": {
+   "files": {
+    "afternoon": "afternoon/badge_cushion_builder.png",
+    "morning": "morning/badge_cushion_builder.png",
+    "night": "night/badge_cushion_builder.png"
+   },
+   "size": [
+    96,
+    96
+   ]
+  },
+  "badge_cushion_builder_locked": {
+   "files": {
+    "afternoon": "afternoon/badge_cushion_builder_locked.png",
+    "morning": "morning/badge_cushion_builder_locked.png",
+    "night": "night/badge_cushion_builder_locked.png"
+   },
+   "size": [
+    96,
+    96
+   ]
+  },
+  "badge_cushion_builder_small": {
+   "files": {
+    "afternoon": "afternoon/badge_cushion_builder_small.png",
+    "morning": "morning/badge_cushion_builder_small.png",
+    "night": "night/badge_cushion_builder_small.png"
+   },
+   "size": [
+    48,
+    48
+   ]
+  },
+  "badge_steady_saver": {
+   "files": {
+    "afternoon": "afternoon/badge_steady_saver.png",
+    "morning": "morning/badge_steady_saver.png",
+    "night": "night/badge_steady_saver.png"
+   },
+   "size": [
+    96,
+    96
+   ]
+  },
+  "badge_steady_saver_locked": {
+   "files": {
+    "afternoon": "afternoon/badge_steady_saver_locked.png",
+    "morning": "morning/badge_steady_saver_locked.png",
+    "night": "night/badge_steady_saver_locked.png"
+   },
+   "size": [
+    96,
+    96
+   ]
+  },
+  "badge_steady_saver_small": {
+   "files": {
+    "afternoon": "afternoon/badge_steady_saver_small.png",
+    "morning": "morning/badge_steady_saver_small.png",
+    "night": "night/badge_steady_saver_small.png"
+   },
+   "size": [
+    48,
+    48
+   ]
+  },
+  "badge_honest_tracker": {
+   "files": {
+    "afternoon": "afternoon/badge_honest_tracker.png",
+    "morning": "morning/badge_honest_tracker.png",
+    "night": "night/badge_honest_tracker.png"
+   },
+   "size": [
+    96,
+    96
+   ]
+  },
+  "badge_honest_tracker_locked": {
+   "files": {
+    "afternoon": "afternoon/badge_honest_tracker_locked.png",
+    "morning": "morning/badge_honest_tracker_locked.png",
+    "night": "night/badge_honest_tracker_locked.png"
+   },
+   "size": [
+    96,
+    96
+   ]
+  },
+  "badge_honest_tracker_small": {
+   "files": {
+    "afternoon": "afternoon/badge_honest_tracker_small.png",
+    "morning": "morning/badge_honest_tracker_small.png",
+    "night": "night/badge_honest_tracker_small.png"
+   },
+   "size": [
+    48,
+    48
+   ]
+  }
+ }
+}

@@ -1,0 +1,92 @@
+# Forecast reasons in plain words (T-11, D-92). DRAFT wording by Claude; Patrick edits freely.
+# Review notes: docs/advice_wording_review.md.
+#
+# A reason is one feature's SHAP contribution (engine/forecast.py). Its words depend on which side
+# of the training average the user is on: "high" (above average) or "low" (below average). The app
+# shows them under "What raises your risk" or "What keeps your risk low" (invariant P5), so the
+# words describe the user's situation and never repeat raises/lowers.
+# Yes/no features only ever appear when the answer is yes (P4), so they need only "high".
+# "expected": the direction common sense expects when the feature is high (raises / lowers the
+# risk). Where the model's coefficient points the other way (overlap between related features),
+# engine/forecast.py can leave the reason out: thresholds.json "explanations" (decision W1).
+# Demographics (age, type of work) and band indicators are never reasons (P4), so they are not here.
+
+inc_median3:
+  expected: lowers
+  high: "Your typical monthly income is higher than average"
+  low: "Your typical monthly income is lower than average"
+inc_cv3:
+  expected: raises
+  high: "Your income changes a lot from month to month"
+  low: "Your income is steady from month to month"
+essential_share3:
+  expected: raises
+  high: "Most of your spending goes on essentials, leaving little room"
+  low: "Essentials take a smaller share of your spending"
+disc_cv3:
+  expected: raises
+  high: "Your non-essential spending jumps around"
+  low: "Your non-essential spending is steady"
+overrun_count3:
+  expected: raises
+  high: "You spent more than usual in several recent months"
+  low: "You kept spending at your usual level recently"
+savings_rate3:
+  expected: lowers
+  high: "You save a bigger share of your income than average"
+  low: "You save a smaller share of your income than average"
+dsr_t:
+  expected: raises
+  high: "Debt payments take a bigger share of your income than average"
+  low: "Debt payments take a smaller share of your income than average"
+dti_t:
+  expected: raises
+  high: "You owe more in total, for your income, than average"
+  low: "You owe less in total, for your income, than average"
+bnpl_active:
+  expected: raises
+  high: "You have more BNPL plans running than average"
+  low: "You have few or no BNPL plans running"
+bnpl_new3:
+  expected: raises
+  high: "You started several BNPL plans recently"
+  low: "You started few or no BNPL plans recently"
+has_personal_loan:
+  expected: raises
+  high: "You have a personal loan"
+lives_with_parents:
+  expected: lowers
+  high: "You live with your parents"
+family_support:
+  expected: raises
+  high: "You send money to family"
+cushion_t:
+  expected: lowers
+  high: "Your cash cushion is bigger than average"
+  low: "Your cash cushion is smaller than average"
+cash_slope3:
+  expected: lowers
+  high: "Your cash has been growing faster than average"
+  low: "Your cash has been growing slower than average, or falling"
+shortfall_last3:
+  expected: raises
+  high: "You ran short of money recently"
+flag_impulsivity:
+  expected: raises
+  high: "Your non-essential spending swings and goes over your usual level"
+flag_overconfidence:
+  expected: raises
+  high: "Your savings goals have been harder to meet than planned"
+flag_delayed_correction:
+  expected: raises
+  high: "Your spending took a while to come back down after going over"
+shock_count3:
+  expected: raises
+  high: "You had unexpected costs recently"
+  low: "You had few or no unexpected costs recently"
+festive_next3:
+  expected: raises
+  high: "A festive month is coming up"
+semester_next3:
+  expected: raises
+  high: "A new semester is coming up"

@@ -1,0 +1,6 @@
+{
+ "_comment": "The money helper words the app and the API share (D-92, D-123; rule 5): the question limit, the crisis words and FAST's crisis reply. The phone checks the crisis words too, so the helplines show at once even when the server cannot be reached; the server checks again before anything goes to Groq.",
+ "max_question_chars": 500,
+ "crisis_words": "\\b(suicid\\w*|kill(ing)? myself|end (my life|it all)|want to die|wanna die|better off dead|no reason to live|self[- ]?harm\\w*|hurt(ing)? myself|bunuh diri)\\b",
+ "crisis_reply": "It sounds like things are really hard right now, and you don't have to face this alone. Please talk to someone today: Befrienders KL is there 24 hours at 03-7627 2929, and Talian HEAL at 15555 (8am to midnight). If you are in danger right now, call 999. When you're ready, AKPK can help you make a plan for your debts for free."
+}

@@ -1,0 +1,38 @@
+{
+  "_comment": "Transaction categories (D-112): the keys stored in transactions.category, read by the app's Add screen and by tools/personas/build.py, so a typed entry is classified exactly like the synthetic data (rule 5). Essential vs discretionary: HES 2024 by Engel's law, transport essential, clothing discretionary (D-28; generator/config.yaml essential_shares, discretionary_shares). The API reads family, education and fees (api/money.py); a debt_payment category sets is_debt_payment; own_transfer moves money between the user's own pockets and is neither spending nor income. words: what the quick-add box matches (D-126), lowercase, the longest phrase first; English and Malay as people type them.",
+  "groups": {"everyday": "Everyday", "extras": "Extras", "debt": "Debt payments", "other": "Other"},
+  "out": [
+    {"key": "food_home", "label": "Food & groceries", "group": "everyday", "essential": true, "words": ["groceries", "grocery", "market", "pasar", "sayur", "beras", "mydin", "lotus", "tesco", "aeon", "speedmart", "supermarket"]},
+    {"key": "housing", "label": "Rent & home bills", "group": "everyday", "essential": true, "words": ["rent", "sewa", "rental", "room rent", "tnb", "electric", "electricity", "letrik", "bil air", "water bill", "indah water", "iwk", "maintenance", "house bill"]},
+    {"key": "transport", "label": "Transport & petrol", "group": "everyday", "essential": true, "words": ["petrol", "minyak", "fuel", "toll", "tol", "parking", "lrt", "mrt", "ktm", "bus", "bas", "train", "taxi", "e-hailing", "grab ride", "car service"]},
+    {"key": "communication", "label": "Phone & internet", "group": "everyday", "essential": true, "words": ["phone", "prepaid", "topup", "top-up", "top up", "postpaid", "internet", "wifi", "unifi", "maxis", "celcom", "digi", "umobile", "phone bill"]},
+    {"key": "health", "label": "Health", "group": "everyday", "essential": true, "words": ["doctor", "klinik", "clinic", "ubat", "medicine", "pharmacy", "farmasi", "dentist", "hospital", "checkup"]},
+    {"key": "education", "label": "Education", "group": "everyday", "essential": true, "words": ["book", "books", "buku", "tuition", "course", "class", "yuran", "stationery", "school fees", "exam"]},
+    {"key": "eating_out", "label": "Eating out", "group": "extras", "essential": false, "words": ["lunch", "dinner", "breakfast", "supper", "makan", "nasi", "mamak", "kopi", "coffee", "teh", "tea", "boba", "bubble tea", "food", "grabfood", "foodpanda", "kfc", "mcd", "mcdonald", "restaurant", "cafe", "roti", "snack", "drinks"]},
+    {"key": "shopping", "label": "Shopping", "group": "extras", "essential": false, "words": ["shopee", "lazada", "shopping", "mall", "online", "tiktok shop", "gadget"]},
+    {"key": "personal_misc", "label": "Personal care & other", "group": "extras", "essential": false, "words": ["haircut", "gunting", "salon", "barber", "toiletries", "watsons", "guardian", "skincare"]},
+    {"key": "recreation", "label": "Fun & hobbies", "group": "extras", "essential": false, "words": ["movie", "wayang", "cinema", "gsc", "tgv", "netflix", "spotify", "game", "games", "steam", "gym", "concert", "trip", "holiday", "cuti", "karaoke"]},
+    {"key": "clothing", "label": "Clothes & shoes", "group": "extras", "essential": false, "words": ["clothes", "baju", "shirt", "kasut", "shoes", "seluar", "pants", "uniqlo", "tudung", "dress"]},
+    {"key": "furnishings", "label": "Home items", "group": "extras", "essential": false, "words": ["furniture", "ikea", "kipas", "fan", "lamp", "kitchen", "bedsheet", "mattress"]},
+    {"key": "insurance_fin", "label": "Insurance", "group": "extras", "essential": false, "words": ["insurance", "insurans", "takaful", "premium"]},
+    {"key": "alcohol_tobacco", "label": "Tobacco & alcohol", "group": "extras", "essential": false, "words": ["rokok", "cigarette", "cigarettes", "vape", "beer"]},
+    {"key": "ptptn", "label": "PTPTN", "group": "debt", "essential": false, "debt_payment": true, "words": ["ptptn"]},
+    {"key": "car_loan", "label": "Car loan", "group": "debt", "essential": false, "debt_payment": true, "words": ["car loan", "hire purchase", "kereta loan"]},
+    {"key": "motorbike_loan", "label": "Motorbike loan", "group": "debt", "essential": false, "debt_payment": true, "words": ["motor loan", "motorbike loan", "motorcycle loan"]},
+    {"key": "personal_loan", "label": "Personal loan", "group": "debt", "essential": false, "debt_payment": true, "words": ["personal loan", "koperasi"]},
+    {"key": "credit_card", "label": "Credit card bill", "group": "debt", "essential": false, "debt_payment": true, "words": ["credit card bill", "card bill", "kad kredit bill"]},
+    {"key": "bnpl_instalment", "label": "BNPL instalment", "group": "debt", "essential": false, "debt_payment": true, "words": ["instalment", "installment", "ansuran"]},
+    {"key": "home_loan", "label": "Home loan", "group": "debt", "essential": false, "debt_payment": true, "words": ["home loan", "house loan", "housing loan", "lppsa"]},
+    {"key": "other_debt", "label": "Other debt payment", "group": "debt", "essential": false, "debt_payment": true, "words": ["debt", "hutang", "loan payment", "pay back"]},
+    {"key": "family", "label": "Money to family", "group": "other", "essential": false, "words": ["mak", "mum", "mom", "mother", "ayah", "dad", "father", "parents", "family", "keluarga", "adik", "abang", "kakak", "send home"]},
+    {"key": "fees", "label": "Fees & charges", "group": "other", "essential": false, "words": ["fee", "fees", "charge", "bank charge", "caj", "service charge", "penalty"]},
+    {"key": "own_transfer", "label": "Moving my own money", "group": "other", "essential": false, "own_transfer": true, "words": ["to savings", "own account", "my savings", "pindah duit"]}
+  ],
+  "in": [
+    {"key": "salary", "label": "Salary", "words": ["salary", "gaji", "payslip", "bonus", "pay day", "payday"]},
+    {"key": "gig_income", "label": "Gig income", "words": ["gig", "freelance", "rider", "driver earnings", "delivery earnings", "lalamove", "commission"]},
+    {"key": "allowance", "label": "Allowance", "words": ["allowance", "elaun", "pocket money", "duit poket"]},
+    {"key": "other_income", "label": "Other income", "words": ["refund", "gift", "hadiah", "angpau", "ang pao", "duit raya", "sold", "jual", "cashback", "reward"]},
+    {"key": "own_transfer", "label": "From my own account", "own_transfer": true, "words": ["from savings", "own account", "pindah duit"]}
+  ]
+}

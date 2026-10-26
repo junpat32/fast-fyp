@@ -1,0 +1,21 @@
+# FAST: Python dependencies (generator, ML experiment, tests)
+# Generator (T-05)
+numpy
+pandas
+pyarrow
+pyyaml
+# O2 experiment (T-06)
+scipy
+scikit-learn
+xgboost
+shap
+matplotlib
+# Isometric asset kit (tools/asset_generation, D-51)
+pillow
+# Backend (api/, T-13): the deployed service installs requirements-api.txt instead
+fastapi
+uvicorn
+pyjwt[crypto]
+# Tests
+pytest
+httpx

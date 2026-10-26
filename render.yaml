@@ -1,0 +1,29 @@
+# Render Blueprint for the FAST backend (T-13). Render deploys from the private GitHub repo
+# (D-97; steps in docs/setup_guide.md §5). Secrets are typed into Render's dashboard
+# (sync: false), never written here.
+services:
+  - type: web
+    name: fast-api
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.8          # D-70: same as local; if Render lacks it, re-lock and re-test first
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false            # only for projects on the legacy HS256 secret
+      - key: SUPABASE_ANON_KEY
+        sync: false            # public key; the game reads and writes with the user's own token
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "60"
+      - key: GROQ_API_KEY
+        sync: false            # secret; without it the assistant answers 503 and the app shows "coming soon"
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: ASSISTANT_DAILY_LIMIT
+        value: "30"

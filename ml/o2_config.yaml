@@ -1,0 +1,32 @@
+# O2 experiment configuration. Every value here is fixed by the frozen spec §13
+# (docs/frozen/generator_spec_v1.0.md) unless marked "implementation".
+
+master_seed: 20261009
+noise_levels: [medium, low, high]          # medium is primary (criterion); low/high reported
+data_dir: data/synthetic                    # <noise>_seed<seed>/ from generator.run
+results_dir: ml/results
+
+outer_folds: 5                              # GroupKFold by user_id
+inner_folds: 3                              # tuning on training folds only
+grids:
+  lr: {C: [0.1, 1, 10]}                     # ordered simplest first (ties -> simpler)
+  rf: {n_estimators: 300, max_depth: [4, 8, null]}
+  xgb: {max_depth: [3, 5], learning_rate: 0.1, max_rounds: 300,
+        early_stopping_rounds: 20}          # early stopping patience: implementation
+oracle_traits: [imp, dis, ovc, sigma_inc, consumption_ratio]   # hidden traits, oracle only
+
+bootstrap_resamples: 1000
+ci_level: 0.95
+robustness_seeds: 20                        # from SeedSequence(master_seed).spawn(20)
+
+leakage:
+  max_model_pr_auc: 0.95
+  shuffled_tolerance: 0.03
+  max_single_feature_pr_auc: 0.90
+
+n_jobs: 2                                   # implementation: 2 of 4 threads on the dev laptop
+
+dev:                                        # implementation: debugging only, never reported as O2
+  seed: 999
+  n_users: 400
+  bootstrap_resamples: 100

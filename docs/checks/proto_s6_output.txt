@@ -1,0 +1,40 @@
+﻿
+=== S6: each flag must fire in 5-30% of scored person-months ===
+Impulsivity         :  6.8%  PASS   (scored person-months 27000)
+    part A 'CV > 0.35': 11.0%   part B '>= 2 overruns': 71.5%
+    by type: emp 6.6% | gig 7.1% | stu 7.6%
+    validity: fires 16.9% in the riskiest quarter of hidden impulsivity vs 0.6% in the safest quarter -> lift x27.2
+Overconfidence      :  8.0%  PASS   (scored person-months 27000)
+    part A '< 60% of goal x3': 11.0%   part B 'goal cut < 20%': 77.6%
+    by type: emp 6.4% | gig 13.1% | stu 10.4%
+    validity: fires 9.5% in the riskiest quarter of hidden overconfidence vs 6.4% in the safest quarter -> lift x1.5
+Overconf. (fix)     : 18.7%  PASS   (scored person-months 27000)
+    part A 'avg < 60% of goal, calm months': 28.6%   part B 'goal cut < 20%': 77.6%
+    by type: emp 16.0% | gig 27.0% | stu 23.3%
+    validity: fires 21.6% in the riskiest quarter of hidden overconfidence vs 16.4% in the safest quarter -> lift x1.3
+Delayed correction  :  3.5%  FAIL   (scored person-months 30000)
+    part A 'under pressure 2 months': 40.1%   part B 'no correction 2 months':  9.8%
+    by type: emp 4.4% | gig 1.4% | stu 1.0%
+    validity: fires 4.0% in the riskiest quarter of hidden discipline vs 3.2% in the safest quarter -> lift x1.3
+Delayed corr. (fix) :  8.6%  PASS   (scored person-months 27000)
+    part A 'Red or cushion<1, 2 months': 27.2%   part B 'no smoothed correction': 38.1%
+    by type: emp 9.2% | gig 8.2% | stu 6.0%
+    validity: fires 10.7% in the riskiest quarter of hidden discipline vs 7.0% in the safest quarter -> lift x1.5
+variant=fixed users=3000 seed=20261009 c=U(0.75,1.0)
+cushion buckets m6                   : 19% / 18% / 17% / 46%
+positive rate (S9 10-30%)           : 13.5%   rows=19741
+  positives: band-only 17% | shortfall-only 79% | both 3%
+  positive rate emp                  : 9.9%
+  positive rate gig                  : 20.6%
+  positive rate stu                  : 22.8%
+Red share of borrowers m12 (S3 5-25%): 8.2%
+median DSR of borrowers m12          : 22.7%  (BNM median incl. mortgages 33%)
+shortfall per user-month             : 6.8%; users with >=1 shortfall: 28.3%
+insufficient-income user-months (S7) : 2.8%
+BNPL users 32.3% (S11 32%), ever overdue in 12 months: 27.9%
+BNPL overdue at quarter-ends (point-in-time, BNM Q4 2022 = 17%): 7.3%
+worker spending / gross income       : 61.1%  (HES/HIES 2024 households: 60.8%)
+users with cash m12 > m0 ('saved')   : 59.9%  (Findex saved any: 15-24 72.7%, 25+ 58.8%)
+cushion buckets m12 (<.5/.5-1.5/1.5-2.5/>=2.5): 19% / 17% / 13% / 51%  (m1 target 13/29/18/40)
+employee gross <RM2,000              : 34.5%  (DOSM all ages 27.4%)
+card holders among workers           : 15.0%

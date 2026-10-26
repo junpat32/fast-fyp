@@ -1,0 +1,111 @@
+{
+  "_comment": "Single source of truth for the game (CLAUDE.md rule 5 applied to the game), read by engine/game.py, tools/asset_generation/scenes.py and the app. docs/game_design.md v1.6; DECISIONS D-56, D-61, D-63, D-65, D-66, D-68, D-69, D-72, D-73, D-74, D-75.",
+  "version": 2,
+  "day_starts_utc_offset_hours": 8,
+  "checkin_grace_days": 7,
+  "edit_window_hours": 48,
+  "points": {
+    "_comment": "No points per logged entry (D-75: P1); logging earns 'verified' (the month adds up) and streak milestones. Saving = money set aside minus new borrowing; paying debt down to a new low earns the separate, larger debt points, if the payments were logged in a verified month (R5).",
+    "checkin": 20,
+    "verified": 40,
+    "saved_low_rate": 0.05,
+    "saved_low": 60,
+    "saved_high_rate": 0.10,
+    "saved_high": 120,
+    "debt_low_rate": 0.05,
+    "debt_low": 80,
+    "debt_high_rate": 0.10,
+    "debt_high": 160,
+    "bills_on_time": 30,
+    "cushion_kept": {"1": 40, "3": 80},
+    "card_answered": 5,
+    "milestones": {"0.5": 50, "1": 100, "2": 150, "3": 200}
+  },
+  "reward_tiers": {
+    "_comment": "R6 (D-75): check-ins earn the least, logging second, good financial health the most; tests/test_game.py fails if the numbers break this order",
+    "order": ["checkin", "logging", "health"],
+    "checkin": ["welcome", "checkin"],
+    "learning": ["card"],
+    "logging": ["verified", "streak"],
+    "health": ["bills", "saved_5", "saved_10", "debt_5", "debt_10", "cushion_1", "cushion_3", "milestone"]
+  },
+  "welcome": {"checkin_points": 20, "free_choices": 1},
+  "streak": {"rest_days_per_week": 1, "milestone_points": {"7": 20, "30": 40, "100": 60}},
+  "epf": {
+    "_comment": "Since May 2024 each EPF contribution is split 75% Akaun Persaraan / 15% Sejahtera / 10% Fleksibel; only Fleksibel counts as cushion money (C6)",
+    "fleksibel_share": 0.10
+  },
+  "unlock": {
+    "_comment": "C1 (D-75): a room level or milestone unlocks when the month is verified, or when the cushion holds at the next check-in",
+    "hold_check_ins": 2
+  },
+  "verification": {
+    "_comment": "Option 2 (D-75): a month is verified when something was logged, the logged money in covers the month's income, and the change in the user's money matches logged money in - out; tolerance max(RM, share of income)",
+    "tolerance_rm": 100,
+    "tolerance_income_share": 0.10,
+    "trust_own_costs_after_verified": 2,
+    "out_of_last_check_ins": 3
+  },
+  "game_cushion": {
+    "_comment": "counted money / max(3-month average of logged essentials + debt payments, declared typical costs (or a share of income if none), the plausibility floor unless the user's costs are trusted) (game_design §7a, D-75)",
+    "logged_cost_window_months": 3,
+    "floor_share_of_income_if_undeclared": 0.60,
+    "plausible_cost_floor": {
+      "_comment": "Option 1 (D-75): P10 of monthly essentials + debt payments by user type and living arrangement in the DOSM-calibrated synthetic population (data/synthetic/medium_seed20261009)",
+      "employee": {"own": 910, "with_parents": 630},
+      "gig": {"own": 590, "with_parents": 480},
+      "student": {"own": 310, "with_parents": 220}
+    }
+  },
+  "goals": {
+    "_comment": "P2 (D-75): a personal monthly goal for the garden; progress = money set aside + debt paid down (C2)",
+    "min_share_of_income": 0.02,
+    "min_rm": 10,
+    "suggested": {"employee": {"share": 0.10}, "gig": {"share": 0.05}, "student": {"rm": 30}},
+    "percent_of_month_income_for": ["gig"]
+  },
+  "room_level_at_cushion": {"2": 0.5, "3": 1, "4": 2, "5": 3},
+  "garden": {
+    "opens_after_check_ins": 3,
+    "qualifying_cushion_months": 1.0,
+    "level_at_qualifying_months": {"1": 0, "2": 2, "3": 4, "4": 6},
+    "plot_radius": {"1": 4, "2": 6, "3": 9, "4": 14},
+    "bed_back_cell": [6, 8],
+    "bed_size": {"1": [2, 2], "2": [2, 3], "3": [3, 3], "4": [3, 4]},
+    "bed_growth_after_g4": [[3, 5], [4, 5], [4, 6], [5, 6]],
+    "tree_from_garden_level": 4,
+    "plant_tier_at_qualifying_months": {"1": 0, "2": 4, "3": 12, "4": 24},
+    "plants": {
+      "serai": 1, "pandan": 1, "chilli": 1,
+      "bunga_raya": 2, "bougainvillea": 2, "ixora": 2,
+      "orchid": 3, "frangipani": 3,
+      "torch_ginger": 4, "jade_vine": 4
+    },
+    "animal_slots_at_qualifying_months": [2, 6, 18],
+    "animals": ["chicken"],
+    "max_animals_per_type": 4
+  },
+  "decorations": {
+    "room": ["dining_set", "storage_cabinet", "curtains_sage", "curtains_peach", "curtains_blue", "rug_green",
+             "rug_terracotta", "rug_blue", "wall_art_kampung", "wall_art_flowers", "desk_plant"],
+    "garden": ["bench", "bench_improved", "garden_lamp", "lantern", "bird_bath", "decorative_stones",
+               "garden_arch", "outdoor_table", "outdoor_chair", "mailbox", "bicycle_rack", "fountain"]
+  },
+  "growth": {
+    "_comment": "growing day = a day whose latest monthly result is not 'really bad' (C5, D-75; was 'not Red', D-74)",
+    "young_after_growing_days": 7,
+    "full_after_growing_days": 21,
+    "tree_stage_growing_days": 14,
+    "tree_stages": 7
+  },
+  "choices": {"points_per_choice": 200},
+  "really_bad": {
+    "_comment": "RED and (shortfall or forecast probability >= ratio x base rate) (D-73); after rest_after_months in a row, plants rest calmly and the app suggests AKPK (I3, D-75)",
+    "band": "RED",
+    "forecast_ratio": 2.0,
+    "rest_after_months": 2
+  },
+  "badges": {"cushion_builder_months": 1, "steady_saver_months_in_a_row": 3, "honest_tracker_streak_days": 30},
+  "coin_jar_fills_at_cushion": [0.5, 1, 2, 3],
+  "savings_plant_stages_at_saved_months": [1, 2, 3, 6]
+}

@@ -1,0 +1,151 @@
+# FAST generator configuration. Mirrors docs/calibration_table.md (C-xx IDs) and
+# docs/generator_spec.md v1.0 (frozen 2026-10-12). Change a value here and in the
+# calibration table together (calibration rule 4); stay inside the §16 tested range (D-45).
+
+seed: 20261009                 # §15
+n_users: 1000                  # Decision A
+months: 12                     # calendar year 2025, month 1 = January
+
+noise_levels:                  # §12
+  low:    {scale: 0.5, hidden_cost_share: 0.00}
+  medium: {scale: 1.0, hidden_cost_share: 0.03}
+  high:   {scale: 1.5, hidden_cost_share: 0.06}
+hidden_cost_sigma_log: 0.5
+
+population:
+  employment_mix: {employee: 0.70, gig: 0.15, student: 0.15}     # C-22, D-24
+  worker_age: [18, 35]                                           # D-37
+  student_age: [18, 23]
+
+traits:                                                          # §3a (assumptions)
+  imp_beta: [2, 5]
+  dis_beta: [5, 2]
+  ovc_beta: [2, 4]
+  rho_imp_dis: -0.4
+  rho_imp_ovc: 0.3
+
+income:
+  employee_median_gross_by_max_age: [[19, 1700], [24, 1900], [29, 2600], [35, 3200]]   # C-01
+  employee_sigma_log: 0.35                                       # C-02
+  min_wage: 1700                                                 # C-36
+  epf_rate: 0.11                                                 # C-07
+  socso_eis_rate: 0.007                                          # C-08
+  gig_median: 2500                                               # C-18
+  gig_sigma_log: 0.70                                            # C-18
+  student_range: [500, 1200]
+  sigma_inc: {employee: [0.03, 0.08], gig: [0.15, 0.35], student: [0.20, 0.40]}   # §3a, C-18
+  # C-25, D-47: spell lengths from DOSM LFS 2025 (63.7% of actively unemployed < 3 months,
+  # 5.6% > 12 months); monthly rates set so steady-state unemployment ≈ DOSM 6.1% (≤30) / 3.0%
+  job_loss:
+    young_max_age: 30
+    p_young: 0.0225
+    p_older: 0.011
+    spell_months: [[0.64, 1, 2], [0.30, 3, 6], [0.06, 7, 12]]   # [share, min, max]
+  pay_rise: {p: 0.0833333, pct: [0.03, 0.07]}                    # C-25
+  gig_slow: {p: 0.08, factor: [0.5, 0.8]}                        # C-25
+
+spending:
+  consumption_ratio: [0.75, 1.00]                                # C-23, D-40
+  ratio_clip: [0.60, 1.05]
+  trait_shift: 0.10                                              # ±0.10 per unit imp / dis
+  # HES 2024 Table 3.6, urban, head aged 25-34 (C-03, D-28); shares of TOTAL spending
+  essential_shares: {housing: 0.240, food_home: 0.151, transport: 0.104,
+                     communication: 0.065, health: 0.024, education: 0.010}
+  discretionary_shares: {eating_out: 0.187, personal_misc: 0.056, recreation: 0.029,
+                         clothing: 0.027, furnishings: 0.048, insurance_fin: 0.044,
+                         alcohol_tobacco: 0.015}
+  living_with_parents: {p_18_24: 0.6, p_25_35: 0.3, housing_factor: 0.4}         # C-34
+  essential_sigma_log: 0.05
+  discretionary_sigma_log: {base: 0.10, per_imp: 0.40}
+  festive: {weights: {1: 0.192, 3: 0.652, 10: 0.063, 12: 0.093}, multiplier: [1.2, 1.4]}  # C-24, C-35, C-19
+  semester: {months: [3, 8, 11], multiplier: 1.15}               # C-26
+  budget_factor: 0.95                                            # §5
+
+debt:
+  ptptn: {p: 0.45, min_age: 23, loan: [15000, 50000], ujrah_rate: 0.01,
+          big_loan_threshold: 22000, tenure_months_big: 180, tenure_months_small: 120}   # C-14
+  vehicles:                                                      # C-29, D-35, D-40
+    employee: {car: 0.90, motorbike: 0.75}
+    gig_motorbike_share: 0.55
+    student: {car: 0.32, motorbike: 0.13}
+  vehicle_loan: {p: 0.5, p_under_21: 0.1, student: 0.0,         # C-17, D-40
+                 car_payment: [400, 900], motorbike_payment: [150, 400],
+                 car_tenure_months: 108, motorbike_tenure_months: 60}              # C-31
+  personal_loan: {p: 0.07, min_age: 21, payment: [200, 800], tenure_months: 60}   # C-32
+  family_support: {p: 0.17, amount: [100, 500]}                  # C-33
+  credit_card:                                                   # C-15, C-16, C-27, C-28, C-30
+    share_of_workers: 0.15
+    min_age: 21
+    min_gross: 2000
+    limit_multiple: 2
+    min_payment_rate: 0.05
+    min_payment_floor: 50
+    apr: {prompt: 0.15, mostly: 0.17, poor: 0.18}
+    start_balance_share: [0.10, 0.60]
+  bnpl:                                                          # C-12, C-13
+    user_share: 0.32
+    max_p: 0.9
+    purchases_per_month: 2.7
+    amount_median: 60
+    amount_sigma_log: 0.9
+    amount_clip: [10, 2000]
+    instalments: 3
+    late_fee: [10, 30]
+
+cushion_buckets:                                                 # C-21, D-31: [share, low, high] months
+  - [0.13, 0.0, 0.5]
+  - [0.29, 0.5, 1.5]
+  - [0.18, 1.5, 2.5]
+  - [0.40, 2.5, 6.0]
+
+behaviour:                                                       # §9, D-41
+  correction_kappa: [0.10, 0.25]
+  correction_months: 3
+  target_floor: 50
+
+flags:                                                           # §9
+  impulsivity_cv: 0.35
+  impulsivity_overruns: 2
+  overconfidence_achievement: 0.60
+  overconfidence_target_keep: 0.80
+  dc_cut: 0.95
+  dc_rate_rise: 0.03
+
+shocks:                                                          # §7, C-20, life_events.md
+  k: 1.0
+  clustering: 1.5
+  gig_multiplier: 1.8
+  gig_events: [L01, L02, L03, L04, L06, L07]
+  student_laptop_multiplier: 2.0
+  # id, who, cost_low, cost_high, freq_per_year, is_shock, category
+  deck:
+    - [L01, motorbike, 80, 300, 1.0, false, transport]
+    - [L02, motorbike, 400, 1200, 0.2, true, transport]
+    - [L03, car, 250, 700, 0.5, true, transport]
+    - [L04, car, 800, 2500, 0.2, true, transport]
+    - [L05, vehicle, 150, 300, 0.3, false, transport]
+    - [L06, all, 150, 800, 0.15, true, communication]
+    - [L07, all, 600, 2000, 0.05, true, communication]
+    - [L08, all, 1500, 3000, 0.05, true, education]
+    - [L09, all, 40, 150, 1.0, false, health]
+    - [L10, all, 100, 600, 0.2, true, health]
+    - [L11, all, 300, 2000, 0.05, true, health]
+    - [L12, all, 300, 1500, 0.15, true, family_transfer]
+    - [L13, all, 200, 800, 0.1, true, personal_misc]
+    - [L14, all, 100, 500, 0.5, false, personal_misc]
+    - [L15, nonstudent, 800, 2500, 0.05, true, housing]
+    - [L16, nonstudent, 300, 1500, 0.1, true, housing]
+    - [L17, nonstudent, 100, 300, 0.2, false, housing]
+    - [L18, all, 200, 3000, 0.03, true, personal_misc]
+    - [L19, student, 300, 1200, 0.1, true, education]
+    - [L20, student, 100, 400, 0.3, false, education]
+    - [L21, gig, 80, 400, 0.3, false, transport]
+
+transactions:                                                    # §10 (implementation assumptions)
+  # mean number of transactions per month in each spending category
+  rates: {housing: 2, food_home: 6, transport: 6, communication: 1, health: 1, education: 1,
+          eating_out: 14, personal_misc: 3, recreation: 2, clothing: 1, furnishings: 1,
+          insurance_fin: 1, alcohol_tobacco: 2}
+  dirichlet_alpha: 2.0
+  merchants_per_category: 40
+  source_mix: {manual: 0.60, notification: 0.30, ocr: 0.10}

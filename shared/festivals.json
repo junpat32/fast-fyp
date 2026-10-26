@@ -1,0 +1,11 @@
+{
+ "_comment": "Festivals the sign-up asks about (D-124; D-35, D-42: asked, never inferred) and the dates they fall on in Malaysia, for profiles.festive_month: the month of the next one on or after the sign-up day (the engine treats it as a yearly month, generator/config.yaml festive). Lunar and Hindu festivals move every year; the dates below are the expected public holidays (Deepavali 2027 the least certain); add later years before they are needed. The study (Dec 2026 to Jan 2027) and the persona clock (2026) are covered.",
+ "festivals": [
+  {"key": "hari_raya_aidilfitri", "label": "Hari Raya Aidilfitri", "dates": ["2026-03-20", "2027-03-10"]},
+  {"key": "chinese_new_year", "label": "Chinese New Year", "dates": ["2026-02-17", "2027-02-06"]},
+  {"key": "deepavali", "label": "Deepavali", "dates": ["2026-11-08", "2027-10-29"]},
+  {"key": "christmas", "label": "Christmas", "dates": ["2026-12-25", "2027-12-25"]},
+  {"key": "hari_gawai", "label": "Hari Gawai", "dates": ["2026-06-01", "2027-06-01"]},
+  {"key": "pesta_kaamatan", "label": "Pesta Kaamatan", "dates": ["2026-05-30", "2027-05-30"]}
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["./*.ts", "../*.ts", "../../api/client.ts", "../../api/validate.ts", "../../api/types.ts",
+              "../../api/entries.ts"],
+  "exclude": []
+}

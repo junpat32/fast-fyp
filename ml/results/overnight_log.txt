@@ -1,0 +1,297 @@
+
+===== overnight run started 2026-10-17 00:40:02 =====
+
+===== sensitivity analysis (~15 min): starting =====
+[     6s] default                -                              label rate 12.0%  delta +0.189
+[    13s] wage_spread            0.25                           label rate 12.5%  delta +0.160
+[    18s] wage_spread            0.60                           label rate 12.6%  delta +0.170
+[    24s] employment_mix         65/30/5 (gig-heavy)            label rate 12.7%  delta +0.157
+[    30s] employment_mix         80/10/10                       label rate 12.2%  delta +0.189
+[    36s] gig_median             RM2,000 (-20%)                 label rate 13.1%  delta +0.163
+[    42s] gig_median             RM3,000 (+20%)                 label rate 11.1%  delta +0.189
+[    47s] gig_cv                 0.10-0.30                      label rate 11.4%  delta +0.185
+[    53s] gig_cv                 0.25-0.45                      label rate 13.0%  delta +0.191
+[    60s] consumption            U(0.70, 0.95)                  label rate 9.9%  delta +0.156
+[    66s] consumption            U(0.80, 1.05)                  label rate 15.5%  delta +0.181
+[    71s] job_loss               x0.5                           label rate 11.5%  delta +0.181
+[    77s] job_loss               x1.5                           label rate 12.8%  delta +0.175
+[    83s] gig_spread             0.50                           label rate 11.6%  delta +0.171
+[    89s] gig_spread             0.90                           label rate 12.3%  delta +0.187
+[    94s] festive                x1.1-1.3                       label rate 11.9%  delta +0.174
+[   100s] festive                x1.4-1.6                       label rate 12.3%  delta +0.183
+[   106s] shock_scale            0.5                            label rate 7.8%  delta +0.201
+[   112s] shock_scale            1.7                            label rate 21.0%  delta +0.147
+[   117s] semester               x1.05                          label rate 11.9%  delta +0.182
+[   123s] semester               x1.30                          label rate 12.2%  delta +0.199
+[   129s] bnpl_share             20%                            label rate 11.2%  delta +0.196
+[   135s] bnpl_share             45%                            label rate 12.3%  delta +0.172
+[   141s] bnpl_rate              1.5                            label rate 11.2%  delta +0.153
+[   147s] bnpl_rate              4.0                            label rate 12.2%  delta +0.168
+[   152s] pl_holding             0.03                           label rate 11.7%  delta +0.183
+[   158s] pl_holding             0.15                           label rate 12.7%  delta +0.175
+[   164s] pl_payment             -30%                           label rate 11.7%  delta +0.184
+[   170s] pl_payment             +30%                           label rate 11.9%  delta +0.174
+[   176s] family_holding         0.35                           label rate 13.2%  delta +0.172
+[   182s] family_amount          -50%                           label rate 11.8%  delta +0.189
+[   188s] family_amount          +50%                           label rate 12.3%  delta +0.175
+[   194s] parents_share          -0.2 (0.4 / 0.1)               label rate 13.1%  delta +0.186
+[   200s] parents_share          +0.2 (0.8 / 0.5)               label rate 11.0%  delta +0.157
+[   205s] parents_housing        x0.2                           label rate 11.5%  delta +0.175
+[   212s] parents_housing        x0.6                           label rate 13.2%  delta +0.175
+[   218s] vehicle_payment        -30%                           label rate 11.1%  delta +0.167
+[   224s] vehicle_payment        +30%                           label rate 12.9%  delta +0.201
+[   230s] vehicle_own_employee   both x0.6                      label rate 10.6%  delta +0.179
+[   236s] vehicle_own_student    0.15                           label rate 11.7%  delta +0.180
+[   241s] vehicle_own_student    0.45                           label rate 12.0%  delta +0.184
+[   247s] vehicle_loan           0.3                            label rate 11.2%  delta +0.186
+[   253s] vehicle_loan           0.7                            label rate 13.0%  delta +0.163
+[   259s] pay_rise               x0.5                           label rate 12.3%  delta +0.179
+[   265s] pay_rise               x2                             label rate 11.3%  delta +0.178
+[   271s] gig_slow               x0.5                           label rate 11.8%  delta +0.167
+[   277s] gig_slow               x2                             label rate 12.7%  delta +0.170
+[   283s] rho_imp_dis            -0.2 (weaker)                  label rate 12.0%  delta +0.166
+[   289s] rho_imp_dis            -0.6 (stronger)                label rate 12.0%  delta +0.167
+[   295s] rho_imp_ovc            0.1                            label rate 12.0%  delta +0.189
+[   301s] rho_imp_ovc            0.5                            label rate 12.0%  delta +0.189
+[   307s] insufficient           RM200                          label rate 12.0%  delta +0.183
+[   312s] insufficient           RM500                          label rate 11.1%  delta +0.153
+[   319s] cushion_shift          every bucket one level down (own cash only) label rate 17.1%  delta +0.181
+[   325s] cushion_cap            4 months                       label rate 12.9%  delta +0.181
+[   330s] cushion_cap            9 months                       label rate 11.4%  delta +0.184
+[   336s] card_holding           0.10                           label rate 13.4%  delta +0.175
+[   342s] card_holding           0.25                           label rate 13.4%  delta +0.193
+[   348s] card_limit             3 x above RM3,000 a month (no BNM cap there) label rate 12.0%  delta +0.187
+[   354s] budget_rule            0.90                           label rate 12.0%  delta +0.188
+[   360s] budget_rule            1.00                           label rate 12.0%  delta +0.187
+[   366s] correction_months      1 month                        label rate 13.0%  delta +0.193
+[   372s] correction_kappa       U(0.05, 0.15)                  label rate 13.2%  delta +0.188
+[   378s] goal_stickiness        half                           label rate 12.0%  delta +0.189
+[   384s] goal_stickiness        off                            label rate 12.0%  delta +0.189
+[   390s] card_start_balance     U(0%, 30%)                     label rate 12.0%  delta +0.183
+[   396s] card_start_balance     U(30%, 90%)                    label rate 12.0%  delta +0.188
+[   402s] car_tenure             7 years                        label rate 12.0%  delta +0.190
+done in 402s -> C:\Users\User\Desktop\FYP 2\ml\results\SENSITIVITY.md
+===== sensitivity analysis (~15 min): done in 6.7 min =====
+
+===== Monte Carlo comparator (~35 min): starting =====
+about 26.0 minutes for 6646 rows
+{
+ "label": {
+  "prevalence": 0.11977129100210653,
+  "point": {
+   "mc": 0.42713483052250767,
+   "lr": 0.4400742773376481,
+   "B0": 0.2843472399189588
+  },
+  "ci": {
+   "mc": [
+    0.36211451420177754,
+    0.49755153392311624
+   ],
+   "lr": [
+    0.37011107870760995,
+    0.5125983776574258
+   ],
+   "B0": [
+    0.23931519635809884,
+    0.34231172659729064
+   ]
+  },
+  "mc_minus_lr": [
+   -0.01293944681514042,
+   -0.05783339964684252,
+   0.03004715340904466
+  ],
+  "mc_minus_b0": [
+   0.14278759060354884,
+   0.09239724888952286,
+   0.19050395504659826
+  ]
+ },
+ "shortfall_part": {
+  "prevalence": 0.09058080048149263,
+  "point": {
+   "mc": 0.4790810412045352,
+   "lr": 0.43170261990196085,
+   "B0": 0.2966022408696178
+  },
+  "ci": {
+   "mc": [
+    0.40753137519561733,
+    0.5564300336315444
+   ],
+   "lr": [
+    0.3507013527718769,
+    0.5138795843241191
+   ],
+   "B0": [
+    0.2452750110815582,
+    0.3639623661628934
+   ]
+  },
+  "mc_minus_lr": [
+   0.04737842130257436,
+   -0.009069962834074295,
+   0.10717391679459695
+  ],
+  "mc_minus_b0": [
+   0.18247880033491742,
+   0.11946560113499678,
+   0.2437492572993869
+  ]
+ }
+}
+===== Monte Carlo comparator (~35 min): done in 0.8 min =====
+
+===== O2 addendum (seconds): starting =====
+# O2 report addendum (pre-registered reporting items, spec v1.0 §11 and §13)
+
+Generated by `ml/report_addendum.py` (D-98) from the saved files of the **2026-10-12 run**; no model was re-run and `O2_REPORT.md` is unchanged. It adds the items the frozen spec says are always reported but the report showed only for medium noise, or not at all.
+
+Frozen spec SHA-256 today: `6849e796c2d27f53c19e8eb3f4ce751b10c5e4109723b176edcb9ef2521f5aa1` (matches the one printed in `O2_REPORT.md` and recorded in `docs/DECISIONS.md`).
+
+## Checklist: where each pre-registered item is reported
+
+| Item (spec §13 "Always reported", §11) | Where |
+|---|---|
+| All models × all noise levels (PR-AUC with CIs) | O2_REPORT.md: PR-AUC table |
+| Confusion matrices | O2_REPORT.md (medium); this addendum §2 (all levels) |
+| Brier scores, raw and after isotonic calibration | O2_REPORT.md (medium); this addendum §2 (all levels) |
+| Reliability plots | `<noise>_seed*/reliability.png`, all three levels (raw and calibrated curves) |
+| SHAP global summary + 3 persona explanations | `medium_seed*/shap_summary.png`, `shap_personas.md` |
+| Every failure | O2_REPORT.md: leakage alarms (none); run log: no errors; this addendum §1 (exclusions) |
+| Label prevalence | O2_REPORT.md, per noise level |
+| Positives by component (band only / shortfall only / both) | O2_REPORT.md (medium); this addendum §3 (all levels) |
+| Positives by starting band | O2_REPORT.md (medium); this addendum §3 (all levels) |
+| PR-AUC per employment type | O2_REPORT.md (medium); this addendum §4 (all levels) |
+| Rows excluded by the label rule, counted (§11) | this addendum §1 |
+| Effect size (ΔPR-AUC point estimate) with the verdict | O2_REPORT.md: success criterion |
+| All pairwise differences | O2_REPORT.md: pairwise table (medium, the criterion's level) |
+| Robustness: 20 seeds × 3 levels, median Δ, share Δ > 0 | O2_REPORT.md: robustness |
+| Comparator (Should): app Monte Carlo P(shortfall) | this addendum §5 |
+
+## 1. Rows excluded by the label rule (§11)
+
+Rows where the band at t or t+3 is "insufficient income" are excluded from the label.
+
+| Noise | Label rows | Excluded | Share | Reason |
+|---|---|---|---|---|
+| medium | 7000 | 354 | 5.1% | insufficient income 354 |
+| low | 7000 | 350 | 5.0% | insufficient income 350 |
+| high | 7000 | 380 | 5.4% | insufficient income 380 |
+
+## 2. Secondary metrics, every noise level
+
+### medium (the criterion's level; as in O2_REPORT.md)
+
+| Contender | Recall (positives) | Macro-F1 | Brier raw | Brier calibrated | Confusion [[TN, FP], [FN, TP]] |
+|---|---|---|---|---|---|
+| B0 base rates | 0.604 | 0.642 | 0.0927 | 0.0926 | [[4781, 1069], [315, 481]] |
+| B1 rule heuristic | 0.521 | 0.591 | n/a (not a probability) | 0.0976 | [[4581, 1269], [381, 415]] |
+| B2 Markov chain | 0.604 | 0.642 | 0.2208 | 0.0940 | [[4781, 1069], [315, 481]] |
+| Logistic regression | 0.499 | 0.679 | 0.1671 | 0.0855 | [[5255, 595], [399, 397]] |
+| Random forest | 0.579 | 0.690 | 0.1409 | 0.0831 | [[5153, 697], [335, 461]] |
+| XGBoost | 0.503 | 0.688 | 0.1595 | 0.0832 | [[5297, 553], [396, 400]] |
+| Oracle (hidden traits; reference only) | 0.533 | 0.683 | 0.1549 | 0.0842 | [[5205, 645], [372, 424]] |
+
+### low
+
+| Contender | Recall (positives) | Macro-F1 | Brier raw | Brier calibrated | Confusion [[TN, FP], [FN, TP]] |
+|---|---|---|---|---|---|
+| B0 base rates | 0.546 | 0.637 | 0.0734 | 0.0733 | [[5212, 839], [272, 327]] |
+| B1 rule heuristic | 0.471 | 0.592 | n/a (not a probability) | 0.0769 | [[5047, 1004], [317, 282]] |
+| B2 Markov chain | 0.546 | 0.637 | 0.1738 | 0.0739 | [[5212, 839], [272, 327]] |
+| Logistic regression | 0.541 | 0.662 | 0.1607 | 0.0694 | [[5376, 675], [275, 324]] |
+| Random forest | 0.454 | 0.675 | 0.1543 | 0.0669 | [[5610, 441], [327, 272]] |
+| XGBoost | 0.564 | 0.671 | 0.1429 | 0.0665 | [[5383, 668], [261, 338]] |
+| Oracle (hidden traits; reference only) | 0.588 | 0.672 | 0.1463 | 0.0666 | [[5345, 706], [247, 352]] |
+
+### high
+
+| Contender | Recall (positives) | Macro-F1 | Brier raw | Brier calibrated | Confusion [[TN, FP], [FN, TP]] |
+|---|---|---|---|---|---|
+| B0 base rates | 0.675 | 0.676 | 0.1206 | 0.1204 | [[4314, 1160], [373, 773]] |
+| B1 rule heuristic | 0.579 | 0.609 | n/a (not a probability) | 0.1305 | [[4040, 1434], [483, 663]] |
+| B2 Markov chain | 0.675 | 0.676 | 0.2484 | 0.1217 | [[4314, 1160], [373, 773]] |
+| Logistic regression | 0.626 | 0.708 | 0.1675 | 0.1111 | [[4655, 819], [429, 717]] |
+| Random forest | 0.618 | 0.712 | 0.1556 | 0.1065 | [[4696, 778], [438, 708]] |
+| XGBoost | 0.583 | 0.713 | 0.1544 | 0.1055 | [[4787, 687], [478, 668]] |
+| Oracle (hidden traits; reference only) | 0.634 | 0.710 | 0.1536 | 0.1066 | [[4645, 829], [420, 726]] |
+
+
+## 3. Label breakdown, every noise level
+
+### medium (the criterion's level; as in O2_REPORT.md)
+
+Positives: band worsening only 194 (24%), shortfall only 576 (72%), both 26 (3%).
+
+| Starting band | Rows | Positive rate |
+|---|---|---|
+| GREEN | 5023 | 10.8% |
+| RED | 363 | 21.8% |
+| YELLOW | 1260 | 14.0% |
+
+### low
+
+Positives: band worsening only 151 (25%), shortfall only 433 (72%), both 15 (3%).
+
+| Starting band | Rows | Positive rate |
+|---|---|---|
+| GREEN | 5065 | 8.2% |
+| RED | 347 | 17.3% |
+| YELLOW | 1238 | 9.8% |
+
+### high
+
+Positives: band worsening only 218 (19%), shortfall only 882 (77%), both 46 (4%).
+
+| Starting band | Rows | Positive rate |
+|---|---|---|
+| GREEN | 4965 | 15.7% |
+| RED | 354 | 28.5% |
+| YELLOW | 1301 | 20.5% |
+
+
+## 4. PR-AUC by employment type, every noise level
+
+### medium (the criterion's level; as in O2_REPORT.md)
+
+| Type | B0 base rates | B1 rule heuristic | B2 Markov chain | Logistic regression | Random forest | XGBoost | Oracle (hidden traits; reference only) |
+|---|---|---|---|---|---|---|---|
+| employee | 0.237 | 0.194 | 0.201 | 0.318 | 0.378 | 0.392 | 0.387 |
+| gig | 0.425 | 0.272 | 0.336 | 0.528 | 0.489 | 0.462 | 0.483 |
+| student | 0.428 | 0.405 | 0.453 | 0.546 | 0.452 | 0.476 | 0.483 |
+
+### low
+
+| Type | B0 base rates | B1 rule heuristic | B2 Markov chain | Logistic regression | Random forest | XGBoost | Oracle (hidden traits; reference only) |
+|---|---|---|---|---|---|---|---|
+| employee | 0.193 | 0.152 | 0.166 | 0.240 | 0.304 | 0.311 | 0.322 |
+| gig | 0.372 | 0.242 | 0.292 | 0.473 | 0.478 | 0.511 | 0.474 |
+| student | 0.376 | 0.379 | 0.405 | 0.487 | 0.464 | 0.460 | 0.497 |
+
+### high
+
+| Type | B0 base rates | B1 rule heuristic | B2 Markov chain | Logistic regression | Random forest | XGBoost | Oracle (hidden traits; reference only) |
+|---|---|---|---|---|---|---|---|
+| employee | 0.305 | 0.258 | 0.272 | 0.413 | 0.477 | 0.492 | 0.492 |
+| gig | 0.516 | 0.406 | 0.507 | 0.618 | 0.665 | 0.660 | 0.639 |
+| student | 0.504 | 0.459 | 0.515 | 0.575 | 0.551 | 0.557 | 0.571 |
+
+## 5. Comparator: the app's Monte Carlo P(shortfall in 3 months)
+
+Scored on 6646 rows from 990 users (medium noise, master seed); 0.8 minutes. Design fixed before the run: `ml/mc_comparator.py` (D-98). Reported only; not part of the O2 criterion.
+
+| Target | Monte Carlo | Logistic regression | B0 base rates | MC − LR | MC − B0 |
+|---|---|---|---|---|---|
+| O2 label (band worse or shortfall) (prevalence 12.0%) | 0.427 [0.362, 0.498] | 0.440 [0.370, 0.513] | 0.284 [0.239, 0.342] | -0.013 [-0.058, +0.030] | +0.143 [+0.092, +0.191] |
+| shortfall part only (prevalence 9.1%) | 0.479 [0.408, 0.556] | 0.432 [0.351, 0.514] | 0.297 [0.245, 0.364] | +0.047 [-0.009, +0.107] | +0.182 [+0.119, +0.244] |
+
+## Notes
+
+- **B0 and B2 have identical confusion matrices at every noise level.** This is expected, not an error: both baselines score a row only by its state (band × cushion bucket, 9 states), so at the threshold that maximises F1 they flag the same states, and their 0/1 predictions coincide (checked: identical on all 6,646 medium-noise rows). Their rankings differ, which is why their PR-AUCs differ.
+- `O2_REPORT.md` says the comparator was not available because T-15 was not built; T-15 has since been built and accepted as an illustrative scenario (D-79, D-81), and the comparator is §5 above. The report itself is kept as generated, as the record of the pre-registered run.
+
+===== O2 addendum (seconds): done in 0.0 min =====
+
+===== ALL FINISHED 2026-10-17 00:47:31: sensitivity analysis (~15 min): done; Monte Carlo comparator (~35 min): done; O2 addendum (seconds): done =====

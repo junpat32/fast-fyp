@@ -1,0 +1,67 @@
+﻿[     0s] main run: medium, seed 20261009
+           best ML lr 0.440 vs best baseline B0 0.284; delta CI [+0.096, +0.212]
+[   117s] main run: low, seed 20261009
+           best ML xgb 0.404 vs best baseline B0 0.237; delta CI [+0.109, +0.222]
+[   222s] main run: high, seed 20261009
+           best ML xgb 0.563 vs best baseline B0 0.363; delta CI [+0.164, +0.235]
+[   342s] robustness medium seed 930026932: delta +0.157
+[   351s] robustness medium seed 1566963252: delta +0.219
+[   363s] robustness medium seed 465859122: delta +0.181
+[   369s] robustness medium seed 4127385812: delta +0.200
+[   377s] robustness medium seed 1105978535: delta +0.216
+[   383s] robustness medium seed 2997674933: delta +0.182
+[   390s] robustness medium seed 2386896673: delta +0.209
+[   399s] robustness medium seed 650314547: delta +0.176
+[   409s] robustness medium seed 2851781981: delta +0.188
+[   416s] robustness medium seed 1108596539: delta +0.178
+[   423s] robustness medium seed 3832783099: delta +0.212
+[   430s] robustness medium seed 3542368637: delta +0.229
+[   438s] robustness medium seed 3737565222: delta +0.158
+[   445s] robustness medium seed 3136950529: delta +0.206
+[   453s] robustness medium seed 1643034395: delta +0.186
+[   464s] robustness medium seed 2783753063: delta +0.204
+[   471s] robustness medium seed 2534838147: delta +0.172
+[   478s] robustness medium seed 1574917299: delta +0.185
+[   485s] robustness medium seed 42970061: delta +0.169
+[   492s] robustness medium seed 1081816997: delta +0.169
+[   499s] robustness low seed 930026932: delta +0.130
+[   507s] robustness low seed 1566963252: delta +0.171
+[   515s] robustness low seed 465859122: delta +0.174
+[   522s] robustness low seed 4127385812: delta +0.178
+[   531s] robustness low seed 1105978535: delta +0.172
+[   539s] robustness low seed 2997674933: delta +0.168
+[   547s] robustness low seed 2386896673: delta +0.208
+[   555s] robustness low seed 650314547: delta +0.183
+[   563s] robustness low seed 2851781981: delta +0.167
+[   572s] robustness low seed 1108596539: delta +0.192
+[   579s] robustness low seed 3832783099: delta +0.202
+[   586s] robustness low seed 3542368637: delta +0.167
+[   594s] robustness low seed 3737565222: delta +0.189
+[   602s] robustness low seed 3136950529: delta +0.182
+[   616s] robustness low seed 1643034395: delta +0.189
+[   628s] robustness low seed 2783753063: delta +0.203
+[   636s] robustness low seed 2534838147: delta +0.176
+[   646s] robustness low seed 1574917299: delta +0.202
+[   660s] robustness low seed 42970061: delta +0.154
+[   667s] robustness low seed 1081816997: delta +0.142
+[   675s] robustness high seed 930026932: delta +0.179
+[   686s] robustness high seed 1566963252: delta +0.222
+[   694s] robustness high seed 465859122: delta +0.164
+[   701s] robustness high seed 4127385812: delta +0.200
+[   709s] robustness high seed 1105978535: delta +0.198
+[   717s] robustness high seed 2997674933: delta +0.187
+[   728s] robustness high seed 2386896673: delta +0.197
+[   735s] robustness high seed 650314547: delta +0.201
+[   743s] robustness high seed 2851781981: delta +0.209
+[   752s] robustness high seed 1108596539: delta +0.188
+[   760s] robustness high seed 3832783099: delta +0.202
+[   767s] robustness high seed 3542368637: delta +0.218
+[   773s] robustness high seed 3737565222: delta +0.198
+[   780s] robustness high seed 3136950529: delta +0.180
+[   787s] robustness high seed 1643034395: delta +0.185
+[   795s] robustness high seed 2783753063: delta +0.193
+[   803s] robustness high seed 2534838147: delta +0.170
+[   811s] robustness high seed 1574917299: delta +0.182
+[   818s] robustness high seed 42970061: delta +0.181
+[   825s] robustness high seed 1081816997: delta +0.163
+done in 825s -> C:\Users\User\Desktop\FYP 2\ml\results\O2_REPORT.md

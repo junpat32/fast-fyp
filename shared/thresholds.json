@@ -1,0 +1,42 @@
+{
+  "_comment": "Single source of truth for the risk engine (CLAUDE.md rule 5), read by the engine/API and the app. Bands: generator_spec.md §6; DECISIONS D-04, D-05, D-27; improvement confirmation D-49. Health score: D-48. User-facing flags: check S14 (generator/TUNING_LOG.md, D-41). The generator uses the frozen snapshot shared/thresholds_spec_v1.json instead.",
+  "version": 3,
+  "dsr": {
+    "green_below": 0.30,
+    "red_at_or_above": 0.60,
+    "leave_red_below": 0.55
+  },
+  "improvement_confirm_months": 2,
+  "insufficient_income_below_rm": 300,
+  "income_window_months": 3,
+  "health_score": {
+    "_status": "Decided 2026-10-13 (D-48): adapted from the Financial Health Network FinHealth Score",
+    "spend": {"full_rate": 0.10, "at_zero": 60, "zero_score_rate": -0.20},
+    "savings": {"full_months": 3},
+    "debt": {"full_below": 0.30, "red_at": 0.60, "at_red": 40, "zero_at": 1.00},
+    "bills": {"by_shortfalls": [100, 50, 0]},
+    "tiers": {"healthy": 80, "coping": 40}
+  },
+  "user_facing_flags": ["impulsivity"],
+  "flags": {
+    "_comment": "Spec §9 / D-41 flag thresholds; must equal generator/config.yaml 'flags' (tested)",
+    "impulsivity_cv": 0.35,
+    "impulsivity_overruns": 2,
+    "overconfidence_achievement": 0.60,
+    "overconfidence_target_keep": 0.80,
+    "dc_cut": 0.95,
+    "dc_rate_rise": 0.03,
+    "budget_factor": 0.95
+  },
+  "advice": {
+    "near_red_dsr": 0.50,
+    "bnpl_plans_warn": 2,
+    "cushion_first_goal_months": 1,
+    "cushion_next_goal_months": 3,
+    "forecast_elevated": 0.30
+  },
+  "explanations": {
+    "_comment": "Forecast reasons (engine/forecast.py P8, engine/reasons.yaml, D-92). drop_counterintuitive: leave out a reason whose model coefficient points against common sense (savings rate, new BNPL plans, family support, impulsivity flag in forecast_v1). On: Patrick, W1, 2026-10-16 (D-93).",
+    "drop_counterintuitive": true
+  }
+}

@@ -1,0 +1,54 @@
+# The weekly life-event cards (game_design §10, G-08; D-117). DRAFT wording, part of W2.
+# Which events: the shock-size events docs/life_events.md suggests for the app (T-07): common,
+# relatable, a mix of small and large. The funeral card (L13) is left out on purpose: too close to
+# home for someone who has just lost a person. Costs and frequencies come from the generator's deck
+# (generator/config.yaml shocks.deck), the same numbers the synthetic data uses.
+# A card is hypothetical: answering it never changes money; "Not this week" costs nothing.
+deck: [L02, L04, L06, L08, L10, L12, L16, L18]
+
+cards:
+  L02:
+    title: "Your motorbike needs a big repair"
+    text: "The engine or clutch needs work after months of riding."
+  L04:
+    title: "Your car needs a big repair"
+    text: "The aircon compressor gives out, or an accident leaves you paying the excess."
+  L06:
+    title: "Your phone screen cracked"
+    text: "It slipped out of your hand. The repair depends on the phone."
+  L08:
+    title: "Your laptop stops working"
+    text: "It won't switch on, and you need it for work or study."
+  L10:
+    title: "A toothache won't go away"
+    text: "The dentist says it needs a filling or an extraction."
+  L12:
+    title: "Your family needs help"
+    text: "A parent is in hospital, or the house back home needs an urgent repair."
+  L16:
+    title: "The fridge breaks down"
+    text: "Or the washing machine, or the water heater. It can't wait."
+  L18:
+    title: "An online deal turns out to be a scam"
+    text: "The money is gone. If it ever happens for real, call the National Scam Response Centre on 997 at once."
+
+# Shown under the app's badge ("✓ Covered", "Partly covered", "Not covered yet"): it adds to it, never repeats it
+coverage:
+  covered: "Your money now would pay for all of it."
+  partly: "Your money now would pay for part of it."
+  not_yet: "A cushion is what helps here, a little at a time."
+
+# Every answer is fine (no wrong answer, game_design §10); "after" is the card's gentle reply.
+responses:
+  use_savings:
+    label: "I'd use my savings"
+    after: "That's exactly what a cushion is for. Keeping one ready makes a week like this easier."
+  cut_spending:
+    label: "I'd cut back next month"
+    after: "Cutting back for a month works for smaller costs. A cushion means you wouldn't have to."
+  set_goal:
+    label: "I'd set a small savings goal for it"
+    after: "A small goal adds up. You can set one at your next check-in."
+  not_this_week:
+    label: "Not this week"
+    after: "No problem. A new card comes next week."

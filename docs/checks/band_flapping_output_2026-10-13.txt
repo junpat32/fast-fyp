@@ -1,0 +1,27 @@
+﻿income measure     type  band changes / user-year  flip-backs (A-B-A) / user-year users with any flip-back Red user-months
+       median3 employee                     0.287                           0.069                     4.8%            6.4%
+       median3      gig                     0.647                           0.180                    10.2%            4.1%
+       median3  student                     0.640                           0.151                    10.8%            0.1%
+       median3      all                     0.396                           0.099                     6.5%            5.2%
+         mean3 employee                     0.468                           0.071                     4.0%            7.7%
+         mean3      gig                     0.527                           0.132                     8.4%            3.7%
+         mean3  student                     0.576                           0.151                    11.5%            0.0%
+         mean3      all                     0.493                           0.092                     5.8%            6.0%
+       median6 employee                     0.316                           0.062                     4.2%            6.9%
+       median6      gig                     0.389                           0.126                     9.0%            3.7%
+       median6  student                     0.554                           0.165                    12.2%            0.0%
+       median6      all                     0.361                           0.087                     6.1%            5.4%
+       confirm employee                     0.304                           0.068                     4.6%            5.0%
+       confirm      gig                     0.623                           0.180                    10.2%            3.1%
+       confirm  student                     0.633                           0.151                    10.8%            0.0%
+       confirm      all                     0.403                           0.098                     6.4%            4.0%
+
+flip-backs at the Green/Yellow line: 94; at the Yellow/Red line: 5
+median3 + Green/Yellow buffer (27%), employee: users with any flip-back 1.9%
+median3 + Green/Yellow buffer (27%), gig     : users with any flip-back 6.6%
+median3 + Green/Yellow buffer (27%), student : users with any flip-back 6.5%
+median3 + Green/Yellow buffer (27%), all     : users with any flip-back 3.3%
+2-month confirmation for improvements    gig : users with any flip-back 1.2%; changes/user-year 0.47; Red user-months 4.5%
+2-month confirmation for improvements    all : users with any flip-back 0.6%; changes/user-year 0.31; Red user-months 5.4%
+confirmation + 27% buffer                gig : users with any flip-back 1.2%; changes/user-year 0.46; Red user-months 4.5%
+confirmation + 27% buffer                all : users with any flip-back 1.0%; changes/user-year 0.29; Red user-months 5.4%

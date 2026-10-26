@@ -1,0 +1,4 @@
+key,assumption,setting,rows,prevalence,B0,B1,B2,lr,rf,xgb,best_ml,best_baseline,delta,red_share,insufficient_share
+default,All assumptions at their defaults,-,1327,0.1364,0.3739,0.3787,0.3894,0.5488,0.6207,0.5823,rf,B2,0.2313,0.0725,0.0
+shock_scale,Shock scale k (C-20; default 1.0),0.5,1327,0.0836,0.2578,0.2927,0.2669,0.4107,0.464,0.4134,rf,B1,0.1713,0.0725,0.0
+shock_scale,Shock scale k (C-20; default 1.0),1.7,1327,0.2072,0.4766,0.4405,0.471,0.6428,0.6815,0.6616,rf,B0,0.2049,0.0725,0.0

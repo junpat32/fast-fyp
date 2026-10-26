@@ -1,0 +1,11 @@
+{
+  "_comment": "FROZEN snapshot of the band rule used by the synthetic data generator (generator_spec.md v1.0 §6, frozen 2026-10-12). Used ONLY by generator/ so that the O2 datasets stay reproducible. The live rule for the app and API is shared/thresholds.json (D-49). Never edit this file.",
+  "version": 1,
+  "dsr": {
+    "green_below": 0.30,
+    "red_at_or_above": 0.60,
+    "leave_red_below": 0.55
+  },
+  "insufficient_income_below_rm": 300,
+  "income_window_months": 3
+}

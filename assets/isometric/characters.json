@@ -1,0 +1,2374 @@
+{
+ "avatars": [
+  {
+   "name": "avatar_01",
+   "who": "masculine; short hair; green T-shirt, jeans",
+   "suggested_tone": 2,
+   "frames": {
+    "front_idle_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_idle_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_2": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_3": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "back_idle_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_idle_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_2": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_3": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "mood_relaxed": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_relaxed_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_relaxed_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_calm_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_focused_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_celebrating_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "sit_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 3,
+     "glasses": true
+    },
+    "sit_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 4,
+     "glasses": true
+    },
+    "sit_back_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 6,
+     "glasses": false
+    },
+    "sit_back_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 7,
+     "glasses": false
+    },
+    "sleep_mattress_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    }
+   }
+  },
+  {
+   "name": "avatar_02",
+   "who": "feminine; tudung; long-sleeved top, long skirt, flats",
+   "suggested_tone": 1,
+   "frames": {
+    "front_idle_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_idle_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_2": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_3": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "back_idle_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_idle_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_2": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_3": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "mood_relaxed": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_relaxed_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_relaxed_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_calm_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_focused_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_celebrating_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "sit_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 3,
+     "glasses": true
+    },
+    "sit_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 4,
+     "glasses": true
+    },
+    "sit_back_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 6,
+     "glasses": false
+    },
+    "sit_back_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 7,
+     "glasses": false
+    },
+    "sleep_mattress_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    }
+   }
+  },
+  {
+   "name": "avatar_03",
+   "who": "masculine; side-parted hair; light-blue polo, khaki trousers",
+   "suggested_tone": 0,
+   "frames": {
+    "front_idle_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_idle_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_2": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_3": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "back_idle_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_idle_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_2": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_3": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "mood_relaxed": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_relaxed_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_relaxed_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_calm_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_focused_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_celebrating_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "sit_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 3,
+     "glasses": true
+    },
+    "sit_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 4,
+     "glasses": true
+    },
+    "sit_back_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 6,
+     "glasses": false
+    },
+    "sit_back_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 7,
+     "glasses": false
+    },
+    "sleep_mattress_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    }
+   }
+  },
+  {
+   "name": "avatar_04",
+   "who": "feminine; bob with a fringe; mustard T-shirt, jeans",
+   "suggested_tone": 0,
+   "frames": {
+    "front_idle_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_idle_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_2": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_3": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "back_idle_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_idle_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_2": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_3": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "mood_relaxed": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_relaxed_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_relaxed_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_calm_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_focused_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_celebrating_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "sit_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 3,
+     "glasses": true
+    },
+    "sit_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 4,
+     "glasses": true
+    },
+    "sit_back_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 6,
+     "glasses": false
+    },
+    "sit_back_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 7,
+     "glasses": false
+    },
+    "sleep_mattress_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    }
+   }
+  },
+  {
+   "name": "avatar_05",
+   "who": "feminine; ponytail; terracotta T-shirt, grey trousers",
+   "suggested_tone": 4,
+   "frames": {
+    "front_idle_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_idle_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_2": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_3": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "back_idle_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_idle_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_2": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_3": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "mood_relaxed": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_relaxed_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_relaxed_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_calm_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_focused_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_celebrating_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "sit_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 3,
+     "glasses": true
+    },
+    "sit_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 4,
+     "glasses": true
+    },
+    "sit_back_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 6,
+     "glasses": false
+    },
+    "sit_back_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 7,
+     "glasses": false
+    },
+    "sleep_mattress_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    }
+   }
+  },
+  {
+   "name": "avatar_06",
+   "who": "masculine; wavy hair; sage hoodie, jeans",
+   "suggested_tone": 3,
+   "frames": {
+    "front_idle_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_idle_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "front_walk_2": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "front_walk_3": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "back_idle_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_idle_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "back_walk_2": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "back_walk_3": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": false
+    },
+    "mood_relaxed": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_relaxed_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_relaxed_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_calm_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_calm_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_focused_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_focused_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_concerned_hopeful_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "mood_celebrating_breathe": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 1,
+     "glasses": true
+    },
+    "mood_celebrating_blink": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "phone_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 0,
+     "glasses": true
+    },
+    "sit_0": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 3,
+     "glasses": true
+    },
+    "sit_1": {
+     "view": "front",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 4,
+     "glasses": true
+    },
+    "sit_back_0": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 6,
+     "glasses": false
+    },
+    "sit_back_1": {
+     "view": "back",
+     "cells": [
+      1,
+      1
+     ],
+     "head_dy": 7,
+     "glasses": false
+    },
+    "sleep_mattress_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_mattress_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_0": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_1": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_2": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    },
+    "sleep_bed_3": {
+     "view": "front",
+     "cells": [
+      1,
+      2
+     ],
+     "head_dy": 0,
+     "glasses": false
+    }
+   }
+  }
+ ],
+ "skin_tones": [
+  {
+   "afternoon": [
+    "#F5D5BA",
+    "#E4B996",
+    "#C29170"
+   ],
+   "morning": [
+    "#FFD8A4",
+    "#F3BC84",
+    "#D09463"
+   ],
+   "night": [
+    "#7A7B9C",
+    "#716C84",
+    "#61566A"
+   ]
+  },
+  {
+   "afternoon": [
+    "#EDC3A0",
+    "#DAA67F",
+    "#B47C59"
+   ],
+   "morning": [
+    "#FCC68D",
+    "#E9A970",
+    "#C17F4E"
+   ],
+   "night": [
+    "#76718B",
+    "#6D6274",
+    "#5A4B5B"
+   ]
+  },
+  {
+   "afternoon": [
+    "#E8B98F",
+    "#D39A6C",
+    "#A9714B"
+   ],
+   "morning": [
+    "#F7BC7E",
+    "#E19D5F",
+    "#B67442"
+   ],
+   "night": [
+    "#736C7F",
+    "#695B67",
+    "#554551"
+   ]
+  },
+  {
+   "afternoon": [
+    "#C98F63",
+    "#B0774D",
+    "#8A5A37"
+   ],
+   "morning": [
+    "#D79257",
+    "#BD7A44",
+    "#965D30"
+   ],
+   "night": [
+    "#645561",
+    "#584852",
+    "#463943"
+   ]
+  },
+  {
+   "afternoon": [
+    "#A9714A",
+    "#8F5C39",
+    "#6E4429"
+   ],
+   "morning": [
+    "#B67441",
+    "#9B5F32",
+    "#794724"
+   ],
+   "night": [
+    "#554550",
+    "#493A45",
+    "#392D3A"
+   ]
+  },
+  {
+   "afternoon": [
+    "#7E5236",
+    "#664029",
+    "#4B2D1C"
+   ],
+   "morning": [
+    "#8A5530",
+    "#714324",
+    "#553019"
+   ],
+   "night": [
+    "#403443",
+    "#352B3A",
+    "#282031"
+   ]
+  }
+ ],
+ "skin_palette_names": [
+  "skin_light",
+  "skin_mid",
+  "skin_dark"
+ ],
+ "glasses": {
+  "piece": "glasses_front",
+  "use": "draw over a front frame whose 'glasses' is true, moved up by its head_dy"
+ },
+ "draw": "feet at the cell centre (a piece's footprint origin as for any 1 x 1 struct); front = facing down-left, back = up-left, mirror for down-right / up-right. Recolour the three skin colours to the chosen skin tone (palette swap). Asleep at night (19:00-05:59): sleep_<bed>_k over the bed's cell, bed = 'mattress' at room level 1, 'bed' from level 2. Sitting on the sofa: sit_k mirrored (the sofa faces +a), feet at the sofa's front cell"
+}

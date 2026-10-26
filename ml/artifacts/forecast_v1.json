@@ -1,0 +1,93 @@
+{
+  "version": "forecast_v1",
+  "model": "lr",
+  "setting": {
+    "param": 0.1,
+    "n_rounds": null
+  },
+  "features": [
+    "inc_median3",
+    "inc_cv3",
+    "type_employee",
+    "type_gig",
+    "type_student",
+    "age_18-19",
+    "age_20-24",
+    "age_25-29",
+    "age_30-35",
+    "essential_share3",
+    "disc_cv3",
+    "overrun_count3",
+    "savings_rate3",
+    "dsr_t",
+    "dti_t",
+    "band_GREEN",
+    "band_YELLOW",
+    "band_RED",
+    "bnpl_active",
+    "bnpl_new3",
+    "has_personal_loan",
+    "lives_with_parents",
+    "family_support",
+    "cushion_t",
+    "cash_slope3",
+    "shortfall_last3",
+    "flag_impulsivity",
+    "flag_overconfidence",
+    "flag_delayed_correction",
+    "shock_count3",
+    "festive_next3",
+    "semester_next3"
+  ],
+  "trained_on": {
+    "dataset": "data\\synthetic\\medium_seed20261009",
+    "rows": 6646,
+    "users": 990,
+    "prevalence": 0.11977129100210653,
+    "data_metadata": {
+      "spec_version": "1.0",
+      "spec_sha256": "6849e796c2d27f53c19e8eb3f4ce751b10c5e4109723b176edcb9ef2521f5aa1",
+      "config_sha256": "6233d67c34beac9a6eae737edf576956260de599c9821d5de157deae739cabbc",
+      "seed": 20261009,
+      "noise": "medium",
+      "n_users": 1000,
+      "rows": {
+        "users": 1000,
+        "monthly": 12000,
+        "flags": 12000,
+        "labels": 7000,
+        "latent": 1000,
+        "latent_monthly": 12000,
+        "transactions": 556767
+      },
+      "observable_files": [
+        "users",
+        "monthly",
+        "transactions",
+        "flags",
+        "labels"
+      ],
+      "hidden_files": [
+        "latent",
+        "latent_monthly"
+      ]
+    }
+  },
+  "frozen_spec_sha256": "6849e796c2d27f53c19e8eb3f4ce751b10c5e4109723b176edcb9ef2521f5aa1",
+  "chosen_by": "pre-registered rule: simplest model whose PR-AUC CI overlaps the best (O2 report)",
+  "o2_pr_auc": {
+    "point": 0.4400742773376481,
+    "ci": [
+      0.37011107870760995,
+      0.5125983776574258
+    ]
+  },
+  "packaging_check": {
+    "oof_pr_auc_fixed_setting": 0.4400742773376481,
+    "oof_brier_raw": 0.16705849766291883,
+    "oof_brier_calibrated": 0.08383412152247299
+  },
+  "calibration": "isotonic on out-of-fold predictions (GroupKFold by user), then refit on all rows",
+  "intended_use": "Demo and persona user study only; trained on synthetic data (CLAUDE.md rule 12). Not validated on real users.",
+  "created": "2026-10-13"
+}

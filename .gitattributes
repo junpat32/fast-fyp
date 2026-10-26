@@ -1,0 +1,7 @@
+# Line endings: text files are stored with LF (Render runs Linux); Windows checkouts get CRLF.
+* text=auto
+# Binary files: never touched
+*.png binary
+*.gif binary
+*.joblib binary
+*.parquet binary

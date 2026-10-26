@@ -1,0 +1,18 @@
+﻿variant=fixed users=3000 seed=20261009 c=U(0.75,1.0)
+cushion buckets m6                   : 17% / 19% / 17% / 47%
+positive rate (S9 10-30%)           : 12.8%   rows=19738
+  positives: band-only 19% | shortfall-only 77% | both 3%
+  positive rate emp                  : 10.2%
+  positive rate gig                  : 16.1%
+  positive rate stu                  : 20.6%
+Red share of borrowers m12 (S3 5-25%): 7.0%
+median DSR of borrowers m12          : 22.4%  (BNM median incl. mortgages 33%)
+shortfall per user-month             : 6.6%; users with >=1 shortfall: 27.7%
+insufficient-income user-months (S7) : 2.8%
+BNPL users 31.9% (S11 32%), ever overdue in 12 months: 27.2%
+BNPL overdue at quarter-ends (point-in-time, BNM Q4 2022 = 17%): 7.0%
+worker spending / gross income       : 61.8%  (HES/HIES 2024 households: 60.8%)
+users with cash m12 > m0 ('saved')   : 59.4%  (Findex saved any: 15-24 72.7%, 25+ 58.8%)
+cushion buckets m12 (<.5/.5-1.5/1.5-2.5/>=2.5): 17% / 17% / 14% / 52%  (m1 target 13/29/18/40)
+employee gross <RM2,000              : 32.1%  (DOSM all ages 27.4%)
+card holders among workers           : 15.0%

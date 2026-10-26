@@ -1,0 +1,22 @@
+# What the deployed backend (api/ + engine/) needs, pinned to the versions tested locally (D-70).
+# Kept small for Render's free tier (512 MB): no pandas, SHAP, XGBoost or plotting at run time.
+# scikit-learn must match the version that saved ml/artifacts/forecast_v1.joblib.
+fastapi==0.143.0
+starlette==1.8.0
+pydantic==2.14.1
+pydantic_core==2.50.1
+uvicorn==0.54.0
+PyJWT==2.15.1
+httpx==0.28.1
+httpcore==1.0.9
+h11==0.16.0
+anyio==4.15.1
+certifi==2026.7.22
+idna==3.20
+cryptography==50.0.2
+numpy==2.5.4
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+PyYAML==6.0.3

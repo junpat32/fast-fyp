@@ -1,0 +1,73 @@
+# FAST advice text (rule engine, T-11). DRAFT wording by Claude; Patrick edits freely.
+# Review notes, old -> new and the reasons: docs/advice_wording_review.md (2026-10-16).
+# Rules: plain language; never punitive (D-11); never recommend a financial product or an
+# investment (regulated activity; D-15); numbers come only from the user's own data.
+# Placeholders in {braces} are filled by engine/rules.py. Band limits, goals and the income floor
+# are placeholders too ({red_pct}, {first_goal}, ...), filled from shared/thresholds.json, so the
+# text can never disagree with the engine (CLAUDE.md rule 5). A rule with several situations has
+# one text per situation (text, text_held, ...); the rule id stays the same.
+# short: the one-line, action-first version the Money screen shows first ("Your next step"); the
+# full text sits behind "Read more" (D-108). A variant's short is short_<variant> when it differs.
+# The Groq assistant receives only these texts and the summary numbers, never raw transactions
+# (CLAUDE.md rule 10).
+
+R01_insufficient_income:
+  title: "Not enough income data yet"
+  short: "Log your income so FAST can show your band."
+  text: "Your typical monthly income over the last {window} months is below {min_income}, so a debt band wouldn't mean much yet. Once some income comes in, FAST will show your band again."
+R02_recent_shortfall:
+  title: "Money ran short recently"
+  short: "Before payday, list what's due and cover essentials first."
+  text: "You ran short of cash in {shortfalls} of the last {window} months. Before next payday, list what is due ({debt_payments} in debt payments) and set aside the essentials first."
+R03_red_band:
+  title: "Debt payments are taking a large share"
+  short: "Talk to AKPK (free debt counselling) about your repayments."
+  text: "Your debt payments take {dsr_pct} of your income (Red is {red_pct} or more). Talking to AKPK (free debt counselling by Bank Negara's agency) can help you plan repayments."
+  # Red is still shown below the Red line: once Red, FAST shows Red until DSR is below the leave line (D-05)
+  text_held: "Your debt payments take {dsr_pct} of your income. That's under the Red line of {red_pct}, but once Red, FAST keeps showing Red until it drops below {leave_red_pct}, so the band doesn't flip back and forth. Talking to AKPK (free debt counselling by Bank Negara's agency) can help you plan repayments."
+  # this month is out of Red, but a better band shows only after it holds (D-49)
+  short_improving: "Keep going: a better band shows after {confirm_months} good months."
+  text_improving: "Good progress: your debt payments are down to {dsr_pct} of your income, out of the Red range this month. FAST shows the better band once it holds for {confirm_months} months in a row, so one good month doesn't flip it back and forth."
+R04_near_red:
+  title: "Close to the Red line"
+  short: "Avoid new instalments for now: Red starts at {red_pct}."
+  text: "Your debt payments take {dsr_pct} of your income. Red starts at {red_pct}, so avoid adding new instalments for now."
+R05_build_first_cushion:
+  title: "First goal: {first_goal} saved"
+  short: "Save about {gap_to_first} more to reach {first_goal} of costs."
+  text: "Your cash covers about {cushion_months} months of essentials and debt payments. Getting to {first_goal} means saving about {gap_to_first} more. Small, regular amounts count."
+R06_next_cushion_goal:
+  title: "Next goal: {next_goal} saved"
+  short: "Save about {gap_to_next} more to reach {next_goal} of costs."
+  text: "Your cash covers about {cushion_months} months of essentials and debt payments. That's a good start; the next goal is {next_goal} ({gap_to_next} more)."
+R07_bnpl_load:
+  title: "Several BNPL plans running"
+  short: "Finish your BNPL plans before starting new ones."
+  text: "You have {bnpl_plans} BNPL plans running, about {bnpl_monthly} a month. Finishing these before starting new ones keeps your monthly payments predictable."
+R08_spending_swings:
+  title: "Non-essential spending has been jumping around"
+  short: "Try a weekly limit for non-essential spending."
+  text: "Your non-essential spending changed a lot over the last {window} months and went over your usual level more than once. A weekly spending limit can make it steadier."
+R09_festive_month:
+  title: "Festive month"
+  short: "Festive spending is normal; plan next year's early."
+  text: "Spending more in a festive month is normal. FAST doesn't count it against you; it's a good moment to plan for next year's celebrations."
+R10_forecast_elevated:
+  title: "A tight month may be ahead"
+  short: "Build your cushion now: a tight month may be ahead."
+  text: "Based on patterns like yours, there is about a {risk_pct} chance that your band gets worse or money runs short in the next 3 months. Building your cushion now helps most."
+  # already Red (the model's band): the band can't get worse, so only running short counts (W3)
+  text_red: "Based on patterns like yours, there is about a {risk_pct} chance of money running short in the next 3 months. Building your cushion now helps most."
+R11_spending_more_than_income:
+  title: "Spending more than you earn"
+  short: "Pause one regular expense: you spent more than you earned."
+  text: "Over the last {window} months you spent about {overspend_pct} more than you earned. Look for one regular expense you can pause."
+R12_doing_well:
+  title: "You're in good shape"
+  short: "Keep it up: your cushion is growing."
+  text: "Green band, {cushion_months} months of costs saved and saving regularly. Keep it up; your future self will thank you."
+R13_band_improving:
+  # this month's band is better than the one shown; it shows once it holds (D-49)
+  title: "Your band is improving"
+  short: "Keep going: {new_band} shows after {confirm_months} months in a row."
+  text: "Your debt payments are down to {dsr_pct} of your income, in the {new_band} range this month. FAST shows {new_band} once it holds for {confirm_months} months in a row, so one good month doesn't flip the band back and forth."

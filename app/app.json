@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "FAST",
+    "slug": "fast",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/fast-icon.png",
+    "scheme": "fast",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "icon": "./assets/images/fast-icon.png"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E8DFC9",
+        "foregroundImage": "./assets/images/fast-adaptive-icon.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "server",
+      "favicon": "./assets/images/fast-favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#E8DFC9",
+          "image": "./assets/images/fast-splash.png",
+          "imageWidth": 160
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

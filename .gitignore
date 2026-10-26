@@ -1,0 +1,30 @@
+# Secrets never go in the repo (CLAUDE.md rule 7)
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Regenerable synthetic data (python -m generator.run), persona builds and the study's session
+# cards with passwords (data/sessions/, D-94): never committed
+data/
+
+# Patrick's FYP reports (his own text, with his name and student details): stay on the laptop only
+docs/reports/
+
+# Codex's scratch folder (Patrick deletes it)
+.test_tmp/
+
+# The first app scaffold (SDK 58, replaced by SDK 57 in D-105; Patrick deletes it)
+app58_old/
+
+# The Expo app (T-16), once it exists
+node_modules/
+.expo/
+dist/
+web-build/
+*.log
