@@ -58,3 +58,25 @@ Overall: **not consistent** (20 cells with at least 30 start months).
 | Red, cushion 1-3 months | 6 months | 102 (31) | 42% | 25% (11%–41%) | too fast |
 | Red, cushion 3+ months | 6 months | 98 (21) | 36% | 6% (0%–17%) | too fast |
 
+
+## Reading (added after the run)
+
+1. **The chain is too optimistic, as expected before the run.** In 18 of the 20 checks with enough data,
+   held-out users recovered more slowly than the chain said; the other 2 were consistent and none were too
+   slow. From Yellow, the chain gives a 24–40% chance of being back in Green with a cushion within 6 months;
+   held-out users managed 11–21%. From Red it gives 11–15%, and no held-out user did it within 6 months.
+2. **Why: people differ, and trouble is sticky.** One chain for everyone averages people who sit just
+   across a band line and cross back and forth with people whose loan payments keep them in Yellow or Red
+   for years (the "mover–stayer" problem). The chain also forgets how long someone has been in a state,
+   and the band itself has memory (leaving Red needs a DSR below 0.55, not 0.60). A first-order,
+   one-size chain therefore moves people back too easily.
+3. **So the months in Part A are probably too short.** About 16–20 months from Yellow and about 28 months
+   from Red to "recovered" (8–11 months, median, to leave Red) describe what this chain implies for the
+   synthetic population; the held-out check says real recovery in that population is slower. Beyond
+   12 months they are the chain's extrapolation; the data has 12 months per person.
+4. **It fits B2's O2 result.** The baseline uses the same chain and the same first-order assumption to
+   predict deterioration; in O2 it scored PR-AUC 0.263, no better than plain base rates (0.284) and well
+   below the models (0.42–0.44, `ml/results/O2_REPORT.md`).
+5. **Not for the app.** The figures are synthetic and shown to be too optimistic; telling a user "people
+   like you take about 28 months" would be both a real-world claim (rule 12, CR-17) and an overstatement.
+   A chain with a duration-in-state or a mover–stayer split could fix point 2; that is future work.
