@@ -8,6 +8,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+.hypothesis/
 
 # Regenerable synthetic data (python -m generator.run), persona builds and the study's session
 # cards with passwords (data/sessions/, D-94): never committed

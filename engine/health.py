@@ -14,9 +14,12 @@ Invariants
   H1  each indicator is in [0, 100]; the score is the mean of the available indicators
   H2  with insufficient income the debt indicator is undefined and left out (never guessed)
   H3  the score never uses hidden traits or ML output (it describes the present, not the future)
+  H4  the tier follows the whole number the app shows (Math.round of the 1-decimal score), so the
+      number and the tier always agree: 79.96 shows as 80 and is Healthy (found by P8, D-131)
 """
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 from .bands import load_thresholds
@@ -54,7 +57,8 @@ def health_score(s: MonthState, thresholds: dict | None = None) -> HealthScore:
                        _lin(s.dsr, d["full_below"], 100, d["red_at"], d["at_red"]) if s.dsr < d["red_at"] else
                        _lin(s.dsr, d["red_at"], d["at_red"], d["zero_at"], 0))
     ind["bills"] = h["bills"]["by_shortfalls"][min(s.shortfalls_last3, len(h["bills"]["by_shortfalls"]) - 1)]
-    score = sum(ind.values()) / len(ind)
+    score = round(sum(ind.values()) / len(ind), 1)
+    shown = math.floor(score + 0.5)                     # H4: what the app shows, Math.round(score)
     tiers = h["tiers"]
-    tier = "Healthy" if score >= tiers["healthy"] else "Coping" if score >= tiers["coping"] else "Vulnerable"
-    return HealthScore(score=round(score, 1), tier=tier, indicators={k: round(v, 1) for k, v in ind.items()})
+    tier = "Healthy" if shown >= tiers["healthy"] else "Coping" if shown >= tiers["coping"] else "Vulnerable"
+    return HealthScore(score=score, tier=tier, indicators={k: round(v, 1) for k, v in ind.items()})

@@ -18,4 +18,5 @@ uvicorn
 pyjwt[crypto]
 # Tests
 pytest
+hypothesis          # property-based tests of the engine (D-131)
 httpx

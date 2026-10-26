@@ -34,7 +34,7 @@ made in code (D-55, D-84 to D-86); image generation is banned (D-83).
   (`D:` is Patrick's external drive; if it isn't plugged in, ask him):
   `robocopy "C:\Users\Patrick Wong\Desktop\FYP 2" "D:\FYP2_backup\<date>_<time>-<what>" /E /XD .venv __pycache__ .pytest_cache .test_tmp node_modules`
   (exit codes 0–7 mean success).
-- **Tests:** `.venv\Scripts\python -m pytest -q`: currently **2,591 passed, 4 skipped** (the skipped
+- **Tests:** `.venv\Scripts\python -m pytest -q`: currently **2,617 passed, 4 skipped** (2026-10-26) (the skipped
   ones are live Supabase tests). Never leave it red. The app (`app/`, D-104): `npm test` (Node's own
   test runner for `src/lib`) and `npm run typecheck`; Node is at `C:\Program Files\nodejs`.
 - **CLAUDE.md §5 rules 1–12** (no label leakage, split by user, frozen files in `docs/frozen/`
@@ -44,7 +44,7 @@ made in code (D-55, D-84 to D-86); image generation is banned (D-83).
 - **Human-only (CLAUDE.md §6):** art approval, `[DECISION]` items, real messages/receipts, the FYP
   report text, submitting the ethics application. Propose; Patrick decides.
 - **Bookkeeping after significant work:** update `docs/TASKS.md`; append to `docs/ai_use_log.md`
-  (Tool column: **Codex**); record design changes in `docs/DECISIONS.md` (next ID: **D-131**).
+  (Tool column: **Codex**); record design changes in `docs/DECISIONS.md` (next ID: **D-132**).
 
 ## 2. How Patrick works
 
