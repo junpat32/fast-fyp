@@ -149,3 +149,25 @@ Points to look at: the deck follows `life_events.md`'s suggestion for the app an
 funeral card (L13) on purpose; L12 (family emergency) and L18 (scam) may also feel heavy, so either
 can be dropped from the `deck` line with no code change; the 997 line in L18 should be checked
 again before the study (like the crisis reply, W4).
+
+## 9. Explanation wording (D-137; DRAFT, part of W2)
+
+**The new notes** (shown under the reasons; the money helper gets them too):
+
+| When | Note (draft) |
+|---|---|
+| Type of work or age group is a top factor (P6, unchanged) | "Your type of work and age group also affect this estimate." |
+| A top factor was left out as counter-intuitive (P9, new) | "Some other patterns in the data also affect this estimate." |
+| Both | "Your type of work and age group, and some other patterns in the data, also affect this estimate." |
+
+**The headings sound causal.** The model knows patterns, not causes (D-133), but "What raises your risk" reads
+as cause and effect. Options for the two headings on the Money screen's "Why N in 100?" card:
+
+| Option | Above the base rate | Below it | Trade-off |
+|---|---|---|---|
+| A (today) | What raises your risk | What keeps your risk low | Shortest and clearest; sounds causal |
+| B | What pushes your chance up | What keeps your chance down | About the estimate, not the person's fate; still plain |
+| C | Linked with a higher chance | Linked with a lower chance | Most accurate; a little more abstract |
+
+Claude's suggestion: **B** (accurate enough, still plain). The study's B5 asks for "the main reason the app gives",
+so the key does not change with the heading.
