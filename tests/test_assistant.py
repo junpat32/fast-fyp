@@ -290,7 +290,7 @@ def store():
 
 @pytest.fixture
 def llm():
-    return FakeLLM("Your band is Yellow.")
+    return FakeLLM("Your band is Green.")
 
 
 @pytest.fixture
@@ -311,8 +311,9 @@ def test_assistant_answers_from_the_users_own_summary_and_stores_nothing(client,
     r = client.post("/v1/assistant", json={"question": "  Why is my band this colour?  "}, headers=bearer(token()))
     assert r.status_code == 200
     body = r.json()
-    assert body["kind"] == "answer" and body["answer"] == "Your band is Yellow." and body["grounded"]
+    assert body["kind"] == "answer" and body["answer"] == "Your band is Green." and body["grounded"]
     assert body["assessed_month"] == "2026-05-01" and body["as_of"] == TODAY.isoformat()
+    assert body["shared_with_assistant"]["user"]["band"] == "Green"
     assert body["shared_with_assistant"]["user"]["month_assessed"] == "May 2026"
     assert llm.seen[0][1]["content"] == "<question>\nWhy is my band this colour?\n</question>"
     assert store.saved == []                                       # nothing written
