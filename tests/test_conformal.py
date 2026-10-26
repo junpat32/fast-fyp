@@ -144,9 +144,20 @@ def test_the_primary_checks_follow_the_plan():
     assert recal.primary(s)["checks"] == {"P1": True, "P2": False, "P3": True, "P4": True}
 
 
-def test_a_tracked_unchanged_file_counts_as_committed_and_a_missing_one_does_not():
-    assert recal.table_is_committed(recal.ROOT / "sim" / "monte_carlo.py")
-    assert not recal.table_is_committed(recal.ROOT / "sim" / "no_such_table.json")
+@pytest.mark.parametrize("tracked, status, committed", [
+    (True, "", True), (True, " M sim/monte_carlo_conformal.json\n", False), (False, "", False)])
+def test_only_a_tracked_unchanged_table_counts_as_committed(monkeypatch, tracked, status, committed):
+    def git(cmd, **kw):
+        if "ls-files" in cmd:
+            return SimpleNamespace(returncode=0 if tracked else 1, stdout="")
+        return SimpleNamespace(returncode=0, stdout=status)
+    monkeypatch.setattr(recal.subprocess, "run", git)
+    assert recal.table_is_committed() is committed
+
+
+def test_the_offsets_table_in_use_is_the_committed_one():
+    """C1: the table the API reads is exactly the one committed before the evaluation."""
+    assert recal.table_is_committed()
 
 
 def test_evaluation_refuses_an_uncommitted_table(monkeypatch):

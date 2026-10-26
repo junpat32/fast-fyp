@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from '@/components/card';
 import { Button } from '@/components/fields';
 import { DebtForm } from '@/components/lists/debt-form';
+import { DebtPlanCard } from '@/components/lists/debt-plan-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -100,6 +101,8 @@ export default function DebtsScreen() {
               <ThemedText type="smallBold">{rm(d.monthly_payment)}<ThemedText type="small" themeColor="textSecondary"> /mo ›</ThemedText></ThemedText>
             </Pressable>
           ))}
+
+          {list && !editing && <DebtPlanCard debts={list} today={today} />}
 
           {closed.length > 0 && (
             <>

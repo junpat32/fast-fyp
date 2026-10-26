@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Check, Chip } from '@/components/add/choice';
-import { Button, MoneyField, TextField } from '@/components/fields';
+import { Button, MoneyField, RateField, TextField } from '@/components/fields';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -21,7 +21,7 @@ type Props = {
 
 /**
  * Adding or changing a debt (D-121): its kind, an optional name, the monthly payment and what is left
- * to pay, and whether it comes straight off the salary. An existing one can be marked paid off (it
+ * to pay, an optional interest rate (D-144), and whether it comes straight off the salary. An existing one can be marked paid off (it
  * stays on record, DB3) or deleted when it was added by mistake; both ask for a second tap.
  */
 export function DebtForm({ debt, onSave, onPayOff, onDelete, onCancel }: Props) {
@@ -62,6 +62,8 @@ export function DebtForm({ debt, onSave, onPayOff, onDelete, onCancel }: Props) 
                  placeholder="e.g. Myvi loan, Maybank card" />
       <MoneyField label="Monthly payment" value={form.monthly} onChange={(v) => set({ monthly: v })} error={errors.monthly} />
       <MoneyField label="Left to pay" value={form.owed} onChange={(v) => set({ owed: v })} error={errors.owed} />
+      <RateField label="Interest rate (optional)" value={form.rate} onChange={(v) => set({ rate: v })} error={errors.rate}
+                 hint="From your statement or loan letter. Leave it empty if you're not sure: FAST won't guess it." />
       {asksFromSalary(form.kind) && (
         <Check label="It comes straight off my salary (potongan gaji)" on={form.fromSalary} onChange={(v) => set({ fromSalary: v })} />
       )}

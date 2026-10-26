@@ -255,6 +255,7 @@ create table public.debts (
   monthly_payment numeric(12,2) not null check (monthly_payment >= 0),
   outstanding numeric(12,2) not null check (outstanding >= 0),
   deducted_from_salary boolean not null default false,                      -- e.g. PTPTN potongan gaji
+  annual_rate numeric(5,4) check (annual_rate is null or annual_rate between 0 and 1),  -- 0.18 = 18% a year; null = not given (D-144)
   starts_on date,
   ends_on date,
   created_at timestamptz not null default now(),

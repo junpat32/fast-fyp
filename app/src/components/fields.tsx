@@ -24,6 +24,26 @@ export function MoneyField({ label, value, onChange, error, hint }: {
   );
 }
 
+/** A yearly percentage, typed as text (a debt's interest rate, D-144); empty is allowed. */
+export function RateField({ label, value, onChange, error, hint }: {
+  label: string; value: string; onChange: (v: string) => void; error?: string; hint?: string;
+}) {
+  const t = useTheme();
+  return (
+    <View style={styles.field}>
+      <ThemedText type="small">{label}</ThemedText>
+      <View style={[styles.input, { backgroundColor: t.input, borderColor: error ? t.bad : t.line }]}>
+        <TextInput value={value} onChangeText={onChange} keyboardType="decimal-pad" placeholder="not sure"
+                   placeholderTextColor={t.textSecondary} style={[styles.inputText, { color: t.text }]}
+                   accessibilityLabel={label} maxLength={7} />
+        <ThemedText type="small" themeColor="textSecondary">% a year</ThemedText>
+      </View>
+      {error ? <ThemedText type="small" style={{ color: t.bad }}>{error}</ThemedText>
+        : hint ? <ThemedText type="small" themeColor="textSecondary" style={styles.hint}>{hint}</ThemedText> : null}
+    </View>
+  );
+}
+
 /** A short line of text (a debt's name). */
 export function TextField({ label, value, onChange, placeholder, maxLength }: {
   label: string; value: string; onChange: (v: string) => void; placeholder?: string; maxLength: number;

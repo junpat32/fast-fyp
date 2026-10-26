@@ -30,6 +30,16 @@ def test_the_scene_fixture_covers_the_hard_cases():
     assert any(d[0].endswith("_droop") for c in cases for d in c["draws"]["structs"])
 
 
+def test_debt_plans_fixture_is_up_to_date_and_covers_the_hard_cases():
+    """D-144: the app's avalanche/snowball port is checked against compare_debt_plans."""
+    data = af.build_debt_plans()
+    assert json.loads(af.DEBT_PLAN_OUT.read_text(encoding="utf-8")) == data
+    expected = [c["expected"] for c in data["cases"]]
+    assert any(e["avalanche_months"] is None for e in expected)                            # never cleared
+    assert any(e["avalanche_interest"] < e["snowball_interest"] - 1 for e in expected)     # the order matters
+    assert all(e["avalanche_months"] != 0 for e in expected)                              # every case has work to do
+
+
 def test_decor_spots_fixture_is_up_to_date_and_covers_crowding():
     """D-120: the app's spot finder is checked against the kit's decor_spots."""
     data = af.build_decor()

@@ -171,3 +171,26 @@ as cause and effect. Options for the two headings on the Money screen's "Why N i
 
 Claude's suggestion: **B** (accurate enough, still plain). The study's B5 asks for "the main reason the app gives",
 so the key does not change with the heading.
+
+## 10. Debt interest rate and "Which to pay off first?" (D-144; DRAFT, part of W2)
+
+New lines on the debt form and the Debts screen. The numbers come from `lib/debt-plan.ts`; only the words are
+for review.
+
+| Where | Draft text |
+|---|---|
+| Debt form, field | Interest rate (optional) … % a year (placeholder "not sure") |
+| Debt form, hint | From your statement or loan letter. Leave it empty if you're not sure: FAST won't guess it. |
+| Debt form, error | Type a yearly rate from 0 to 100, e.g. 18 or 3.5 |
+| Card title | Which to pay off first? |
+| A rate missing | Add the interest rate to {debt names} to compare two ways of paying off your debts. |
+| Extra field | Extra you could pay each month |
+| Budget line | Paying RM{budget} a month in all: |
+| Each way | **Highest rate first:** debt-free in {N} months, RM{X} in interest · **Smallest balance first:** … |
+| Never cleared | not cleared within 30 years at these payments |
+| Verdict | Both ways cost about the same here. / Highest rate first saves about RM{d} in interest. / Smallest balance first saves about RM{d} in interest here. |
+| Caveat | An estimate from the rates you typed, with these payments kept the same. A loan quoted at a flat rate costs more than its rate suggests. |
+
+Points for Patrick: "Highest rate first" and "Smallest balance first" avoid the jargon (avalanche, snowball). The
+card never says which to choose; it states the interest difference. The flat-rate caveat matters for car loans
+(hire purchase quotes a flat rate, so the comparison understates their interest).

@@ -91,6 +91,13 @@ def test_money_is_numeric_never_float():
         assert re.search(rf"\b{column} numeric\(12,2\)", CODE), column
 
 
+def test_a_debts_interest_rate_is_optional_and_a_yearly_fraction():
+    """D-144: the avalanche/snowball comparison needs a rate; FAST never guesses one, so it may be empty."""
+    column = re.search(r"\bannual_rate numeric\(5,4\)(.*)", TABLES["debts"]).group(1)
+    assert "not null" not in column
+    assert "annual_rate is null or annual_rate between 0 and 1" in column
+
+
 # ---- C3/C4: time and edit rules enforced in the database
 @pytest.mark.parametrize("table", ["profiles", "goal_changes", "transactions", "monthly_checkins",
                                    "life_event_answers", "activity_days", "game_actions"])

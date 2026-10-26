@@ -42,7 +42,7 @@ item in the header (budgets, debts, profile, privacy, sign out).
 | **Add (+)** | Amount (RM), in/out, category, date, note; for purchases "Paid with" (cash, bank or e-wallet / credit card = bought on credit / BNPL) and "unexpected"; debt payments and own transfers are categories (D-112); "Save"; a "No spending today" button; this month's list (fix or delete for 48 hours). Categories: `shared/categories.json` (the API reads `family`, `education`, `fees`) | Supabase insert, then refresh game + assess |
 | **Future** | "You now" vs "You in 6 months": two avatars (the future one never concerned, D-12), the range of possible savings in months of costs (P10–P90), labelled "if recent habits continue" (D-81); a life-event card when one is due. **No percentage here** (F1, D-100): the only chance shown in the app is the Money screen's forecast, so two similar-sounding numbers can't be confused; the API's `shortfall_probability` stays for analysis but isn't displayed | `GET /v1/future` (built, A3) |
 | **Monthly check-in** | Opens on the month's last day for 7 days (D-77): money sections, total owed, bills on time, "ran short this month?"; shows the month-end figures the server works out; "Verified ✓" when the month adds up | Supabase insert `monthly_checkins` + `GET /v1/game` |
-| **Budgets / Debts** | List + edit per category; debts with balance and monthly payment | Supabase |
+| **Budgets / Debts** | List + edit per category; debts with balance, monthly payment and an optional interest rate; "Which to pay off first?" (highest rate first against smallest balance first, from the typed rates only, D-144) | Supabase |
 
 ### What the user study needs on screen (D-95)
 

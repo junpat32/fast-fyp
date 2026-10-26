@@ -30,6 +30,7 @@ export interface BudgetStore {
 }
 
 const num = (s: string) => Number(s);
+const rate = (s: string | null) => (s === null ? null : Number(s));
 const today = (now: () => Date) => myDate(now().toISOString());
 
 /** In memory, seeded with the persona's own debts. `now` is the user's clock (a persona's study date
@@ -52,13 +53,14 @@ export function memoryDebts(seed: Omit<DebtRow, 'id'>[], now: () => Date): DebtS
     },
     async add(d) {
       const row: DebtRow = { ...d, id: `new-${next++}`, monthly_payment: num(d.monthly_payment), outstanding: num(d.outstanding),
-                             starts_on: null, ends_on: null, created_at: now().toISOString() };
+                             annual_rate: rate(d.annual_rate), starts_on: null, ends_on: null, created_at: now().toISOString() };
       rows.push(row);
       return row;
     },
     async update(id, d) {
       const i = find(id);
-      rows[i] = { ...rows[i], ...d, monthly_payment: num(d.monthly_payment), outstanding: num(d.outstanding) };
+      rows[i] = { ...rows[i], ...d, monthly_payment: num(d.monthly_payment), outstanding: num(d.outstanding),
+                  annual_rate: rate(d.annual_rate) };
       return rows[i];
     },
     async payOff(id, day) {

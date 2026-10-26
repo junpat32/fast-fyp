@@ -23,7 +23,7 @@ const profiles = /create table public\.profiles \(([\s\S]*?)\n\);/.exec(SQL)![1]
 /** The sign-up card, typed in as a participant would (docs/study/onboarding_card.md). */
 function fromCard(): OnboardingForm {
   const debt = (kind: 'ptptn' | 'bnpl', owed: string, monthly: string) => {
-    const r = buildDebt({ kind, label: '', monthly, owed, fromSalary: false });
+    const r = buildDebt({ kind, label: '', monthly, owed, fromSalary: false, rate: '' });
     assert.ok(r.ok);
     return r.debt;
   };

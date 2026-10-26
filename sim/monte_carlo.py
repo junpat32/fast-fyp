@@ -90,10 +90,11 @@ class FutureResult:
 
 @dataclass(frozen=True)
 class DebtPlan:
-    """Debt table's kind/outstanding/monthly_payment plus a supplied APR.
+    """Debt table's kind/outstanding/monthly_payment plus its APR (debts.annual_rate).
 
-    The current debts table does not store APR. A caller must ask for it or use a
-    clearly labelled scenario assumption; the engine never guesses a rate.
+    The rate is optional in the debts table (D-144). The user supplies it or the
+    comparison is not made; the engine never guesses a rate. The app's port is
+    app/src/lib/debt-plan.ts, kept equal by tools/app_fixtures.py.
     """
     kind: str
     outstanding: float
