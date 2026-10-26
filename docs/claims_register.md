@@ -40,6 +40,9 @@ against.
 | CR-16 | Participants understand and can use FAST (O4: SUS ≥ 68, comprehension ≥ 70%) | **Pending validation** (persona study; ethics paused until 15 Nov) | `docs/ethics/` | any result before the study |
 | CR-17 | FAST's forecast predicts real people's outcomes | **Not tested** (rule 12: synthetic data only); future work | — | any real-world predictive claim |
 | CR-18 | The money helper refuses product picks and only quotes supplied numbers (O5) | **Pending validation** (offline tests pass; the live red-team run needs a Groq key) | `tools/assistant_eval/`, `tests/test_assistant.py` | "the assistant is safe" |
+| CR-19 | On the O2 rows, the app's model ranked and calibrated better than B0, cushion months and a cash-runway baseline; against the health score and the Monte Carlo it ranked the whole list better (ROC-AUC +0.072 and +0.026) but the difference at the top of the list (PR-AUC) and in probability accuracy (Brier) was inconclusive | Exploratory (plan committed before the run); synthetic-only; **inconclusive** for the health score and the Monte Carlo | `ml/results/SECONDARY_COMPARISON.md`, D-134 | "ML outperforms all transparent methods"; "the health score is as good as ML" |
+| CR-20 | The O2 forecast is mainly a short-term cash-shortfall (liquidity) risk estimate: 72% of positives are shortfalls only; band worsening (PR-AUC 0.084 at 3.3% prevalence) and DSR rising 5+ points (0.127 at 8.5%) are predicted weakly | Exploratory; synthetic-only | `SECONDARY_COMPARISON.md` §5 | "FAST predicts debt problems" |
+| CR-21 | The Monte Carlo's own shortfall probability is too high on average (+2.2 points) and too extreme (calibration slope 0.71); it is not shown as a percentage in the app (D-100) | Exploratory; synthetic-only | `SECONDARY_COMPARISON.md` §3 | any Monte Carlo percentage as a calibrated chance |
 
 ## Known caveats to state with the results
 
