@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useRef, useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, type ScrollViewInstance, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Check, Chip, Segmented } from '@/components/add/choice';
@@ -40,7 +40,7 @@ export default function OnboardingScreen() {
   const { signUp, now, chooseSample, changed } = useApi();
   const t = useTheme();
   const router = useRouter();
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ScrollViewInstance>(null);
   const [i, setI] = useState(0);
   const [form, setForm] = useState<OnboardingForm>(blankOnboarding());
   const [errors, setErrors] = useState<Record<string, string>>({});

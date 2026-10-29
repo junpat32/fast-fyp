@@ -83,13 +83,13 @@ function IdlePiece({ layer, tick }: { layer: Extract<Layer, { kind: 'idle' }>; t
 
 /** Diamonds over cells (where a plant can go, D-115), in the view's art pixels. */
 function diamonds(cells: [number, number][]) {
-  const p = Skia.Path.Make();
+  const p = Skia.PathBuilder.Make();                         // Skia 2.14 (SDK 58): built, then frozen
   for (const [gx, gy] of cells) {
     const x = MAP_ORIGIN.x + (gx - gy) * 32;
     const y = MAP_ORIGIN.y + (gx + gy) * 16;
     p.moveTo(x + 32, y + 1).lineTo(x + 63, y + 16).lineTo(x + 32, y + 31).lineTo(x + 1, y + 16).close();
   }
-  return p;
+  return p.detach();
 }
 
 /** The home scene (D-113): the 540 x 1200 view of the art previews in a width x height canvas, placed

@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, ScrollView, type ScrollViewInstance, StyleSheet, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import type { Entry } from '@/api/entries';
@@ -44,7 +44,7 @@ export default function AddScreen() {
   const [list, setList] = useState<Entry[]>([]);
   const [quiet, setQuiet] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ScrollViewInstance>(null);
   const c = useTheme();                                 // light by day, dark at night (D-114)
   const params = useLocalSearchParams<{ mode?: string }>();
   const [mode, setMode] = useState<'entry' | 'checkin'>(params.mode === 'checkin' ? 'checkin' : 'entry');

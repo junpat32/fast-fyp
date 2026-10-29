@@ -197,6 +197,7 @@ suite passes. **If anything is unclear** (a different package name, a needed cha
 **Why.** The app is on SDK 57 because the Play Store's Expo Go ran SDK 57 (D-105). When the store's Expo Go moves
 to SDK 58 it stops opening SDK 57 projects. **Start only when Patrick confirms** the store's Expo Go is on SDK 58.
 **Triggered 2026-10-29 (D-148):** Patrick's Play Store Expo Go updated itself to SDK 58 and refused the project; he now runs Expo Go for SDK 57 from expo.dev/go as a stopgap. Participants will install SDK 58 from the store, so this is due before the 30 Dec pilot; who does it is Patrick's call.
+**Done by Claude, 2026-10-29 (D-149),** on branch `upgrade/sdk-58`, at Patrick's request; Codex need not take it.
 
 **Do** (in `app/`): `npx expo install expo@^58 --fix`; change the native-tabs import from
 `expo-router/unstable-native-tabs` to `expo-router/native-tabs` (D-105's planned change); run `npm test` and

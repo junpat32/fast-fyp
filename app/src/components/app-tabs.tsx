@@ -1,11 +1,10 @@
-﻿import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { NativeTabs } from 'expo-router/native-tabs';
 
 import { useTheme } from '@/hooks/use-theme';
 
 // The four tabs of docs/app_plan.md §3 (A5), with FAST's own pixel icons (D-122, drawn in code by
 // tools/asset_generation/tab_icons.py; black on clear, so "template" lets the tab bar tint them).
-// SDK 57 imports native tabs from 'expo-router/unstable-native-tabs'; SDK 58 renames it
-// 'expo-router/native-tabs' (D-105).
+// Native tabs from 'expo-router/native-tabs' (SDK 58; SDK 57 called it 'unstable-native-tabs', D-105, D-149).
 const TABS = [
   { name: 'index', label: 'Home', icon: require('@/assets/images/tabIcons/home.png') },
   { name: 'money', label: 'Money', icon: require('@/assets/images/tabIcons/money.png') },

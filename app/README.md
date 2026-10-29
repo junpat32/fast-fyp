@@ -6,7 +6,7 @@ health score, forecast with reasons, advice), the isometric home scene, the Futu
 
 | | |
 |---|---|
-| Expo SDK | **57** (React Native 0.86, React 19.2, Expo Router 57, TypeScript 6): the version the Play Store's Expo Go runs (D-105). Upgrade to SDK 58 when Expo Go on the Play Store moves to it (`npx expo install expo@^58 --fix`, then the native-tabs import loses `unstable-`) |
+| Expo SDK | **58** (Expo 58.0.21, React Native 0.88, React 19.3, Expo Router 58, Reanimated 4.7, Skia 2.14, TypeScript 6): the version the Play Store's Expo Go runs (D-105, D-149). On Windows PowerShell start Metro with `npx.cmd expo start` if `npx` is blocked by the script policy |
 | Routes | `src/app/` (every file is a screen; four tabs: Home, Money, Add, Future) |
 | Logic without React Native | `src/lib/` (isometric placement, drawing order, time of day, band wording), tested by Node |
 | Shared with the Python side | `../shared/` (thresholds, game rules) and `../assets/` (the art kit), read directly through Metro (`metro.config.js`): never copied by hand |
