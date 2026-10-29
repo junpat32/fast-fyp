@@ -139,8 +139,12 @@ so **only public values**: never the service_role key, never the Groq key (the a
      project folder run `.venv\Scripts\python -m uvicorn api.main:app --host 0.0.0.0 --port 8000`;
      the setting is then `http://<that address>:8000`. Windows may ask whether Python may use the
      network; that is your call (private networks are enough for the hotspot).
-2. Restart Metro with the cache cleared: `npx expo start -c`, and open the app in Expo Go.
-3. Sign in as the first test user from step 4.4 (its password is in `.env`). The app shows the sign-up steps; finish them, then add an
+2. Restart Metro with the cache cleared: `npx expo start -c`, and open the app in Expo Go. If PowerShell says *running
+   scripts is disabled*, use `npx.cmd expo start -c` (the same command, without changing the script policy). If Expo Go says
+   the project is *incompatible*, its SDK is newer than the app's: install the matching Expo Go from **expo.dev/go** (Android:
+   uninstall the store's copy first, and turn off its auto-update), until the app is upgraded (CX-4).
+3. Sign in with an account of its own (`demo-app@example.com`, made like the test users in step 4.4): keep the two test
+   users for the security test, which expects them to have no profile. The app shows the sign-up steps; finish them, then add an
    entry and open Money: that is the core flow (13 Dec check).
 4. Back to sample data: rename `app\.env` (e.g. to `app\.env.off`) and restart with `npx expo start -c`.
 
