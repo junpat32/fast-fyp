@@ -14,6 +14,8 @@ test('no settings: sample data; all three: live; some: a setup problem (D-106, D
   assert.deepEqual(readConfig({ EXPO_PUBLIC_SUPABASE_URL: ' ', EXPO_PUBLIC_API_URL: '' }), { mode: 'sample' });
   assert.deepEqual(readConfig({ EXPO_PUBLIC_SUPABASE_URL: `${URL_}/`, EXPO_PUBLIC_SUPABASE_ANON_KEY: ANON, EXPO_PUBLIC_API_URL: `${API}/` }),
                    { mode: 'live', config: { supabaseUrl: URL_, anonKey: ANON, apiUrl: API } });
+  const copied = readConfig({ EXPO_PUBLIC_SUPABASE_URL: `${URL_}/rest/v1/`, EXPO_PUBLIC_SUPABASE_ANON_KEY: ANON, EXPO_PUBLIC_API_URL: API });
+  assert.equal(copied.mode === 'live' ? copied.config.supabaseUrl : '', URL_);     // the Data API page's form (D-147)
   const some = readConfig({ EXPO_PUBLIC_SUPABASE_URL: URL_ });
   assert.equal(some.mode, 'broken');
   assert.match(some.mode === 'broken' ? some.problem : '', /EXPO_PUBLIC_SUPABASE_ANON_KEY, EXPO_PUBLIC_API_URL/);

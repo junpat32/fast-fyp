@@ -47,7 +47,9 @@ export function readConfig(env: Env): Mode {
   const missing = SETTINGS.filter((_, i) => values[i] === '');
   if (missing.length === SETTINGS.length) return { mode: 'sample' };
   if (missing.length > 0) return { mode: 'broken', problem: `Missing in app/.env: ${missing.join(', ')}` };
-  const [supabaseUrl, anonKey, apiUrl] = values;
+  const [typedUrl, anonKey, apiUrl] = values;
+  // the dashboard's Data API page shows the address with /rest/v1/ on the end; supabase-js adds its own (D-147)
+  const supabaseUrl = typedUrl.replace(/\/+$/, '').replace(/\/(rest|auth)\/v1$/, '');
   if (anonKey.startsWith('sb_secret_') || jwtRole(anonKey) === 'service_role') {
     return { mode: 'broken', problem: 'EXPO_PUBLIC_SUPABASE_ANON_KEY is an admin key: use the anon (publishable) key' };
   }

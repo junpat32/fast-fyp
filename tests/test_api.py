@@ -61,6 +61,13 @@ BODY = {"profile": {"employment_type": "employee", "age": 29, "festive_month": 1
                    for k in range(4)]}
 
 
+@pytest.mark.parametrize("typed", [URL, f"{URL}/", f"{URL}/rest/v1/", f" {URL}/rest/v1 ", f"{URL}/auth/v1"])
+def test_the_supabase_address_is_its_base_however_it_was_copied(typed):
+    """D-147: the dashboard's Data API page shows the address with /rest/v1/ on the end."""
+    from api.config import base_url
+    assert base_url(typed) == URL
+
+
 # ---- sign-in
 def test_health_is_public(client):
     assert client.get("/health").json() == {"status": "ok"}

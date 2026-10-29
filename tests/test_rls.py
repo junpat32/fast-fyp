@@ -13,7 +13,7 @@ import uuid
 
 import pytest
 
-from api.config import _load_dotenv
+from api.config import _load_dotenv, base_url
 
 _load_dotenv()
 NEEDED = ["SUPABASE_URL", "SUPABASE_ANON_KEY", "RLS_TEST_A_EMAIL", "RLS_TEST_A_PASSWORD",
@@ -25,7 +25,7 @@ pytestmark = pytest.mark.skipif(any(not os.environ.get(k) for k in NEEDED),
 @pytest.fixture(scope="module")
 def http():
     import httpx
-    url, anon = os.environ["SUPABASE_URL"].rstrip("/"), os.environ["SUPABASE_ANON_KEY"]
+    url, anon = base_url(os.environ["SUPABASE_URL"]), os.environ["SUPABASE_ANON_KEY"]
 
     def sign_in(who):
         r = httpx.post(f"{url}/auth/v1/token?grant_type=password", headers={"apikey": anon},

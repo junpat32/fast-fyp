@@ -38,6 +38,8 @@ from pathlib import Path
 
 import httpx
 
+from api.config import base_url
+
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data" / "personas" / "personas.json"
 SESSIONS = ROOT / "data" / "sessions"                  # git-ignored: the session cards with passwords
@@ -69,7 +71,7 @@ def env(name: str) -> str:
 class Admin:
     def __init__(self, url: str, service_key: str, transport: httpx.BaseTransport | None = None):
         headers = {"apikey": service_key, "Authorization": f"Bearer {service_key}"}
-        self.http = httpx.Client(base_url=url.rstrip("/"), headers=headers, timeout=60, transport=transport)
+        self.http = httpx.Client(base_url=base_url(url), headers=headers, timeout=60, transport=transport)
 
     def users(self) -> list[dict]:
         out, page = [], 1

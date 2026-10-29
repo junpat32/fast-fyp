@@ -58,10 +58,19 @@ class Settings:
         return f"{self.issuer}/.well-known/jwks.json"
 
 
+def base_url(url: str) -> str:
+    """The project's base address: the dashboard's Data API page shows it with /rest/v1/ on the end,
+    which every caller here adds itself (setup guide step 4, D-147)."""
+    url = url.strip().rstrip("/")
+    for suffix in ("/rest/v1", "/auth/v1"):
+        url = url.removesuffix(suffix)
+    return url
+
+
 @lru_cache
 def get_settings() -> Settings:
     _load_dotenv()
-    url = os.environ.get("SUPABASE_URL", "").strip()
+    url = base_url(os.environ.get("SUPABASE_URL", ""))
     if not url.startswith("https://"):
         raise RuntimeError("SUPABASE_URL must be set to https://<project-ref>.supabase.co")
     return Settings(supabase_url=url, jwt_secret=os.environ.get("SUPABASE_JWT_SECRET") or None,

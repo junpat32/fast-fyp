@@ -62,12 +62,18 @@ there (Claude never sees it).
 ## 4. Supabase: the database and logins (25 min)
 
 1. Sign in at **supabase.com** (*Continue with GitHub* is simplest) → **New project**:
-   - Name: `fast` · Region: **Southeast Asia (Singapore)** · Plan: Free
+   - Name: `fast-fyp` · Plan: Free · Region: **Southeast Asia (Singapore)**. The region box says
+     *Auto* at first, which can pick another continent (it chose Ireland once): click **Need a specific
+     region?** under it and pick Singapore. A project can't change region later.
+   - *Security*: Data API **on**, automatically expose new tables **on**, automatic RLS **on**.
+     *Advanced*: **Postgres** (not OrioleDB).
    - Database password: let it generate one and save it in your password manager (the code
      doesn't need it).
-2. **SQL Editor** → *New query* → paste the whole file
-   `supabase/migrations/20261014000000_init.sql` → **Run**. It should finish with "Success".
-   *Table Editor* should now show 11 tables. If it shows an error, send Claude the error text.
+2. *Database → Extensions*: switch on **pg_cron** (the nightly clean-up job needs it). Then **SQL
+   Editor** → *New query* → paste the whole file `supabase/migrations/20261014000000_init.sql` →
+   **Run** (confirm the "destructive operations" warning: that's the clean-up job's delete lines). It
+   should end with one result, `schedule: 1`. *Table Editor* should now show 11 tables. If it shows an
+   error, send Claude the error text.
 3. **Authentication settings** (security review S-7):
    - *Sign In / Providers*: Email **on**; **Confirm email on**; **Allow anonymous sign-ins off**.
    - **Allow new users to sign up: off.** Accounts are made by you in the dashboard or by the persona
@@ -75,14 +81,15 @@ there (Claude never sees it).
    - Password settings: minimum length **10**.
 4. **Two test users** (for the live security test): *Authentication → Users → Add user → Create new
    user*, twice, ticking **Auto Confirm User**:
-   - `rls-a@fast.test` and `rls-b@fast.test` (made up; `.test` never delivers), each with its own
-     strong password.
+   - two made-up addresses on a domain that never delivers, e.g. `demo-a@example.com` and
+     `demo-b@example.com` (no real names), each with its own strong password. Claude can generate the
+     passwords straight into `.env` without showing them; then copy them from there.
 5. **Create `.env`**: in PowerShell in the project folder run `Copy-Item .env.example .env`, then open
    `.env` in Notepad and fill in:
 
    | Line in `.env` | Where to find it |
    |---|---|
-   | `SUPABASE_URL` | *Project Settings → Data API* (or *API*): the Project URL, `https://….supabase.co` |
+   | `SUPABASE_URL` | *Project Settings → Data API*, or the project's home page: the base address `https://….supabase.co`. The Data API page shows it with `/rest/v1/` on the end; drop that (the code drops it too, D-147) |
    | `SUPABASE_ANON_KEY` | *Project Settings → API Keys*: the **anon / publishable** key (public by design) |
    | `SUPABASE_JWT_SECRET` | *Project Settings → JWT Keys*: only if the current key is the **legacy HS256 shared secret**, copy that secret; if the current key is **ECC (P-256)**, leave it empty |
    | `RLS_TEST_A_EMAIL`, `_PASSWORD`, `RLS_TEST_B_…` | the two test users from 4.4 |
@@ -133,7 +140,7 @@ so **only public values**: never the service_role key, never the Groq key (the a
      the setting is then `http://<that address>:8000`. Windows may ask whether Python may use the
      network; that is your call (private networks are enough for the hotspot).
 2. Restart Metro with the cache cleared: `npx expo start -c`, and open the app in Expo Go.
-3. Sign in as `rls-a@fast.test` (step 4.4). The app shows the sign-up steps; finish them, then add an
+3. Sign in as the first test user from step 4.4 (its password is in `.env`). The app shows the sign-up steps; finish them, then add an
    entry and open Money: that is the core flow (13 Dec check).
 4. Back to sample data: rename `app\.env` (e.g. to `app\.env.off`) and restart with `npx expo start -c`.
 

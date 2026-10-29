@@ -40,21 +40,9 @@ language sql stable set search_path = '' as $$
   select current_user in ('postgres', 'service_role')
 $$;
 
--- user-study personas (A4, D-90): their clock is the study date, at noon Malaysia time; everyone
--- else's is the real clock. security definer so it can read the persona flag whatever the caller.
--- It answers only for the caller (security review S-5, D-93): any signed-in user can call a public
--- function through the API, and must not learn whether another account is a persona
-create or replace function public.study_now(uid uuid) returns timestamptz
-language sql stable security definer set search_path = '' as $$
-  select coalesce((select (p.study_date + time '12:00') at time zone 'Asia/Kuala_Lumpur'
-                     from public.profiles p
-                    where p.user_id = uid and p.is_persona and uid = (select auth.uid())), now())
-$$;
-
-create or replace function public.study_today(uid uuid) returns date
-language sql stable set search_path = '' as $$
-  select (public.study_now(uid) at time zone 'Asia/Kuala_Lumpur')::date
-$$;
+-- (study_now and study_today, the persona clock, follow the profiles table they read: Postgres checks a
+-- `language sql` body when the function is created, so they can't come first. The plpgsql functions
+-- below call them only when they run.)
 
 -- C3: the server decides when a row arrived; a client-sent created_at is ignored (a persona's rows
 -- arrive on its study date, so what a participant does shows up on the persona's day)
@@ -189,6 +177,22 @@ create table public.profiles (
          and is_persona = (study_last is not null)),
   check (not is_persona or study_date between study_first and study_last)
 );
+
+-- user-study personas (A4, D-90): their clock is the study date, at noon Malaysia time; everyone
+-- else's is the real clock. security definer so it can read the persona flag whatever the caller.
+-- It answers only for the caller (security review S-5, D-93): any signed-in user can call a public
+-- function through the API, and must not learn whether another account is a persona
+create or replace function public.study_now(uid uuid) returns timestamptz
+language sql stable security definer set search_path = '' as $$
+  select coalesce((select (p.study_date + time '12:00') at time zone 'Asia/Kuala_Lumpur'
+                     from public.profiles p
+                    where p.user_id = uid and p.is_persona and uid = (select auth.uid())), now())
+$$;
+
+create or replace function public.study_today(uid uuid) returns date
+language sql stable set search_path = '' as $$
+  select (public.study_now(uid) at time zone 'Asia/Kuala_Lumpur')::date
+$$;
 
 create or replace function public.lock_sign_up_numbers() returns trigger
 language plpgsql set search_path = '' as $$
