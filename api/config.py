@@ -67,6 +67,25 @@ def base_url(url: str) -> str:
     return url
 
 
+def cors_origins(raw: str | None = None) -> list[str]:
+    """The browser addresses allowed to call the API: the web study build (D-151), as a comma-separated
+    CORS_ORIGINS. Empty (the default) allows none; the phone app needs no CORS. Each must be https, or
+    http on this computer; never "*". Not a security boundary on its own: every /v1 call still needs the
+    user's token, and nothing uses cookies."""
+    if raw is None:
+        _load_dotenv()
+        raw = os.environ.get("CORS_ORIGINS", "")
+    out = []
+    for origin in (o.strip().rstrip("/") for o in raw.split(",")):
+        if not origin:
+            continue
+        local = origin.split("://", 1)[-1].split(":")[0] in ("localhost", "127.0.0.1")
+        if not (origin.startswith("https://") or (origin.startswith("http://") and local)) or "*" in origin:
+            raise RuntimeError(f"CORS_ORIGINS: {origin!r} must be an https address (or http on localhost)")
+        out.append(origin)
+    return out
+
+
 @lru_cache
 def get_settings() -> Settings:
     _load_dotenv()

@@ -152,6 +152,19 @@ If the app shows "FAST isn't set up yet", one setting is missing or wrong; it na
 
 **Tell Claude:** "app live" and what you saw (no keys).
 
+## 7. The web study build (trial, D-151)
+
+`render.yaml` also describes **fast-web**, the app as a website. After the push that adds it:
+
+1. Render → **Blueprints** → `fast` → **Sync** (or *Manual sync*) if it doesn't appear by itself. Render
+   proposes the new static site **fast-web** and asks for two values: `EXPO_PUBLIC_SUPABASE_URL` and
+   `EXPO_PUBLIC_SUPABASE_ANON_KEY`, the same public values as in `app\.env` (never the service_role key).
+   **Apply**; the first build takes a few minutes.
+2. Copy fast-web's address (`https://fast-web-….onrender.com`). In **fast-api → Environment**, set
+   `CORS_ORIGINS` to exactly that address (no slash at the end) and save; fast-api restarts. Without it the
+   site loads but can't reach the API.
+3. On the phone, open the address in the browser and sign in (a persona, or `demo-app@example.com`).
+
 ## Optional: the Groq key (5 min, for the assistant's red team)
 
 **console.groq.com** → *API Keys* → *Create API key* → paste it into `.env` as `GROQ_API_KEY` (and into

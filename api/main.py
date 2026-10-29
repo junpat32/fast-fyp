@@ -29,6 +29,7 @@ from datetime import date
 
 import httpx
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from engine.assess import assess
 from engine.features import UserProfile
@@ -40,7 +41,7 @@ from . import cards
 from . import game as g
 from . import money as m
 from .auth import CurrentUser, current_user
-from .config import Settings, get_settings
+from .config import Settings, cors_origins, get_settings
 from .limits import RateLimiter
 from .models import AssessIn, AssistantIn, CardIn, GameActionIn, TimeTravelIn
 
@@ -49,6 +50,18 @@ app = FastAPI(title="FAST API", version="0.1.0",
               description="Financial Advisory and Safety Tracker: risk band, health score, forecast, advice.",
               docs_url="/docs" if _DOCS else None, redoc_url="/redoc" if _DOCS else None,
               openapi_url="/openapi.json" if _DOCS else None)
+
+
+def allow_browsers(api: FastAPI, origins: list[str]) -> None:
+    """Let the web study build call the API from a browser (D-151): only the listed addresses, only the
+    methods and headers the app sends, no cookies; Retry-After stays readable for the 429 message."""
+    if origins:
+        api.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["GET", "POST"],
+                           allow_headers=["Authorization", "Content-Type"], expose_headers=["Retry-After"],
+                           allow_credentials=False, max_age=600)
+
+
+allow_browsers(app, cors_origins())
 
 _limiter: RateLimiter | None = None
 

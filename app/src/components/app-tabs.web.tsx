@@ -6,11 +6,11 @@ import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { ThemedText } from './themed-text';
 import { ThemedView } from './themed-view';
 
-// The same four tabs in a browser (Expo's web build; a fallback only, the target is the phone).
+// The same four tabs in a browser (Expo's web build). The bar takes its own row above the screens, so
+// on a phone-width browser it never covers a screen's top, where the study bar sits (D-119, D-151).
 export default function AppTabs() {
   return (
-    <Tabs>
-      <TabSlot style={{ height: '100%' }} />
+    <Tabs style={styles.tabs}>
       <TabList asChild>
         <CustomTabList>
           <TabTrigger name="index" href="/" asChild>
@@ -27,6 +27,7 @@ export default function AppTabs() {
           </TabTrigger>
         </CustomTabList>
       </TabList>
+      <TabSlot style={styles.slot} />
     </Tabs>
   );
 }
@@ -59,10 +60,12 @@ export function CustomTabList(props: TabListProps) {
 }
 
 const styles = StyleSheet.create({
+  tabs: { flex: 1 },
+  slot: { flex: 1 },
   tabListContainer: {
-    position: 'absolute',
     width: '100%',
-    padding: Spacing.three,
+    paddingHorizontal: Spacing.three,
+    paddingTop: Spacing.two,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',

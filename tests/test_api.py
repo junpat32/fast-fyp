@@ -68,6 +68,45 @@ def test_the_supabase_address_is_its_base_however_it_was_copied(typed):
     assert base_url(typed) == URL
 
 
+def test_cors_origins_are_explicit_https_addresses():
+    """D-151: the web study build's address only; none by default; never a wildcard."""
+    from api.config import cors_origins
+    assert cors_origins("") == []
+    assert cors_origins(" https://fast-web.onrender.com/ , http://localhost:8090 ") == [
+        "https://fast-web.onrender.com", "http://localhost:8090"]
+    for bad in ("*", "http://fast-web.onrender.com", "https://*.onrender.com", "ftp://x.test"):
+        with pytest.raises(RuntimeError, match="CORS_ORIGINS"):
+            cors_origins(bad)
+
+
+def test_only_the_listed_browser_address_may_call_the_api():
+    from fastapi import FastAPI
+    from api.main import allow_browsers
+    api = FastAPI()
+
+    @api.get("/v1/ping")
+    def ping():
+        return {"ok": True}
+    allow_browsers(api, ["https://fast-web.onrender.com"])
+    c = TestClient(api)
+    ask = {"Access-Control-Request-Method": "GET", "Access-Control-Request-Headers": "authorization"}
+    ok = c.options("/v1/ping", headers={"Origin": "https://fast-web.onrender.com", **ask})
+    assert ok.status_code == 200 and ok.headers["access-control-allow-origin"] == "https://fast-web.onrender.com"
+    assert "access-control-allow-credentials" not in ok.headers
+    other = c.options("/v1/ping", headers={"Origin": "https://evil.test", **ask})
+    assert "access-control-allow-origin" not in other.headers
+    assert c.get("/v1/ping", headers={"Origin": "https://fast-web.onrender.com"}).headers[
+        "access-control-expose-headers"] == "Retry-After"
+
+
+def test_no_listed_address_means_no_browser_access():
+    from fastapi import FastAPI
+    from api.main import allow_browsers
+    api = FastAPI()
+    allow_browsers(api, [])
+    assert not any("CORS" in str(m.cls) for m in api.user_middleware)
+
+
 # ---- sign-in
 def test_health_is_public(client):
     assert client.get("/health").json() == {"status": "ok"}

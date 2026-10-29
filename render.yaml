@@ -27,3 +27,39 @@ services:
         value: llama-3.3-70b-versatile
       - key: ASSISTANT_DAILY_LIMIT
         value: "30"
+      - key: CORS_ORIGINS
+        sync: false            # the web study build's address (fast-web below, D-151); empty = no browser access
+
+  # The web study build (D-151): the app as a single-page site, opened from a link in the phone's browser.
+  # Static files only, no server code. It rebuilds only when the app, its shared constants or its art change.
+  - type: web
+    name: fast-web
+    runtime: static
+    buildCommand: cd app && npm ci && npx expo export --platform web
+    staticPublishPath: app/dist
+    pullRequestPreviewsEnabled: false
+    buildFilter:
+      paths:
+        - app/**
+        - shared/**
+        - assets/**
+    routes:
+      - type: rewrite          # every page address opens the app, which shows the right screen
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Frame-Options  # no framing by other sites (clickjacking)
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: no-referrer
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: EXPO_PUBLIC_SUPABASE_URL
+        sync: false            # public: the same as app/.env (rule 7: never an admin key)
+      - key: EXPO_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: EXPO_PUBLIC_API_URL
+        value: https://fast-api-12ct.onrender.com
