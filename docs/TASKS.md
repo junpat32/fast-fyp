@@ -60,7 +60,7 @@ Claude raises an item again only when its date comes near, not before.
 | ID | Item | Since | Needed by | Where |
 |---|---|---|---|---|
 | WP-01 | **O1 sign-off:** review the seven differences from FYP1 | 18 Oct | **15 Nov (O1)** | `docs/fyp1_corrections.md` |
-| WP-02 | **Setup (T-26):** Supabase project + `.env`; GitHub repo + your no-reply email (both commits get it before the first push); Render | 17 Oct | Supabase: as soon as possible (login blocks the 13 Dec check); Render: before the pilot | `docs/setup_guide.md` |
+| WP-02 | **Setup (T-26):** Supabase project + `.env`; ~~GitHub repo + your no-reply email~~ **done 2026-10-29** (`github.com/junpat32/fast-fyp`, private; every commit rewritten to the no-reply address before the first push, D-146); Render | 17 Oct | Supabase: as soon as possible (login blocks the 13 Dec check); Render: before the pilot | `docs/setup_guide.md` |
 | WP-03 | **Ethics (T-21):** paused; look again on 15 Nov | 26 Oct | approval before the **30 Dec pilot** | `docs/ethics/` |
 | WP-04 | **W2:** all advice and reason wording, the short lines, verdict words, card texts, and §9 (the P9 note, causal-sounding headings) | 16–20 Oct | before the pilot | `docs/advice_wording_review.md` |
 | WP-05 | **W4:** the money helper's crisis reply | 16 Oct | before the pilot | `docs/advice_wording_review.md` §4 |
