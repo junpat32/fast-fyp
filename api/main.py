@@ -183,7 +183,7 @@ def future(user: CurrentUser = Depends(signed_in), store: g.GameStore = Depends(
     game_facts, _ = _game_facts(store, user)
     game_prof, inputs = g.game_inputs(game_facts)
     st = replay(game_prof, today, strict=False, **inputs)
-    return {**m.future_view(facts.profile, records, months, st, game_prof, user.id, today), "as_of": today.isoformat()}
+    return {**m.future_view(facts.profile, records, months, st, game_prof, today), "as_of": today.isoformat()}
 
 
 def _card_answer(store: g.GameStore, user: CurrentUser, today: date) -> dict | None:

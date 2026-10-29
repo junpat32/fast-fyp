@@ -725,36 +725,36 @@
     "month": 8,
     "p10": 0.0,
     "p50": 0.0,
-    "p90": 0.53
+    "p90": 0.5
    },
    {
     "month": 9,
     "p10": 0.0,
     "p50": 0.0,
-    "p90": 0.7
+    "p90": 0.63
    },
    {
     "month": 10,
     "p10": 0.0,
     "p50": 0.0,
-    "p90": 0.91
+    "p90": 0.87
    },
    {
     "month": 11,
     "p10": 0.0,
     "p50": 0.0,
-    "p90": 1.01
+    "p90": 1.05
    },
    {
     "month": 12,
     "p10": 0.0,
     "p50": 0.0,
-    "p90": 1.11
+    "p90": 0.92
    }
   ],
-  "shortfall_probability": 0.959,
-  "cash_flow_at_risk": -7448.27,
-  "expected_shortfall": -8648.03,
+  "shortfall_probability": 0.969,
+  "cash_flow_at_risk": -7562.78,
+  "expected_shortfall": -9262.29,
   "median_path_room_level": 2,
   "median_path_final_cushion": 0.0,
   "as_of": "2026-07-01"

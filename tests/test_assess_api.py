@@ -191,6 +191,22 @@ def test_future_self_shows_the_conformal_range_for_the_users_cell(client, monkey
         (round(a.p10, 2), round(r.p50, 2), round(a.p90, 2)) for a, r in zip(adjusted, seen["raw"])]
 
 
+def test_the_forecast_seed_comes_from_the_facts_not_the_account():
+    """D-150: the same history gives the same range all month and for every copy of a persona (D-94)."""
+    from dataclasses import replace
+    from sim.monte_carlo import FutureProfile, GameSnapshot
+    from engine.state import MonthRecord
+    done = [MonthRecord(net_income=2800, debt_payments=300, outstanding_debt=9000, cash=1200 + 100 * i,
+                        essential_spending=1500, total_spending=2100, month=4 + i) for i in range(3)]
+    fp, snap = FutureProfile("employee", 3), GameSnapshot(1500, 0, 1800, 1)
+    seed = m.forecast_seed(done, fp, snap, date(2026, 7, 2))
+    assert seed == m.forecast_seed(list(done), fp, snap, date(2026, 7, 30))                  # steady all month
+    assert seed != m.forecast_seed(done, fp, snap, date(2026, 8, 1))                         # a new month
+    assert seed != m.forecast_seed(done[:2] + [replace(done[2], cash=1401)], fp, snap, date(2026, 7, 2))
+    assert seed != m.forecast_seed(done, replace(fp, has_car=True), snap, date(2026, 7, 2))
+    assert 0 <= seed < 2 ** 32
+
+
 def test_future_self_needs_three_complete_months(client, store):
     store.money = money_facts(months=2, profile=money_profile(created_at="2026-04-01T02:00:00+00:00"),
                               checkins=[checkin_row(k) for k in (4, 5)],

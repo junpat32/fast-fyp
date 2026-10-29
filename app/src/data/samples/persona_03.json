@@ -871,46 +871,46 @@
   "months": [
    {
     "month": 7,
-    "p10": 0.37,
-    "p50": 1.17,
-    "p90": 1.56
+    "p10": 0.4,
+    "p50": 1.15,
+    "p90": 1.55
    },
    {
     "month": 8,
     "p10": 0.0,
-    "p50": 1.03,
-    "p90": 1.85
+    "p50": 1.01,
+    "p90": 1.83
    },
    {
     "month": 9,
     "p10": 0.0,
-    "p50": 0.84,
-    "p90": 1.85
+    "p50": 0.82,
+    "p90": 1.79
    },
    {
     "month": 10,
     "p10": 0.0,
     "p50": 0.73,
-    "p90": 1.87
+    "p90": 1.82
    },
    {
     "month": 11,
     "p10": 0.0,
     "p50": 0.6,
-    "p90": 1.89
+    "p90": 1.84
    },
    {
     "month": 12,
     "p10": 0.0,
-    "p50": 0.49,
+    "p50": 0.51,
     "p90": 1.9
    }
   ],
-  "shortfall_probability": 0.349,
-  "cash_flow_at_risk": -4495.69,
-  "expected_shortfall": -5608.66,
+  "shortfall_probability": 0.35,
+  "cash_flow_at_risk": -4425.45,
+  "expected_shortfall": -5589.25,
   "median_path_room_level": 3,
-  "median_path_final_cushion": 0.49,
+  "median_path_final_cushion": 0.51,
   "as_of": "2026-07-01"
  },
  "helper_facts": {

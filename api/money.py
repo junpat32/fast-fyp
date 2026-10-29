@@ -27,8 +27,9 @@ Production vs coursework: the debts list stores current payments only, so past m
 from __future__ import annotations
 
 import hashlib
+import json
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from datetime import date, timedelta
 
 from engine.assess import assess
@@ -194,8 +195,17 @@ def missing_assessments(f: MoneyFacts, today: date) -> list[dict]:
     return assessments_to_save(f, profile, records, months)
 
 
+def forecast_seed(done: list[MonthRecord], fp: FutureProfile, snap: GameSnapshot, today: date) -> int:
+    """The Monte Carlo's seed (D-150): from the forecast's own inputs and the month, never the account.
+    The same complete months give the same range all month (until one of them is corrected), and two
+    accounts with the same history, such as each participant's copy of a persona (D-94), see the same
+    screens, which the sample data and the answer keys assume."""
+    facts = {"month": f"{today:%Y-%m}", "profile": asdict(fp), "game": asdict(snap), "months": [asdict(r) for r in done]}
+    return int.from_bytes(hashlib.sha256(json.dumps(facts, sort_keys=True).encode()).digest()[:4], "big")
+
+
 def future_view(profile: dict, records: list[MonthRecord], months: list[dict], st: GameState,
-                game_profile, user_id: str, today: date) -> dict:
+                game_profile, today: date) -> dict:
     """The Future Self: six months of possible cushions from the user's complete months (D-79, D-81),
     each month's P10-P90 adjusted by the conformal offsets for the user's cell (D-142); P50 unchanged."""
     done = [r for r, m in zip(records, months) if m["source"] != "this month so far"][-6:]
@@ -207,8 +217,7 @@ def future_view(profile: dict, records: list[MonthRecord], months: list[dict], s
     snap = GameSnapshot(counted_money=st.money, borrowed_cash=st.borrowed_cash,
                         protected_monthly_costs=protected_monthly_costs(st, game_profile),
                         current_room_level=st.room_level)
-    seed = int.from_bytes(hashlib.sha256(f"{user_id}:{today:%Y-%m}".encode()).digest()[:4], "big")   # steady all month
-    r = simulate_future(done, fp, snap, seed=seed)
+    r = simulate_future(done, fp, snap, seed=forecast_seed(done, fp, snap, today))
     months = calibrated_months(r.cushion, fp.employment_type, len(done))
     return {"available": True, "label": FUTURE_LABEL, "based_on_months": len(done),
             "months": [{"month": x.month, "p10": round(x.p10, 2), "p50": round(x.p50, 2), "p90": round(x.p90, 2)}
