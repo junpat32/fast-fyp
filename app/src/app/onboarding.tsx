@@ -176,11 +176,8 @@ export default function OnboardingScreen() {
             <>
               <ThemedText type="small">How much would you like to put aside each month? Your garden grows when you meet it.</ThemedText>
               {!form.goalUnsure && (form.work === 'gig' ? (
-                <>
-                  <TextField label="A share of what you earn, in %" value={form.goal} onChange={(v) => set({ goal: v })}
-                             placeholder="e.g. 10" maxLength={5} />
-                  {errors.goal && <Err text={errors.goal} />}
-                </>
+                <TextField label="A share of what you earn, in %" value={form.goal} onChange={(v) => set({ goal: v })}
+                           placeholder="e.g. 10" maxLength={5} keyboardType="decimal-pad" error={errors.goal} />
               ) : (
                 <MoneyField label="Save each month" value={form.goal} onChange={(v) => set({ goal: v })} error={errors.goal} />
               ))}

@@ -10,6 +10,7 @@ import { Check, Segmented } from '@/components/add/choice';
 import { MonthList } from '@/components/add/month-list';
 import { QuickAdd } from '@/components/add/quick-add';
 import { Card } from '@/components/card';
+import { NO_OUTLINE, useOutline } from '@/components/fields';
 import { ScreenHeader } from '@/components/screen-header';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -46,6 +47,8 @@ export default function AddScreen() {
   const [busy, setBusy] = useState(false);
   const scroll = useRef<ScrollViewInstance>(null);
   const c = useTheme();                                 // light by day, dark at night (D-114)
+  const amountLine = useOutline(errors.amount);         // the typed boxes' outlines (D-153)
+  const noteLine = useOutline();
   const params = useLocalSearchParams<{ mode?: string }>();
   const [mode, setMode] = useState<'entry' | 'checkin'>(params.mode === 'checkin' ? 'checkin' : 'entry');
   useEffect(() => {                                     // Home's "check-in is open" pill lands here (D-118)
@@ -161,11 +164,11 @@ export default function AddScreen() {
                        options={[{ value: 'out', label: 'Money out' }, { value: 'in', label: 'Money in' }]}
                        onChange={(d) => set({ direction: d, category: '' })} />
 
-            <View style={[styles.amountRow, { borderColor: errors.amount ? c.bad : c.line }]}>
+            <View style={[styles.amountRow, { borderColor: amountLine.color }]}>
               <ThemedText type="subtitle" themeColor="textSecondary">RM</ThemedText>
               <TextInput value={form.amount} onChangeText={(t) => set({ amount: t })} placeholder="0.00"
-                         keyboardType="decimal-pad" style={[styles.amount, { color: c.text }]} accessibilityLabel="Amount in ringgit"
-                         placeholderTextColor={c.textSecondary} maxLength={13} />
+                         keyboardType="decimal-pad" style={[styles.amount, { color: c.text }, NO_OUTLINE]} accessibilityLabel="Amount in ringgit"
+                         placeholderTextColor={c.textSecondary} maxLength={13} {...amountLine.focus} />
             </View>
             {errors.amount && <ThemedText type="small" style={{ color: c.bad }}>{errors.amount}</ThemedText>}
 
@@ -198,8 +201,8 @@ export default function AddScreen() {
             {errors.day && <ThemedText type="small" style={{ color: c.bad }}>{errors.day}</ThemedText>}
 
             <TextInput value={form.note} onChangeText={(t) => set({ note: t })} placeholder="Note (optional)"
-                       style={[styles.note, { backgroundColor: c.input, borderColor: c.line, color: c.text }]} maxLength={NOTE_MAX}
-                       placeholderTextColor={c.textSecondary}
+                       style={[styles.note, { backgroundColor: c.input, color: c.text }, noteLine.box, NO_OUTLINE]} maxLength={NOTE_MAX}
+                       placeholderTextColor={c.textSecondary} {...noteLine.focus}
                        accessibilityLabel="Note, optional" />
 
             <Pressable onPress={save} disabled={busy} style={[styles.save, { backgroundColor: c.accent }, busy && styles.saveBusy]} accessibilityRole="button">

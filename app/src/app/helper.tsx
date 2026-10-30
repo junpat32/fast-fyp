@@ -6,7 +6,7 @@ import { ApiError } from '@/api/client';
 import { Chip } from '@/components/add/choice';
 import { Card } from '@/components/card';
 import { Expandable } from '@/components/expandable';
-import { Button } from '@/components/fields';
+import { Button, NO_OUTLINE, useOutline } from '@/components/fields';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -41,6 +41,7 @@ function trouble(e: unknown): string {
 export default function HelperScreen() {
   const { api, sample, version } = useApi();
   const t = useTheme();
+  const line = useOutline();
   const { data: a } = useRequest(() => api.assess(), [api, version]);
   const [text, setText] = useState('');
   const [turns, setTurns] = useState<Turn[]>([]);
@@ -97,10 +98,10 @@ export default function HelperScreen() {
           {turns.map((turn) => <TurnView key={turn.id} turn={turn} sample={!!sample} />)}
           {busy && <ActivityIndicator />}
 
-          <View style={[styles.box, { backgroundColor: t.input, borderColor: t.line }]}>
+          <View style={[styles.box, { backgroundColor: t.input }, line.box]}>
             <TextInput value={text} onChangeText={setText} placeholder="Type a question" placeholderTextColor={t.textSecondary}
-                       multiline maxLength={HELPER.max_question_chars} accessibilityLabel="Your question"
-                       style={[styles.input, { color: t.text }]} />
+                       multiline maxLength={HELPER.max_question_chars} accessibilityLabel="Your question" {...line.focus}
+                       style={[styles.input, { color: t.text }, NO_OUTLINE]} />
             <ThemedText type="small" themeColor="textSecondary" style={styles.count}>
               {text.length}/{HELPER.max_question_chars}
             </ThemedText>

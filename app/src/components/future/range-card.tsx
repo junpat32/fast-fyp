@@ -42,7 +42,8 @@ export function RangeCard({ label, months, now, basedOn }: {
             </View>
             {months.map((m) => (
               <View key={m.month} style={styles.column}>
-                <View style={[styles.bar, { bottom: y(m.p10), height: Math.max(y(m.p90) - y(m.p10), 3), backgroundColor: t.rangeBar }]} />
+                <View style={[styles.bar, { bottom: y(m.p10), height: Math.max(y(m.p90) - y(m.p10), 3), backgroundColor: t.rangeBar,
+                                            borderColor: t.rangeDot }]} />
                 <View style={[styles.dot, { bottom: y(m.p50) - 4, backgroundColor: t.rangeDot }]} />
               </View>
             ))}
@@ -56,7 +57,10 @@ export function RangeCard({ label, months, now, basedOn }: {
       </View>
       <View style={styles.legend}>
         <ThemedText type="small" themeColor="textSecondary"><ThemedText type="small" style={{ color: t.accent }}>◆</ThemedText> now</ThemedText>
-        <ThemedText type="small" themeColor="textSecondary"><ThemedText type="small" style={{ color: t.rangeBar }}>▮</ThemedText> possible range</ThemedText>
+        <View style={styles.key}>
+          <View style={[styles.swatch, { backgroundColor: t.rangeBar, borderColor: t.rangeDot }]} />
+          <ThemedText type="small" themeColor="textSecondary">possible range</ThemedText>
+        </View>
         <ThemedText type="small" themeColor="textSecondary"><ThemedText type="small" style={{ color: t.rangeDot }}>●</ThemedText> middle</ThemedText>
       </View>
 
@@ -82,10 +86,12 @@ const styles = StyleSheet.create({
   goalLabel: { position: 'absolute', right: 0, fontSize: 11 },
   columns: { flexDirection: 'row', flex: 1 },
   column: { flex: 1, alignItems: 'center' },
-  bar: { position: 'absolute', width: 14, borderRadius: 4 },
+  bar: { position: 'absolute', width: 14, borderRadius: 4, borderWidth: 1 },   // the edge: 3:1 on the card (D-153)
+  key: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one },
+  swatch: { width: 9, height: 13, borderRadius: 2, borderWidth: 1 },
   dot: { position: 'absolute', width: 8, height: 8, borderRadius: 4 },
   now: { position: 'absolute', width: 12, height: 12, transform: [{ rotate: '45deg' }] },
   month: { flex: 1, textAlign: 'center', fontSize: 11 },
   strong: { fontWeight: 700 },                    // same size as the sentence: only the weight changes
-  legend: { flexDirection: 'row', justifyContent: 'center', gap: Spacing.three },
+  legend: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.three },
 });

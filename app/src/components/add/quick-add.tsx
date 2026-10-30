@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 import type { Entry } from '@/api/entries';
 import { Chip } from '@/components/add/choice';
 import { Card } from '@/components/card';
+import { NO_OUTLINE, useOutline } from '@/components/fields';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useApi } from '@/data/api-context';
@@ -23,6 +24,7 @@ export function QuickAdd({ today, month, onFill }: {
 }) {
   const { entries, debts, version } = useApi();
   const t = useTheme();
+  const line = useOutline();
   const [text, setText] = useState('');
   const [said, setSaid] = useState<{ text: string; ok: boolean } | null>(null);
   const { data: list } = useRequest(() => debts.list(), [debts, version]);
@@ -49,8 +51,8 @@ export function QuickAdd({ today, month, onFill }: {
       <View style={styles.row}>
         <TextInput value={text} onChangeText={setText} onSubmitEditing={fill} returnKeyType="done"
                    placeholder='e.g. "RM12 lunch"' placeholderTextColor={t.textSecondary} maxLength={120}
-                   accessibilityLabel="Quick add: type or say what you spent or got"
-                   style={[styles.input, { backgroundColor: t.input, borderColor: t.line, color: t.text }]} />
+                   accessibilityLabel="Quick add: type or say what you spent or got" {...line.focus}
+                   style={[styles.input, { backgroundColor: t.input, color: t.text }, line.box, NO_OUTLINE]} />
         <Pressable onPress={fill} accessibilityRole="button" style={[styles.go, { backgroundColor: t.accent }]}>
           <ThemedText type="small" style={{ color: t.onAccent, fontWeight: 700 }}>Fill in</ThemedText>
         </Pressable>

@@ -35,7 +35,8 @@ export function ProgressCard({ game, asOf }: { game: GameResponse; asOf: string 
               </View>
             }>
       <View style={[styles.track, { backgroundColor: t.line }]}>
-        <View style={[styles.fill, { width: `${cushion.fill * 100}%`, backgroundColor: t.rangeBar }]} />
+        <View style={[styles.fill, { width: `${cushion.fill * 100}%`, backgroundColor: t.rangeBar, borderColor: t.rangeDot },
+                      cushion.fill > 0 && styles.edge]} />
         {cushion.milestones.map((m) => (
           <View key={m.months} style={[styles.tick, { left: `${(m.months / 3) * 100}%` },
                                        { backgroundColor: m.reached ? t.reward : t.textSecondary }]} />
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
   room: { fontWeight: 700 },
   track: { height: 12, borderRadius: 6, marginTop: Spacing.one, marginHorizontal: Spacing.two },
   fill: { height: 12, borderRadius: 6 },
+  edge: { borderWidth: 1 },                       // the fill's edge, 3:1 on the track (D-153)
   tick: { position: 'absolute', top: -2, width: 4, height: 16, marginLeft: -2, borderRadius: 2 },
   labels: { height: 20, marginHorizontal: Spacing.two },
   label: { position: 'absolute', width: 40, marginLeft: -20, textAlign: 'center' },

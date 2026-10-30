@@ -207,3 +207,12 @@ card never says which to choose; it states the interest difference. The flat-rat
 
 The Debts change answers a reading problem: with only BNPL instalments, the card said "RM0.00 to the debts on this
 list" and then "30% of your income", which looked contradictory.
+
+## 12. Sign-in, batch 2 (D-153; DRAFT, part of W2)
+
+| Where | Was | Draft now |
+|---|---|---|
+| Sign-in, password box, button | (none) | Show / Hide |
+| Sign-in, the same button, read aloud by a screen reader | (none) | Show the password / Hide the password |
+
+No other wording changed in batch 2: the rest is colour, outlines and the keyboard's Next and Go keys.

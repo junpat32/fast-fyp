@@ -23,14 +23,15 @@ export const Colors = {
     chip: '#F7F3EA',              // unselected chips
     segment: '#E8E4DC',           // segmented controls, the day stepper
     input: '#FFFFFF',
+    field: '#8A857C',             // the outline of a box you type in: 3:1 on the page and on cards (D-153)
     accent: '#5C4079',            // links, selected chips, the Save button
     onAccent: '#FFFFFF',
     good: '#2E7D4F',
-    watch: '#B07D00',
+    watch: '#8A6200',             // 4.9:1 on cards as small text (was #B07D00, 3.3:1; D-153)
     bad: '#B83A32',
     reward: '#3F6E34',            // game reward lines
     barFill: '#5B7F95',           // health score parts
-    rangeBar: '#B9CFA8',          // the Future chart
+    rangeBar: '#B9CFA8',          // the Future chart's ranges and the cushion bar, outlined in rangeDot (D-153)
     rangeDot: '#3F6E34',
     overlay: 'rgba(250, 247, 240, 0.9)',  // pills over the Home scene
     lawn: '#8BA86A',              // behind the Home scene, if a screen is taller than 9:20
@@ -47,6 +48,7 @@ export const Colors = {
     chip: '#2C2834',
     segment: '#2C2834',
     input: '#1B1921',
+    field: '#79728A',
     accent: '#BBA6E6',
     onAccent: '#1A1622',
     good: '#7CC79A',
