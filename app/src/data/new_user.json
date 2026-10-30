@@ -63,6 +63,8 @@
     "text": "Your cash covers about 0.7 months of essentials and debt payments. Getting to 1 month means saving about RM650 more. Small, regular amounts count."
    }
   ],
+  "debt_payments": 270.0,
+  "bnpl_instalments": 0.0,
   "as_of": "2026-07-01",
   "assessed_month": "2026-07-01",
   "months": [

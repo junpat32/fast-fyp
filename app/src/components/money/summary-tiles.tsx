@@ -16,7 +16,9 @@ type Panel = 'band' | 'forecast' | 'cushion' | null;
 /**
  * The Money screen's first glance (D-108): band (B1, B2), the forecast (B4) and the cushion (B7) as
  * three tiles; each ⓘ opens the explanation below them (B3 and the rest), one at a time. The band's
- * colour is its verdict; the other two get a few words from lib/verdicts.ts (D-109).
+ * colour is its verdict; the other two get a few words from lib/verdicts.ts (D-109). The band takes a
+ * full-width row and the other two share the next (D-152), so no number breaks across lines on a 360 dp
+ * phone; the forecast's "in 100" sits small beside its number.
  */
 export function SummaryTiles({ a }: { a: AssessResponse }) {
   const [open, setOpen] = useState<Panel>(null);
@@ -26,11 +28,11 @@ export function SummaryTiles({ a }: { a: AssessResponse }) {
   const t = useTheme();
   return (
     <View style={styles.wrap}>
+      <Tile wide label="Band" value={a.band === 'INSUFFICIENT_INCOME' ? 'No band' : BAND_LABEL[a.band]}
+            sub={a.band === 'INSUFFICIENT_INCOME' ? 'not enough income data' : `${Math.round(a.dsr * 100)}% of income to debts`}
+            fill={band.fill} ink={band.text} onInfo={() => toggle('band')} active={open === 'band'} />
       <View style={styles.row}>
-        <Tile label="Band" value={a.band === 'INSUFFICIENT_INCOME' ? 'No band' : BAND_LABEL[a.band]}
-              sub={a.band === 'INSUFFICIENT_INCOME' ? 'not enough income data' : `${Math.round(a.dsr * 100)}% of income to debts`}
-              fill={band.fill} ink={band.text} onInfo={() => toggle('band')} active={open === 'band'} />
-        <Tile label="Next 3 months" value={f ? `${outOf100(f.probability)} in 100` : '–'}
+        <Tile label="Next 3 months" value={f ? String(outOf100(f.probability)) : '–'} unit={f ? 'in 100' : undefined}
               sub={!f ? 'no forecast yet' : f.red_note ? 'people like you run short' : 'people like you hit money trouble'}
               verdict={f ? forecastVerdict(f, THRESHOLDS) : null}
               onInfo={() => toggle('forecast')} active={open === 'forecast'} />
@@ -50,23 +52,28 @@ export function SummaryTiles({ a }: { a: AssessResponse }) {
 }
 
 
-function Tile({ label, value, sub, verdict, fill, ink, onInfo, active }: {
-  label: string; value: string; sub: string; verdict?: Verdict | null; fill?: string; ink?: string;
-  onInfo: () => void; active: boolean;
+function Tile({ label, value, unit, sub, verdict, fill, ink, onInfo, active, wide = false }: {
+  label: string; value: string; unit?: string; sub: string; verdict?: Verdict | null; fill?: string; ink?: string;
+  onInfo: () => void; active: boolean; wide?: boolean;
 }) {
   const t = useTheme();
   const color = ink ? { color: ink } : undefined;
   const tone = verdict && verdict.tone !== 'neutral' ? t[verdict.tone] : undefined;   // the health tiers' colours
   return (
-    <Pressable onPress={onInfo} style={[styles.tile, { backgroundColor: fill ?? t.card }, active && [styles.tileActive, { borderColor: t.accent }]]}
+    <Pressable onPress={onInfo} style={[styles.tile, !wide && styles.tileHalf, { backgroundColor: fill ?? t.card },
+                                        active && [styles.tileActive, { borderColor: t.accent }]]}
                accessibilityRole="button"
-               accessibilityLabel={`${label}: ${value}, ${sub}${verdict ? `, ${verdict.text}` : ''}. Tap to explain.`}>
+               accessibilityLabel={`${label}: ${value}${unit ? ` ${unit}` : ''}, ${sub}${verdict ? `, ${verdict.text}` : ''}. Tap to explain.`}>
       <View style={styles.tileTop}>
         <ThemedText type="small" style={[styles.tileLabel, color]}>{label}</ThemedText>
         <ThemedText type="small" style={[styles.info, color]}>ⓘ</ThemedText>
       </View>
-      <ThemedText style={[styles.value, color]}>{value}</ThemedText>
-      <ThemedText type="small" style={[styles.sub, color]}>{sub}</ThemedText>
+      <View style={wide ? styles.wideBody : undefined}>
+        <ThemedText style={[styles.value, color]} numberOfLines={1}>
+          {value}{unit ? <ThemedText style={[styles.unit, color]}> {unit}</ThemedText> : null}
+        </ThemedText>
+        <ThemedText type="small" style={[styles.sub, color, wide && styles.wideSub]}>{sub}</ThemedText>
+      </View>
       {verdict && (
         <ThemedText type="small" themeColor={tone ? undefined : 'textSecondary'}
                     style={[styles.verdict, tone ? { color: tone } : null]}>{verdict.text}</ThemedText>
@@ -135,13 +142,16 @@ function CushionInfo({ months }: { months: number }) {
 const styles = StyleSheet.create({
   wrap: { gap: Spacing.two },
   row: { flexDirection: 'row', gap: Spacing.two },
-  tile: { flex: 1, borderRadius: Spacing.three, padding: Spacing.two, minHeight: 118,
-          gap: Spacing.half },
+  tile: { borderRadius: Spacing.three, padding: Spacing.two + Spacing.one, gap: Spacing.half },
+  tileHalf: { flex: 1, minHeight: 118 },     // the row's two tiles share its width, as tall as each other
+  wideBody: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: Spacing.three },
+  wideSub: { flexShrink: 1, textAlign: 'right' },
   tileActive: { borderWidth: 2 },
   tileTop: { flexDirection: 'row', justifyContent: 'space-between' },
   tileLabel: { fontSize: 12, fontWeight: 600 },
   info: { fontSize: 13 },
-  value: { fontSize: 22, lineHeight: 28, fontWeight: 700 },   // "8 in 100" fits a third of a 393 dp phone
+  value: { fontSize: 26, lineHeight: 32, fontWeight: 700 },   // "68 in 100" fits half of a 320 dp phone
+  unit: { fontSize: 14, fontWeight: 600 },
   sub: { fontSize: 12, lineHeight: 16 },
   verdict: { fontSize: 13, lineHeight: 17, fontWeight: 700, marginTop: 'auto' },   // sits at the tile's foot
   panel: { borderRadius: Spacing.three, padding: Spacing.three, gap: Spacing.two },

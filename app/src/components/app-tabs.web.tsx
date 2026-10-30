@@ -60,27 +60,29 @@ export function CustomTabList(props: TabListProps) {
 }
 
 const styles = StyleSheet.create({
-  tabs: { flex: 1 },
-  slot: { flex: 1 },
+  tabs: { flex: 1, overflow: 'hidden' },       // the screens scroll, never the page itself
+  slot: { flex: 1, minHeight: 0 },
   tabListContainer: {
     width: '100%',
-    paddingHorizontal: Spacing.three,
+    paddingHorizontal: Spacing.two,
     paddingTop: Spacing.two,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
-  innerContainer: {
-    paddingVertical: Spacing.two,
-    paddingHorizontal: Spacing.five,
+  innerContainer: {                      // fits a 320 px phone: FAST and four tabs, nothing wider (D-152)
+    paddingVertical: Spacing.one,
+    paddingHorizontal: Spacing.three,
     borderRadius: Spacing.five,
     flexDirection: 'row',
     alignItems: 'center',
     flexGrow: 1,
-    gap: Spacing.two,
+    flexShrink: 1,
+    minWidth: 0,
+    gap: Spacing.one,
     maxWidth: MaxContentWidth,
   },
   brandText: { marginRight: 'auto' },
   pressed: { opacity: 0.7 },
-  tabButtonView: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, borderRadius: Spacing.three },
+  tabButtonView: { paddingVertical: Spacing.two, paddingHorizontal: Spacing.two, borderRadius: Spacing.three },
 });

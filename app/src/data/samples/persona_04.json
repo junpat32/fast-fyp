@@ -232,6 +232,8 @@
     "text": "Your cash covers about 1.2 months of essentials and debt payments. That's a good start; the next goal is 3 months (RM2,446 more)."
    }
   ],
+  "debt_payments": 651.72,
+  "bnpl_instalments": 211.39,
   "as_of": "2026-07-01",
   "assessed_month": "2026-06-01",
   "months": [

@@ -165,6 +165,16 @@ def test_get_assess_needs_sign_up_and_a_token(client, store):
     assert client.get("/v1/assess").status_code == 401
 
 
+def test_assess_says_what_the_band_counts_as_debt_payments(client):
+    """D-152: the month's debt payments (the DSR's numerator) and the BNPL instalments inside them."""
+    body = client.get("/v1/assess", headers=bearer(token())).json()
+    assert body["debt_payments"] >= body["bnpl_instalments"] >= 0
+    from engine.state import MonthRecord
+    record = MonthRecord(net_income=2800, debt_payments=480.556, outstanding_debt=0, cash=0, essential_spending=1500,
+                         bnpl_instalments=120.0)
+    assert m.debt_parts(record) == {"debt_payments": 480.56, "bnpl_instalments": 120.0}
+
+
 # ---------------------------------------------------------------- GET /v1/future
 def test_future_self_from_complete_months(client):
     r = client.get("/v1/future", headers=bearer(token()))

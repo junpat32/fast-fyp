@@ -17,7 +17,7 @@ import { BAND_LABEL } from '@/lib/bands';
 import { myDate } from '@/lib/checkin';
 import { debtName, debtTotals, kindLabel, paidOff, type DebtRow, type NewDebt } from '@/lib/debts';
 import { rmText } from '@/lib/entry';
-import { shortDay } from '@/lib/format';
+import { monthName, shortDay } from '@/lib/format';
 
 const rm = (x: number) => rmText(x.toFixed(2));
 const why = (e: unknown) => (e instanceof Error ? e.message : String(e));
@@ -57,11 +57,19 @@ export default function DebtsScreen() {
           <Card title="Every month">
             <ThemedText type="subtitle">{rm(Number(totals.monthly))}</ThemedText>
             <ThemedText type="small">to the debts on this list · {rm(Number(totals.owed))} left to pay</ThemedText>
+            {a && a.bnpl_instalments !== undefined && a.bnpl_instalments > 0 && (
+              <ThemedText type="small">
+                + <ThemedText type="smallBold">{rm(a.bnpl_instalments)}</ThemedText> in Buy Now Pay Later instalments from what you log
+              </ThemedText>
+            )}
             {a && (a.band === 'INSUFFICIENT_INCOME'
               ? <ThemedText type="small" themeColor="textSecondary">Your band waits for more income to be logged.</ThemedText>
               : <ThemedText type="small" themeColor="textSecondary">
-                  Your band counts <ThemedText type="smallBold">{Math.round(a.dsr * 100)}% of your income</ThemedText> going to debts
-                  ({BAND_LABEL[a.band]}, as of {shortDay(a.as_of)}): this list plus the Buy Now Pay Later instalments from what you log.
+                  Your band counts{' '}
+                  <ThemedText type="smallBold">
+                    {a.debt_payments !== undefined ? `${rm(a.debt_payments)} a month, ` : ''}{Math.round(a.dsr * 100)}% of your income
+                  </ThemedText>
+                  , in {monthName(a.assessed_month)} ({BAND_LABEL[a.band]}).
                 </ThemedText>)}
           </Card>
 
@@ -84,7 +92,7 @@ export default function DebtsScreen() {
           )}
 
           {loading && !list && <ActivityIndicator />}
-          {list && open.length === 0 && (
+          {list && open.length === 0 && !editing && (
             <ThemedText type="small" themeColor="textSecondary">No debts on the list. Add any loan, card or older BNPL plan you pay each month.</ThemedText>
           )}
           {open.map((d) => (

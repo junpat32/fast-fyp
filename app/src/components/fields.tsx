@@ -44,17 +44,19 @@ export function RateField({ label, value, onChange, error, hint }: {
   );
 }
 
-/** A short line of text (a debt's name). */
-export function TextField({ label, value, onChange, placeholder, maxLength }: {
+/** A short line of text (a debt's name, a year of birth); an error shows like MoneyField's (D-152). */
+export function TextField({ label, value, onChange, placeholder, maxLength, error, keyboardType }: {
   label: string; value: string; onChange: (v: string) => void; placeholder?: string; maxLength: number;
+  error?: string; keyboardType?: 'default' | 'number-pad';
 }) {
   const t = useTheme();
   return (
     <View style={styles.field}>
       <ThemedText type="small">{label}</ThemedText>
       <TextInput value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor={t.textSecondary}
-                 maxLength={maxLength} accessibilityLabel={label}
-                 style={[styles.input, styles.text, { backgroundColor: t.input, borderColor: t.line, color: t.text }]} />
+                 maxLength={maxLength} accessibilityLabel={label} keyboardType={keyboardType}
+                 style={[styles.input, styles.text, { backgroundColor: t.input, borderColor: error ? t.bad : t.line, color: t.text }]} />
+      {error ? <ThemedText type="small" style={{ color: t.bad }}>{error}</ThemedText> : null}
     </View>
   );
 }

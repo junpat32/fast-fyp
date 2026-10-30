@@ -48,7 +48,7 @@ export function QuickAdd({ today, month, onFill }: {
     <Card title="Quick add">
       <View style={styles.row}>
         <TextInput value={text} onChangeText={setText} onSubmitEditing={fill} returnKeyType="done"
-                   placeholder='Type or say it, e.g. "RM12 lunch"' placeholderTextColor={t.textSecondary} maxLength={120}
+                   placeholder='e.g. "RM12 lunch"' placeholderTextColor={t.textSecondary} maxLength={120}
                    accessibilityLabel="Quick add: type or say what you spent or got"
                    style={[styles.input, { backgroundColor: t.input, borderColor: t.line, color: t.text }]} />
         <Pressable onPress={fill} accessibilityRole="button" style={[styles.go, { backgroundColor: t.accent }]}>
@@ -56,7 +56,7 @@ export function QuickAdd({ today, month, onFill }: {
         </Pressable>
       </View>
       <ThemedText type="small" themeColor="textSecondary" style={styles.small}>
-        Tap the keyboard&apos;s mic to say it. Works for money in too: &quot;salary 2800&quot;.
+        Type it, or tap the keyboard&apos;s mic and say it. Works for money in too: &quot;salary 2800&quot;.
       </ThemedText>
       {said && <ThemedText type="small" style={{ color: said.ok ? t.good : t.watch, fontWeight: 600 }}>{said.text}</ThemedText>}
       {bills.length > 0 && (

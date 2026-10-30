@@ -40,6 +40,7 @@ export function checkAssess(v: unknown, path = 'assess'): AssessResponse {
   }
   if (typeof o.insufficient_income !== 'boolean') throw new ShapeError(`${path}.insufficient_income should be true/false`);
   for (const k of ['dsr', 'dti', 'cushion_months']) num(o, k, path);
+  for (const k of ['debt_payments', 'bnpl_instalments']) if (o[k] !== undefined) num(o, k, path);   // D-152
   str(o, 'as_of', path);
   str(o, 'assessed_month', path);
   const h = obj(o.health, `${path}.health`);

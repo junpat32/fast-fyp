@@ -184,7 +184,8 @@ def assess_me(user: CurrentUser = Depends(signed_in), store: g.GameStore = Depen
             store.add_assessments(user, rows)
         except httpx.HTTPError:
             pass
-    return {**result, "as_of": today.isoformat(), "assessed_month": month, "months": months}
+    return {**result, **m.debt_parts(records[m.assessed_upto(months) - 1]), "as_of": today.isoformat(),
+            "assessed_month": month, "months": months}
 
 
 @app.get("/v1/future")

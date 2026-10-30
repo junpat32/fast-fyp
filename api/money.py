@@ -174,6 +174,12 @@ def assessed_upto(months: list[dict]) -> int:
     return len(months) - 1 if len(months) > 1 and months[-1]["source"] == "this month so far" else len(months)
 
 
+def debt_parts(record: MonthRecord) -> dict:
+    """The assessed month's debt payments, the DSR's numerator (rule 6), and the Buy Now Pay Later
+    instalments inside them, so the Debts screen can show the list and the instalments adding up (D-152)."""
+    return {"debt_payments": round(record.debt_payments, 2), "bnpl_instalments": round(record.bnpl_instalments, 2)}
+
+
 def assessments_to_save(f: MoneyFacts, profile: UserProfile, records: list[MonthRecord],
                         months: list[dict]) -> list[dict]:
     """M4: rows for checked-in months that have no saved assessment yet (each assessed with its own

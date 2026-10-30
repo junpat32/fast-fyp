@@ -194,3 +194,16 @@ for review.
 Points for Patrick: "Highest rate first" and "Smallest balance first" avoid the jargon (avalanche, snowball). The
 card never says which to choose; it states the interest difference. The flat-rate caveat matters for car loans
 (hire purchase quotes a flat rate, so the comparison understates their interest).
+
+## 11. UI polish, batch 1 (D-152; DRAFT, part of W2)
+
+| Where | Was | Draft now |
+|---|---|---|
+| Add, quick add, placeholder | Type or say it, e.g. "RM12 lunch" (cut off on narrow phones) | e.g. "RM12 lunch" |
+| Add, quick add, hint | Tap the keyboard's mic to say it. Works for money in too: "salary 2800". | Type it, or tap the keyboard's mic and say it. Works for money in too: "salary 2800". |
+| Future, subtitle | Where your habits are taking you in the next 6 months | The next 6 months, if recent habits continue |
+| Debts, summary card (new line) | (none) | + RM{instalments} in Buy Now Pay Later instalments from what you log |
+| Debts, summary card | Your band counts {dsr}% of your income going to debts ({band}, as of {date}): this list plus the Buy Now Pay Later instalments from what you log. | Your band counts RM{payments} a month, {dsr}% of your income, in {month} ({band}). |
+
+The Debts change answers a reading problem: with only BNPL instalments, the card said "RM0.00 to the debts on this
+list" and then "30% of your income", which looked contradictory.

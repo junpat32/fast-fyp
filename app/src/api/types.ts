@@ -49,6 +49,8 @@ export type AssessResponse = {
   dsr: number;
   dti: number;
   cushion_months: number;
+  debt_payments?: number;       // the assessed month's debt payments, the DSR's top (D-152); older servers omit it
+  bnpl_instalments?: number;    // the Buy Now Pay Later instalments inside them, from what was logged
   health: Health;
   forecast: Forecast | null;
   forecast_note: string | null; // why there's no forecast (e.g. income too low to judge)

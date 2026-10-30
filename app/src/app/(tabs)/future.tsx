@@ -48,7 +48,7 @@ export default function FutureScreen() {
         <ScrollView contentContainerStyle={styles.content}>
           <ScreenHeader title="Future" />
           <ThemedText type="small" themeColor="textSecondary" style={styles.horizon}>
-            Where your habits are taking you in the next 6 months
+            The next 6 months, if recent habits continue
           </ThemedText>
           {loading && <ActivityIndicator style={styles.loading} />}
           {error && <ThemedText style={{ color: theme.bad }}>Couldn't load your Future Self: {error}</ThemedText>}

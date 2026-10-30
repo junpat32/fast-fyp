@@ -172,7 +172,8 @@ def day(p: dict, today: date) -> dict:
     return {
         "card": cards.card_view(p["profile"], p["key"], today, st.money, answer),
         "checkins": [c for c in p["checkins"] if c["month"] < today.replace(day=1).isoformat()],   # rows RLS shows by then
-        "assess": {**result, "as_of": today.isoformat(), "assessed_month": months[upto - 1]["month"], "months": months},
+        "assess": {**result, **m.debt_parts(records[upto - 1]), "as_of": today.isoformat(),
+                   "assessed_month": months[upto - 1]["month"], "months": months},
         "game": g.game_view(st, today, set()),
         "future": {**m.future_view(p["profile"], records, months, st, prof, today), "as_of": today.isoformat()},
         # what POST /v1/assistant would give Groq that day (D-123): sample data can't reach the AI, so the

@@ -101,8 +101,7 @@ export default function OnboardingScreen() {
                 <Segmented<Work | ''> label="Your work" value={form.work} onChange={(v) => set({ work: v })} options={WORK} />
               </Field>
               <TextField label="Year you were born" value={form.birthYear} onChange={(v) => set({ birthYear: v.replace(/\D/g, '') })}
-                         placeholder="e.g. 2002" maxLength={4} />
-              {errors.birthYear && <Err text={errors.birthYear} />}
+                         placeholder="e.g. 2002" maxLength={4} keyboardType="number-pad" error={errors.birthYear} />
               <MoneyField label={incomeLabel(form.work)} value={form.income} onChange={(v) => set({ income: v })} error={errors.income}
                           hint="What reaches your account, not the amount before deductions" />
             </>
@@ -258,10 +257,12 @@ function Review({ form, onChange, local }: { form: OnboardingForm; onChange: (st
 }
 
 function Field({ label, error, children }: { label: string; error?: string; children: ReactNode }) {
+  const t = useTheme();
   return (
     <View style={styles.field}>
       <ThemedText type="small">{label}</ThemedText>
-      {children}
+      {/* a choice still to make is outlined like a field in error (D-152) */}
+      <View style={[styles.ring, { borderColor: error ? t.bad : 'transparent' }]}>{children}</View>
       {error && <Err text={error} />}
     </View>
   );
@@ -286,6 +287,7 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, maxWidth: MaxContentWidth },
   content: { padding: Spacing.three, gap: Spacing.two + Spacing.one, paddingBottom: Spacing.five },
   progress: { gap: Spacing.one },
+  ring: { borderWidth: 1, borderRadius: Spacing.three + Spacing.one, padding: 1 },
   bar: { height: 6, borderRadius: 3, overflow: 'hidden' },
   fill: { height: 6, borderRadius: 3 },
   title: { fontSize: 26, lineHeight: 32 },
