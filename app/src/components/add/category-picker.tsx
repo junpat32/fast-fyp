@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { CATEGORIES, COMMON_OUT, findCategory } from '@/data/categories';
@@ -31,10 +32,10 @@ export function CategoryPicker({ direction, value, onChange }: {
           const c = findCategory('out', k);
           return c ? <Chip key={k} label={c.label} on={k === value} onPress={() => onChange(k)} /> : null;
         })}
-        <Pressable onPress={() => setMore(!more)} style={styles.more} accessibilityRole="button"
-                   accessibilityState={{ expanded: more }} hitSlop={4}>
+        <Tap onPress={() => setMore(!more)} style={styles.more} accessibilityRole="button"
+             accessibilityState={{ expanded: more }} hitSlop={4}>
           <ThemedText type="small" style={[styles.moreText, { color: t.accent }]}>{more ? 'Fewer ˄' : 'More ›'}</ThemedText>
-        </Pressable>
+        </Tap>
       </View>
       {more && Object.entries(CATEGORIES.groups).map(([g, title]) => {
         const rest = CATEGORIES.out.filter((c) => c.group === g && !COMMON_OUT.includes(c.key));

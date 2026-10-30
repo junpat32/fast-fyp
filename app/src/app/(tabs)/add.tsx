@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, type ScrollViewInstance, StyleSheet, TextInput, View } from 'react-native';
+import { ActivityIndicator, Alert, ScrollView, type ScrollViewInstance, StyleSheet, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import type { Entry } from '@/api/entries';
@@ -12,6 +12,7 @@ import { QuickAdd } from '@/components/add/quick-add';
 import { Card } from '@/components/card';
 import { NO_OUTLINE, useOutline } from '@/components/fields';
 import { ScreenHeader } from '@/components/screen-header';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
@@ -188,15 +189,15 @@ export default function AddScreen() {
             )}
 
             <View style={[styles.dayRow, { backgroundColor: c.segment }]}>
-              <Pressable onPress={() => set({ day: stepDay(form.day, -1, today) })} disabled={form.day <= earliestDay(today)}
-                         style={styles.dayButton} accessibilityRole="button" accessibilityLabel="One day earlier" hitSlop={8}>
+              <Tap onPress={() => set({ day: stepDay(form.day, -1, today) })} disabled={form.day <= earliestDay(today)}
+                   style={styles.dayButton} accessibilityRole="button" accessibilityLabel="One day earlier" hitSlop={8}>
                 <ThemedText type="subtitle" themeColor={form.day <= earliestDay(today) ? 'textSecondary' : 'text'}>‹</ThemedText>
-              </Pressable>
+              </Tap>
               <ThemedText type="default" style={styles.day}>{dayLabel(form.day, today)}</ThemedText>
-              <Pressable onPress={() => set({ day: stepDay(form.day, 1, today) })} disabled={form.day >= today}
-                         style={styles.dayButton} accessibilityRole="button" accessibilityLabel="One day later" hitSlop={8}>
+              <Tap onPress={() => set({ day: stepDay(form.day, 1, today) })} disabled={form.day >= today}
+                   style={styles.dayButton} accessibilityRole="button" accessibilityLabel="One day later" hitSlop={8}>
                 <ThemedText type="subtitle" themeColor={form.day >= today ? 'textSecondary' : 'text'}>›</ThemedText>
-              </Pressable>
+              </Tap>
             </View>
             {errors.day && <ThemedText type="small" style={{ color: c.bad }}>{errors.day}</ThemedText>}
 
@@ -205,26 +206,26 @@ export default function AddScreen() {
                        placeholderTextColor={c.textSecondary} {...noteLine.focus}
                        accessibilityLabel="Note, optional" />
 
-            <Pressable onPress={save} disabled={busy} style={[styles.save, { backgroundColor: c.accent }, busy && styles.saveBusy]} accessibilityRole="button">
+            <Tap onPress={save} disabled={busy} style={[styles.save, { backgroundColor: c.accent }, busy && styles.saveBusy]} accessibilityRole="button">
               <ThemedText type="default" style={[styles.saveText, { color: c.onAccent }]}>{editing ? 'Save the fix' : 'Save'}</ThemedText>
-            </Pressable>
+            </Tap>
             {editing && (
               <View style={styles.editRow}>
-                <Pressable onPress={() => { setEditing(null); setForm(blank(today)); }} accessibilityRole="button" hitSlop={8}>
+                <Tap onPress={() => { setEditing(null); setForm(blank(today)); }} accessibilityRole="button" hitSlop={8}>
                   <ThemedText type="small" style={[styles.link, { color: c.accent }]}>Cancel</ThemedText>
-                </Pressable>
-                <Pressable onPress={remove} accessibilityRole="button" hitSlop={8}>
+                </Tap>
+                <Tap onPress={remove} accessibilityRole="button" hitSlop={8}>
                   <ThemedText type="small" style={[styles.link, { color: c.bad }]}>Delete this entry</ThemedText>
-                </Pressable>
+                </Tap>
               </View>
             )}
             {done && <ThemedText type="small" style={[styles.link, { color: c.good }]}>✓ {done}</ThemedText>}
           </Card>
 
           {!editing && !spentToday && !quietToday && (
-            <Pressable onPress={noSpending} style={[styles.quiet, { borderColor: c.accent }]} accessibilityRole="button">
+            <Tap onPress={noSpending} style={[styles.quiet, { borderColor: c.accent }]} accessibilityRole="button">
               <ThemedText type="default" style={[styles.link, { color: c.accent }]}>No spending today</ThemedText>
-            </Pressable>
+            </Tap>
           )}
 
           <MonthList entries={list} quietDays={quiet} today={today} now={now()} onOpen={open} local={entries.local} />

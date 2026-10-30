@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { StudyBar } from '@/components/study-bar';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -19,11 +20,11 @@ export function ScreenHeader({ title }: { title: string }) {
       <StudyBar />
       <View style={styles.row}>
         <ThemedText type="subtitle" style={styles.title}>{title}</ThemedText>
-        <Pressable onPress={() => router.navigate('/more')} accessibilityRole="button" hitSlop={8}
-                   accessibilityLabel="More: your character, badges, privacy"
-                   style={[styles.more, { backgroundColor: t.card }]}>
+        <Tap onPress={() => router.navigate('/more')} accessibilityRole="button" hitSlop={8}
+             accessibilityLabel="More: your character, badges, privacy"
+             style={[styles.more, { backgroundColor: t.card }]}>
           <ThemedText type="smallBold">More ›</ThemedText>
-        </Pressable>
+        </Tap>
       </View>
     </View>
   );

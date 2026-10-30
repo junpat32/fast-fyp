@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import type { Entry } from '@/api/entries';
 import { Card } from '@/components/card';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { findCategory } from '@/data/categories';
@@ -35,9 +36,9 @@ export function MonthList({ entries, quietDays, today, now, onOpen, local }: {
         const label = findCategory(e.direction, e.category)?.label ?? e.category;
         const amount = `${e.direction === 'in' ? '+' : '−'}${rmText(e.amount)}`;
         return (
-          <Pressable key={e.id} onPress={open ? () => onOpen(e) : undefined} disabled={!open} style={row}
-                     accessibilityRole="button"
-                     accessibilityLabel={`${label}, ${amount}, ${dayLabel(e.occurred_on, today)}${open ? '. Tap to fix or delete.' : '. Locked.'}`}>
+          <Tap key={e.id} onPress={open ? () => onOpen(e) : undefined} disabled={!open} style={row}
+               accessibilityRole="button"
+               accessibilityLabel={`${label}, ${amount}, ${dayLabel(e.occurred_on, today)}${open ? '. Tap to fix or delete.' : '. Locked.'}`}>
             <ThemedText type="small" themeColor="textSecondary" style={styles.day}>
               {dayShort(e.occurred_on)}
             </ThemedText>
@@ -47,7 +48,7 @@ export function MonthList({ entries, quietDays, today, now, onOpen, local }: {
             </View>
             <ThemedText type="small" style={[styles.amount, e.direction === 'in' && { color: t.good }]}>{amount}</ThemedText>
             <ThemedText type="small" themeColor="textSecondary" style={styles.chev}>{open ? '›' : ''}</ThemedText>
-          </Pressable>
+          </Tap>
         );
       })}
       {local && entries.length > 0 && (

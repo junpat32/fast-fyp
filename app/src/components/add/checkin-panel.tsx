@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { Card } from '@/components/card';
 import { Expandable } from '@/components/expandable';
 import { MoneyField as Money } from '@/components/fields';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useApi } from '@/data/api-context';
@@ -81,9 +82,9 @@ export function CheckinPanel({ today }: { today: string }) {
         {checkins.local && (
           <ThemedText type="small" themeColor="textSecondary">Sample data: saved on this phone for now; the points come once you sign in.</ThemedText>
         )}
-        <Pressable onPress={() => setSaved(null)} accessibilityRole="button" hitSlop={8}>
+        <Tap onPress={() => setSaved(null)} accessibilityRole="button" hitSlop={8}>
           <ThemedText type="small" style={[styles.link, { color: t.accent }]}>See the month</ThemedText>
-        </Pressable>
+        </Tap>
       </Card>
     );
   }
@@ -104,10 +105,10 @@ export function CheckinPanel({ today }: { today: string }) {
       <Card title={`Checked in for ${monthWord(month)} ✓`}>
         <MonthSummary row={existing} />
         {open ? (
-          <Pressable onPress={() => { setForm(formOf(existing)); setErrors({}); setEditing(true); }}
-                     accessibilityRole="button" style={[styles.quiet, { borderColor: t.accent }]}>
+          <Tap onPress={() => { setForm(formOf(existing)); setErrors({}); setEditing(true); }}
+               accessibilityRole="button" style={[styles.quiet, { borderColor: t.accent }]}>
             <ThemedText type="small" style={[styles.link, { color: t.accent }]}>Fix something (you can for 48 hours)</ThemedText>
-          </Pressable>
+          </Tap>
         ) : (
           <ThemedText type="small" themeColor="textSecondary">Locked: a check-in can be fixed for 48 hours.</ThemedText>
         )}
@@ -144,15 +145,15 @@ export function CheckinPanel({ today }: { today: string }) {
       <YesNo label="Were your bills paid on time?" value={form.bills} onChange={(v) => set({ bills: v })} error={errors.bills} />
       <YesNo label="Did you run short (out of cash, or a payment missed)?" value={form.ranShort}
              onChange={(v) => set({ ranShort: v })} error={errors.ranShort} />
-      <Pressable onPress={save} accessibilityRole="button" style={[styles.save, { backgroundColor: t.accent }]}>
+      <Tap onPress={save} accessibilityRole="button" style={[styles.save, { backgroundColor: t.accent }]}>
         <ThemedText type="default" style={[styles.saveText, { color: t.onAccent }]}>
           {existing ? 'Save the fix' : `Check in for ${monthWord(month)}`}
         </ThemedText>
-      </Pressable>
+      </Tap>
       {existing && (
-        <Pressable onPress={() => setEditing(false)} accessibilityRole="button" hitSlop={8}>
+        <Tap onPress={() => setEditing(false)} accessibilityRole="button" hitSlop={8}>
           <ThemedText type="small" style={[styles.link, styles.center, { color: t.accent }]}>Cancel</ThemedText>
-        </Pressable>
+        </Tap>
       )}
     </Card>
   );

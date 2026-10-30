@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import type { GameAction } from '@/api/client';
 import type { AssessResponse, GameResponse } from '@/api/types';
 import type { Look } from '@/lib/character';
 import { Portrait, Sprite } from '@/components/sprite';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { GAME_RULES } from '@/data/game-rules';
@@ -53,9 +54,9 @@ export function ThingCard(p: Props) {
     <View style={[styles.card, { backgroundColor: t.background, borderColor: t.line }]}>
       <View style={styles.head}>
         <ThemedText type="smallBold" style={styles.title}>{card.title}</ThemedText>
-        <Pressable onPress={p.onClose} hitSlop={12} accessibilityRole="button" accessibilityLabel="Close">
+        <Tap onPress={p.onClose} hitSlop={12} accessibilityRole="button" accessibilityLabel="Close">
           <ThemedText type="default" themeColor="textSecondary">✕</ThemedText>
-        </Pressable>
+        </Tap>
       </View>
       <ScrollView style={styles.scroll} contentContainerStyle={styles.body}>
         <Body {...p} lines={card.lines} />
@@ -170,17 +171,17 @@ function PlantHere(p: Props & { cell: [number, number]; lines: string[] }) {
         {options.map((o) => {
           const can = o.unlocked && (o.free || canPay) && !busy;
           return (
-            <Pressable key={o.plant} disabled={!can} onPress={() => plant(o.plant)} accessibilityRole="button"
-                       accessibilityState={{ disabled: !can }}
-                       accessibilityLabel={`${short(o.plant)}: ${!o.unlocked ? `unlocks after ${o.unlockInMonths} more counted months`
-                         : o.free ? 'free from your seed box' : 'one choice'}`}
-                       style={[styles.tile, { backgroundColor: t.card, borderColor: can ? t.accent : t.line, opacity: o.unlocked ? 1 : 0.5 }]}>
+            <Tap key={o.plant} disabled={!can} onPress={() => plant(o.plant)} accessibilityRole="button"
+                 accessibilityState={{ disabled: !can }}
+                 accessibilityLabel={`${short(o.plant)}: ${!o.unlocked ? `unlocks after ${o.unlockInMonths} more counted months`
+                   : o.free ? 'free from your seed box' : 'one choice'}`}
+                 style={[styles.tile, { backgroundColor: t.card, borderColor: can ? t.accent : t.line, opacity: o.unlocked ? 1 : 0.5 }]}>
               <Sprite name={`crop_${o.plant}_full`} min={24} max={40} />
               <ThemedText type="small" style={styles.tileName} numberOfLines={1}>{short(o.plant)}</ThemedText>
               <ThemedText type="small" style={[styles.tileCost, { color: o.unlocked ? t.accent : t.textSecondary }]}>
                 {!o.unlocked ? `in ${o.unlockInMonths} mo` : o.free ? 'free' : '1 choice'}
               </ThemedText>
-            </Pressable>
+            </Tap>
           );
         })}
       </View>
@@ -407,13 +408,13 @@ function Tile({ sprite, name, cost, enabled, owned, onPress }: {
 }) {
   const t = useTheme();
   return (
-    <Pressable disabled={!enabled} onPress={onPress} accessibilityRole="button" accessibilityState={{ disabled: !enabled }}
-               accessibilityLabel={`${name}: ${cost === '1 choice' ? 'one choice' : cost.replace('✓ ', '')}`}
-               style={[styles.tile, { backgroundColor: t.card, borderColor: enabled ? t.accent : t.line, opacity: enabled || owned ? 1 : 0.5 }]}>
+    <Tap disabled={!enabled} onPress={onPress} accessibilityRole="button" accessibilityState={{ disabled: !enabled }}
+         accessibilityLabel={`${name}: ${cost === '1 choice' ? 'one choice' : cost.replace('✓ ', '')}`}
+         style={[styles.tile, { backgroundColor: t.card, borderColor: enabled ? t.accent : t.line, opacity: enabled || owned ? 1 : 0.5 }]}>
       <View style={styles.tileArt}><Sprite name={sprite} min={24} max={40} /></View>
       <ThemedText type="small" style={[styles.tileName, styles.center]} numberOfLines={2}>{name}</ThemedText>
       <ThemedText type="small" style={[styles.tileCost, { color: owned ? t.reward : enabled ? t.accent : t.textSecondary }]}>{cost}</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 
@@ -496,11 +497,11 @@ function SavingsPlant(p: Props & { lines: React.ReactNode }) {
 function Action({ label, onPress, disabled, quiet }: { label: string; onPress: () => void; disabled?: boolean; quiet?: boolean }) {
   const t = useTheme();
   return (
-    <Pressable onPress={onPress} disabled={disabled} accessibilityRole="button" accessibilityState={{ disabled }}
-               style={[styles.action, quiet ? { borderColor: t.line, borderWidth: 1 } : { backgroundColor: t.accent },
-                       disabled && styles.disabled]}>
+    <Tap onPress={onPress} disabled={disabled} accessibilityRole="button" accessibilityState={{ disabled }}
+         style={[styles.action, quiet ? { borderColor: t.line, borderWidth: 1 } : { backgroundColor: t.accent },
+                 disabled && styles.disabled]}>
       <ThemedText type="small" style={[styles.actionText, { color: quiet ? t.text : t.onAccent }]}>{label}</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 

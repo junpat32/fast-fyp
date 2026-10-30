@@ -1,8 +1,10 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import type { AssessResponse } from '@/api/types';
+import { Counted, Reveal } from '@/components/motion';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { BandColors, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -22,55 +24,65 @@ type Panel = 'band' | 'forecast' | 'cushion' | null;
  */
 export function SummaryTiles({ a }: { a: AssessResponse }) {
   const [open, setOpen] = useState<Panel>(null);
+  const [panel, setPanel] = useState<Panel>(null);  // kept while the panel slides shut (D-154)
   const band = BandColors[a.band];
-  const toggle = (p: Panel) => setOpen(open === p ? null : p);
+  const toggle = (p: Panel) => {
+    const next = open === p ? null : p;
+    setOpen(next);
+    if (next) setPanel(next);
+  };
   const f = a.forecast;
   const t = useTheme();
   return (
-    <View style={styles.wrap}>
-      <Tile wide label="Band" value={a.band === 'INSUFFICIENT_INCOME' ? 'No band' : BAND_LABEL[a.band]}
-            sub={a.band === 'INSUFFICIENT_INCOME' ? 'not enough income data' : `${Math.round(a.dsr * 100)}% of income to debts`}
-            fill={band.fill} ink={band.text} onInfo={() => toggle('band')} active={open === 'band'} />
-      <View style={styles.row}>
-        <Tile label="Next 3 months" value={f ? String(outOf100(f.probability)) : '–'} unit={f ? 'in 100' : undefined}
-              sub={!f ? 'no forecast yet' : f.red_note ? 'people like you run short' : 'people like you hit money trouble'}
-              verdict={f ? forecastVerdict(f, THRESHOLDS) : null}
-              onInfo={() => toggle('forecast')} active={open === 'forecast'} />
-        <Tile label="Cushion" value={monthsText(a.cushion_months)} sub="months of costs saved"
-              verdict={cushionVerdict(a.cushion_months, THRESHOLDS)}
-              onInfo={() => toggle('cushion')} active={open === 'cushion'} />
-      </View>
-      {open && (
-        <View style={[styles.panel, { backgroundColor: t.card }]}>
-          {open === 'band' && <BandInfo a={a} />}
-          {open === 'forecast' && <ForecastInfo a={a} />}
-          {open === 'cushion' && <CushionInfo months={a.cushion_months} />}
+    <View>
+      <View style={styles.wrap}>
+        <Tile wide label="Band" value={a.band === 'INSUFFICIENT_INCOME' ? 'No band' : BAND_LABEL[a.band]}
+              sub={a.band === 'INSUFFICIENT_INCOME' ? 'not enough income data' : `${Math.round(a.dsr * 100)}% of income to debts`}
+              fill={band.fill} ink={band.text} onInfo={() => toggle('band')} active={open === 'band'} />
+        <View style={styles.row}>
+          <Tile label="Next 3 months" value={f ? String(outOf100(f.probability)) : '–'} unit={f ? 'in 100' : undefined}
+                count={f ? { to: outOf100(f.probability), text: (n) => String(Math.round(n)) } : undefined}
+                sub={!f ? 'no forecast yet' : f.red_note ? 'people like you run short' : 'people like you hit money trouble'}
+                verdict={f ? forecastVerdict(f, THRESHOLDS) : null}
+                onInfo={() => toggle('forecast')} active={open === 'forecast'} />
+          <Tile label="Cushion" value={monthsText(a.cushion_months)} count={{ to: Math.max(a.cushion_months, 0), text: monthsText }}
+                sub="months of costs saved" verdict={cushionVerdict(a.cushion_months, THRESHOLDS)}
+                onInfo={() => toggle('cushion')} active={open === 'cushion'} />
         </View>
-      )}
+      </View>
+      <Reveal open={open !== null} style={styles.panelSpace}>
+        <View style={[styles.panel, { backgroundColor: t.card }]}>
+          {panel === 'band' && <BandInfo a={a} />}
+          {panel === 'forecast' && <ForecastInfo a={a} />}
+          {panel === 'cushion' && <CushionInfo months={a.cushion_months} />}
+        </View>
+      </Reveal>
     </View>
   );
 }
 
 
-function Tile({ label, value, unit, sub, verdict, fill, ink, onInfo, active, wide = false }: {
-  label: string; value: string; unit?: string; sub: string; verdict?: Verdict | null; fill?: string; ink?: string;
-  onInfo: () => void; active: boolean; wide?: boolean;
+/** One tile. `count`: its number counts up to the value when it shows (D-154); screen readers hear the value. */
+function Tile({ label, value, count, unit, sub, verdict, fill, ink, onInfo, active, wide = false }: {
+  label: string; value: string; count?: { to: number; text: (n: number) => string }; unit?: string; sub: string;
+  verdict?: Verdict | null; fill?: string; ink?: string; onInfo: () => void; active: boolean; wide?: boolean;
 }) {
   const t = useTheme();
   const color = ink ? { color: ink } : undefined;
   const tone = verdict && verdict.tone !== 'neutral' ? t[verdict.tone] : undefined;   // the health tiers' colours
   return (
-    <Pressable onPress={onInfo} style={[styles.tile, !wide && styles.tileHalf, { backgroundColor: fill ?? t.card },
-                                        active && [styles.tileActive, { borderColor: t.accent }]]}
-               accessibilityRole="button"
-               accessibilityLabel={`${label}: ${value}${unit ? ` ${unit}` : ''}, ${sub}${verdict ? `, ${verdict.text}` : ''}. Tap to explain.`}>
+    <Tap onPress={onInfo} style={[styles.tile, !wide && styles.tileHalf, { backgroundColor: fill ?? t.card },
+                                  active && [styles.tileActive, { borderColor: t.accent }]]}
+         accessibilityRole="button"
+         accessibilityLabel={`${label}: ${value}${unit ? ` ${unit}` : ''}, ${sub}${verdict ? `, ${verdict.text}` : ''}. Tap to explain.`}>
       <View style={styles.tileTop}>
         <ThemedText type="small" style={[styles.tileLabel, color]}>{label}</ThemedText>
         <ThemedText type="small" style={[styles.info, color]}>ⓘ</ThemedText>
       </View>
       <View style={wide ? styles.wideBody : undefined}>
         <ThemedText style={[styles.value, color]} numberOfLines={1}>
-          {value}{unit ? <ThemedText style={[styles.unit, color]}> {unit}</ThemedText> : null}
+          {count ? <Counted to={count.to} text={count.text} /> : value}
+          {unit ? <ThemedText style={[styles.unit, color]}> {unit}</ThemedText> : null}
         </ThemedText>
         <ThemedText type="small" style={[styles.sub, color, wide && styles.wideSub]}>{sub}</ThemedText>
       </View>
@@ -78,7 +90,7 @@ function Tile({ label, value, unit, sub, verdict, fill, ink, onInfo, active, wid
         <ThemedText type="small" themeColor={tone ? undefined : 'textSecondary'}
                     style={[styles.verdict, tone ? { color: tone } : null]}>{verdict.text}</ThemedText>
       )}
-    </Pressable>
+    </Tap>
   );
 }
 
@@ -86,9 +98,9 @@ function BandInfo({ a }: { a: AssessResponse }) {
   const router = useRouter();
   const t = useTheme();
   const debts = (
-    <Pressable onPress={() => router.navigate('/debts')} accessibilityRole="link" hitSlop={8}>
+    <Tap onPress={() => router.navigate('/debts')} accessibilityRole="link" hitSlop={8}>
       <ThemedText type="small" style={{ color: t.accent, fontWeight: 700 }}>See your debts ›</ThemedText>
-    </Pressable>
+    </Tap>
   );
   if (a.band === 'INSUFFICIENT_INCOME') return <><ThemedText type="small">{noBandLine(THRESHOLDS)}</ThemedText>{debts}</>;
   const waiting = a.raw_band_this_month !== a.band && a.raw_band_this_month !== 'INSUFFICIENT_INCOME';
@@ -155,4 +167,5 @@ const styles = StyleSheet.create({
   sub: { fontSize: 12, lineHeight: 16 },
   verdict: { fontSize: 13, lineHeight: 17, fontWeight: 700, marginTop: 'auto' },   // sits at the tile's foot
   panel: { borderRadius: Spacing.three, padding: Spacing.three, gap: Spacing.two },
+  panelSpace: { paddingTop: Spacing.two },          // the gap above the panel slides with it
 });

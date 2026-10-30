@@ -1,7 +1,7 @@
 import type { Transforms3d } from '@shopify/react-native-skia';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,6 +12,7 @@ import { SceneHost } from '@/components/home/scene-host';
 import { ThingCard } from '@/components/home/thing-card';
 import { PlantIcon } from '@/components/sprite';
 import { StudyBar } from '@/components/study-bar';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useApi } from '@/data/api-context';
@@ -179,34 +180,34 @@ export default function HomeScreen() {
         <View style={styles.top} pointerEvents="box-none"><StudyBar floating /></View>
         {game && (
           <View style={styles.pills} pointerEvents="box-none">
-            <Pressable onPress={() => setMore(!more)} accessibilityRole="button" accessibilityState={{ expanded: more }}
-                       style={[styles.pill, { backgroundColor: theme.overlay }]}>
+            <Tap onPress={() => setMore(!more)} accessibilityRole="button" accessibilityState={{ expanded: more }}
+                 style={[styles.pill, { backgroundColor: theme.overlay }]}>
               <PlantIcon stage={game.look.savings_plant} max={22} />
               <ThemedText type="smallBold">{game.points} points</ThemedText>
               <EarnedMedals badges={game.badges} />
               <ThemedText type="smallBold">{more ? '▴' : '▾'}</ThemedText>
-            </Pressable>
-            <Pressable onPress={() => router.navigate('/more')} accessibilityRole="button" accessibilityLabel="More: your character, badges, privacy"
-                       style={[styles.pill, { backgroundColor: theme.overlay }]}>
+            </Tap>
+            <Tap onPress={() => router.navigate('/more')} accessibilityRole="button" accessibilityLabel="More: your character, badges, privacy"
+                 style={[styles.pill, { backgroundColor: theme.overlay }]}>
               <ThemedText type="smallBold">More ›</ThemedText>
-            </Pressable>
+            </Tap>
           </View>
         )}
         {checkinDue && (
-          <Pressable onPress={() => router.navigate({ pathname: '/add', params: { mode: 'checkin' } })} accessibilityRole="button"
-                     accessibilityLabel={`The ${monthWord(checkinMonth!)} check-in is open`}
-                     style={[styles.pill, styles.cardPill, { backgroundColor: theme.overlay, borderColor: theme.accent }]}>
+          <Tap onPress={() => router.navigate({ pathname: '/add', params: { mode: 'checkin' } })} accessibilityRole="button"
+               accessibilityLabel={`The ${monthWord(checkinMonth!)} check-in is open`}
+               style={[styles.pill, styles.cardPill, { backgroundColor: theme.overlay, borderColor: theme.accent }]}>
             <ThemedText type="small" style={{ color: theme.accent, fontWeight: 700 }}>
               {monthWord(checkinMonth!)} check-in is open · +{GAME_RULES.points.checkin} ›
             </ThemedText>
-          </Pressable>
+          </Tap>
         )}
         {card && card.answer === null && (
-          <Pressable onPress={() => router.navigate('/future')} accessibilityRole="button"
-                     accessibilityLabel="This week's what-if card is waiting on the Future tab"
-                     style={[styles.pill, styles.cardPill, { backgroundColor: theme.overlay, borderColor: theme.accent }]}>
+          <Tap onPress={() => router.navigate('/future')} accessibilityRole="button"
+               accessibilityLabel="This week's what-if card is waiting on the Future tab"
+               style={[styles.pill, styles.cardPill, { backgroundColor: theme.overlay, borderColor: theme.accent }]}>
             <ThemedText type="small" style={{ color: theme.accent, fontWeight: 700 }}>New this week: a what-if card ›</ThemedText>
-          </Pressable>
+          </Tap>
         )}
         {more && game && (
           <View style={[styles.panel, { backgroundColor: theme.overlay }]}>
@@ -221,28 +222,28 @@ export default function HomeScreen() {
             <ThemedText type="small" themeColor="textSecondary" style={styles.badges}>
               Pinch to zoom · double-tap to see it all · tap a thing to learn about it
             </ThemedText>
-            <Pressable onPress={() => { setMore(false); setPlacing(null); setTarget({ kind: 'choices' }); }} accessibilityRole="button"
-                       style={[styles.spend, { backgroundColor: theme.accent }]}>
+            <Tap onPress={() => { setMore(false); setPlacing(null); setTarget({ kind: 'choices' }); }} accessibilityRole="button"
+                 style={[styles.spend, { backgroundColor: theme.accent }]}>
               <ThemedText type="small" style={{ color: theme.onAccent, fontWeight: 700 }}>
                 {game.choices.available > 0 ? `Spend a choice (${game.choices.available}) ›` : 'See what choices unlock ›'}
               </ThemedText>
-            </Pressable>
+            </Tap>
           </View>
         )}
         {placing && (
-          <Pressable onPress={() => setPlacing(null)} style={[styles.panel, { backgroundColor: theme.overlay }]} accessibilityRole="button">
+          <Tap onPress={() => setPlacing(null)} style={[styles.panel, { backgroundColor: theme.overlay }]} accessibilityRole="button">
             <ThemedText type="small">
               {placing.spots.length > 0
                 ? `Tap a glowing spot for the ${(DECOR_NAMES[placing.item] ?? placing.item).toLowerCase()}${placing.moving ? '' : ' (1 choice)'} · tap here to stop`
                 : `No free spot fits the ${(DECOR_NAMES[placing.item] ?? placing.item).toLowerCase()} right now · tap here to close`}
             </ThemedText>
             {placing.error && <ThemedText type="small" style={{ color: theme.bad }}>{placing.error}</ThemedText>}
-          </Pressable>
+          </Tap>
         )}
         {highlight.length > 0 && (
-          <Pressable onPress={() => setHighlight([])} style={[styles.panel, { backgroundColor: theme.overlay }]} accessibilityRole="button">
+          <Tap onPress={() => setHighlight([])} style={[styles.panel, { backgroundColor: theme.overlay }]} accessibilityRole="button">
             <ThemedText type="small">Tap a glowing spot in the bed to plant there · tap here to stop</ThemedText>
-          </Pressable>
+          </Tap>
         )}
         {loading && <ActivityIndicator style={styles.loading} />}
         {error && <ThemedText style={[styles.panel, { color: theme.bad, backgroundColor: theme.background }]}>

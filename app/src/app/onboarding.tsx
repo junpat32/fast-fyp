@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useRef, useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, type ScrollViewInstance, StyleSheet, View } from 'react-native';
+import { ScrollView, type ScrollViewInstance, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Check, Chip, Segmented } from '@/components/add/choice';
@@ -8,6 +8,7 @@ import { CharacterPicker } from '@/components/character/picker';
 import { Button, MoneyField, TextField } from '@/components/fields';
 import { DebtForm } from '@/components/lists/debt-form';
 import { PrivacyNotice } from '@/components/onboarding/privacy';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -156,10 +157,10 @@ export default function OnboardingScreen() {
                     <ThemedText type="smallBold">{debtName(d)}</ThemedText>
                     <ThemedText type="small" themeColor="textSecondary">{rmText(d.monthly_payment)} a month · {rmText(d.outstanding)} left</ThemedText>
                   </View>
-                  <Pressable onPress={() => set({ debts: form.debts.filter((_, j) => j !== k) })} hitSlop={10}
-                             accessibilityRole="button" accessibilityLabel={`Remove ${debtName(d)}`}>
+                  <Tap onPress={() => set({ debts: form.debts.filter((_, j) => j !== k) })} hitSlop={10}
+                       accessibilityRole="button" accessibilityLabel={`Remove ${debtName(d)}`}>
                     <ThemedText type="default" themeColor="textSecondary">✕</ThemedText>
-                  </Pressable>
+                  </Tap>
                 </View>
               ))}
               {addingDebt ? (
@@ -233,10 +234,10 @@ function Review({ form, onChange, local }: { form: OnboardingForm; onChange: (st
         <View key={step} style={[styles.group, { backgroundColor: t.card }]}>
           <View style={styles.groupHead}>
             <ThemedText type="smallBold" style={styles.flex}>{TITLES[step]}</ThemedText>
-            <Pressable onPress={() => onChange(STEPS.indexOf(step))} hitSlop={8} accessibilityRole="button"
-                       accessibilityLabel={`Change ${TITLES[step].toLowerCase()}`}>
+            <Tap onPress={() => onChange(STEPS.indexOf(step))} hitSlop={8} accessibilityRole="button"
+                 accessibilityLabel={`Change ${TITLES[step].toLowerCase()}`}>
               <ThemedText type="small" style={{ color: t.accent, fontWeight: 700 }}>Change</ThemedText>
-            </Pressable>
+            </Tap>
           </View>
           {rows.map(([k, v]) => (
             <ThemedText key={k} type="small"><ThemedText type="small" themeColor="textSecondary">{k}: </ThemedText>{v}</ThemedText>

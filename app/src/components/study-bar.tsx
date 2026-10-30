@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useApi } from '@/data/api-context';
@@ -37,17 +38,17 @@ export function StudyBar({ floating = false }: { floating?: boolean }) {
     <View style={styles.wrap} pointerEvents="box-none">
       <View style={styles.row} pointerEvents="box-none">
         {sample && (
-          <Pressable onPress={() => setOpen(!open)} style={[styles.pill, styles.who, { backgroundColor: bg }]} hitSlop={6}
-                     accessibilityRole="button" accessibilityState={{ expanded: open }}
-                     accessibilityLabel={`Sample data: ${sample.name}, a made-up person. Tap to change.`}>
+          <Tap onPress={() => setOpen(!open)} style={[styles.pill, styles.who, { backgroundColor: bg }]} hitSlop={6}
+               accessibilityRole="button" accessibilityState={{ expanded: open }}
+               accessibilityLabel={`Sample data: ${sample.name}, a made-up person. Tap to change.`}>
             <ThemedText type="small">Sample: {sample.name} {open ? '▴' : '▾'}</ThemedText>
-          </Pressable>
+          </Tap>
         )}
         {account && study && (
-          <Pressable onPress={() => { account.signOut(); }} style={[styles.pill, styles.who, { backgroundColor: bg }]} hitSlop={6}
-                     accessibilityRole="button" accessibilityLabel="Switch account: sign out and sign in to the next one">
+          <Tap onPress={() => { account.signOut(); }} style={[styles.pill, styles.who, { backgroundColor: bg }]} hitSlop={6}
+               accessibilityRole="button" accessibilityLabel="Switch account: sign out and sign in to the next one">
             <ThemedText type="small">Switch account</ThemedText>
-          </Pressable>
+          </Tap>
         )}
         {study && (
           <View style={[styles.pill, styles.clock, { backgroundColor: bg }]}>
@@ -70,11 +71,11 @@ export function StudyBar({ floating = false }: { floating?: boolean }) {
 function Step({ label, name, enabled, onPress }: { label: string; name: string; enabled: boolean; onPress: () => void }) {
   const t = useTheme();
   return (
-    <Pressable onPress={onPress} disabled={!enabled} hitSlop={8} accessibilityRole="button" accessibilityLabel={name}
-               accessibilityState={{ disabled: !enabled }}
-               style={[styles.step, { backgroundColor: t.chip, opacity: enabled ? 1 : 0.35 }]}>
+    <Tap onPress={onPress} disabled={!enabled} hitSlop={8} accessibilityRole="button" accessibilityLabel={name}
+         accessibilityState={{ disabled: !enabled }}
+         style={[styles.step, { backgroundColor: t.chip, opacity: enabled ? 1 : 0.35 }]}>
       <ThemedText style={styles.arrow}>{label}</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 
@@ -93,11 +94,11 @@ function PersonaPanel({ bg, onDone, onStart }: { bg: string; onDone: () => void;
         {samples.map((s) => {
           const on = s.key === sample.key;
           return (
-            <Pressable key={s.key} onPress={() => { chooseSample(s.key); onDone(); }}
-                       style={[styles.choice, { backgroundColor: on ? t.accent : t.chip }]} accessibilityRole="button"
-                       accessibilityState={{ selected: on }}>
+            <Tap key={s.key} onPress={() => { chooseSample(s.key); onDone(); }}
+                 style={[styles.choice, { backgroundColor: on ? t.accent : t.chip }]} accessibilityRole="button"
+                 accessibilityState={{ selected: on }}>
               <ThemedText type="small" style={on ? { color: t.onAccent } : undefined}>{s.name}</ThemedText>
-            </Pressable>
+            </Tap>
           );
         })}
       </View>
@@ -107,14 +108,14 @@ function PersonaPanel({ bg, onDone, onStart }: { bg: string; onDone: () => void;
         </ThemedText>
       )}
       {onStart && study && (
-        <Pressable onPress={() => { onStart(); onDone(); }} accessibilityRole="button"
-                   style={[styles.choice, styles.start, { backgroundColor: t.chip }]}>
+        <Tap onPress={() => { onStart(); onDone(); }} accessibilityRole="button"
+             style={[styles.choice, styles.start, { backgroundColor: t.chip }]}>
           <ThemedText type="small">Back to {shortDay(study.first)}</ThemedText>
-        </Pressable>
+        </Tap>
       )}
-      <Pressable onPress={() => { onDone(); router.navigate('/onboarding'); }} accessibilityRole="button" hitSlop={6}>
+      <Tap onPress={() => { onDone(); router.navigate('/onboarding'); }} accessibilityRole="button" hitSlop={6}>
         <ThemedText type="small" style={{ color: t.accent, fontWeight: 700 }}>Try the sign-up, as a new user ›</ThemedText>
-      </Pressable>
+      </Tap>
     </View>
   );
 }

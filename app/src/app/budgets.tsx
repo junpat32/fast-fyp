@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Chip } from '@/components/add/choice';
 import { Card } from '@/components/card';
 import { Button, MoneyField } from '@/components/fields';
+import { GrowBar } from '@/components/motion';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -68,9 +70,9 @@ export default function BudgetsScreen() {
             <ThemedText type="small" themeColor="textSecondary">No budgets yet. Eating out or shopping are good ones to start with.</ThemedText>
           )}
           {rows.map((b) => (
-            <Pressable key={b.category} onPress={() => { setNote(null); setEditing(b); }} accessibilityRole="button"
-                       accessibilityLabel={`${nameOf(b.category)}: ${rmText(spent[b.category] ?? '0.00')} of ${rmText(b.monthly_limit.toFixed(2))}. Tap to change.`}
-                       style={[styles.row, { backgroundColor: t.card }]}>
+            <Tap key={b.category} onPress={() => { setNote(null); setEditing(b); }} accessibilityRole="button"
+                 accessibilityLabel={`${nameOf(b.category)}: ${rmText(spent[b.category] ?? '0.00')} of ${rmText(b.monthly_limit.toFixed(2))}. Tap to change.`}
+                 style={[styles.row, { backgroundColor: t.card }]}>
               <View style={styles.head}>
                 <ThemedText type="smallBold" style={styles.flex}>{nameOf(b.category)}</ThemedText>
                 <ThemedText type="small" themeColor="textSecondary">
@@ -78,12 +80,12 @@ export default function BudgetsScreen() {
                 </ThemedText>
               </View>
               <View style={[styles.bar, { backgroundColor: t.line }]}>
-                <View style={[styles.fill, { width: `${b.line.share * 100}%`, backgroundColor: b.line.over ? t.watch : t.barFill }]} />
+                <GrowBar share={b.line.share} style={[styles.fill, { backgroundColor: b.line.over ? t.watch : t.barFill }]} />
               </View>
               <ThemedText type="small" style={{ color: b.line.over ? t.watch : t.textSecondary }}>
                 {b.line.over ? `${rmText(b.line.over)} over this month` : `${rmText(b.line.left!)} left this month`}
               </ThemedText>
-            </Pressable>
+            </Tap>
           ))}
           {budgets.local && (
             <ThemedText type="small" themeColor="textSecondary" style={styles.foot}>

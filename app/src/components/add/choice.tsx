@@ -1,5 +1,6 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -14,10 +15,10 @@ export function Segmented<T extends string>({ options, value, onChange, label }:
       {options.map((o) => {
         const on = o.value === value;
         return (
-          <Pressable key={o.value} onPress={() => onChange(o.value)} style={[styles.segment, on && { backgroundColor: t.accent }]}
-                     accessibilityRole="radio" accessibilityState={{ checked: on }}>
+          <Tap key={o.value} onPress={() => onChange(o.value)} style={[styles.segment, on && { backgroundColor: t.accent }]}
+               accessibilityRole="radio" accessibilityState={{ checked: on }}>
             <ThemedText type="small" style={[styles.segmentText, on && { color: t.onAccent }]}>{o.label}</ThemedText>
-          </Pressable>
+          </Tap>
         );
       })}
     </View>
@@ -28,11 +29,11 @@ export function Segmented<T extends string>({ options, value, onChange, label }:
 export function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
   const t = useTheme();
   return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityState={{ selected: on }} hitSlop={4}
-               style={[styles.chip, on ? { backgroundColor: t.accent, borderColor: t.accent }
-                                       : { backgroundColor: t.card, borderColor: t.line }]}>
+    <Tap onPress={onPress} accessibilityRole="button" accessibilityState={{ selected: on }} hitSlop={4}
+         style={[styles.chip, on ? { backgroundColor: t.accent, borderColor: t.accent }
+                                 : { backgroundColor: t.card, borderColor: t.line }]}>
       <ThemedText type="small" style={on ? { color: t.onAccent } : undefined}>{label}</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 
@@ -40,13 +41,13 @@ export function Chip({ label, on, onPress }: { label: string; on: boolean; onPre
 export function Check({ label, on, onChange }: { label: string; on: boolean; onChange: (v: boolean) => void }) {
   const t = useTheme();
   return (
-    <Pressable onPress={() => onChange(!on)} style={styles.check} accessibilityRole="checkbox"
-               accessibilityState={{ checked: on }}>
+    <Tap onPress={() => onChange(!on)} style={styles.check} accessibilityRole="checkbox"
+         accessibilityState={{ checked: on }}>
       <View style={[styles.box, on ? { backgroundColor: t.accent, borderColor: t.accent } : { borderColor: t.textSecondary }]}>
         {on && <ThemedText type="small" style={{ color: t.onAccent }}>✓</ThemedText>}
       </View>
       <ThemedText type="small" style={styles.checkText}>{label}</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 

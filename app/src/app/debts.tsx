@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -7,6 +7,7 @@ import { Card } from '@/components/card';
 import { Button } from '@/components/fields';
 import { DebtForm } from '@/components/lists/debt-form';
 import { DebtPlanCard } from '@/components/lists/debt-plan-card';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -96,9 +97,9 @@ export default function DebtsScreen() {
             <ThemedText type="small" themeColor="textSecondary">No debts on the list. Add any loan, card or older BNPL plan you pay each month.</ThemedText>
           )}
           {open.map((d) => (
-            <Pressable key={d.id} onPress={() => { setNote(null); setEditing(d); }} accessibilityRole="button"
-                       accessibilityLabel={`${debtName(d)}: ${rm(d.monthly_payment)} a month, ${rm(d.outstanding)} left. Tap to change.`}
-                       style={[styles.row, { backgroundColor: t.card }, editing !== 'new' && editing?.id === d.id && { borderColor: t.accent }]}>
+            <Tap key={d.id} onPress={() => { setNote(null); setEditing(d); }} accessibilityRole="button"
+                 accessibilityLabel={`${debtName(d)}: ${rm(d.monthly_payment)} a month, ${rm(d.outstanding)} left. Tap to change.`}
+                 style={[styles.row, { backgroundColor: t.card }, editing !== 'new' && editing?.id === d.id && { borderColor: t.accent }]}>
               <View style={styles.flex}>
                 <ThemedText type="smallBold">{debtName(d)}</ThemedText>
                 <ThemedText type="small" themeColor="textSecondary">
@@ -107,7 +108,7 @@ export default function DebtsScreen() {
                 </ThemedText>
               </View>
               <ThemedText type="smallBold">{rm(d.monthly_payment)}<ThemedText type="small" themeColor="textSecondary"> /mo ›</ThemedText></ThemedText>
-            </Pressable>
+            </Tap>
           ))}
 
           {list && !editing && <DebtPlanCard debts={list} today={today} />}

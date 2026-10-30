@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import type { CardAnswer, CardResponse } from '@/api/types';
 import { Card } from '@/components/card';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -59,15 +60,15 @@ export function LifeEventCard({ card, onAnswer, local }: {
         <>
           <ThemedText type="small" themeColor="textSecondary">What would you do? There's no wrong answer.</ThemedText>
           {card.responses.filter((r) => r.id !== 'not_this_week').map((r) => (
-            <Pressable key={r.id} onPress={() => answer(r.id)} disabled={busy} accessibilityRole="button"
-                       style={[styles.choice, { backgroundColor: t.card, borderColor: t.accent }, busy && styles.busy]}>
+            <Tap key={r.id} onPress={() => answer(r.id)} disabled={busy} accessibilityRole="button"
+                 style={[styles.choice, { backgroundColor: t.card, borderColor: t.accent }, busy && styles.busy]}>
               <ThemedText type="small" style={styles.choiceText}>{r.label}</ThemedText>
               <ThemedText type="small" style={{ color: t.reward }}>+{card.points}</ThemedText>
-            </Pressable>
+            </Tap>
           ))}
-          <Pressable onPress={() => answer('not_this_week')} disabled={busy} accessibilityRole="button" hitSlop={8}>
+          <Tap onPress={() => answer('not_this_week')} disabled={busy} accessibilityRole="button" hitSlop={8}>
             <ThemedText type="small" style={[styles.skip, { color: t.accent }]}>Not this week</ThemedText>
-          </Pressable>
+          </Tap>
         </>
       )}
       {error && <ThemedText type="small" style={{ color: t.bad }}>{error}</ThemedText>}

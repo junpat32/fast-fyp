@@ -1,11 +1,12 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { useRef, useState, type Ref } from 'react';
-import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, TextInput, type TextInputInstance, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TextInput, type TextInputInstance, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { authMessage, checkCredentials, MIN_PASSWORD, type AuthErrors } from '@/api/auth';
 import { Button, NO_OUTLINE, useOutline } from '@/components/fields';
 import { PlantIcon } from '@/components/sprite';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -109,10 +110,10 @@ function AuthField({ label, value, onChange, error, creating, secret, inputRef, 
                    returnKeyType={secret ? 'go' : 'next'} submitBehavior={secret ? 'blurAndSubmit' : 'submit'}
                    onSubmitEditing={onSubmit} {...o.focus} style={[styles.inputText, { color: t.text }, NO_OUTLINE]} />
         {secret && (
-          <Pressable onPress={() => setShown(!shown)} hitSlop={10} accessibilityRole="button"
-                     accessibilityLabel={shown ? 'Hide the password' : 'Show the password'}>
+          <Tap onPress={() => setShown(!shown)} hitSlop={10} accessibilityRole="button"
+               accessibilityLabel={shown ? 'Hide the password' : 'Show the password'}>
             <ThemedText type="small" style={{ color: t.accent, fontWeight: 700 }}>{shown ? 'Hide' : 'Show'}</ThemedText>
-          </Pressable>
+          </Tap>
         )}
       </View>
       {error && <ThemedText type="small" style={{ color: t.bad }}>{error}</ThemedText>}

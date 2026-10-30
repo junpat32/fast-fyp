@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Platform, Pressable, StyleSheet, TextInput, type TextStyle, View } from 'react-native';
+import { Platform, StyleSheet, TextInput, type TextStyle, View } from 'react-native';
 
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
@@ -91,12 +92,12 @@ export function Button({ label, onPress, quiet, disabled, danger, fill }: {
 }) {
   const t = useTheme();
   return (
-    <Pressable onPress={onPress} disabled={disabled} accessibilityRole="button" accessibilityState={{ disabled }}
-               style={[styles.button, fill && styles.fill,
-                       quiet ? { borderWidth: 1, borderColor: danger ? t.bad : t.line } : { backgroundColor: t.accent },
-                       disabled && styles.disabled]}>
+    <Tap onPress={onPress} disabled={disabled} accessibilityRole="button" accessibilityState={{ disabled }}
+         style={[styles.button, fill && styles.fill,
+                 quiet ? { borderWidth: 1, borderColor: danger ? t.bad : t.line } : { backgroundColor: t.accent },
+                 disabled && styles.disabled]}>
       <ThemedText type="small" style={[styles.buttonText, { color: quiet ? (danger ? t.bad : t.text) : t.onAccent }]}>{label}</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 

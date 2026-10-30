@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Check } from '@/components/add/choice';
 import { Portrait } from '@/components/sprite';
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { AVATARS } from '@/data/avatars';
@@ -27,12 +28,12 @@ export function CharacterPicker({ value, onChange, error }: {
         {AVATARS.map(({ avatar, look }) => {
           const on = value.avatar === avatar;
           return (
-            <Pressable key={avatar} onPress={() => onChange({ avatar })} accessibilityRole="radio" accessibilityState={{ checked: on }}
-                       accessibilityLabel={look}
-                       style={[styles.avatar, { backgroundColor: t.card, borderColor: on ? t.accent : 'transparent' }]}>
+            <Tap key={avatar} onPress={() => onChange({ avatar })} accessibilityRole="radio" accessibilityState={{ checked: on }}
+                 accessibilityLabel={look}
+                 style={[styles.avatar, { backgroundColor: t.card, borderColor: on ? t.accent : 'transparent' }]}>
               <Portrait look={{ avatar, tone: value.tone ?? suggestedTone(avatar, CHARACTERS), glasses: value.glasses }}
                         mood="calm" label={look} period="afternoon" size={88} />
-            </Pressable>
+            </Tap>
           );
         })}
       </View>
@@ -43,9 +44,9 @@ export function CharacterPicker({ value, onChange, error }: {
           {CHARACTERS.skin_tones.map((tone, k) => {
             const on = shown === k + 1;
             return (
-              <Pressable key={k} onPress={() => onChange({ tone: k + 1 })} accessibilityRole="radio" hitSlop={4}
-                         accessibilityState={{ checked: on }} accessibilityLabel={`Skin tone ${k + 1} of ${TONES}`}
-                         style={[styles.tone, { backgroundColor: tone.afternoon[1], borderColor: on ? t.accent : t.line }]} />
+              <Tap key={k} onPress={() => onChange({ tone: k + 1 })} accessibilityRole="radio" hitSlop={4}
+                   accessibilityState={{ checked: on }} accessibilityLabel={`Skin tone ${k + 1} of ${TONES}`}
+                   style={[styles.tone, { backgroundColor: tone.afternoon[1], borderColor: on ? t.accent : t.line }]} />
             );
           })}
         </View>

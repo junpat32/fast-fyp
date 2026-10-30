@@ -2,18 +2,21 @@ import { StyleSheet, View } from 'react-native';
 
 import { Card } from '@/components/card';
 import { Expandable } from '@/components/expandable';
+import { GrowColumn } from '@/components/motion';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { THRESHOLDS } from '@/data/thresholds';
 import { useTheme } from '@/hooks/use-theme';
 import { monthsText } from '@/lib/format';
 import { chartTop, monthShort, rangeLine, type FutureMonth } from '@/lib/future';
+import { MOTION } from '@/lib/motion';
 
 const H = 132;                                   // the plot's height in dp
 
 /**
  * B6 (task 4): the range of possible savings in 6 months, "if recent habits continue" (D-81), as a
  * sentence and a month-by-month chart; why it is a range sits one tap away (D-110). No percentage (D-100).
+ * The ranges grow up from their foot, one month after another (D-154).
  */
 export function RangeCard({ label, months, now, basedOn }: {
   label: string; months: FutureMonth[]; now: number; basedOn: number;
@@ -40,10 +43,10 @@ export function RangeCard({ label, months, now, basedOn }: {
             <View style={styles.column}>
               <View style={[styles.now, { bottom: y(now) - 6, backgroundColor: t.accent }]} />
             </View>
-            {months.map((m) => (
+            {months.map((m, k) => (
               <View key={m.month} style={styles.column}>
-                <View style={[styles.bar, { bottom: y(m.p10), height: Math.max(y(m.p90) - y(m.p10), 3), backgroundColor: t.rangeBar,
-                                            borderColor: t.rangeDot }]} />
+                <GrowColumn height={Math.max(y(m.p90) - y(m.p10), 3)} delay={k * MOTION.growStepMs}
+                            style={[styles.bar, { bottom: y(m.p10), backgroundColor: t.rangeBar, borderColor: t.rangeDot }]} />
                 <View style={[styles.dot, { bottom: y(m.p50) - 4, backgroundColor: t.rangeDot }]} />
               </View>
             ))}

@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 
 import type { GameResponse } from '@/api/types';
+import { GrowBar } from '@/components/motion';
 import { PlantIcon } from '@/components/sprite';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
@@ -35,8 +36,8 @@ export function ProgressCard({ game, asOf }: { game: GameResponse; asOf: string 
               </View>
             }>
       <View style={[styles.track, { backgroundColor: t.line }]}>
-        <View style={[styles.fill, { width: `${cushion.fill * 100}%`, backgroundColor: t.rangeBar, borderColor: t.rangeDot },
-                      cushion.fill > 0 && styles.edge]} />
+        <GrowBar share={cushion.fill} style={[styles.fill, { backgroundColor: t.rangeBar, borderColor: t.rangeDot },
+                                              cushion.fill > 0 && styles.edge]} />
         {cushion.milestones.map((m) => (
           <View key={m.months} style={[styles.tick, { left: `${(m.months / 3) * 100}%` },
                                        { backgroundColor: m.reached ? t.reward : t.textSecondary }]} />

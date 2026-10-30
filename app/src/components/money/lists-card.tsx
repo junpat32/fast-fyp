@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
+import { Tap } from '@/components/tap';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useApi } from '@/data/api-context';
@@ -36,10 +37,10 @@ export function ListsCard() {
 
 function Row({ title, sub, onPress }: { title: string; sub: string; onPress: () => void }) {
   return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={`${title}: ${sub}`} style={styles.row}>
+    <Tap onPress={onPress} accessibilityRole="button" accessibilityLabel={`${title}: ${sub}`} style={styles.row}>
       <ThemedText type="smallBold" style={styles.title}>{title}</ThemedText>
       <ThemedText type="small" themeColor="textSecondary" style={styles.sub}>{sub} ›</ThemedText>
-    </Pressable>
+    </Tap>
   );
 }
 
